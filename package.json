@@ -1,0 +1,46 @@
+{
+  "name": "ej-angular2",
+  "description": "Angular 2 components for Syncfusion JavaScript widgets",
+  "version": "1.0.1-beta",
+  "scripts": {
+    "lint": "tslint ej/**/*.ts",
+    "postinstall": "typings install",
+    "prepublish": "tsc",
+    "tsc": "tsc",
+    "typings": "typings"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ej-angular2"
+  },
+  "author": "Syncfusion Inc",
+  "keywords": [
+    "syncfusion",
+    "ej",
+    "essential",
+    "javascript",
+    "angular",
+    "angular 2",
+    "angular2",
+    "ej-angular2"
+  ],
+  "license": "SEE LICENSE IN README.md",
+  "bugs": {
+    "url": "https://github.com/ej-angular2/issues"
+  },
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@angular/core": "^2.0.0",
+    "@angular/common": "^2.0.0",
+    "@angular/forms": "^2.0.0",
+    "codelyzer": "^0.0.28",
+    "rxjs": "5.0.0-beta.12",
+    "tslint": "^3.15.1",
+    "typescript": "2.0.2",
+    "typings":"^1.0.4",
+    "zone.js": "0.6.23"
+  }
+}
