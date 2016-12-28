@@ -206,6 +206,11 @@ export class ComplexTagElement {
             var element = complexes[i];
             ej.createObject(element, {}, this);
         }
+        Object.defineProperty(this, "__parent", {
+            enumerable: false,
+            writable: true,
+            value: null
+        });
     }
 
     ngOnInit() {
@@ -337,9 +342,9 @@ export function CreateComplexDirective(args:{
         extends: ComplexTagElement,
         constructor: [ejArgs.type, function (widget: EJComponents<any, any>) {
             this.tags = ejArgs.tags;
-            this.complexProperties = ejArgs.complexes;
-            this.__parent = widget;
+            this.complexProperties = ejArgs.complexes;            
             ComplexTagElement.call(this);
+            this.__parent = widget;
         }]
     })
 }
@@ -385,7 +390,7 @@ export class TemplateElement {
             let tmplElement = templates.filter('.' + templateObject[template].key);
             if (tmplElement.length) {
                 for (let i = 0; i < tmplElement.length; i++) { 
-                     childView = (<ViewContainerRef>templateObject[template].viewRef[i]).createEmbeddedView(<TemplateRef<any>>templateObject[template].templateRef[i], {'$implicit': templateObject[template].itemData[i]})
+                     childView = (<ViewContainerRef>templateObject[template].viewRef[i]).createEmbeddedView(<TemplateRef<any>>templateObject[template].templateRef[i], {'$implicit': templateObject[template].itemData[parseInt($(tmplElement[i]).attr("ej-prop"))]})
                      $(tmplElement[i]).empty().append(childView.rootNodes);
                 }
             } else {

@@ -23,7 +23,7 @@ let Outputs = ['actionBegin', 'actionComplete', 'actionFailure', 'beginEdit', 'b
     'headerClick', 'load', 'toolbarClick', 'queryCellInfo', 'contextOpen'
     , 'model.dataSourceChange: dataSourceChange'];
 let ComplexProperties = ['swimlaneSettings', 'contextMenuSettings', 'cardSettings', 'editSettings', 'fields',
-    'scrollSettings', 'searchSettings', 'tooltipSettings'];
+    'scrollSettings', 'searchSettings', 'tooltipSettings', 'swimlaneSettings.unassignedGroup'];
 let Inputs = Utils.AngularizeInputs(['allowDragAndDrop', 'allowTitle', 'swimlaneSettings', 'allowToggleColumn', 'allowSearching',
     'allowFiltering', 'allowSelection', 'allowHover', 'allowKeyboardNavigation', 'allowScrolling',
     'allowPrinting', 'contextMenuSettings', 'cardSettings', 'cssClass', 'enableTouch',

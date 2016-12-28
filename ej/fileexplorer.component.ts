@@ -7,15 +7,15 @@ let Outputs = ['beforeAjaxRequest', 'beforeDownload', 'beforeGetImage', 'beforeO
     ];
 let ComplexProperties = ['contextMenuSettings', 'filterSettings', 'gridSettings', 'uploadSettings'];
 let Inputs = Utils.AngularizeInputs(['ajaxAction', 'ajaxDataType', 'ajaxSettings', 'allowDragAndDrop', 'allowKeyboardNavigation',
-    'allowMultiSelection', 'contextMenuSettings', 'cssClass', 'enableResize', 'enableRTL',
-    'enableThumbnailCompress', 'fileTypes', 'filterSettings', 'gridSettings', 'height',
-    'isResponsive', 'layout', 'locale', 'maxHeight', 'maxWidth',
-    'minHeight', 'minWidth', 'path', 'selectedFolder', 'selectedItems',
-    'showCheckbox', 'showContextMenu', 'showFooter', 'showRoundedCorner', 'showThumbnail',
-    'showToolbar', 'showNavigationPane', 'tools', 'toolsList', 'uploadSettings',
-    'width', 'contextMenuSettings.items', 'contextMenuSettings.customMenuFields', 'filterSettings.allowSearchOnTyping', 'filterSettings.caseSensitiveSearch',
-    'filterSettings.filterType', 'gridSettings.allowResizing', 'gridSettings.allowSorting', 'gridSettings.columns', 'uploadSettings.maxFileSize',
-    'uploadSettings.allowMultipleFile', 'uploadSettings.autoUpload'], []);
+    'allowMultiSelection', 'contextMenuSettings', 'cssClass', 'enablePersistence', 'enableResize',
+    'enableRTL', 'enableThumbnailCompress', 'fileTypes', 'filterSettings', 'gridSettings',
+    'height', 'isResponsive', 'layout', 'locale', 'maxHeight',
+    'maxWidth', 'minHeight', 'minWidth', 'path', 'selectedFolder',
+    'selectedItems', 'showCheckbox', 'showContextMenu', 'showFooter', 'showRoundedCorner',
+    'showThumbnail', 'showToolbar', 'showNavigationPane', 'tools', 'toolsList',
+    'uploadSettings', 'width', 'contextMenuSettings.items', 'contextMenuSettings.customMenuFields', 'filterSettings.allowSearchOnTyping',
+    'filterSettings.caseSensitiveSearch', 'filterSettings.filterType', 'gridSettings.allowResizing', 'gridSettings.allowSorting', 'gridSettings.columns',
+    'uploadSettings.maxFileSize', 'uploadSettings.allowMultipleFile', 'uploadSettings.autoUpload'], []);
 export let FileExplorerComponent = CreateComponent('FileExplorer', {
     selector: 'ej-fileexplorer',
     inputs: Inputs,

@@ -297,10 +297,10 @@ let Inputs = Utils.AngularizeInputs(['backGroundImageUrl', 'border', 'exportSett
     'title.font', 'title.font.fontFamily', 'title.font.fontStyle', 'title.font.fontWeight', 'title.font.opacity',
     'title.font.size', 'title.subTitle', 'title.subTitle.font', 'title.subTitle.background', 'title.subTitle.border',
     'title.subTitle.text', 'title.subTitle.textAlignment', 'title.text', 'title.textAlignment', 'zooming.enable',
-    'zooming.enablePinching', 'zooming.enableDeferredZoom', 'zooming.enableMouseWheel', 'zooming.type', 'zooming.toolbarItems',
-    'annotations', 'columnDefinitions', 'indicators', 'axes', 'rowDefinitions',
-    'series', 'commonSeriesOptions.trendlines', 'primaryXAxis.multiLevelLabels', 'primaryXAxis.stripLine', 'primaryYAxis.multiLevelLabels',
-    'primaryYAxis.stripLine'], []);
+    'zooming.enablePinching', 'zooming.enableDeferredZoom', 'zooming.enableMouseWheel', 'zooming.type', 'zooming.enableScrollbar',
+    'zooming.toolbarItems', 'annotations', 'columnDefinitions', 'indicators', 'axes',
+    'rowDefinitions', 'series', 'commonSeriesOptions.trendlines', 'primaryXAxis.multiLevelLabels', 'primaryXAxis.stripLine',
+    'primaryYAxis.multiLevelLabels', 'primaryYAxis.stripLine'], []);
 export let ChartComponent = CreateComponent('Chart', {
     selector: 'ej-chart',
     inputs: Inputs,

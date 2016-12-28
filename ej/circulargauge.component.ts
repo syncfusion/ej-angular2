@@ -3,10 +3,10 @@ export let PointerDirective = CreateComplexDirective({
     selector: 'e-pointers>e-pointer',
     inputs: ['backgroundColor', 'backNeedleLength', 'border', 'border.color', 'border.width',
         'distanceFromScale', 'gradients', 'imageUrl', 'length', 'markerType',
-        'needleType', 'opacity', 'placement', 'pointerValueText', 'pointerValueText.angle',
-        'pointerValueText.autoAngle', 'pointerValueText.color', 'pointerValueText.distance', 'pointerValueText.font', 'pointerValueText.font.fontFamily',
-        'pointerValueText.font.fontStyle', 'pointerValueText.font.size', 'pointerValueText.opacity', 'pointerValueText.showValue', 'showBackNeedle',
-        'type', 'value', 'width'],
+        'needleType', 'opacity', 'radius', 'placement', 'pointerValueText',
+        'pointerValueText.angle', 'pointerValueText.autoAngle', 'pointerValueText.color', 'pointerValueText.distance', 'pointerValueText.font',
+        'pointerValueText.font.fontFamily', 'pointerValueText.font.fontStyle', 'pointerValueText.font.size', 'pointerValueText.opacity', 'pointerValueText.showValue',
+        'showBackNeedle', 'type', 'value', 'width'],
     queries: {
     }
 }, {

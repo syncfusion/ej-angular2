@@ -21,7 +21,7 @@ let Inputs = Utils.AngularizeInputs(['addDialogFields', 'allowColumnResize', 'al
     'workUnit', 'taskSchedulingMode', 'selectionType', 'parentProgressbarBackground', 'resourceUnitMapping',
     'notesMapping', 'taskSchedulingModeMapping', 'durationUnitMapping', 'parentTaskbarBackground', 'parentTaskIdMapping',
     'predecessorMapping', 'progressbarBackground', 'progressbarHeight', 'progressbarTooltipTemplate', 'progressbarTooltipTemplateId',
-    'progressMapping', 'query', 'renderBaseline', 'validateManaulTasksOnLinking', 'resourceIdMapping',
+    'progressMapping', 'query', 'renderBaseline', 'validateManualTasksOnLinking', 'resourceIdMapping',
     'resourceInfoMapping', 'resourceNameMapping', 'resources', 'roundOffDayworkingTime', 'rowHeight',
     'scheduleEndDate', 'scheduleHeaderSettings', 'scheduleStartDate', 'showColumnChooser', 'showGridCellTooltip',
     'showGridExpandCellTooltip', 'showProgressStatus', 'showResourceNames', 'showTaskNames', 'sizeSettings',

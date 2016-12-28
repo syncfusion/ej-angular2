@@ -61,7 +61,7 @@ export let LinearGauge_TickDirective = CreateComplexDirective({
 
 export let LinearGauge_TicksDirective = CreateArrayTagDirective('ticks', 'e-scales>e-ticks', LinearGauge_TickDirective);
 
-export let StateLinearGauge_RangeDirective = CreateComplexDirective({
+export let LinearGauge_StateLinearGauge_RangeDirective = CreateComplexDirective({
     selector: 'e-stateranges>e-staterange',
     inputs: ['backgroundColor', 'borderColor', 'endValue', 'startValue', 'text',
         'textColor'],
@@ -74,7 +74,7 @@ export let StateLinearGauge_RangeDirective = CreateComplexDirective({
     });
 
 
-export let StateLinearGauge_RangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', StateLinearGauge_RangeDirective);
+export let LinearGauge_StateLinearGauge_RangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', LinearGauge_StateLinearGauge_RangeDirective);
 
 export let LinearGauge_IndicatorDirective = CreateComplexDirective({
     selector: 'e-indicators>e-indicator',
@@ -83,7 +83,7 @@ export let LinearGauge_IndicatorDirective = CreateComplexDirective({
         'position', 'position.x', 'position.y', 'stateRanges', 'textLocation',
         'textLocation.x', 'textLocation.y', 'type', 'width'],
     queries: {
-        _stateRanges : new ContentChild(StateLinearGauge_RangesDirective),
+        _stateRanges : new ContentChild(LinearGauge_StateLinearGauge_RangesDirective),
     }
 }, {
          tags: ['stateRanges' ],
@@ -162,5 +162,5 @@ export let LinearGaugeComponent = CreateComponent('LinearGauge', {
         complexes: ComplexProperties,
     });
 
-export const EJ_LINEARGAUGE_COMPONENTS: Type<any>[] = [LinearGaugeComponent , MarkerPointersDirective, BarPointersDirective, LinearGauge_RangesDirective, LinearGauge_TicksDirective, StateLinearGauge_RangesDirective, LinearGauge_IndicatorsDirective, LinearGauge_LabelsDirective, LinearGauge_ScalesDirective, MarkerPointerDirective, BarPointerDirective, LinearGauge_RangeDirective, LinearGauge_TickDirective, StateLinearGauge_RangeDirective, LinearGauge_IndicatorDirective, LinearGauge_LabelDirective, LinearGauge_ScaleDirective ];
+export const EJ_LINEARGAUGE_COMPONENTS: Type<any>[] = [LinearGaugeComponent , MarkerPointersDirective, BarPointersDirective, LinearGauge_RangesDirective, LinearGauge_TicksDirective, LinearGauge_StateLinearGauge_RangesDirective, LinearGauge_IndicatorsDirective, LinearGauge_LabelsDirective, LinearGauge_ScalesDirective, MarkerPointerDirective, BarPointerDirective, LinearGauge_RangeDirective, LinearGauge_TickDirective, LinearGauge_StateLinearGauge_RangeDirective, LinearGauge_IndicatorDirective, LinearGauge_LabelDirective, LinearGauge_ScaleDirective ];
 

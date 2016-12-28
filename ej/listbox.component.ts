@@ -9,11 +9,12 @@ let ComplexProperties = ['fields'];
 let Inputs = Utils.AngularizeInputs(['allowDrag', 'allowDrop', 'allowMultiSelection', 'allowVirtualScrolling', 'caseSensitiveSearch',
     'cascadeTo', 'checkedIndices', 'cssClass', 'dataSource', 'enabled',
     'enableIncrementalSearch', 'enablePersistence', 'enableRTL', 'enableWordWrap', 'fields',
-    'height', 'itemsCount', 'totalItemsCount', 'itemRequestCount', 'loadDataOnInit',
-    'query', 'selectedIndex', 'selectedIndices', 'showCheckbox', 'showRoundedCorner',
-    'template', 'virtualScrollMode', 'width', 'targetID', 'fields.checkBy',
-    'fields.groupBy', 'fields.htmlAttributes', 'fields.id', 'fields.imageUrl', 'fields.imageAttributes',
-    'fields.selectBy', 'fields.spriteCssClass', 'fields.tableName', 'fields.text', 'fields.value'], ['value']);
+    'height', 'itemHeight', 'itemsCount', 'totalItemsCount', 'itemRequestCount',
+    'loadDataOnInit', 'query', 'selectedIndex', 'selectedIndices', 'showCheckbox',
+    'showRoundedCorner', 'template', 'virtualScrollMode', 'width', 'targetID',
+    'fields.checkBy', 'fields.groupBy', 'fields.htmlAttributes', 'fields.id', 'fields.imageUrl',
+    'fields.imageAttributes', 'fields.selectBy', 'fields.spriteCssClass', 'fields.tableName', 'fields.text',
+    'fields.value'], ['value']);
 export let ListBoxComponent = CreateComponent('ListBox', {
     selector: 'ej-listbox',
     inputs: Inputs,

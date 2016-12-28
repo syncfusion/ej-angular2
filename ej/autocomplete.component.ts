@@ -9,12 +9,13 @@ let Inputs = Utils.AngularizeInputs(['addNewText', 'allowAddNew', 'allowSorting'
     'caseSensitiveSearch', 'cssClass', 'dataSource', 'delaySuggestionTimeout', 'delimiterChar',
     'emptyResultText', 'enableAutoFill', 'enabled', 'enableDistinct', 'enablePersistence',
     'enableRTL', 'fields', 'filterType', 'height', 'highlightSearch',
-    'itemsCount', 'minCharacter', 'multiColumnSettings', 'multiSelectMode', 'popupHeight',
-    'popupWidth', 'query', 'readOnly', 'selectValueByKey', 'showEmptyResultText',
-    'showLoadingIcon', 'showPopupButton', 'showRoundedCorner', 'showResetIcon', 'sortOrder',
-    'template', 'validationMessage', 'validationRules', 'value', 'visible',
-    'watermarkText', 'width', 'fields.groupBy', 'fields.htmlAttributes', 'fields.key',
-    'fields.text', 'multiColumnSettings.enable', 'multiColumnSettings.showHeader', 'multiColumnSettings.stringFormat', 'multiColumnSettings.columns'], []);
+    'itemsCount', 'locale', 'minCharacter', 'multiColumnSettings', 'multiSelectMode',
+    'popupHeight', 'popupWidth', 'query', 'readOnly', 'selectValueByKey',
+    'showEmptyResultText', 'showLoadingIcon', 'showPopupButton', 'showRoundedCorner', 'showResetIcon',
+    'sortOrder', 'template', 'validationMessage', 'validationRules', 'value',
+    'visible', 'watermarkText', 'width', 'fields.groupBy', 'fields.htmlAttributes',
+    'fields.key', 'fields.text', 'multiColumnSettings.enable', 'multiColumnSettings.showHeader', 'multiColumnSettings.stringFormat',
+    'multiColumnSettings.columns'], []);
 export let AutocompleteComponent = CreateComponent('Autocomplete', {
     selector: '[ej-autocomplete]',
     inputs: Inputs,

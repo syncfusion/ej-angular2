@@ -5,14 +5,16 @@ let Outputs = ['beforeOpen', 'ajaxError', 'ajaxSuccess', 'beforeClose', 'close',
     'dragStop', 'open', 'resize', 'resizeStart', 'resizeStop',
     'expand', 'collapse', 'actionButtonClick'
     ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['actionButtons', 'allowDraggable', 'allowKeyboardNavigation', 'animation', 'closeOnEscape',
-    'containment', 'contentType', 'contentUrl', 'cssClass', 'enableAnimation',
-    'enabled', 'enableModal', 'enablePersistence', 'enableResize', 'enableRTL',
-    'faviconCSS', 'height', 'isResponsive', 'locale', 'maxHeight',
-    'maxWidth', 'minHeight', 'minWidth', 'position', 'showHeader',
-    'showOnInit', 'showRoundedCorner', 'target', 'title', 'tooltip',
-    'width', 'zIndex', 'showFooter', 'footerTemplateId'], []);
+let ComplexProperties = ['ajaxSettings'];
+let Inputs = Utils.AngularizeInputs(['actionButtons', 'ajaxSettings', 'allowDraggable', 'allowKeyboardNavigation', 'animation',
+    'closeOnEscape', 'containment', 'contentType', 'contentUrl', 'cssClass',
+    'enableAnimation', 'enabled', 'enableModal', 'enablePersistence', 'enableResize',
+    'enableRTL', 'faviconCSS', 'height', 'htmlAttributes', 'isResponsive',
+    'locale', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
+    'position', 'showHeader', 'showOnInit', 'showRoundedCorner', 'target',
+    'title', 'tooltip', 'width', 'zIndex', 'showFooter',
+    'footerTemplateId', 'ajaxSettings.async', 'ajaxSettings.cache', 'ajaxSettings.contentType', 'ajaxSettings.data',
+    'ajaxSettings.dataType', 'ajaxSettings.type'], []);
 export let DialogComponent = CreateComponent('Dialog', {
     selector: 'ej-dialog',
     inputs: Inputs,

@@ -24,11 +24,11 @@ export let ColumnDirective = CreateComplexDirective({
     inputs: ['clipMode', 'allowEditing', 'allowFiltering', 'allowGrouping', 'allowSorting',
         'allowResizing', 'commands', 'cssClass', 'customAttributes', 'dataSource',
         'defaultValue', 'disableHtmlEncode', 'displayAsCheckBox', 'editParams', 'editTemplate',
-        'editType', 'enableGroupByFormat', 'field', 'foreignKeyField', 'foreignKeyValue',
-        'format', 'headerTemplateID', 'headerText', 'headerTextAlign', 'isFrozen',
-        'isIdentity', 'isPrimaryKey', 'priority', 'showInColumnChooser', 'template',
-        'textAlign', 'tooltip', 'type', 'validationRules', 'visible',
-        'width'],
+        'editType', 'enableGroupByFormat', 'field', 'filterBarTemplate', 'foreignKeyField',
+        'foreignKeyValue', 'format', 'headerTemplateID', 'headerText', 'headerTextAlign',
+        'isFrozen', 'isIdentity', 'isPrimaryKey', 'priority', 'showInColumnChooser',
+        'template', 'textAlign', 'tooltip', 'type', 'validationRules',
+        'visible', 'width'],
     queries: {
         _commands : new ContentChild(CommandsDirective),
         _template: new ContentChild(GridTemplateDirective) 
