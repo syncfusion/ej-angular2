@@ -1,9 +1,11 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let ResourceDirective = CreateComplexDirective({
-    selector: 'e-resources>e-resource',
-    inputs: ['field', 'title', 'name', 'allowMultiple', 'resourceSettings',
+let ScheduleResourceInputs = Utils.AngularizeInputs(['field', 'title', 'name', 'allowMultiple', 'resourceSettings',
         'resourceSettings.dataSource', 'resourceSettings.text', 'resourceSettings.id', 'resourceSettings.groupId', 'resourceSettings.color',
-        'resourceSettings.start', 'resourceSettings.end', 'resourceSettings.workWeek', 'resourceSettings.appointmentClass'],
+        'resourceSettings.start', 'resourceSettings.end', 'resourceSettings.workWeek', 'resourceSettings.appointmentClass'], []);
+
+export let ScheduleResourceDirective = CreateComplexDirective({
+    selector: 'e-resources>e-resource',
+    inputs: ScheduleResourceInputs,
     queries: {
     }
 }, {
@@ -13,7 +15,7 @@ export let ResourceDirective = CreateComplexDirective({
     });
 
 
-export let ResourcesDirective = CreateArrayTagDirective('resources', 'ej-schedule>e-resources', ResourceDirective);
+export let ScheduleResourcesDirective = CreateArrayTagDirective('resources', 'ej-schedule>e-resources', ScheduleResourceDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'appointmentClick', 'beforeAppointmentRemove', 'beforeAppointmentChange',
@@ -57,7 +59,7 @@ export let ScheduleComponent = CreateComponent('Schedule', {
     outputs: Outputs,
     template: '',
     queries: {
-        _resources : new ContentChild(ResourcesDirective),
+        _resources : new ContentChild(ScheduleResourcesDirective),
     }
 }, {
         tags: ['resources'],
@@ -65,5 +67,5 @@ export let ScheduleComponent = CreateComponent('Schedule', {
         complexes: ComplexProperties,
     });
 
-export const EJ_SCHEDULE_COMPONENTS: Type<any>[] = [ScheduleComponent , ResourcesDirective, ResourceDirective ];
+export const EJ_SCHEDULE_COMPONENTS: Type<any>[] = [ScheduleComponent , ScheduleResourcesDirective, ScheduleResourceDirective];
 

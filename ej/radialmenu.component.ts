@@ -1,15 +1,11 @@
-import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef, CreateTemplateDirective } from './core';
-export var RadialMenuTemplateDirective = CreateTemplateDirective({
-    selector: "[e-template]"
-}, {
-        type: forwardRef(() => RadialMenu_ItemDirective)
-    });
-
-export let RadialMenu_ItemDirective = CreateComplexDirective({
-    selector: 'e-items>e-item',
-    inputs: ['imageUrl', 'text', 'enabled', 'click', 'badge',
+import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
+let RadialMenuItemInputs = Utils.AngularizeInputs(['imageUrl', 'text', 'enabled', 'click', 'badge',
         'badge.enabled', 'badge.value', 'type', 'sliderSettings', 'sliderSettings.ticks',
-        'sliderSettings.strokeWidth', 'sliderSettings.labelSpace', 'items'],
+        'sliderSettings.strokeWidth', 'sliderSettings.labelSpace', 'items'], []);
+
+export let RadialMenuItemDirective = CreateComplexDirective({
+    selector: 'e-items>e-item',
+    inputs: RadialMenuItemInputs,
     queries: {
     }
 }, {
@@ -19,7 +15,7 @@ export let RadialMenu_ItemDirective = CreateComplexDirective({
     });
 
 
-export let RadialMenu_ItemsDirective = CreateArrayTagDirective('items', 'ej-radialmenu>e-items', RadialMenu_ItemDirective);
+export let RadialMenuItemsDirective = CreateArrayTagDirective('items', 'ej-radialmenu>e-items', RadialMenuItemDirective);
 
 
 let Outputs = ['click', 'open', 'close'
@@ -33,7 +29,7 @@ export let RadialMenuComponent = CreateComponent('RadialMenu', {
     outputs: Outputs,
     template: '',
     queries: {
-        _items : new ContentChild(RadialMenu_ItemsDirective),
+        _items : new ContentChild(RadialMenuItemsDirective),
     }
 }, {
         tags: ['items'],
@@ -41,5 +37,5 @@ export let RadialMenuComponent = CreateComponent('RadialMenu', {
         complexes: ComplexProperties,
     });
 
-export const EJ_RADIALMENU_COMPONENTS: Type<any>[] = [RadialMenuComponent , RadialMenu_ItemsDirective, RadialMenu_ItemDirective ,RadialMenuTemplateDirective];
+export const EJ_RADIALMENU_COMPONENTS: Type<any>[] = [RadialMenuComponent , RadialMenuItemsDirective, RadialMenuItemDirective];
 

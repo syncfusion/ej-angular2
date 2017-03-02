@@ -1,7 +1,9 @@
-import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef, CreateTemplateDirective } from './core';
-export let CommandDirective = CreateComplexDirective({
+import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
+let GridCommandInputs = Utils.AngularizeInputs(['buttonOptions', 'type'], []);
+
+export let GridCommandDirective = CreateComplexDirective({
     selector: 'e-commands>e-command',
-    inputs: ['buttonOptions', 'type'],
+    inputs: GridCommandInputs,
     queries: {
     }
 }, {
@@ -11,27 +13,22 @@ export let CommandDirective = CreateComplexDirective({
     });
 
 
-export let CommandsDirective = CreateArrayTagDirective('commands', 'e-columns>e-commands', CommandDirective);
+export let GridCommandsDirective = CreateArrayTagDirective('commands', 'e-columns>e-commands', GridCommandDirective);
 
-export var GridTemplateDirective = CreateTemplateDirective({
-    selector: "[e-template]"
-}, {
-        type: forwardRef(() => ColumnDirective)
-    });
-
-export let ColumnDirective = CreateComplexDirective({
-    selector: 'e-columns>e-column',
-    inputs: ['clipMode', 'allowEditing', 'allowFiltering', 'allowGrouping', 'allowSorting',
+let GridColumnInputs = Utils.AngularizeInputs(['clipMode', 'allowEditing', 'allowFiltering', 'allowGrouping', 'allowSorting',
         'allowResizing', 'commands', 'cssClass', 'customAttributes', 'dataSource',
         'defaultValue', 'disableHtmlEncode', 'displayAsCheckBox', 'editParams', 'editTemplate',
-        'editType', 'enableGroupByFormat', 'field', 'filterBarTemplate', 'foreignKeyField',
-        'foreignKeyValue', 'format', 'headerTemplateID', 'headerText', 'headerTextAlign',
-        'isFrozen', 'isIdentity', 'isPrimaryKey', 'priority', 'showInColumnChooser',
-        'template', 'textAlign', 'tooltip', 'type', 'validationRules',
-        'visible', 'width'],
+        'editType', 'enableGroupByFormat', 'field', 'filterBarTemplate', 'filterType',
+        'foreignKeyField', 'foreignKeyValue', 'format', 'headerTemplateID', 'headerText',
+        'headerTextAlign', 'headerTooltip', 'isFrozen', 'isIdentity', 'isPrimaryKey',
+        'priority', 'showInColumnChooser', 'template', 'textAlign', 'tooltip',
+        'type', 'validationRules', 'visible', 'width'], []);
+
+export let GridColumnDirective = CreateComplexDirective({
+    selector: 'e-columns>e-column',
+    inputs: GridColumnInputs,
     queries: {
-        _commands : new ContentChild(CommandsDirective),
-        _template: new ContentChild(GridTemplateDirective) 
+        _commands : new ContentChild(GridCommandsDirective),
     }
 }, {
          tags: ['commands' ],
@@ -40,12 +37,14 @@ export let ColumnDirective = CreateComplexDirective({
     });
 
 
-export let ColumnsDirective = CreateArrayTagDirective('columns', 'ej-grid>e-columns', ColumnDirective);
+export let GridColumnsDirective = CreateArrayTagDirective('columns', 'ej-grid>e-columns', GridColumnDirective);
 
-export let SummaryColumnDirective = CreateComplexDirective({
+let GridSummaryColumnInputs = Utils.AngularizeInputs(['customSummaryValue', 'dataMember', 'displayColumn', 'format', 'prefix',
+        'suffix', 'summaryType', 'template'], []);
+
+export let GridSummaryColumnDirective = CreateComplexDirective({
     selector: 'e-summarycolumns>e-summarycolumn',
-    inputs: ['customSummaryValue', 'dataMember', 'displayColumn', 'format', 'prefix',
-        'suffix', 'summaryType', 'template'],
+    inputs: GridSummaryColumnInputs,
     queries: {
     }
 }, {
@@ -55,14 +54,16 @@ export let SummaryColumnDirective = CreateComplexDirective({
     });
 
 
-export let SummaryColumnsDirective = CreateArrayTagDirective('summaryColumns', 'e-summaryrows>e-summarycolumns', SummaryColumnDirective);
+export let GridSummaryColumnsDirective = CreateArrayTagDirective('summaryColumns', 'e-summaryrows>e-summarycolumns', GridSummaryColumnDirective);
 
-export let SummaryRowDirective = CreateComplexDirective({
+let GridSummaryRowInputs = Utils.AngularizeInputs(['showCaptionSummary', 'showGroupSummary', 'showTotalSummary', 'summaryColumns', 'title',
+        'titleColumn'], []);
+
+export let GridSummaryRowDirective = CreateComplexDirective({
     selector: 'e-summaryrows>e-summaryrow',
-    inputs: ['showCaptionSummary', 'showGroupSummary', 'showTotalSummary', 'summaryColumns', 'title',
-        'titleColumn'],
+    inputs: GridSummaryRowInputs,
     queries: {
-        _summaryColumns : new ContentChild(SummaryColumnsDirective),
+        _summaryColumns : new ContentChild(GridSummaryColumnsDirective),
     }
 }, {
          tags: ['summaryColumns' ],
@@ -71,11 +72,13 @@ export let SummaryRowDirective = CreateComplexDirective({
     });
 
 
-export let SummaryRowsDirective = CreateArrayTagDirective('summaryRows', 'ej-grid>e-summaryrows', SummaryRowDirective);
+export let GridSummaryRowsDirective = CreateArrayTagDirective('summaryRows', 'ej-grid>e-summaryrows', GridSummaryRowDirective);
 
-export let StackedHeaderColumnDirective = CreateComplexDirective({
+let GridStackedHeaderColumnInputs = Utils.AngularizeInputs(['column', 'cssClass', 'headerText', 'textAlign', 'tooltip'], []);
+
+export let GridStackedHeaderColumnDirective = CreateComplexDirective({
     selector: 'e-stackedheadercolumns>e-stackedheadercolumn',
-    inputs: ['column', 'cssClass', 'headerText', 'textAlign'],
+    inputs: GridStackedHeaderColumnInputs,
     queries: {
     }
 }, {
@@ -85,13 +88,15 @@ export let StackedHeaderColumnDirective = CreateComplexDirective({
     });
 
 
-export let StackedHeaderColumnsDirective = CreateArrayTagDirective('stackedHeaderColumns', 'e-stackedheaderrows>e-stackedheadercolumns', StackedHeaderColumnDirective);
+export let GridStackedHeaderColumnsDirective = CreateArrayTagDirective('stackedHeaderColumns', 'e-stackedheaderrows>e-stackedheadercolumns', GridStackedHeaderColumnDirective);
 
-export let StackedHeaderRowDirective = CreateComplexDirective({
+let GridStackedHeaderRowInputs = Utils.AngularizeInputs(['stackedHeaderColumns'], []);
+
+export let GridStackedHeaderRowDirective = CreateComplexDirective({
     selector: 'e-stackedheaderrows>e-stackedheaderrow',
-    inputs: ['stackedHeaderColumns'],
+    inputs: GridStackedHeaderRowInputs,
     queries: {
-        _stackedHeaderColumns : new ContentChild(StackedHeaderColumnsDirective),
+        _stackedHeaderColumns : new ContentChild(GridStackedHeaderColumnsDirective),
     }
 }, {
          tags: ['stackedHeaderColumns' ],
@@ -100,19 +105,20 @@ export let StackedHeaderRowDirective = CreateComplexDirective({
     });
 
 
-export let StackedHeaderRowsDirective = CreateArrayTagDirective('stackedHeaderRows', 'ej-grid>e-stackedheaderrows', StackedHeaderRowDirective);
+export let GridStackedHeaderRowsDirective = CreateArrayTagDirective('stackedHeaderRows', 'ej-grid>e-stackedheaderrows', GridStackedHeaderRowDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'actionFailure', 'batchAdd', 'batchDelete',
-    'beforeBatchAdd', 'beforeBatchDelete', 'beforeBatchSave', 'beginEdit', 'cellEdit',
-    'cellSave', 'cellSelected', 'cellSelecting', 'columnDrag', 'columnDragStart',
-    'columnDrop', 'rowDrag', 'rowDragStart', 'rowDrop', 'columnSelected',
-    'columnSelecting', 'contextClick', 'contextOpen', 'create', 'dataBound',
-    'destroy', 'detailsCollapse', 'detailsDataBound', 'detailsExpand', 'endAdd',
-    'endDelete', 'endEdit', 'load', 'mergeCellInfo', 'queryCellInfo',
-    'recordClick', 'recordDoubleClick', 'resized', 'resizeEnd', 'resizeStart',
-    'rightClick', 'rowDataBound', 'rowSelected', 'rowSelecting', 'templateRefresh',
-    'toolbarClick'
+    'beforeBatchAdd', 'beforeBatchDelete', 'beforeBatchSave', 'beforePrint', 'beforeRowDrop',
+    'beginEdit', 'cellEdit', 'cellSave', 'cellSelected', 'cellSelecting',
+    'cellDeselected', 'cellDeselecting', 'columnDrag', 'columnDragStart', 'columnDrop',
+    'rowDrag', 'rowDragStart', 'rowDrop', 'columnSelected', 'columnSelecting',
+    'columnDeselected', 'columnDeselecting', 'contextClick', 'contextOpen', 'create',
+    'dataBound', 'destroy', 'detailsCollapse', 'detailsDataBound', 'detailsExpand',
+    'endAdd', 'endDelete', 'endEdit', 'load', 'mergeCellInfo',
+    'queryCellInfo', 'recordClick', 'recordDoubleClick', 'resized', 'resizeEnd',
+    'resizeStart', 'rightClick', 'rowDataBound', 'rowSelected', 'rowSelecting',
+    'rowDeselected', 'rowDeselecting', 'templateRefresh', 'toolbarClick'
     , 'model.dataSourceChange: dataSourceChange', 'model.pageSettings.currentPageChange: pageSettings.currentPageChange'];
 let ComplexProperties = ['contextMenuSettings', 'editSettings', 'filterSettings', 'groupSettings', 'pageSettings',
     'resizeSettings', 'rowDropSettings', 'searchSettings', 'selectionSettings', 'scrollSettings',
@@ -123,23 +129,25 @@ let Inputs = Utils.AngularizeInputs(['allowCellMerging', 'allowGrouping', 'allow
     'allowMultipleExporting', 'commonWidth', 'gridLines', 'childGrid', 'columnLayout',
     'contextMenuSettings', 'cssClass', 'detailsTemplate', 'editSettings', 'enableAltRow',
     'enableAutoSaveOnSelectionChange', 'enableHeaderHover', 'enablePersistence', 'enableResponsiveRow', 'enableRowHover',
-    'enableRTL', 'enableTouch', 'filterSettings', 'groupSettings', 'isResponsive',
-    'keySettings', 'locale', 'minWidth', 'pageSettings', 'query',
-    'resizeSettings', 'rowTemplate', 'rowDropSettings', 'searchSettings', 'selectedRecords',
-    'selectedRowIndex', 'selectedRowIndices', 'selectionSettings', 'selectionType', 'scrollSettings',
-    'showColumnChooser', 'showStackedHeader', 'showSummary', 'sortSettings', 'textWrapSettings',
-    'toolbarSettings', 'contextMenuSettings.contextMenuItems', 'contextMenuSettings.customContextMenuItems', 'contextMenuSettings.enableContextMenu', 'contextMenuSettings.disableDefaultItems',
-    'editSettings.allowAdding', 'editSettings.allowDeleting', 'editSettings.allowEditing', 'editSettings.allowEditOnDblClick', 'editSettings.dialogEditorTemplateID',
-    'editSettings.editMode', 'editSettings.externalFormTemplateID', 'editSettings.formPosition', 'editSettings.inlineFormTemplateID', 'editSettings.rowPosition',
-    'editSettings.showConfirmDialog', 'editSettings.showDeleteConfirmDialog', 'editSettings.titleColumn', 'editSettings.showAddNewRow', 'filterSettings.enableCaseSensitivity',
-    'filterSettings.filterBarMode', 'filterSettings.filterType', 'filterSettings.maxFilterChoices', 'filterSettings.showFilterBarMessage', 'filterSettings.showPredicate',
-    'groupSettings.captionFormat', 'groupSettings.enableDropAreaAutoSizing', 'groupSettings.groupedColumns', 'groupSettings.showDropArea', 'groupSettings.showGroupedColumn',
-    'groupSettings.showToggleButton', 'groupSettings.showUngroupButton', 'pageSettings.enableQueryString', 'pageSettings.enableTemplates', 'pageSettings.pageCount',
-    'pageSettings.pageSize', 'pageSettings.showDefaults', 'pageSettings.template', 'pageSettings.totalPages', 'pageSettings.totalRecordsCount',
-    'pageSettings.printMode', 'resizeSettings.resizeMode', 'rowDropSettings.dropTargetID', 'rowDropSettings.dragMapper', 'rowDropSettings.dropMapper',
-    'searchSettings.fields', 'searchSettings.key', 'searchSettings.operator', 'searchSettings.ignoreCase', 'selectionSettings.enableToggle',
-    'selectionSettings.selectionMode', 'scrollSettings.allowVirtualScrolling', 'scrollSettings.enableTouchScroll', 'scrollSettings.frozenColumns', 'scrollSettings.frozenRows',
-    'scrollSettings.height', 'scrollSettings.virtualScrollMode', 'scrollSettings.enableVirtualization', 'scrollSettings.width', 'scrollSettings.scrollOneStepBy',
+    'enableRTL', 'enableTouch', 'enableToolbarItems', 'exportToExcelAction', 'exportToPdfAction',
+    'exportToWordAction', 'filterSettings', 'groupSettings', 'isResponsive', 'keySettings',
+    'locale', 'minWidth', 'pageSettings', 'query', 'resizeSettings',
+    'rowTemplate', 'rowDropSettings', 'searchSettings', 'selectedRecords', 'selectedRowIndex',
+    'selectedRowIndices', 'selectionSettings', 'selectionType', 'scrollSettings', 'showColumnChooser',
+    'showStackedHeader', 'showSummary', 'sortSettings', 'textWrapSettings', 'toolbarSettings',
+    'contextMenuSettings.contextMenuItems', 'contextMenuSettings.customContextMenuItems', 'contextMenuSettings.enableContextMenu', 'contextMenuSettings.disableDefaultItems', 'editSettings.allowAdding',
+    'editSettings.allowDeleting', 'editSettings.allowEditing', 'editSettings.allowEditOnDblClick', 'editSettings.dialogEditorTemplateID', 'editSettings.editMode',
+    'editSettings.externalFormTemplateID', 'editSettings.formPosition', 'editSettings.inlineFormTemplateID', 'editSettings.rowPosition', 'editSettings.showConfirmDialog',
+    'editSettings.showDeleteConfirmDialog', 'editSettings.titleColumn', 'editSettings.showAddNewRow', 'filterSettings.enableCaseSensitivity', 'filterSettings.enableInterDeterminateState',
+    'filterSettings.filterBarMode', 'filterSettings.filterType', 'filterSettings.immediateModeDelay', 'filterSettings.maxFilterChoices', 'filterSettings.showFilterBarStatus',
+    'filterSettings.showPredicate', 'groupSettings.captionFormat', 'groupSettings.enableDropAreaAutoSizing', 'groupSettings.groupedColumns', 'groupSettings.showDropArea',
+    'groupSettings.showGroupedColumn', 'groupSettings.showToggleButton', 'groupSettings.showUngroupButton', 'pageSettings.enableQueryString', 'pageSettings.enableTemplates',
+    'pageSettings.pageCount', 'pageSettings.pageSize', 'pageSettings.showDefaults', 'pageSettings.template', 'pageSettings.totalPages',
+    'pageSettings.totalRecordsCount', 'pageSettings.printMode', 'resizeSettings.resizeMode', 'rowDropSettings.dropTargetID', 'rowDropSettings.dragMapper',
+    'rowDropSettings.dropMapper', 'searchSettings.fields', 'searchSettings.key', 'searchSettings.operator', 'searchSettings.ignoreCase',
+    'selectionSettings.cellSelectionMode', 'selectionSettings.enableToggle', 'selectionSettings.selectionMode', 'scrollSettings.allowVirtualScrolling', 'scrollSettings.autoHide',
+    'scrollSettings.buttonSize', 'scrollSettings.enableTouchScroll', 'scrollSettings.frozenColumns', 'scrollSettings.frozenRows', 'scrollSettings.height',
+    'scrollSettings.scrollerSize', 'scrollSettings.virtualScrollMode', 'scrollSettings.enableVirtualization', 'scrollSettings.width', 'scrollSettings.scrollOneStepBy',
     'textWrapSettings.wrapMode', 'toolbarSettings.customToolbarItems', 'toolbarSettings.showToolbar', 'toolbarSettings.toolbarItems', 'columns',
     'stackedHeaderRows', 'summaryRows', 'contextMenuSettings.subContextMenu', 'filterSettings.filteredColumns', 'sortSettings.sortedColumns'], ['dataSource', 'pageSettings.currentPage']);
 export let GridComponent = CreateComponent('Grid', {
@@ -148,9 +156,9 @@ export let GridComponent = CreateComponent('Grid', {
     outputs: Outputs,
     template: '',
     queries: {
-        _columns : new ContentChild(ColumnsDirective),
-        _summaryRows : new ContentChild(SummaryRowsDirective),
-        _stackedHeaderRows : new ContentChild(StackedHeaderRowsDirective),
+        _columns : new ContentChild(GridColumnsDirective),
+        _summaryRows : new ContentChild(GridSummaryRowsDirective),
+        _stackedHeaderRows : new ContentChild(GridStackedHeaderRowsDirective),
     }
 }, {
         tags: ['columns', 'summaryRows', 'stackedHeaderRows'],
@@ -158,5 +166,5 @@ export let GridComponent = CreateComponent('Grid', {
         complexes: ComplexProperties,
     });
 
-export const EJ_GRID_COMPONENTS: Type<any>[] = [GridComponent , CommandsDirective, ColumnsDirective, SummaryColumnsDirective, SummaryRowsDirective, StackedHeaderColumnsDirective, StackedHeaderRowsDirective, CommandDirective, ColumnDirective, SummaryColumnDirective, SummaryRowDirective, StackedHeaderColumnDirective, StackedHeaderRowDirective ,GridTemplateDirective];
+export const EJ_GRID_COMPONENTS: Type<any>[] = [GridComponent , GridCommandsDirective, GridColumnsDirective, GridSummaryColumnsDirective, GridSummaryRowsDirective, GridStackedHeaderColumnsDirective, GridStackedHeaderRowsDirective, GridCommandDirective, GridColumnDirective, GridSummaryColumnDirective, GridSummaryRowDirective, GridStackedHeaderColumnDirective, GridStackedHeaderRowDirective];
 

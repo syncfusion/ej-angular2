@@ -16,7 +16,7 @@ export let RotatorComponent = CreateComponent('Rotator', {
     selector: '[ej-rotator]',
     inputs: Inputs,
     outputs: Outputs,
-    template: '',
+    template: '<ng-content></ng-content>',
     queries: {
     }
 }, {
@@ -25,5 +25,5 @@ export let RotatorComponent = CreateComponent('Rotator', {
         complexes: ComplexProperties,
     });
 
-export const EJ_ROTATOR_COMPONENTS: Type<any>[] = [RotatorComponent  ];
+export const EJ_ROTATOR_COMPONENTS: Type<any>[] = [RotatorComponent ];
 

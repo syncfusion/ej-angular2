@@ -5,16 +5,18 @@ let Outputs = ['afterServiceInvoke', 'beforeServiceInvoke', 'beforePivotEnginePo
     'renderComplete', 'renderFailure', 'renderSuccess', 'rowHeaderHyperlinkClick', 'summaryCellHyperlinkClick',
     'valueCellHyperlinkClick', 'saveReport', 'loadReport', 'beforeExport', 'cellEdit'
     ];
-let ComplexProperties = ['dataSource', 'frozenHeaderSettings', 'hyperlinkSettings', 'serviceMethodSettings', 'dataSource.pagerOptions'];
-let Inputs = Utils.AngularizeInputs(['analysisMode', 'cssClass', 'pivotTableFieldListID', 'dataSource', 'frozenHeaderSettings',
-    'customObject', 'collapsedMembers', 'enableCellContext', 'enableCellSelection', 'enableDrillThrough',
-    'enableCellDoubleClick', 'enableCellEditing', 'enableCollapseByDefault', 'enableColumnGrandTotal', 'enableConditionalFormatting',
-    'enableDeferUpdate', 'enableGroupingBar', 'enableGrandTotal', 'enableJSONRendering', 'enablePivotFieldList',
-    'enableRowGrandTotal', 'enableRTL', 'enableToolTip', 'enableToolTipAnimation', 'enableColumnResizing',
-    'enableVirtualScrolling', 'enablePaging', 'hyperlinkSettings', 'isResponsive', 'jsonRecords',
-    'layout', 'locale', 'operationalMode', 'serviceMethodSettings', 'url',
-    'dataSource.cube', 'dataSource.data', 'dataSource.catalog', 'dataSource.enableAdvancedFilter', 'dataSource.reportName',
-    'dataSource.pagerOptions', 'dataSource.pagerOptions.categoricalPageSize', 'dataSource.pagerOptions.seriesPageSize', 'dataSource.pagerOptions.categoricalCurrentPage', 'dataSource.pagerOptions.seriesCurrentPage',
+let ComplexProperties = ['dataSource', 'valueSortSettings', 'frozenHeaderSettings', 'hyperlinkSettings', 'serviceMethodSettings',
+    'dataSource.pagerOptions'];
+let Inputs = Utils.AngularizeInputs(['analysisMode', 'cssClass', 'pivotTableFieldListID', 'dataSource', 'valueSortSettings',
+    'frozenHeaderSettings', 'customObject', 'collapsedMembers', 'enableCellContext', 'enableCellSelection',
+    'enableDrillThrough', 'enableCellDoubleClick', 'enableCellEditing', 'enableCollapseByDefault', 'enableColumnGrandTotal',
+    'enableConditionalFormatting', 'enableAdvancedFilter', 'enableDeferUpdate', 'enableGroupingBar', 'enableGrandTotal',
+    'enableJSONRendering', 'enablePivotFieldList', 'enableRowGrandTotal', 'enableRTL', 'enableToolTip',
+    'enableToolTipAnimation', 'enableColumnResizing', 'enableVirtualScrolling', 'enablePaging', 'hyperlinkSettings',
+    'isResponsive', 'jsonRecords', 'layout', 'locale', 'operationalMode',
+    'serviceMethodSettings', 'url', 'dataSource.cube', 'dataSource.data', 'dataSource.catalog',
+    'dataSource.enableAdvancedFilter', 'dataSource.reportName', 'dataSource.pagerOptions', 'dataSource.pagerOptions.categoricalPageSize', 'dataSource.pagerOptions.seriesPageSize',
+    'dataSource.pagerOptions.categoricalCurrentPage', 'dataSource.pagerOptions.seriesCurrentPage', 'valueSortSettings.headerText', 'valueSortSettings.headerDelimiters', 'valueSortSettings.sortOrder',
     'frozenHeaderSettings.enableFrozenRowHeaders', 'frozenHeaderSettings.enableFrozenColumnHeaders', 'frozenHeaderSettings.enableFrozenHeaders', 'hyperlinkSettings.enableColumnHeaderHyperlink', 'hyperlinkSettings.enableRowHeaderHyperlink',
     'hyperlinkSettings.enableSummaryCellHyperlink', 'hyperlinkSettings.enableValueCellHyperlink', 'serviceMethodSettings.drillDown', 'serviceMethodSettings.exportPivotGrid', 'serviceMethodSettings.deferUpdate',
     'serviceMethodSettings.fetchMembers', 'serviceMethodSettings.filtering', 'serviceMethodSettings.initialize', 'serviceMethodSettings.nodeDropped', 'serviceMethodSettings.nodeStateModified',
@@ -34,5 +36,5 @@ export let PivotGridComponent = CreateComponent('PivotGrid', {
         complexes: ComplexProperties,
     });
 
-export const EJ_PIVOTGRID_COMPONENTS: Type<any>[] = [PivotGridComponent  ];
+export const EJ_PIVOTGRID_COMPONENTS: Type<any>[] = [PivotGridComponent ];
 

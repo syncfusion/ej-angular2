@@ -23,7 +23,7 @@ export let TreeViewComponent = CreateComponent('TreeView', {
     selector: 'ej-treeview',
     inputs: Inputs,
     outputs: Outputs,
-    template: '',
+    template: '<ng-content></ng-content>',
     queries: {
     }
 }, {
@@ -32,5 +32,5 @@ export let TreeViewComponent = CreateComponent('TreeView', {
         complexes: ComplexProperties,
     });
 
-export const EJ_TREEVIEW_COMPONENTS: Type<any>[] = [TreeViewComponent  ];
+export const EJ_TREEVIEW_COMPONENTS: Type<any>[] = [TreeViewComponent ];
 

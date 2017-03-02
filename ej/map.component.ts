@@ -1,21 +1,23 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let LayerDirective = CreateComplexDirective({
-    selector: 'e-layers>e-layer',
-    inputs: ['bingMapType', 'bubbleSettings', 'bubbleSettings.bubbleOpacity', 'bubbleSettings.color', 'bubbleSettings.colorMappings',
+let MapLayerInputs = Utils.AngularizeInputs(['bingMapType', 'bubbleSettings', 'bubbleSettings.bubbleOpacity', 'bubbleSettings.color', 'bubbleSettings.colorMappings',
         'bubbleSettings.colorMappings.rangeColorMapping', 'bubbleSettings.colorValuePath', 'bubbleSettings.maxValue', 'bubbleSettings.minValue', 'bubbleSettings.showBubble',
         'bubbleSettings.showTooltip', 'bubbleSettings.tooltipTemplate', 'bubbleSettings.valuePath', 'dataSource', 'shapeDataPath',
         'shapePropertyPath', 'enableMouseHover', 'enableSelection', 'key', 'labelSettings',
         'labelSettings.enableSmartLabel', 'labelSettings.labelLength', 'labelSettings.labelPath', 'labelSettings.showLabels', 'labelSettings.smartLabelSize',
-        'layerType', 'legendSettings', 'legendSettings.dockOnMap', 'legendSettings.dockPosition', 'legendSettings.height',
-        'legendSettings.icon', 'legendSettings.iconHeight', 'legendSettings.iconWidth', 'legendSettings.labelOrientation', 'legendSettings.leftLabel',
-        'legendSettings.mode', 'legendSettings.position', 'legendSettings.positionX', 'legendSettings.positionY', 'legendSettings.rightLabel',
-        'legendSettings.showLabels', 'legendSettings.showLegend', 'legendSettings.title', 'legendSettings.type', 'legendSettings.width',
-        'mapItemsTemplate', 'markers', 'markerTemplate', 'selectedMapShapes', 'selectionMode',
-        'shapeData', 'shapeSettings', 'shapeSettings.autoFill', 'shapeSettings.colorMappings', 'shapeSettings.colorMappings.rangeColorMapping',
-        'shapeSettings.colorMappings.equalColorMapping', 'shapeSettings.colorPalette', 'shapeSettings.colorValuePath', 'shapeSettings.enableGradient', 'shapeSettings.fill',
-        'shapeSettings.highlightBorderWidth', 'shapeSettings.highlightColor', 'shapeSettings.highlightStroke', 'shapeSettings.selectionColor', 'shapeSettings.selectionStroke',
-        'shapeSettings.selectionStrokeWidth', 'shapeSettings.stroke', 'shapeSettings.strokeThickness', 'shapeSettings.valuePath', 'showMapItems',
-        'showTooltip', 'tooltipTemplate', 'urlTemplate'],
+        'geometryType', 'layerType', 'legendSettings', 'legendSettings.dockOnMap', 'legendSettings.dockPosition',
+        'legendSettings.height', 'legendSettings.icon', 'legendSettings.iconHeight', 'legendSettings.iconWidth', 'legendSettings.labelOrientation',
+        'legendSettings.leftLabel', 'legendSettings.mode', 'legendSettings.position', 'legendSettings.positionX', 'legendSettings.positionY',
+        'legendSettings.rightLabel', 'legendSettings.showLabels', 'legendSettings.showLegend', 'legendSettings.title', 'legendSettings.type',
+        'legendSettings.width', 'mapItemsTemplate', 'markers', 'markerTemplate', 'selectedMapShapes',
+        'selectionMode', 'shapeData', 'shapeSettings', 'shapeSettings.autoFill', 'shapeSettings.colorMappings',
+        'shapeSettings.colorMappings.rangeColorMapping', 'shapeSettings.colorMappings.equalColorMapping', 'shapeSettings.colorPalette', 'shapeSettings.colorValuePath', 'shapeSettings.enableGradient',
+        'shapeSettings.fill', 'shapeSettings.highlightBorderWidth', 'shapeSettings.highlightColor', 'shapeSettings.highlightStroke', 'shapeSettings.selectionColor',
+        'shapeSettings.selectionStroke', 'shapeSettings.selectionStrokeWidth', 'shapeSettings.stroke', 'shapeSettings.strokeThickness', 'shapeSettings.valuePath',
+        'showMapItems', 'showTooltip', 'tooltipTemplate', 'urlTemplate'], []);
+
+export let MapLayerDirective = CreateComplexDirective({
+    selector: 'e-layers>e-layer',
+    inputs: MapLayerInputs,
     queries: {
     }
 }, {
@@ -25,7 +27,7 @@ export let LayerDirective = CreateComplexDirective({
     });
 
 
-export let LayersDirective = CreateArrayTagDirective('layers', 'ej-map>e-layers', LayerDirective);
+export let MapLayersDirective = CreateArrayTagDirective('layers', 'ej-map>e-layers', MapLayerDirective);
 
 
 let Outputs = ['markerSelected', 'mouseleave', 'mouseover', 'onRenderComplete', 'panned',
@@ -44,7 +46,7 @@ export let MapComponent = CreateComponent('Map', {
     outputs: Outputs,
     template: '',
     queries: {
-        _layers : new ContentChild(LayersDirective),
+        _layers : new ContentChild(MapLayersDirective),
     }
 }, {
         tags: ['layers'],
@@ -52,5 +54,5 @@ export let MapComponent = CreateComponent('Map', {
         complexes: ComplexProperties,
     });
 
-export const EJ_MAP_COMPONENTS: Type<any>[] = [MapComponent , LayersDirective, LayerDirective ];
+export const EJ_MAP_COMPONENTS: Type<any>[] = [MapComponent , MapLayersDirective, MapLayerDirective];
 

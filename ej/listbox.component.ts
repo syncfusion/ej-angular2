@@ -19,7 +19,7 @@ export let ListBoxComponent = CreateComponent('ListBox', {
     selector: 'ej-listbox',
     inputs: Inputs,
     outputs: Outputs,
-    template: '',
+    template: '<ng-content></ng-content>',
     queries: {
     }
 }, {
@@ -28,5 +28,5 @@ export let ListBoxComponent = CreateComponent('ListBox', {
         complexes: ComplexProperties,
     });
 
-export const EJ_LISTBOX_COMPONENTS: Type<any>[] = [ListBoxComponent  ];
+export const EJ_LISTBOX_COMPONENTS: Type<any>[] = [ListBoxComponent ];
 

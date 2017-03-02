@@ -1,7 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let QualitativeRangeDirective = CreateComplexDirective({
+let BulletGraphQualitativeRangeInputs = Utils.AngularizeInputs(['rangeEnd', 'rangeOpacity', 'rangeStroke'], []);
+
+export let BulletGraphQualitativeRangeDirective = CreateComplexDirective({
     selector: 'e-qualitativeranges>e-qualitativerange',
-    inputs: ['rangeEnd', 'rangeOpacity', 'rangeStroke'],
+    inputs: BulletGraphQualitativeRangeInputs,
     queries: {
     }
 }, {
@@ -11,11 +13,13 @@ export let QualitativeRangeDirective = CreateComplexDirective({
     });
 
 
-export let QualitativeRangesDirective = CreateArrayTagDirective('qualitativeRanges', 'ej-bulletgraph>e-qualitativeranges', QualitativeRangeDirective);
+export let BulletGraphQualitativeRangesDirective = CreateArrayTagDirective('qualitativeRanges', 'ej-bulletgraph>e-qualitativeranges', BulletGraphQualitativeRangeDirective);
 
-export let QuantitativeScaleSettingsFeatureMeasureDirective = CreateComplexDirective({
+let BulletGraphQuantitativeScaleSettingsFeatureMeasureInputs = Utils.AngularizeInputs(['category', 'comparativeMeasureValue', 'value'], []);
+
+export let BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective = CreateComplexDirective({
     selector: 'e-quantitativescalesettings-featuremeasures>e-quantitativescalesettings-featuremeasure',
-    inputs: ['category', 'comparativeMeasureValue', 'value'],
+    inputs: BulletGraphQuantitativeScaleSettingsFeatureMeasureInputs,
     queries: {
     }
 }, {
@@ -25,7 +29,7 @@ export let QuantitativeScaleSettingsFeatureMeasureDirective = CreateComplexDirec
     });
 
 
-export let QuantitativeScaleSettingsFeatureMeasuresDirective = CreateArrayTagDirective('quantitativeScaleSettings.featureMeasures', 'ej-bulletgraph>e-quantitativescalesettings-featuremeasures', QuantitativeScaleSettingsFeatureMeasureDirective);
+export let BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective = CreateArrayTagDirective('quantitativeScaleSettings.featureMeasures', 'ej-bulletgraph>e-quantitativescalesettings-featuremeasures', BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective);
 
 
 let Outputs = ['drawCaption', 'drawCategory', 'drawComparativeMeasureSymbol', 'drawFeatureMeasureBar', 'drawIndicator',
@@ -38,32 +42,32 @@ let ComplexProperties = ['captionSettings', 'quantitativeScaleSettings', 'toolti
     'quantitativeScaleSettings.majorTickSettings', 'quantitativeScaleSettings.minorTickSettings'];
 let Inputs = Utils.AngularizeInputs(['applyRangeStrokeToLabels', 'applyRangeStrokeToTicks', 'captionSettings', 'comparativeMeasureValue', 'enableAnimation',
     'flowDirection', 'height', 'isResponsive', 'orientation', 'qualitativeRangeSize',
-    'quantitativeScaleLength', 'quantitativeScaleSettings', 'fields', 'theme', 'tooltipSettings',
-    'value', 'width', 'captionSettings.enableTrim', 'captionSettings.font', 'captionSettings.font.color',
-    'captionSettings.font.fontFamily', 'captionSettings.font.fontStyle', 'captionSettings.font.fontWeight', 'captionSettings.font.opacity', 'captionSettings.font.size',
-    'captionSettings.indicator', 'captionSettings.indicator.font', 'captionSettings.indicator.location', 'captionSettings.indicator.padding', 'captionSettings.indicator.symbol',
-    'captionSettings.indicator.text', 'captionSettings.indicator.textAlignment', 'captionSettings.indicator.textAnchor', 'captionSettings.indicator.textAngle', 'captionSettings.indicator.textPosition',
-    'captionSettings.indicator.textSpacing', 'captionSettings.indicator.visible', 'captionSettings.location', 'captionSettings.location.x', 'captionSettings.location.y',
-    'captionSettings.padding', 'captionSettings.subTitle', 'captionSettings.subTitle.font', 'captionSettings.subTitle.location', 'captionSettings.subTitle.padding',
-    'captionSettings.subTitle.text', 'captionSettings.subTitle.textAlignment', 'captionSettings.subTitle.textAnchor', 'captionSettings.subTitle.textAngle', 'captionSettings.subTitle.textPosition',
-    'captionSettings.text', 'captionSettings.textAlignment', 'captionSettings.textAnchor', 'captionSettings.textAngle', 'captionSettings.textPosition',
-    'quantitativeScaleSettings.comparativeMeasureSettings', 'quantitativeScaleSettings.comparativeMeasureSettings.stroke', 'quantitativeScaleSettings.comparativeMeasureSettings.width', 'quantitativeScaleSettings.featuredMeasureSettings', 'quantitativeScaleSettings.featuredMeasureSettings.stroke',
-    'quantitativeScaleSettings.featuredMeasureSettings.width', 'quantitativeScaleSettings.fields', 'quantitativeScaleSettings.fields.category', 'quantitativeScaleSettings.fields.comparativeMeasure', 'quantitativeScaleSettings.fields.dataSource',
-    'quantitativeScaleSettings.fields.featureMeasures', 'quantitativeScaleSettings.fields.query', 'quantitativeScaleSettings.fields.tableName', 'quantitativeScaleSettings.interval', 'quantitativeScaleSettings.labelSettings',
-    'quantitativeScaleSettings.labelSettings.font', 'quantitativeScaleSettings.labelSettings.labelPlacement', 'quantitativeScaleSettings.labelSettings.labelPrefix', 'quantitativeScaleSettings.labelSettings.labelSuffix', 'quantitativeScaleSettings.labelSettings.offset',
-    'quantitativeScaleSettings.labelSettings.position', 'quantitativeScaleSettings.labelSettings.size', 'quantitativeScaleSettings.labelSettings.stroke', 'quantitativeScaleSettings.location', 'quantitativeScaleSettings.location.x',
-    'quantitativeScaleSettings.location.y', 'quantitativeScaleSettings.majorTickSettings', 'quantitativeScaleSettings.majorTickSettings.size', 'quantitativeScaleSettings.majorTickSettings.stroke', 'quantitativeScaleSettings.majorTickSettings.width',
-    'quantitativeScaleSettings.maximum', 'quantitativeScaleSettings.minimum', 'quantitativeScaleSettings.minorTickSettings', 'quantitativeScaleSettings.minorTickSettings.size', 'quantitativeScaleSettings.minorTickSettings.stroke',
-    'quantitativeScaleSettings.minorTickSettings.width', 'quantitativeScaleSettings.minorTicksPerInterval', 'quantitativeScaleSettings.tickPlacement', 'quantitativeScaleSettings.tickPosition', 'tooltipSettings.captionTemplate',
-    'tooltipSettings.enableCaptionTooltip', 'tooltipSettings.template', 'tooltipSettings.visible', 'qualitativeRanges', 'quantitativeScaleSettings.featureMeasures'], []);
+    'quantitativeScaleLength', 'quantitativeScaleSettings', 'theme', 'tooltipSettings', 'value',
+    'width', 'captionSettings.enableTrim', 'captionSettings.font', 'captionSettings.font.color', 'captionSettings.font.fontFamily',
+    'captionSettings.font.fontStyle', 'captionSettings.font.fontWeight', 'captionSettings.font.opacity', 'captionSettings.font.size', 'captionSettings.indicator',
+    'captionSettings.indicator.font', 'captionSettings.indicator.location', 'captionSettings.indicator.padding', 'captionSettings.indicator.symbol', 'captionSettings.indicator.text',
+    'captionSettings.indicator.textAlignment', 'captionSettings.indicator.textAnchor', 'captionSettings.indicator.textAngle', 'captionSettings.indicator.textPosition', 'captionSettings.indicator.textSpacing',
+    'captionSettings.indicator.visible', 'captionSettings.location', 'captionSettings.location.x', 'captionSettings.location.y', 'captionSettings.padding',
+    'captionSettings.subTitle', 'captionSettings.subTitle.font', 'captionSettings.subTitle.location', 'captionSettings.subTitle.padding', 'captionSettings.subTitle.text',
+    'captionSettings.subTitle.textAlignment', 'captionSettings.subTitle.textAnchor', 'captionSettings.subTitle.textAngle', 'captionSettings.subTitle.textPosition', 'captionSettings.text',
+    'captionSettings.textAlignment', 'captionSettings.textAnchor', 'captionSettings.textAngle', 'captionSettings.textPosition', 'quantitativeScaleSettings.comparativeMeasureSettings',
+    'quantitativeScaleSettings.comparativeMeasureSettings.stroke', 'quantitativeScaleSettings.comparativeMeasureSettings.width', 'quantitativeScaleSettings.featuredMeasureSettings', 'quantitativeScaleSettings.featuredMeasureSettings.stroke', 'quantitativeScaleSettings.featuredMeasureSettings.width',
+    'quantitativeScaleSettings.fields', 'quantitativeScaleSettings.fields.category', 'quantitativeScaleSettings.fields.comparativeMeasure', 'quantitativeScaleSettings.fields.dataSource', 'quantitativeScaleSettings.fields.featureMeasures',
+    'quantitativeScaleSettings.fields.query', 'quantitativeScaleSettings.fields.tableName', 'quantitativeScaleSettings.interval', 'quantitativeScaleSettings.labelSettings', 'quantitativeScaleSettings.labelSettings.font',
+    'quantitativeScaleSettings.labelSettings.labelPlacement', 'quantitativeScaleSettings.labelSettings.labelPrefix', 'quantitativeScaleSettings.labelSettings.labelSuffix', 'quantitativeScaleSettings.labelSettings.offset', 'quantitativeScaleSettings.labelSettings.position',
+    'quantitativeScaleSettings.labelSettings.size', 'quantitativeScaleSettings.labelSettings.stroke', 'quantitativeScaleSettings.location', 'quantitativeScaleSettings.location.x', 'quantitativeScaleSettings.location.y',
+    'quantitativeScaleSettings.majorTickSettings', 'quantitativeScaleSettings.majorTickSettings.size', 'quantitativeScaleSettings.majorTickSettings.stroke', 'quantitativeScaleSettings.majorTickSettings.width', 'quantitativeScaleSettings.maximum',
+    'quantitativeScaleSettings.minimum', 'quantitativeScaleSettings.minorTickSettings', 'quantitativeScaleSettings.minorTickSettings.size', 'quantitativeScaleSettings.minorTickSettings.stroke', 'quantitativeScaleSettings.minorTickSettings.width',
+    'quantitativeScaleSettings.minorTicksPerInterval', 'quantitativeScaleSettings.tickPlacement', 'quantitativeScaleSettings.tickPosition', 'tooltipSettings.captionTemplate', 'tooltipSettings.enableCaptionTooltip',
+    'tooltipSettings.template', 'tooltipSettings.visible', 'qualitativeRanges', 'quantitativeScaleSettings.featureMeasures'], []);
 export let BulletGraphComponent = CreateComponent('BulletGraph', {
     selector: 'ej-bulletgraph',
     inputs: Inputs,
     outputs: Outputs,
     template: '',
     queries: {
-        _qualitativeRanges : new ContentChild(QualitativeRangesDirective),
-        _quantitativeScaleSettings_featureMeasures : new ContentChild(QuantitativeScaleSettingsFeatureMeasuresDirective),
+        _qualitativeRanges : new ContentChild(BulletGraphQualitativeRangesDirective),
+        _quantitativeScaleSettings_featureMeasures : new ContentChild(BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective),
     }
 }, {
         tags: ['qualitativeRanges', 'quantitativeScaleSettings.featureMeasures'],
@@ -71,5 +75,5 @@ export let BulletGraphComponent = CreateComponent('BulletGraph', {
         complexes: ComplexProperties,
     });
 
-export const EJ_BULLETGRAPH_COMPONENTS: Type<any>[] = [BulletGraphComponent , QualitativeRangesDirective, QuantitativeScaleSettingsFeatureMeasuresDirective, QualitativeRangeDirective, QuantitativeScaleSettingsFeatureMeasureDirective ];
+export const EJ_BULLETGRAPH_COMPONENTS: Type<any>[] = [BulletGraphComponent , BulletGraphQualitativeRangesDirective, BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective, BulletGraphQualitativeRangeDirective, BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective];
 

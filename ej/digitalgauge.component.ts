@@ -1,12 +1,14 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let ItemDirective = CreateComplexDirective({
-    selector: 'e-digitalgauge-items>e-digitalgauge-item',
-    inputs: ['characterSettings', 'characterSettings.count', 'characterSettings.opacity', 'characterSettings.spacing', 'characterSettings.type',
+let DigitalGaugeItemInputs = Utils.AngularizeInputs(['characterSettings', 'characterSettings.count', 'characterSettings.opacity', 'characterSettings.spacing', 'characterSettings.type',
         'enableCustomFont', 'font', 'font.fontFamily', 'font.fontStyle', 'font.size',
         'position', 'position.x', 'position.y', 'segmentSettings', 'segmentSettings.color',
         'segmentSettings.gradient', 'segmentSettings.length', 'segmentSettings.opacity', 'segmentSettings.spacing', 'segmentSettings.width',
         'shadowBlur', 'shadowColor', 'shadowOffsetX', 'shadowOffsetY', 'textAlign',
-        'textColor', 'value'],
+        'textColor', 'value'], []);
+
+export let DigitalGaugeItemDirective = CreateComplexDirective({
+    selector: 'e-digitalgauge-items>e-digitalgauge-item',
+    inputs: DigitalGaugeItemInputs,
     queries: {
     }
 }, {
@@ -16,7 +18,7 @@ export let ItemDirective = CreateComplexDirective({
     });
 
 
-export let ItemsDirective = CreateArrayTagDirective('items', 'ej-digitalgauge>e-digitalgauge-items', ItemDirective);
+export let DigitalGaugeItemsDirective = CreateArrayTagDirective('items', 'ej-digitalgauge>e-digitalgauge-items', DigitalGaugeItemDirective);
 
 
 let Outputs = ['init', 'itemRendering', 'load', 'renderComplete'
@@ -31,7 +33,7 @@ export let DigitalGaugeComponent = CreateComponent('DigitalGauge', {
     outputs: Outputs,
     template: '',
     queries: {
-        _items : new ContentChild(ItemsDirective),
+        _items : new ContentChild(DigitalGaugeItemsDirective),
     }
 }, {
         tags: ['items'],
@@ -39,5 +41,5 @@ export let DigitalGaugeComponent = CreateComponent('DigitalGauge', {
         complexes: ComplexProperties,
     });
 
-export const EJ_DIGITALGAUGE_COMPONENTS: Type<any>[] = [DigitalGaugeComponent , ItemsDirective, ItemDirective ];
+export const EJ_DIGITALGAUGE_COMPONENTS: Type<any>[] = [DigitalGaugeComponent , DigitalGaugeItemsDirective, DigitalGaugeItemDirective];
 

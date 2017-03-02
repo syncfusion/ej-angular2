@@ -14,7 +14,7 @@ export let ListViewComponent = CreateComponent('ListView', {
     selector: 'ej-listview',
     inputs: Inputs,
     outputs: Outputs,
-    template: '',
+    template: '<ng-content></ng-content>',
     queries: {
     }
 }, {
@@ -23,5 +23,5 @@ export let ListViewComponent = CreateComponent('ListView', {
         complexes: ComplexProperties,
     });
 
-export const EJ_LISTVIEW_COMPONENTS: Type<any>[] = [ListViewComponent  ];
+export const EJ_LISTVIEW_COMPONENTS: Type<any>[] = [ListViewComponent ];
 

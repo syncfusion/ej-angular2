@@ -25,6 +25,18 @@ export let EJ_OVERVIEW_COMPONENTS: Type<any>[] = OverviewAll.EJ_OVERVIEW_COMPONE
 
 
 
+import * as SunburstchartAll from './sunburstchart.component';
+export let Sunburstchart = SunburstchartAll;
+export let EJ_SUNBURSTCHART_COMPONENTS: Type<any>[] = SunburstchartAll.EJ_SUNBURSTCHART_COMPONENTS;
+
+
+
+import * as SymbolpaletteAll from './symbolpalette.component';
+export let Symbolpalette = SymbolpaletteAll;
+export let EJ_SYMBOLPALETTE_COMPONENTS: Type<any>[] = SymbolpaletteAll.EJ_SYMBOLPALETTE_COMPONENTS;
+
+
+
 import * as HeatmapAll from './heatmap.component';
 export let Heatmap = HeatmapAll;
 export let EJ_HEATMAP_COMPONENTS: Type<any>[] = HeatmapAll.EJ_HEATMAP_COMPONENTS;
@@ -343,6 +355,12 @@ export let EJ_DATETIMEPICKER_COMPONENTS: Type<any>[] = DatetimepickerAll.EJ_DATE
 
 
 
+import * as DaterangepickerAll from './daterangepicker.component';
+export let Daterangepicker = DaterangepickerAll;
+export let EJ_DATERANGEPICKER_COMPONENTS: Type<any>[] = DaterangepickerAll.EJ_DATERANGEPICKER_COMPONENTS;
+
+
+
 import * as ProgressbarAll from './progressbar.component';
 export let Progressbar = ProgressbarAll;
 export let EJ_PROGRESSBAR_COMPONENTS: Type<any>[] = ProgressbarAll.EJ_PROGRESSBAR_COMPONENTS;
@@ -358,6 +376,12 @@ export let EJ_TAGCLOUD_COMPONENTS: Type<any>[] = TagcloudAll.EJ_TAGCLOUD_COMPONE
 import * as ButtonAll from './button.component';
 export let Button = ButtonAll;
 export let EJ_BUTTON_COMPONENTS: Type<any>[] = ButtonAll.EJ_BUTTON_COMPONENTS;
+
+
+
+import * as GroupbuttonAll from './groupbutton.component';
+export let Groupbutton = GroupbuttonAll;
+export let EJ_GROUPBUTTON_COMPONENTS: Type<any>[] = GroupbuttonAll.EJ_GROUPBUTTON_COMPONENTS;
 
 
 

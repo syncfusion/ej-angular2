@@ -1,8 +1,10 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let CommandManagerCommandDirective = CreateComplexDirective({
+let DiagramCommandManagerCommandInputs = Utils.AngularizeInputs(['canExecute', 'execute', 'gesture', 'gesture.key', 'gesture.keyModifiers',
+        'parameter'], []);
+
+export let DiagramCommandManagerCommandDirective = CreateComplexDirective({
     selector: 'e-commandmanager-commands>e-commandmanager-command',
-    inputs: ['canExecute', 'execute', 'gesture', 'gesture.key', 'gesture.keyModifiers',
-        'parameter'],
+    inputs: DiagramCommandManagerCommandInputs,
     queries: {
     }
 }, {
@@ -12,12 +14,14 @@ export let CommandManagerCommandDirective = CreateComplexDirective({
     });
 
 
-export let CommandManagerCommandsDirective = CreateArrayTagDirective('commandManager.commands', 'ej-diagram>e-commandmanager-commands', CommandManagerCommandDirective);
+export let DiagramCommandManagerCommandsDirective = CreateArrayTagDirective('commandManager.commands', 'ej-diagram>e-commandmanager-commands', DiagramCommandManagerCommandDirective);
 
-export let SegmentDirective = CreateComplexDirective({
+let DiagramSegmentInputs = Utils.AngularizeInputs(['direction', 'length', 'point', 'point1', 'point2',
+        'type', 'vector1', 'vector2'], []);
+
+export let DiagramSegmentDirective = CreateComplexDirective({
     selector: 'e-segments>e-segment',
-    inputs: ['direction', 'length', 'point', 'point1', 'point2',
-        'type', 'vector1', 'vector2'],
+    inputs: DiagramSegmentInputs,
     queries: {
     }
 }, {
@@ -27,17 +31,19 @@ export let SegmentDirective = CreateComplexDirective({
     });
 
 
-export let SegmentsDirective = CreateArrayTagDirective('segments', 'e-connectors>e-segments', SegmentDirective);
+export let DiagramSegmentsDirective = CreateArrayTagDirective('segments', 'e-connectors>e-segments', DiagramSegmentDirective);
 
-export let ConnectorLabelDirective = CreateComplexDirective({
-    selector: 'e-connectorlabels>e-connectorlabel',
-    inputs: ['alignment', 'bold', 'borderColor', 'borderWidth', 'boundaryConstraints',
+let DiagramConnectorLabelInputs = Utils.AngularizeInputs(['alignment', 'bold', 'borderColor', 'borderWidth', 'boundaryConstraints',
         'fillColor', 'fontColor', 'fontFamily', 'fontSize', 'horizontalAlignment',
-        'italic', 'mode', 'name', 'offset', 'margin',
-        'margin.right', 'margin.left', 'margin.top', 'margin.bottom', 'opacity',
-        'readOnly', 'relativeMode', 'rotateAngle', 'segmentOffset', 'text',
-        'textAlign', 'textDecoration', 'verticalAlignment', 'visible', 'width',
-        'wrapping'],
+        'hyperlink', 'italic', 'mode', 'name', 'offset',
+        'margin', 'margin.right', 'margin.left', 'margin.top', 'margin.bottom',
+        'opacity', 'readOnly', 'relativeMode', 'rotateAngle', 'segmentOffset',
+        'text', 'textAlign', 'textDecoration', 'verticalAlignment', 'visible',
+        'width', 'wrapping'], []);
+
+export let DiagramConnectorLabelDirective = CreateComplexDirective({
+    selector: 'e-connectorlabels>e-connectorlabel',
+    inputs: DiagramConnectorLabelInputs,
     queries: {
     }
 }, {
@@ -47,26 +53,28 @@ export let ConnectorLabelDirective = CreateComplexDirective({
     });
 
 
-export let ConnectorLabelsDirective = CreateArrayTagDirective('labels', 'e-connectors>e-connectorlabels', ConnectorLabelDirective);
+export let DiagramConnectorLabelsDirective = CreateArrayTagDirective('labels', 'e-connectors>e-connectorlabels', DiagramConnectorLabelDirective);
 
-export let ConnectorDirective = CreateComplexDirective({
-    selector: 'e-connectors>e-connector',
-    inputs: ['addInfo', 'bridgeSpace', 'constraints', 'cornerRadius', 'cssClass',
+let DiagramConnectorInputs = Utils.AngularizeInputs(['addInfo', 'bridgeSpace', 'constraints', 'cornerRadius', 'cssClass',
         'horizontalAlign', 'labels', 'lineColor', 'lineDashArray', 'lineHitPadding',
         'lineWidth', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
         'name', 'opacity', 'paletteItem', 'parent', 'segments',
         'shape', 'shape.type', 'shape.flow', 'shape.association', 'shape.message',
         'shape.sequence', 'shape.relationship', 'shape.multiplicity', 'shape.multiplicity.type', 'shape.multiplicity.source',
-        'shape.multiplicity.source.optional', 'shape.multiplicity.source.lowerBounds', 'shape.multiplicity.source.upperBounds', 'shape.multiplicity.target', 'sourceDecorator',
-        'sourceDecorator.borderColor', 'sourceDecorator.borderWidth', 'sourceDecorator.fillColor', 'sourceDecorator.height', 'sourceDecorator.pathData',
-        'sourceDecorator.shape', 'sourceDecorator.width', 'sourceNode', 'sourcePadding', 'sourcePoint',
-        'sourcePoint.x', 'sourcePoint.y', 'sourcePort', 'targetDecorator', 'targetDecorator.borderColor',
-        'targetDecorator.fillColor', 'targetDecorator.height', 'targetDecorator.pathData', 'targetDecorator.shape', 'targetDecorator.width',
-        'targetNode', 'targetPadding', 'targetPoint', 'targetPort', 'tooltip',
-        'verticalAlign', 'visible', 'zOrder'],
+        'shape.multiplicity.source.optional', 'shape.multiplicity.source.lowerBounds', 'shape.multiplicity.source.upperBounds', 'shape.multiplicity.target', 'shape.ActivityFlow',
+        'sourceDecorator', 'sourceDecorator.borderColor', 'sourceDecorator.borderWidth', 'sourceDecorator.fillColor', 'sourceDecorator.height',
+        'sourceDecorator.pathData', 'sourceDecorator.shape', 'sourceDecorator.width', 'sourceNode', 'sourcePadding',
+        'sourcePoint', 'sourcePoint.x', 'sourcePoint.y', 'sourcePort', 'targetDecorator',
+        'targetDecorator.borderColor', 'targetDecorator.fillColor', 'targetDecorator.height', 'targetDecorator.pathData', 'targetDecorator.shape',
+        'targetDecorator.width', 'targetNode', 'targetPadding', 'targetPoint', 'targetPort',
+        'tooltip', 'verticalAlign', 'visible', 'zOrder'], []);
+
+export let DiagramConnectorDirective = CreateComplexDirective({
+    selector: 'e-connectors>e-connector',
+    inputs: DiagramConnectorInputs,
     queries: {
-        _segments : new ContentChild(SegmentsDirective),
-        _labels : new ContentChild(ConnectorLabelsDirective),
+        _segments : new ContentChild(DiagramSegmentsDirective),
+        _labels : new ContentChild(DiagramConnectorLabelsDirective),
     }
 }, {
          tags: ['segments', 'labels' ],
@@ -75,15 +83,17 @@ export let ConnectorDirective = CreateComplexDirective({
     });
 
 
-export let ConnectorsDirective = CreateArrayTagDirective('connectors', 'ej-diagram>e-connectors', ConnectorDirective);
+export let DiagramConnectorsDirective = CreateArrayTagDirective('connectors', 'ej-diagram>e-connectors', DiagramConnectorDirective);
 
-export let NodeLabelDirective = CreateComplexDirective({
-    selector: 'e-nodelabels>e-nodelabel',
-    inputs: ['bold', 'borderColor', 'borderWidth', 'fillColor', 'fontColor',
+let DiagramNodeLabelInputs = Utils.AngularizeInputs(['bold', 'borderColor', 'borderWidth', 'fillColor', 'fontColor',
         'fontFamily', 'fontSize', 'horizontalAlignment', 'italic', 'margin',
-        'mode', 'name', 'offset', 'opacity', 'readOnly',
-        'rotateAngle', 'text', 'textAlign', 'textDecoration', 'verticalAlignment',
-        'visible', 'width', 'wrapping'],
+        'mode', 'name', 'offset', 'opacity', 'overflowType',
+        'readOnly', 'rotateAngle', 'text', 'textAlign', 'textDecoration',
+        'textOverflow', 'verticalAlignment', 'visible', 'width', 'wrapping'], []);
+
+export let DiagramNodeLabelDirective = CreateComplexDirective({
+    selector: 'e-nodelabels>e-nodelabel',
+    inputs: DiagramNodeLabelInputs,
     queries: {
     }
 }, {
@@ -93,12 +103,14 @@ export let NodeLabelDirective = CreateComplexDirective({
     });
 
 
-export let NodeLabelsDirective = CreateArrayTagDirective('labels', 'e-nodes>e-nodelabels', NodeLabelDirective);
+export let DiagramNodeLabelsDirective = CreateArrayTagDirective('labels', 'e-nodes>e-nodelabels', DiagramNodeLabelDirective);
 
-export let PhaseDirective = CreateComplexDirective({
+let DiagramPhaseInputs = Utils.AngularizeInputs(['label', 'lineColor', 'lineDashArray', 'lineWidth', 'name',
+        'offset', 'orientation', 'type'], []);
+
+export let DiagramPhaseDirective = CreateComplexDirective({
     selector: 'e-phases>e-phase',
-    inputs: ['label', 'lineColor', 'lineDashArray', 'lineWidth', 'name',
-        'offset', 'orientation', 'type'],
+    inputs: DiagramPhaseInputs,
     queries: {
     }
 }, {
@@ -108,13 +120,15 @@ export let PhaseDirective = CreateComplexDirective({
     });
 
 
-export let PhasesDirective = CreateArrayTagDirective('phases', 'e-nodes>e-phases', PhaseDirective);
+export let DiagramPhasesDirective = CreateArrayTagDirective('phases', 'e-nodes>e-phases', DiagramPhaseDirective);
 
-export let PortDirective = CreateComplexDirective({
-    selector: 'e-ports>e-port',
-    inputs: ['borderColor', 'borderWidth', 'connectorPadding', 'constraints', 'fillColor',
+let DiagramPortInputs = Utils.AngularizeInputs(['borderColor', 'borderWidth', 'connectorPadding', 'constraints', 'fillColor',
         'name', 'offset', 'pathData', 'shape', 'size',
-        'visibility'],
+        'visibility'], []);
+
+export let DiagramPortDirective = CreateComplexDirective({
+    selector: 'e-ports>e-port',
+    inputs: DiagramPortInputs,
     queries: {
     }
 }, {
@@ -124,11 +138,9 @@ export let PortDirective = CreateComplexDirective({
     });
 
 
-export let PortsDirective = CreateArrayTagDirective('ports', 'e-nodes>e-ports', PortDirective);
+export let DiagramPortsDirective = CreateArrayTagDirective('ports', 'e-nodes>e-ports', DiagramPortDirective);
 
-export let NodeDirective = CreateComplexDirective({
-    selector: 'e-nodes>e-node',
-    inputs: ['activity', 'addInfo', 'annotation', 'annotation.angle', 'annotation.direction',
+let DiagramNodeInputs = Utils.AngularizeInputs(['activity', 'addInfo', 'annotation', 'annotation.angle', 'annotation.direction',
         'annotation.height', 'annotation.length', 'annotation.text', 'annotation.width', 'borderColor',
         'borderDashArray', 'borderWidth', 'canUngroup', 'children', 'classifier',
         'class', 'class.name', 'class.attributes', 'class.methods', 'collapseIcon',
@@ -157,11 +169,15 @@ export let NodeDirective = CreateComplexDirective({
         'subProcess.event', 'subProcess.events', 'subProcess.loop', 'subProcess.Processes', 'subProcess.trigger',
         'subProcess.type', 'task', 'task.call', 'task.compensation', 'task.loop',
         'task.type', 'templateId', 'textBlock', 'tooltip', 'trigger',
-        'type', 'verticalAlign', 'visible', 'width', 'zOrder'],
+        'type', 'verticalAlign', 'visible', 'width', 'zOrder'], []);
+
+export let DiagramNodeDirective = CreateComplexDirective({
+    selector: 'e-nodes>e-node',
+    inputs: DiagramNodeInputs,
     queries: {
-        _labels : new ContentChild(NodeLabelsDirective),
-        _phases : new ContentChild(PhasesDirective),
-        _ports : new ContentChild(PortsDirective),
+        _labels : new ContentChild(DiagramNodeLabelsDirective),
+        _phases : new ContentChild(DiagramPhasesDirective),
+        _ports : new ContentChild(DiagramPortsDirective),
     }
 }, {
          tags: ['labels', 'phases', 'ports' ],
@@ -170,7 +186,7 @@ export let NodeDirective = CreateComplexDirective({
     });
 
 
-export let NodesDirective = CreateArrayTagDirective('nodes', 'ej-diagram>e-nodes', NodeDirective);
+export let DiagramNodesDirective = CreateArrayTagDirective('nodes', 'ej-diagram>e-nodes', DiagramNodeDirective);
 
 
 let Outputs = ['autoScrollChange', 'click', 'connectionChange', 'connectorCollectionChange', 'connectorSourceChange',
@@ -186,11 +202,11 @@ let ComplexProperties = ['commandManager', 'contextMenu', 'dataSourceSettings', 
     'tooltip.alignment'];
 let Inputs = Utils.AngularizeInputs(['backgroundColor', 'backgroundImage', 'bridgeDirection', 'commandManager', 'connectorTemplate',
     'constraints', 'contextMenu', 'dataSourceSettings', 'defaultSettings', 'drawType',
-    'enableAutoScroll', 'enableContextMenu', 'height', 'historyManager', 'layout',
-    'locale', 'nodeTemplate', 'pageSettings', 'scrollSettings', 'selectedItems',
-    'showTooltip', 'snapSettings', 'tool', 'tooltip', 'width',
-    'zoomFactor', 'backgroundImage.alignment', 'commandManager.commands', 'commandManager.commands.canExecute', 'commandManager.commands.execute',
-    'commandManager.commands.gesture', 'commandManager.commands.parameter', 'contextMenu.items', 'contextMenu.showCustomMenuItemsOnly', 'dataSourceSettings.dataSource',
+    'enableAutoScroll', 'enableContextMenu', 'height', 'historyManager', 'labelRenderingMode',
+    'layout', 'locale', 'nodeTemplate', 'pageSettings', 'scrollSettings',
+    'selectedItems', 'showTooltip', 'snapSettings', 'tool', 'tooltip',
+    'width', 'zoomFactor', 'backgroundImage.alignment', 'commandManager.commands', 'commandManager.commands.canExecute',
+    'commandManager.commands.execute', 'commandManager.commands.gesture', 'commandManager.commands.parameter', 'contextMenu.showCustomMenuItemsOnly', 'dataSourceSettings.dataSource',
     'dataSourceSettings.id', 'dataSourceSettings.parent', 'dataSourceSettings.query', 'dataSourceSettings.root', 'dataSourceSettings.tableName',
     'defaultSettings.connector', 'defaultSettings.group', 'defaultSettings.node', 'historyManager.canPop', 'historyManager.closeGroupAction',
     'historyManager.pop', 'historyManager.push', 'historyManager.redo', 'historyManager.redoStack', 'historyManager.stackLimit',
@@ -206,17 +222,17 @@ let Inputs = Utils.AngularizeInputs(['backgroundColor', 'backgroundImage', 'brid
     'snapSettings.horizontalGridLines.linesInterval', 'snapSettings.horizontalGridLines.snapInterval', 'snapSettings.snapAngle', 'snapSettings.snapConstraints', 'snapSettings.snapObjectDistance',
     'snapSettings.verticalGridLines', 'snapSettings.verticalGridLines.lineColor', 'snapSettings.verticalGridLines.lineDashArray', 'snapSettings.verticalGridLines.linesInterval', 'snapSettings.verticalGridLines.snapInterval',
     'tooltip.alignment', 'tooltip.alignment.horizontal', 'tooltip.alignment.vertical', 'tooltip.margin', 'tooltip.relativeMode',
-    'tooltip.templateId', 'connectors', 'nodes', 'nodes.class.attributes', 'nodes.class.methods',
-    'nodes.enumeration.members', 'nodes.interface.attributes', 'nodes.interface.methods', 'selectedItems.userHandles'], []);
+    'tooltip.templateId', 'connectors', 'nodes', 'contextMenu.items', 'nodes.class.attributes',
+    'nodes.class.methods', 'nodes.enumeration.members', 'nodes.interface.attributes', 'nodes.interface.methods', 'selectedItems.userHandles'], []);
 export let DiagramComponent = CreateComponent('Diagram', {
     selector: 'ej-diagram',
     inputs: Inputs,
     outputs: Outputs,
     template: '',
     queries: {
-        _commandManager_commands : new ContentChild(CommandManagerCommandsDirective),
-        _connectors : new ContentChild(ConnectorsDirective),
-        _nodes : new ContentChild(NodesDirective),
+        _commandManager_commands : new ContentChild(DiagramCommandManagerCommandsDirective),
+        _connectors : new ContentChild(DiagramConnectorsDirective),
+        _nodes : new ContentChild(DiagramNodesDirective),
     }
 }, {
         tags: ['commandManager.commands', 'connectors', 'nodes'],
@@ -224,5 +240,5 @@ export let DiagramComponent = CreateComponent('Diagram', {
         complexes: ComplexProperties,
     });
 
-export const EJ_DIAGRAM_COMPONENTS: Type<any>[] = [DiagramComponent , CommandManagerCommandsDirective, SegmentsDirective, ConnectorLabelsDirective, ConnectorsDirective, NodeLabelsDirective, PhasesDirective, PortsDirective, NodesDirective, CommandManagerCommandDirective, SegmentDirective, ConnectorLabelDirective, ConnectorDirective, NodeLabelDirective, PhaseDirective, PortDirective, NodeDirective ];
+export const EJ_DIAGRAM_COMPONENTS: Type<any>[] = [DiagramComponent , DiagramCommandManagerCommandsDirective, DiagramSegmentsDirective, DiagramConnectorLabelsDirective, DiagramConnectorsDirective, DiagramNodeLabelsDirective, DiagramPhasesDirective, DiagramPortsDirective, DiagramNodesDirective, DiagramCommandManagerCommandDirective, DiagramSegmentDirective, DiagramConnectorLabelDirective, DiagramConnectorDirective, DiagramNodeLabelDirective, DiagramPhaseDirective, DiagramPortDirective, DiagramNodeDirective];
 

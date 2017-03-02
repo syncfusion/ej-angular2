@@ -3,7 +3,9 @@ import { CreateComponent, Utils, Type } from './core';
 let Outputs = ['beforeAjaxRequest', 'beforeDownload', 'beforeGetImage', 'beforeOpen', 'beforeUpload',
     'create', 'copy', 'createFolder', 'cut', 'destroy',
     'dragStart', 'drag', 'dragStop', 'drop', 'getImage',
-    'keydown', 'layoutChange'
+    'keydown', 'layoutChange', 'menuBeforeOpen', 'menuClick', 'menuOpen',
+    'open', 'paste', 'remove', 'resize', 'resizeStart',
+    'resizeStop', 'select', 'templateRefresh', 'unselect'
     ];
 let ComplexProperties = ['contextMenuSettings', 'filterSettings', 'gridSettings', 'uploadSettings'];
 let Inputs = Utils.AngularizeInputs(['ajaxAction', 'ajaxDataType', 'ajaxSettings', 'allowDragAndDrop', 'allowKeyboardNavigation',
@@ -29,5 +31,5 @@ export let FileExplorerComponent = CreateComponent('FileExplorer', {
         complexes: ComplexProperties,
     });
 
-export const EJ_FILEEXPLORER_COMPONENTS: Type<any>[] = [FileExplorerComponent  ];
+export const EJ_FILEEXPLORER_COMPONENTS: Type<any>[] = [FileExplorerComponent ];
 

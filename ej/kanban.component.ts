@@ -1,19 +1,21 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let Kanban_ColumnDirective = CreateComplexDirective({
+let KanbanColumnInputs = Utils.AngularizeInputs(['headerText', 'totalCount', 'totalCount.text', 'key', 'allowDrop',
+        'allowDrag', 'isCollapsed', 'constraints', 'constraints.type', 'constraints.min',
+        'constraints.max', 'headerTemplate', 'width', 'visible', 'showAddButton'], []);
+
+export let KanbanColumnDirective = CreateComplexDirective({
     selector: 'e-kanban-columns>e-kanban-column',
-    inputs: ['headerText', 'totalCount', 'key', 'allowDrop', 'allowDrag',
-        'isCollapsed', 'constraints', 'constraints.type', 'constraints.min', 'constraints.max',
-        'headerTemplate', 'width', 'visible', 'showAddButton'],
+    inputs: KanbanColumnInputs,
     queries: {
     }
 }, {
          tags: [ ],
-         complexes: ['constraints'],
+         complexes: ['totalCount', 'constraints'],
          type: forwardRef(() => KanbanComponent)
     });
 
 
-export let Kanban_ColumnsDirective = CreateArrayTagDirective('columns', 'ej-kanban>e-kanban-columns', Kanban_ColumnDirective);
+export let KanbanColumnsDirective = CreateArrayTagDirective('columns', 'ej-kanban>e-kanban-columns', KanbanColumnDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'actionFailure', 'beginEdit', 'beginAdd',
@@ -44,7 +46,7 @@ export let KanbanComponent = CreateComponent('Kanban', {
     outputs: Outputs,
     template: '',
     queries: {
-        _columns : new ContentChild(Kanban_ColumnsDirective),
+        _columns : new ContentChild(KanbanColumnsDirective),
     }
 }, {
         tags: ['columns'],
@@ -52,5 +54,5 @@ export let KanbanComponent = CreateComponent('Kanban', {
         complexes: ComplexProperties,
     });
 
-export const EJ_KANBAN_COMPONENTS: Type<any>[] = [KanbanComponent , Kanban_ColumnsDirective, Kanban_ColumnDirective ];
+export const EJ_KANBAN_COMPONENTS: Type<any>[] = [KanbanComponent , KanbanColumnsDirective, KanbanColumnDirective];
 

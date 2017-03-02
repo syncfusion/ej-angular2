@@ -31,9 +31,10 @@ let Inputs = Utils.AngularizeInputs(['addDialogFields', 'allowColumnResize', 'al
     'treeColumnIndex', 'selectionMode', 'weekendBackground', 'workingTimeScale', 'dragTooltip.showTooltip',
     'dragTooltip.tooltipItems', 'dragTooltip.tooltipTemplate', 'splitterSettings.index', 'editSettings.allowAdding', 'editSettings.allowDeleting',
     'editSettings.allowEditing', 'editSettings.allowIndent', 'editSettings.allowOutdent', 'editSettings.beginEditAction', 'editSettings.editMode',
-    'scheduleHeaderSettings.dayHeaderFormat', 'scheduleHeaderSettings.hourHeaderFormat', 'scheduleHeaderSettings.minutesPerInterval', 'scheduleHeaderSettings.monthHeaderFormat', 'scheduleHeaderSettings.scheduleHeaderType',
-    'scheduleHeaderSettings.timescaleStartDateMode', 'scheduleHeaderSettings.weekendBackground', 'scheduleHeaderSettings.weekHeaderFormat', 'scheduleHeaderSettings.yearHeaderFormat', 'sizeSettings.height',
-    'sizeSettings.width', 'sortSettings.sortedColumns', 'toolbarSettings.showToolbar', 'toolbarSettings.toolbarItems', 'selectedCellIndexes'], ['dataSource', 'selectedRowIndex', 'splitterSettings.position']);
+    'editSettings.rowPosition', 'scheduleHeaderSettings.dayHeaderFormat', 'scheduleHeaderSettings.hourHeaderFormat', 'scheduleHeaderSettings.minutesPerInterval', 'scheduleHeaderSettings.monthHeaderFormat',
+    'scheduleHeaderSettings.scheduleHeaderType', 'scheduleHeaderSettings.timescaleStartDateMode', 'scheduleHeaderSettings.weekendBackground', 'scheduleHeaderSettings.weekHeaderFormat', 'scheduleHeaderSettings.yearHeaderFormat',
+    'scheduleHeaderSettings.timescaleUnitSize', 'scheduleHeaderSettings.weekStartDay', 'sizeSettings.height', 'sizeSettings.width', 'sortSettings.sortedColumns',
+    'toolbarSettings.showToolbar', 'toolbarSettings.toolbarItems', 'selectedCellIndexes'], ['dataSource', 'selectedRowIndex', 'splitterSettings.position']);
 export let GanttComponent = CreateComponent('Gantt', {
     selector: 'ej-gantt',
     inputs: Inputs,
@@ -47,5 +48,5 @@ export let GanttComponent = CreateComponent('Gantt', {
         complexes: ComplexProperties,
     });
 
-export const EJ_GANTT_COMPONENTS: Type<any>[] = [GanttComponent  ];
+export const EJ_GANTT_COMPONENTS: Type<any>[] = [GanttComponent ];
 
