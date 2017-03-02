@@ -7,12 +7,17 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "./src"
+    "outDir": "./src",
+    "typeRoots": [
+      "node_modules/@types/"
+    ],
+    "types": [
+      "jquery",
+      "ej.web.all",
+      "node",
+      "es6-shim"
+    ]
   },
-  "files": [
-    "typings/index.d.ts",
-    "index.ts"
-  ],
   "exclude": [
     "node_modules",
     "src"
