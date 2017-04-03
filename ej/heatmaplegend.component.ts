@@ -1,10 +1,8 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let HeatMapLegendLegendcolorMappingInputs = Utils.AngularizeInputs(['color', 'value', 'label', 'label.bold', 'label.italic',
-        'label.text', 'label.textDecoration', 'label.fontSize', 'label.fontFamily', 'label.fontColor'], []);
-
-export let HeatMapLegendLegendcolorMappingDirective = CreateComplexDirective({
+export let HeatMapLegend_LegendcolorMappingDirective = CreateComplexDirective({
     selector: 'e-legendcolormappings>e-legendcolormapping',
-    inputs: HeatMapLegendLegendcolorMappingInputs,
+    inputs: ['color', 'value', 'label', 'label.bold', 'label.italic',
+        'label.text', 'label.textDecoration', 'label.fontSize', 'label.fontFamily', 'label.fontColor'],
     queries: {
     }
 }, {
@@ -14,7 +12,7 @@ export let HeatMapLegendLegendcolorMappingDirective = CreateComplexDirective({
     });
 
 
-export let HeatMapLegendLegendcolorMappingsDirective = CreateArrayTagDirective('colorMappingCollection', 'ej-heatmaplegend>e-legendcolormappings', HeatMapLegendLegendcolorMappingDirective);
+export let HeatMapLegend_LegendcolorMappingsDirective = CreateArrayTagDirective('colorMappingCollection', 'ej-heatmaplegend>e-legendcolormappings', HeatMapLegend_LegendcolorMappingDirective);
 
 
 let Outputs = [];
@@ -27,7 +25,7 @@ export let HeatMapLegendComponent = CreateComponent('HeatMapLegend', {
     outputs: Outputs,
     template: '',
     queries: {
-        _colorMappingCollection : new ContentChild(HeatMapLegendLegendcolorMappingsDirective),
+        _colorMappingCollection : new ContentChild(HeatMapLegend_LegendcolorMappingsDirective),
     }
 }, {
         tags: ['colorMappingCollection'],
@@ -35,5 +33,5 @@ export let HeatMapLegendComponent = CreateComponent('HeatMapLegend', {
         complexes: ComplexProperties,
     });
 
-export const EJ_HEATMAPLEGEND_COMPONENTS: Type<any>[] = [HeatMapLegendComponent , HeatMapLegendLegendcolorMappingsDirective, HeatMapLegendLegendcolorMappingDirective];
+export const EJ_HEATMAPLEGEND_COMPONENTS: Type<any>[] = [HeatMapLegendComponent , HeatMapLegend_LegendcolorMappingsDirective, HeatMapLegend_LegendcolorMappingDirective];
 

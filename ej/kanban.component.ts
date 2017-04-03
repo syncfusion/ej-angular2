@@ -1,11 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let KanbanColumnInputs = Utils.AngularizeInputs(['headerText', 'totalCount', 'totalCount.text', 'key', 'allowDrop',
-        'allowDrag', 'isCollapsed', 'constraints', 'constraints.type', 'constraints.min',
-        'constraints.max', 'headerTemplate', 'width', 'visible', 'showAddButton'], []);
-
-export let KanbanColumnDirective = CreateComplexDirective({
+export let Kanban_ColumnDirective = CreateComplexDirective({
     selector: 'e-kanban-columns>e-kanban-column',
-    inputs: KanbanColumnInputs,
+    inputs: ['headerText', 'totalCount', 'totalCount.text', 'key', 'allowDrop',
+        'allowDrag', 'isCollapsed', 'constraints', 'constraints.type', 'constraints.min',
+        'constraints.max', 'headerTemplate', 'width', 'visible', 'showAddButton'],
     queries: {
     }
 }, {
@@ -15,14 +13,15 @@ export let KanbanColumnDirective = CreateComplexDirective({
     });
 
 
-export let KanbanColumnsDirective = CreateArrayTagDirective('columns', 'ej-kanban>e-kanban-columns', KanbanColumnDirective);
+export let Kanban_ColumnsDirective = CreateArrayTagDirective('columns', 'ej-kanban>e-kanban-columns', Kanban_ColumnDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'actionFailure', 'beginEdit', 'beginAdd',
     'beforeCardSelect', 'cardClick', 'cardDrag', 'cardDragStart', 'cardDragStop',
     'cardDrop', 'cardSelect', 'cardDoubleClick', 'cardSelecting', 'create',
-    'cellClick', 'dataBound', 'destroy', 'endDelete', 'endEdit',
-    'headerClick', 'load', 'toolbarClick', 'queryCellInfo', 'contextOpen'
+    'cellClick', 'contextOpen', 'contextClick', 'dataBound', 'destroy',
+    'endDelete', 'endEdit', 'headerClick', 'load', 'queryCellInfo',
+    'toolbarClick'
     , 'model.dataSourceChange: dataSourceChange'];
 let ComplexProperties = ['swimlaneSettings', 'contextMenuSettings', 'cardSettings', 'editSettings', 'fields',
     'scrollSettings', 'searchSettings', 'tooltipSettings', 'swimlaneSettings.unassignedGroup'];
@@ -46,7 +45,7 @@ export let KanbanComponent = CreateComponent('Kanban', {
     outputs: Outputs,
     template: '',
     queries: {
-        _columns : new ContentChild(KanbanColumnsDirective),
+        _columns : new ContentChild(Kanban_ColumnsDirective),
     }
 }, {
         tags: ['columns'],
@@ -54,5 +53,5 @@ export let KanbanComponent = CreateComponent('Kanban', {
         complexes: ComplexProperties,
     });
 
-export const EJ_KANBAN_COMPONENTS: Type<any>[] = [KanbanComponent , KanbanColumnsDirective, KanbanColumnDirective];
+export const EJ_KANBAN_COMPONENTS: Type<any>[] = [KanbanComponent , Kanban_ColumnsDirective, Kanban_ColumnDirective];
 

@@ -1,7 +1,8 @@
 import { CreateComponent, Utils, Type } from './core';
 
-let Outputs = ['documentLoad', 'pageChange', 'zoomChange', 'hyperlinkClick', 'beforePrint',
-    'afterPrint', 'pageClick', 'bufferStart', 'bufferEnd', 'destroy'
+let Outputs = ['documentLoad', 'documentUnload', 'pageChange', 'zoomChange', 'hyperlinkClick',
+    'beforePrint', 'afterPrint', 'pageClick', 'bufferStart', 'bufferEnd',
+    'destroy'
     ];
 let ComplexProperties = ['toolbarSettings', 'serverActionSettings'];
 let Inputs = Utils.AngularizeInputs(['locale', 'toolbarSettings', 'serverActionSettings', 'serviceUrl', 'documentPath',

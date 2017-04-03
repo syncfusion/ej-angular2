@@ -19,5 +19,5 @@ export let SignatureComponent = CreateComponent('Signature', {
         complexes: ComplexProperties,
     });
 
-export const EJ_SIGNATURE_COMPONENTS: Type<any>[] = [SignatureComponent  ];
+export const EJ_SIGNATURE_COMPONENTS: Type<any>[] = [SignatureComponent ];
 

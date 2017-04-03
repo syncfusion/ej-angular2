@@ -1,11 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let ScheduleResourceInputs = Utils.AngularizeInputs(['field', 'title', 'name', 'allowMultiple', 'resourceSettings',
-        'resourceSettings.dataSource', 'resourceSettings.text', 'resourceSettings.id', 'resourceSettings.groupId', 'resourceSettings.color',
-        'resourceSettings.start', 'resourceSettings.end', 'resourceSettings.workWeek', 'resourceSettings.appointmentClass'], []);
-
-export let ScheduleResourceDirective = CreateComplexDirective({
+export let Schedule_ResourceDirective = CreateComplexDirective({
     selector: 'e-resources>e-resource',
-    inputs: ScheduleResourceInputs,
+    inputs: ['field', 'title', 'name', 'allowMultiple', 'resourceSettings',
+        'resourceSettings.dataSource', 'resourceSettings.text', 'resourceSettings.id', 'resourceSettings.groupId', 'resourceSettings.color',
+        'resourceSettings.start', 'resourceSettings.end', 'resourceSettings.workWeek', 'resourceSettings.appointmentClass'],
     queries: {
     }
 }, {
@@ -15,7 +13,7 @@ export let ScheduleResourceDirective = CreateComplexDirective({
     });
 
 
-export let ScheduleResourcesDirective = CreateArrayTagDirective('resources', 'ej-schedule>e-resources', ScheduleResourceDirective);
+export let Schedule_ResourcesDirective = CreateArrayTagDirective('resources', 'ej-schedule>e-resources', Schedule_ResourceDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'appointmentClick', 'beforeAppointmentRemove', 'beforeAppointmentChange',
@@ -59,7 +57,7 @@ export let ScheduleComponent = CreateComponent('Schedule', {
     outputs: Outputs,
     template: '',
     queries: {
-        _resources : new ContentChild(ScheduleResourcesDirective),
+        _resources : new ContentChild(Schedule_ResourcesDirective),
     }
 }, {
         tags: ['resources'],
@@ -67,5 +65,5 @@ export let ScheduleComponent = CreateComponent('Schedule', {
         complexes: ComplexProperties,
     });
 
-export const EJ_SCHEDULE_COMPONENTS: Type<any>[] = [ScheduleComponent , ScheduleResourcesDirective, ScheduleResourceDirective];
+export const EJ_SCHEDULE_COMPONENTS: Type<any>[] = [ScheduleComponent , Schedule_ResourcesDirective, Schedule_ResourceDirective];
 

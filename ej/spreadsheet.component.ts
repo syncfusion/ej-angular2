@@ -1,10 +1,8 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let SpreadsheetRangeSettingInputs = Utils.AngularizeInputs(['dataSource', 'headerStyles', 'primaryKey', 'query', 'showHeader',
-        'startCell'], []);
-
-export let SpreadsheetRangeSettingDirective = CreateComplexDirective({
+export let Spreadsheet_RangeSettingDirective = CreateComplexDirective({
     selector: 'e-rangesettings>e-rangesetting',
-    inputs: SpreadsheetRangeSettingInputs,
+    inputs: ['dataSource', 'headerStyles', 'primaryKey', 'query', 'showHeader',
+        'startCell'],
     queries: {
     }
 }, {
@@ -14,18 +12,17 @@ export let SpreadsheetRangeSettingDirective = CreateComplexDirective({
     });
 
 
-export let SpreadsheetRangeSettingsDirective = CreateArrayTagDirective('rangeSettings', 'e-sheets>e-rangesettings', SpreadsheetRangeSettingDirective);
+export let Spreadsheet_RangeSettingsDirective = CreateArrayTagDirective('rangeSettings', 'e-sheets>e-rangesettings', Spreadsheet_RangeSettingDirective);
 
-let SpreadsheetSheetInputs = Utils.AngularizeInputs(['border', 'cellTypes', 'cFormatRule', 'colCount', 'columnWidth',
-        'dataSource', 'fieldAsColumnHeader', 'headerStyles', 'hideColumns', 'hideRows',
-        'mergeCells', 'primaryKey', 'query', 'rangeSettings', 'rowCount',
-        'rows', 'showGridlines', 'showHeader', 'showHeadings', 'startCell'], []);
-
-export let SpreadsheetSheetDirective = CreateComplexDirective({
+export let Spreadsheet_SheetDirective = CreateComplexDirective({
     selector: 'e-sheets>e-sheet',
-    inputs: SpreadsheetSheetInputs,
+    inputs: ['border', 'cellTypes', 'cFormatRule', 'colCount', 'columnWidth',
+        'dataSource', 'fieldAsColumnHeader', 'frozenRows', 'frozenColumns', 'headerStyles',
+        'hideColumns', 'hideRows', 'mergeCells', 'primaryKey', 'query',
+        'rangeSettings', 'rowCount', 'rows', 'showGridlines', 'showHeader',
+        'showHeadings', 'startCell'],
     queries: {
-        _rangeSettings : new ContentChild(SpreadsheetRangeSettingsDirective),
+        _rangeSettings : new ContentChild(Spreadsheet_RangeSettingsDirective),
     }
 }, {
          tags: ['rangeSettings' ],
@@ -34,7 +31,7 @@ export let SpreadsheetSheetDirective = CreateComplexDirective({
     });
 
 
-export let SpreadsheetSheetsDirective = CreateArrayTagDirective('sheets', 'ej-spreadsheet>e-sheets', SpreadsheetSheetDirective);
+export let Spreadsheet_SheetsDirective = CreateArrayTagDirective('sheets', 'ej-spreadsheet>e-sheets', Spreadsheet_SheetDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'autoFillBegin', 'autoFillComplete', 'beforeBatchSave',
@@ -75,7 +72,7 @@ export let SpreadsheetComponent = CreateComponent('Spreadsheet', {
     outputs: Outputs,
     template: '',
     queries: {
-        _sheets : new ContentChild(SpreadsheetSheetsDirective),
+        _sheets : new ContentChild(Spreadsheet_SheetsDirective),
     }
 }, {
         tags: ['sheets'],
@@ -83,5 +80,5 @@ export let SpreadsheetComponent = CreateComponent('Spreadsheet', {
         complexes: ComplexProperties,
     });
 
-export const EJ_SPREADSHEET_COMPONENTS: Type<any>[] = [SpreadsheetComponent , SpreadsheetRangeSettingsDirective, SpreadsheetSheetsDirective, SpreadsheetRangeSettingDirective, SpreadsheetSheetDirective];
+export const EJ_SPREADSHEET_COMPONENTS: Type<any>[] = [SpreadsheetComponent , Spreadsheet_RangeSettingsDirective, Spreadsheet_SheetsDirective, Spreadsheet_RangeSettingDirective, Spreadsheet_SheetDirective];
 

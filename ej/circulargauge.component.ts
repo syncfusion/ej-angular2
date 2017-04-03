@@ -1,14 +1,12 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let CircularGaugePointerInputs = Utils.AngularizeInputs(['backgroundColor', 'backNeedleLength', 'border', 'border.color', 'border.width',
+export let CircularGauge_PointerDirective = CreateComplexDirective({
+    selector: 'e-pointers>e-pointer',
+    inputs: ['backgroundColor', 'backNeedleLength', 'border', 'border.color', 'border.width',
         'distanceFromScale', 'gradients', 'imageUrl', 'length', 'markerType',
         'needleType', 'opacity', 'radius', 'placement', 'pointerValueText',
         'pointerValueText.angle', 'pointerValueText.autoAngle', 'pointerValueText.color', 'pointerValueText.distance', 'pointerValueText.font',
         'pointerValueText.font.fontFamily', 'pointerValueText.font.fontStyle', 'pointerValueText.font.size', 'pointerValueText.opacity', 'pointerValueText.showValue',
-        'showBackNeedle', 'type', 'value', 'width'], []);
-
-export let CircularGaugePointerDirective = CreateComplexDirective({
-    selector: 'e-pointers>e-pointer',
-    inputs: CircularGaugePointerInputs,
+        'showBackNeedle', 'type', 'value', 'width'],
     queries: {
     }
 }, {
@@ -18,15 +16,13 @@ export let CircularGaugePointerDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugePointersDirective = CreateArrayTagDirective('pointers', 'e-scales>e-pointers', CircularGaugePointerDirective);
+export let CircularGauge_PointersDirective = CreateArrayTagDirective('pointers', 'e-scales>e-pointers', CircularGauge_PointerDirective);
 
-let CircularGaugeLabelInputs = Utils.AngularizeInputs(['angle', 'autoAngle', 'color', 'distanceFromScale', 'font',
-        'font.fontFamily', 'font.fontStyle', 'font.size', 'includeFirstValue', 'opacity',
-        'placement', 'type', 'unitText', 'unitTextPosition'], []);
-
-export let CircularGaugeLabelDirective = CreateComplexDirective({
+export let CircularGauge_LabelDirective = CreateComplexDirective({
     selector: 'e-labels>e-label',
-    inputs: CircularGaugeLabelInputs,
+    inputs: ['angle', 'autoAngle', 'color', 'distanceFromScale', 'font',
+        'font.fontFamily', 'font.fontStyle', 'font.size', 'includeFirstValue', 'opacity',
+        'placement', 'type', 'unitText', 'unitTextPosition'],
     queries: {
     }
 }, {
@@ -36,14 +32,12 @@ export let CircularGaugeLabelDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeLabelsDirective = CreateArrayTagDirective('labels', 'e-scales>e-labels', CircularGaugeLabelDirective);
+export let CircularGauge_LabelsDirective = CreateArrayTagDirective('labels', 'e-scales>e-labels', CircularGauge_LabelDirective);
 
-let CircularGaugeTickInputs = Utils.AngularizeInputs(['angle', 'color', 'distanceFromScale', 'height', 'placement',
-        'type', 'width'], []);
-
-export let CircularGaugeTickDirective = CreateComplexDirective({
+export let CircularGauge_TickDirective = CreateComplexDirective({
     selector: 'e-ticks>e-tick',
-    inputs: CircularGaugeTickInputs,
+    inputs: ['angle', 'color', 'distanceFromScale', 'height', 'placement',
+        'type', 'width'],
     queries: {
     }
 }, {
@@ -53,15 +47,13 @@ export let CircularGaugeTickDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeTicksDirective = CreateArrayTagDirective('ticks', 'e-scales>e-ticks', CircularGaugeTickDirective);
+export let CircularGauge_TicksDirective = CreateArrayTagDirective('ticks', 'e-scales>e-ticks', CircularGauge_TickDirective);
 
-let CircularGaugeRangeInputs = Utils.AngularizeInputs(['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
-        'endValue', 'endWidth', 'gradients', 'opacity', 'placement',
-        'size', 'startValue', 'startWidth'], []);
-
-export let CircularGaugeRangeDirective = CreateComplexDirective({
+export let CircularGauge_RangeDirective = CreateComplexDirective({
     selector: 'e-ranges>e-range',
-    inputs: CircularGaugeRangeInputs,
+    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
+        'endValue', 'endWidth', 'gradients', 'opacity', 'placement',
+        'size', 'startValue', 'startWidth'],
     queries: {
     }
 }, {
@@ -71,14 +63,12 @@ export let CircularGaugeRangeDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeRangesDirective = CreateArrayTagDirective('ranges', 'e-scales>e-ranges', CircularGaugeRangeDirective);
+export let CircularGauge_RangesDirective = CreateArrayTagDirective('ranges', 'e-scales>e-ranges', CircularGauge_RangeDirective);
 
-let CircularGaugeStateRangeInputs = Utils.AngularizeInputs(['backgroundColor', 'borderColor', 'endValue', 'font', 'startValue',
-        'text', 'textColor'], []);
-
-export let CircularGaugeStateRangeDirective = CreateComplexDirective({
+export let CircularGauge_StateRangeDirective = CreateComplexDirective({
     selector: 'e-stateranges>e-staterange',
-    inputs: CircularGaugeStateRangeInputs,
+    inputs: ['backgroundColor', 'borderColor', 'endValue', 'font', 'startValue',
+        'text', 'textColor'],
     queries: {
     }
 }, {
@@ -88,16 +78,14 @@ export let CircularGaugeStateRangeDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeStateRangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', CircularGaugeStateRangeDirective);
+export let CircularGauge_StateRangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', CircularGauge_StateRangeDirective);
 
-let CircularGaugeIndicatorInputs = Utils.AngularizeInputs(['height', 'imageUrl', 'position', 'position.x', 'position.y',
-        'stateRanges', 'type', 'width'], []);
-
-export let CircularGaugeIndicatorDirective = CreateComplexDirective({
+export let CircularGauge_IndicatorDirective = CreateComplexDirective({
     selector: 'e-indicators>e-indicator',
-    inputs: CircularGaugeIndicatorInputs,
+    inputs: ['height', 'imageUrl', 'position', 'position.x', 'position.y',
+        'stateRanges', 'type', 'width'],
     queries: {
-        _stateRanges : new ContentChild(CircularGaugeStateRangesDirective),
+        _stateRanges : new ContentChild(CircularGauge_StateRangesDirective),
     }
 }, {
          tags: ['stateRanges' ],
@@ -106,13 +94,11 @@ export let CircularGaugeIndicatorDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeIndicatorsDirective = CreateArrayTagDirective('indicators', 'e-scales>e-indicators', CircularGaugeIndicatorDirective);
+export let CircularGauge_IndicatorsDirective = CreateArrayTagDirective('indicators', 'e-scales>e-indicators', CircularGauge_IndicatorDirective);
 
-let CircularGaugeSubGaugeInputs = Utils.AngularizeInputs(['height', 'position', 'position.x', 'position.y', 'width'], []);
-
-export let CircularGaugeSubGaugeDirective = CreateComplexDirective({
+export let CircularGauge_SubGaugeDirective = CreateComplexDirective({
     selector: 'e-subgauges>e-subgauge',
-    inputs: CircularGaugeSubGaugeInputs,
+    inputs: ['height', 'position', 'position.x', 'position.y', 'width'],
     queries: {
     }
 }, {
@@ -122,26 +108,24 @@ export let CircularGaugeSubGaugeDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeSubGaugesDirective = CreateArrayTagDirective('subGauges', 'e-scales>e-subgauges', CircularGaugeSubGaugeDirective);
+export let CircularGauge_SubGaugesDirective = CreateArrayTagDirective('subGauges', 'e-scales>e-subgauges', CircularGauge_SubGaugeDirective);
 
-let CircularGaugeScaleInputs = Utils.AngularizeInputs(['backgroundColor', 'border', 'border.color', 'border.width', 'direction',
+export let CircularGauge_ScaleDirective = CreateComplexDirective({
+    selector: 'e-scales>e-scale',
+    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'direction',
         'customLabels', 'indicators', 'labels', 'majorIntervalValue', 'maximum',
         'minimum', 'minorIntervalValue', 'opacity', 'pointerCap', 'pointerCap.backgroundColor',
         'pointerCap.borderColor', 'pointerCap.borderWidth', 'pointerCap.interiorGradient', 'pointerCap.radius', 'pointers',
         'radius', 'ranges', 'shadowOffset', 'showIndicators', 'showLabels',
         'showPointers', 'showRanges', 'showScaleBar', 'showTicks', 'size',
-        'startAngle', 'subGauges', 'sweepAngle', 'ticks'], []);
-
-export let CircularGaugeScaleDirective = CreateComplexDirective({
-    selector: 'e-scales>e-scale',
-    inputs: CircularGaugeScaleInputs,
+        'startAngle', 'subGauges', 'sweepAngle', 'ticks'],
     queries: {
-        _pointers : new ContentChild(CircularGaugePointersDirective),
-        _labels : new ContentChild(CircularGaugeLabelsDirective),
-        _ticks : new ContentChild(CircularGaugeTicksDirective),
-        _ranges : new ContentChild(CircularGaugeRangesDirective),
-        _indicators : new ContentChild(CircularGaugeIndicatorsDirective),
-        _subGauges : new ContentChild(CircularGaugeSubGaugesDirective),
+        _pointers : new ContentChild(CircularGauge_PointersDirective),
+        _labels : new ContentChild(CircularGauge_LabelsDirective),
+        _ticks : new ContentChild(CircularGauge_TicksDirective),
+        _ranges : new ContentChild(CircularGauge_RangesDirective),
+        _indicators : new ContentChild(CircularGauge_IndicatorsDirective),
+        _subGauges : new ContentChild(CircularGauge_SubGaugesDirective),
     }
 }, {
          tags: ['pointers', 'labels', 'ticks', 'ranges', 'indicators', 'subGauges' ],
@@ -150,7 +134,7 @@ export let CircularGaugeScaleDirective = CreateComplexDirective({
     });
 
 
-export let CircularGaugeScalesDirective = CreateArrayTagDirective('scales', 'ej-circulargauge>e-scales', CircularGaugeScaleDirective);
+export let CircularGauge_ScalesDirective = CreateArrayTagDirective('scales', 'ej-circulargauge>e-scales', CircularGauge_ScaleDirective);
 
 
 let Outputs = ['drawCustomLabel', 'drawIndicators', 'drawLabels', 'drawPointerCap', 'drawPointers',
@@ -169,7 +153,7 @@ export let CircularGaugeComponent = CreateComponent('CircularGauge', {
     outputs: Outputs,
     template: '',
     queries: {
-        _scales : new ContentChild(CircularGaugeScalesDirective),
+        _scales : new ContentChild(CircularGauge_ScalesDirective),
     }
 }, {
         tags: ['scales'],
@@ -177,5 +161,5 @@ export let CircularGaugeComponent = CreateComponent('CircularGauge', {
         complexes: ComplexProperties,
     });
 
-export const EJ_CIRCULARGAUGE_COMPONENTS: Type<any>[] = [CircularGaugeComponent , CircularGaugePointersDirective, CircularGaugeLabelsDirective, CircularGaugeTicksDirective, CircularGaugeRangesDirective, CircularGaugeStateRangesDirective, CircularGaugeIndicatorsDirective, CircularGaugeSubGaugesDirective, CircularGaugeScalesDirective, CircularGaugePointerDirective, CircularGaugeLabelDirective, CircularGaugeTickDirective, CircularGaugeRangeDirective, CircularGaugeStateRangeDirective, CircularGaugeIndicatorDirective, CircularGaugeSubGaugeDirective, CircularGaugeScaleDirective];
+export const EJ_CIRCULARGAUGE_COMPONENTS: Type<any>[] = [CircularGaugeComponent , CircularGauge_PointersDirective, CircularGauge_LabelsDirective, CircularGauge_TicksDirective, CircularGauge_RangesDirective, CircularGauge_StateRangesDirective, CircularGauge_IndicatorsDirective, CircularGauge_SubGaugesDirective, CircularGauge_ScalesDirective, CircularGauge_PointerDirective, CircularGauge_LabelDirective, CircularGauge_TickDirective, CircularGauge_RangeDirective, CircularGauge_StateRangeDirective, CircularGauge_IndicatorDirective, CircularGauge_SubGaugeDirective, CircularGauge_ScaleDirective];
 

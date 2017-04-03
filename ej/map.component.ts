@@ -1,5 +1,7 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let MapLayerInputs = Utils.AngularizeInputs(['bingMapType', 'bubbleSettings', 'bubbleSettings.bubbleOpacity', 'bubbleSettings.color', 'bubbleSettings.colorMappings',
+export let Map_LayerDirective = CreateComplexDirective({
+    selector: 'e-layers>e-layer',
+    inputs: ['bingMapType', 'bubbleSettings', 'bubbleSettings.bubbleOpacity', 'bubbleSettings.color', 'bubbleSettings.colorMappings',
         'bubbleSettings.colorMappings.rangeColorMapping', 'bubbleSettings.colorValuePath', 'bubbleSettings.maxValue', 'bubbleSettings.minValue', 'bubbleSettings.showBubble',
         'bubbleSettings.showTooltip', 'bubbleSettings.tooltipTemplate', 'bubbleSettings.valuePath', 'dataSource', 'shapeDataPath',
         'shapePropertyPath', 'enableMouseHover', 'enableSelection', 'key', 'labelSettings',
@@ -13,11 +15,7 @@ let MapLayerInputs = Utils.AngularizeInputs(['bingMapType', 'bubbleSettings', 'b
         'shapeSettings.colorMappings.rangeColorMapping', 'shapeSettings.colorMappings.equalColorMapping', 'shapeSettings.colorPalette', 'shapeSettings.colorValuePath', 'shapeSettings.enableGradient',
         'shapeSettings.fill', 'shapeSettings.highlightBorderWidth', 'shapeSettings.highlightColor', 'shapeSettings.highlightStroke', 'shapeSettings.selectionColor',
         'shapeSettings.selectionStroke', 'shapeSettings.selectionStrokeWidth', 'shapeSettings.stroke', 'shapeSettings.strokeThickness', 'shapeSettings.valuePath',
-        'showMapItems', 'showTooltip', 'tooltipTemplate', 'urlTemplate'], []);
-
-export let MapLayerDirective = CreateComplexDirective({
-    selector: 'e-layers>e-layer',
-    inputs: MapLayerInputs,
+        'showMapItems', 'showTooltip', 'tooltipTemplate', 'urlTemplate'],
     queries: {
     }
 }, {
@@ -27,7 +25,7 @@ export let MapLayerDirective = CreateComplexDirective({
     });
 
 
-export let MapLayersDirective = CreateArrayTagDirective('layers', 'ej-map>e-layers', MapLayerDirective);
+export let Map_LayersDirective = CreateArrayTagDirective('layers', 'ej-map>e-layers', Map_LayerDirective);
 
 
 let Outputs = ['markerSelected', 'mouseleave', 'mouseover', 'onRenderComplete', 'panned',
@@ -46,7 +44,7 @@ export let MapComponent = CreateComponent('Map', {
     outputs: Outputs,
     template: '',
     queries: {
-        _layers : new ContentChild(MapLayersDirective),
+        _layers : new ContentChild(Map_LayersDirective),
     }
 }, {
         tags: ['layers'],
@@ -54,5 +52,5 @@ export let MapComponent = CreateComponent('Map', {
         complexes: ComplexProperties,
     });
 
-export const EJ_MAP_COMPONENTS: Type<any>[] = [MapComponent , MapLayersDirective, MapLayerDirective];
+export const EJ_MAP_COMPONENTS: Type<any>[] = [MapComponent , Map_LayersDirective, Map_LayerDirective];
 

@@ -1,9 +1,7 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let BulletGraphQualitativeRangeInputs = Utils.AngularizeInputs(['rangeEnd', 'rangeOpacity', 'rangeStroke'], []);
-
-export let BulletGraphQualitativeRangeDirective = CreateComplexDirective({
+export let BulletGraph_QualitativeRangeDirective = CreateComplexDirective({
     selector: 'e-qualitativeranges>e-qualitativerange',
-    inputs: BulletGraphQualitativeRangeInputs,
+    inputs: ['rangeEnd', 'rangeOpacity', 'rangeStroke'],
     queries: {
     }
 }, {
@@ -13,13 +11,11 @@ export let BulletGraphQualitativeRangeDirective = CreateComplexDirective({
     });
 
 
-export let BulletGraphQualitativeRangesDirective = CreateArrayTagDirective('qualitativeRanges', 'ej-bulletgraph>e-qualitativeranges', BulletGraphQualitativeRangeDirective);
+export let BulletGraph_QualitativeRangesDirective = CreateArrayTagDirective('qualitativeRanges', 'ej-bulletgraph>e-qualitativeranges', BulletGraph_QualitativeRangeDirective);
 
-let BulletGraphQuantitativeScaleSettingsFeatureMeasureInputs = Utils.AngularizeInputs(['category', 'comparativeMeasureValue', 'value'], []);
-
-export let BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective = CreateComplexDirective({
+export let BulletGraph_QuantitativeScaleSettingsFeatureMeasureDirective = CreateComplexDirective({
     selector: 'e-quantitativescalesettings-featuremeasures>e-quantitativescalesettings-featuremeasure',
-    inputs: BulletGraphQuantitativeScaleSettingsFeatureMeasureInputs,
+    inputs: ['category', 'comparativeMeasureValue', 'value'],
     queries: {
     }
 }, {
@@ -29,7 +25,7 @@ export let BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective = CreateC
     });
 
 
-export let BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective = CreateArrayTagDirective('quantitativeScaleSettings.featureMeasures', 'ej-bulletgraph>e-quantitativescalesettings-featuremeasures', BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective);
+export let BulletGraph_QuantitativeScaleSettingsFeatureMeasuresDirective = CreateArrayTagDirective('quantitativeScaleSettings.featureMeasures', 'ej-bulletgraph>e-quantitativescalesettings-featuremeasures', BulletGraph_QuantitativeScaleSettingsFeatureMeasureDirective);
 
 
 let Outputs = ['drawCaption', 'drawCategory', 'drawComparativeMeasureSymbol', 'drawFeatureMeasureBar', 'drawIndicator',
@@ -66,8 +62,8 @@ export let BulletGraphComponent = CreateComponent('BulletGraph', {
     outputs: Outputs,
     template: '',
     queries: {
-        _qualitativeRanges : new ContentChild(BulletGraphQualitativeRangesDirective),
-        _quantitativeScaleSettings_featureMeasures : new ContentChild(BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective),
+        _qualitativeRanges : new ContentChild(BulletGraph_QualitativeRangesDirective),
+        _quantitativeScaleSettings_featureMeasures : new ContentChild(BulletGraph_QuantitativeScaleSettingsFeatureMeasuresDirective),
     }
 }, {
         tags: ['qualitativeRanges', 'quantitativeScaleSettings.featureMeasures'],
@@ -75,5 +71,5 @@ export let BulletGraphComponent = CreateComponent('BulletGraph', {
         complexes: ComplexProperties,
     });
 
-export const EJ_BULLETGRAPH_COMPONENTS: Type<any>[] = [BulletGraphComponent , BulletGraphQualitativeRangesDirective, BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective, BulletGraphQualitativeRangeDirective, BulletGraphQuantitativeScaleSettingsFeatureMeasureDirective];
+export const EJ_BULLETGRAPH_COMPONENTS: Type<any>[] = [BulletGraphComponent , BulletGraph_QualitativeRangesDirective, BulletGraph_QuantitativeScaleSettingsFeatureMeasuresDirective, BulletGraph_QualitativeRangeDirective, BulletGraph_QuantitativeScaleSettingsFeatureMeasureDirective];
 

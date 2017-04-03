@@ -1,11 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let TreeMapLevelInputs = Utils.AngularizeInputs(['groupBackground', 'groupBorderColor', 'groupBorderThickness', 'groupGap', 'groupPadding',
-        'groupPath', 'headerHeight', 'headerTemplate', 'headerVisibilityMode', 'labelPosition',
-        'labelTemplate', 'labelVisibilityMode', 'showHeader', 'showLabels'], []);
-
-export let TreeMapLevelDirective = CreateComplexDirective({
+export let TreeMap_LevelDirective = CreateComplexDirective({
     selector: 'e-levels>e-level',
-    inputs: TreeMapLevelInputs,
+    inputs: ['groupBackground', 'groupBorderColor', 'groupBorderThickness', 'groupGap', 'groupPadding',
+        'groupPath', 'headerHeight', 'headerTemplate', 'headerVisibilityMode', 'labelPosition',
+        'labelTemplate', 'labelVisibilityMode', 'showHeader', 'showLabels'],
     queries: {
     }
 }, {
@@ -15,13 +13,11 @@ export let TreeMapLevelDirective = CreateComplexDirective({
     });
 
 
-export let TreeMapLevelsDirective = CreateArrayTagDirective('levels', 'ej-treemap>e-levels', TreeMapLevelDirective);
+export let TreeMap_LevelsDirective = CreateArrayTagDirective('levels', 'ej-treemap>e-levels', TreeMap_LevelDirective);
 
-let TreeMapRangeColorInputs = Utils.AngularizeInputs(['color', 'gradientColors', 'from', 'legendLabel', 'to'], []);
-
-export let TreeMapRangeColorDirective = CreateComplexDirective({
+export let TreeMap_RangeColorDirective = CreateComplexDirective({
     selector: 'e-rangecolormapping>e-rangecolor',
-    inputs: TreeMapRangeColorInputs,
+    inputs: ['color', 'gradientColors', 'from', 'legendLabel', 'to'],
     queries: {
     }
 }, {
@@ -31,7 +27,7 @@ export let TreeMapRangeColorDirective = CreateComplexDirective({
     });
 
 
-export let TreeMapRangeColorMappingDirective = CreateArrayTagDirective('rangeColorMapping', 'ej-treemap>e-rangecolormapping', TreeMapRangeColorDirective);
+export let TreeMap_RangeColorMappingDirective = CreateArrayTagDirective('rangeColorMapping', 'ej-treemap>e-rangecolormapping', TreeMap_RangeColorDirective);
 
 
 let Outputs = ['treeMapItemSelected'
@@ -56,8 +52,8 @@ export let TreeMapComponent = CreateComponent('TreeMap', {
     outputs: Outputs,
     template: '',
     queries: {
-        _levels : new ContentChild(TreeMapLevelsDirective),
-        _rangeColorMapping : new ContentChild(TreeMapRangeColorMappingDirective),
+        _levels : new ContentChild(TreeMap_LevelsDirective),
+        _rangeColorMapping : new ContentChild(TreeMap_RangeColorMappingDirective),
     }
 }, {
         tags: ['levels', 'rangeColorMapping'],
@@ -65,5 +61,5 @@ export let TreeMapComponent = CreateComponent('TreeMap', {
         complexes: ComplexProperties,
     });
 
-export const EJ_TREEMAP_COMPONENTS: Type<any>[] = [TreeMapComponent , TreeMapLevelsDirective, TreeMapRangeColorMappingDirective, TreeMapLevelDirective, TreeMapRangeColorDirective];
+export const EJ_TREEMAP_COMPONENTS: Type<any>[] = [TreeMapComponent , TreeMap_LevelsDirective, TreeMap_RangeColorMappingDirective, TreeMap_LevelDirective, TreeMap_RangeColorDirective];
 

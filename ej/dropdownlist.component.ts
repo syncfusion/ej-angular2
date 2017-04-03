@@ -32,5 +32,5 @@ export let DropDownListComponent = CreateComponent('DropDownList', {
     });
 
 export let DropDownListValueAccessor = CreateControlValueAccessor('[ej-dropdownlist]', DropDownListComponent);
-export const EJ_DROPDOWNLIST_COMPONENTS: Type<any>[] = [DropDownListComponent , DropDownListValueAccessor ];
+export const EJ_DROPDOWNLIST_COMPONENTS: Type<any>[] = [DropDownListComponent , DropDownListValueAccessor];
 

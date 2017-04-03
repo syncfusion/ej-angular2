@@ -1,11 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let LinearGaugeMarkerPointerInputs = Utils.AngularizeInputs(['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
-        'gradients', 'length', 'opacity', 'placement', 'type',
-        'value', 'width'], []);
-
-export let LinearGaugeMarkerPointerDirective = CreateComplexDirective({
+export let LinearGauge_MarkerPointerDirective = CreateComplexDirective({
     selector: 'e-markerpointers>e-markerpointer',
-    inputs: LinearGaugeMarkerPointerInputs,
+    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
+        'gradients', 'length', 'opacity', 'placement', 'type',
+        'value', 'width'],
     queries: {
     }
 }, {
@@ -15,14 +13,12 @@ export let LinearGaugeMarkerPointerDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeMarkerPointersDirective = CreateArrayTagDirective('markerPointers', 'e-scales>e-markerpointers', LinearGaugeMarkerPointerDirective);
+export let LinearGauge_MarkerPointersDirective = CreateArrayTagDirective('markerPointers', 'e-scales>e-markerpointers', LinearGauge_MarkerPointerDirective);
 
-let LinearGaugeBarPointerInputs = Utils.AngularizeInputs(['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
-        'gradients', 'opacity', 'value', 'width'], []);
-
-export let LinearGaugeBarPointerDirective = CreateComplexDirective({
+export let LinearGauge_BarPointerDirective = CreateComplexDirective({
     selector: 'e-barpointers>e-barpointer',
-    inputs: LinearGaugeBarPointerInputs,
+    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
+        'gradients', 'opacity', 'value', 'width'],
     queries: {
     }
 }, {
@@ -32,15 +28,13 @@ export let LinearGaugeBarPointerDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeBarPointersDirective = CreateArrayTagDirective('barPointers', 'e-scales>e-barpointers', LinearGaugeBarPointerDirective);
+export let LinearGauge_BarPointersDirective = CreateArrayTagDirective('barPointers', 'e-scales>e-barpointers', LinearGauge_BarPointerDirective);
 
-let LinearGaugeRangeInputs = Utils.AngularizeInputs(['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
-        'endValue', 'endWidth', 'gradients', 'opacity', 'placement',
-        'startValue', 'startWidth'], []);
-
-export let LinearGaugeRangeDirective = CreateComplexDirective({
+export let LinearGauge_RangeDirective = CreateComplexDirective({
     selector: 'e-ranges>e-range',
-    inputs: LinearGaugeRangeInputs,
+    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
+        'endValue', 'endWidth', 'gradients', 'opacity', 'placement',
+        'startValue', 'startWidth'],
     queries: {
     }
 }, {
@@ -50,14 +44,12 @@ export let LinearGaugeRangeDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeRangesDirective = CreateArrayTagDirective('ranges', 'e-scales>e-ranges', LinearGaugeRangeDirective);
+export let LinearGauge_RangesDirective = CreateArrayTagDirective('ranges', 'e-scales>e-ranges', LinearGauge_RangeDirective);
 
-let LinearGaugeTickInputs = Utils.AngularizeInputs(['angle', 'color', 'distanceFromScale', 'distanceFromScale.x', 'distanceFromScale.y',
-        'height', 'opacity', 'placement', 'type', 'width'], []);
-
-export let LinearGaugeTickDirective = CreateComplexDirective({
+export let LinearGauge_TickDirective = CreateComplexDirective({
     selector: 'e-ticks>e-tick',
-    inputs: LinearGaugeTickInputs,
+    inputs: ['angle', 'color', 'distanceFromScale', 'distanceFromScale.x', 'distanceFromScale.y',
+        'height', 'opacity', 'placement', 'type', 'width'],
     queries: {
     }
 }, {
@@ -67,14 +59,12 @@ export let LinearGaugeTickDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeTicksDirective = CreateArrayTagDirective('ticks', 'e-scales>e-ticks', LinearGaugeTickDirective);
+export let LinearGauge_TicksDirective = CreateArrayTagDirective('ticks', 'e-scales>e-ticks', LinearGauge_TickDirective);
 
-let LinearGaugeStateRangeInputs = Utils.AngularizeInputs(['backgroundColor', 'borderColor', 'endValue', 'startValue', 'text',
-        'textColor'], []);
-
-export let LinearGaugeStateRangeDirective = CreateComplexDirective({
+export let LinearGauge_StateRangeDirective = CreateComplexDirective({
     selector: 'e-stateranges>e-staterange',
-    inputs: LinearGaugeStateRangeInputs,
+    inputs: ['backgroundColor', 'borderColor', 'endValue', 'startValue', 'text',
+        'textColor'],
     queries: {
     }
 }, {
@@ -84,18 +74,16 @@ export let LinearGaugeStateRangeDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeStateRangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', LinearGaugeStateRangeDirective);
+export let LinearGauge_StateRangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', LinearGauge_StateRangeDirective);
 
-let LinearGaugeIndicatorInputs = Utils.AngularizeInputs(['backgroundColor', 'border', 'border.color', 'border.width', 'font',
+export let LinearGauge_IndicatorDirective = CreateComplexDirective({
+    selector: 'e-indicators>e-indicator',
+    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'font',
         'font.fontFamily', 'font.fontStyle', 'font.size', 'height', 'opacity',
         'position', 'position.x', 'position.y', 'stateRanges', 'textLocation',
-        'textLocation.x', 'textLocation.y', 'type', 'width'], []);
-
-export let LinearGaugeIndicatorDirective = CreateComplexDirective({
-    selector: 'e-indicators>e-indicator',
-    inputs: LinearGaugeIndicatorInputs,
+        'textLocation.x', 'textLocation.y', 'type', 'width'],
     queries: {
-        _stateRanges : new ContentChild(LinearGaugeStateRangesDirective),
+        _stateRanges : new ContentChild(LinearGauge_StateRangesDirective),
     }
 }, {
          tags: ['stateRanges' ],
@@ -104,15 +92,13 @@ export let LinearGaugeIndicatorDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeIndicatorsDirective = CreateArrayTagDirective('indicators', 'e-scales>e-indicators', LinearGaugeIndicatorDirective);
+export let LinearGauge_IndicatorsDirective = CreateArrayTagDirective('indicators', 'e-scales>e-indicators', LinearGauge_IndicatorDirective);
 
-let LinearGaugeLabelInputs = Utils.AngularizeInputs(['angle', 'distanceFromScale', 'distanceFromScale.x', 'distanceFromScale.y', 'font',
-        'font.fontFamily', 'font.fontStyle', 'font.size', 'includeFirstValue', 'opacity',
-        'placement', 'textColor', 'type', 'unitText', 'unitTextPlacement'], []);
-
-export let LinearGaugeLabelDirective = CreateComplexDirective({
+export let LinearGauge_LabelDirective = CreateComplexDirective({
     selector: 'e-labels>e-label',
-    inputs: LinearGaugeLabelInputs,
+    inputs: ['angle', 'distanceFromScale', 'distanceFromScale.x', 'distanceFromScale.y', 'font',
+        'font.fontFamily', 'font.fontStyle', 'font.size', 'includeFirstValue', 'opacity',
+        'placement', 'textColor', 'type', 'unitText', 'unitTextPlacement'],
     queries: {
     }
 }, {
@@ -122,26 +108,24 @@ export let LinearGaugeLabelDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeLabelsDirective = CreateArrayTagDirective('labels', 'e-scales>e-labels', LinearGaugeLabelDirective);
+export let LinearGauge_LabelsDirective = CreateArrayTagDirective('labels', 'e-scales>e-labels', LinearGauge_LabelDirective);
 
-let LinearGaugeScaleInputs = Utils.AngularizeInputs(['backgroundColor', 'barPointers', 'border', 'border.color', 'border.width',
+export let LinearGauge_ScaleDirective = CreateComplexDirective({
+    selector: 'e-scales>e-scale',
+    inputs: ['backgroundColor', 'barPointers', 'border', 'border.color', 'border.width',
         'customLabels', 'direction', 'indicators', 'labels', 'length',
         'majorIntervalValue', 'markerPointers', 'maximum', 'minimum', 'minorIntervalValue',
         'opacity', 'position', 'position.x', 'position.y', 'ranges',
         'shadowOffset', 'showBarPointers', 'showCustomLabels', 'showIndicators', 'showLabels',
         'showMarkerPointers', 'showRanges', 'showTicks', 'ticks', 'type',
-        'width'], []);
-
-export let LinearGaugeScaleDirective = CreateComplexDirective({
-    selector: 'e-scales>e-scale',
-    inputs: LinearGaugeScaleInputs,
+        'width'],
     queries: {
-        _markerPointers : new ContentChild(LinearGaugeMarkerPointersDirective),
-        _barPointers : new ContentChild(LinearGaugeBarPointersDirective),
-        _ranges : new ContentChild(LinearGaugeRangesDirective),
-        _ticks : new ContentChild(LinearGaugeTicksDirective),
-        _indicators : new ContentChild(LinearGaugeIndicatorsDirective),
-        _labels : new ContentChild(LinearGaugeLabelsDirective),
+        _markerPointers : new ContentChild(LinearGauge_MarkerPointersDirective),
+        _barPointers : new ContentChild(LinearGauge_BarPointersDirective),
+        _ranges : new ContentChild(LinearGauge_RangesDirective),
+        _ticks : new ContentChild(LinearGauge_TicksDirective),
+        _indicators : new ContentChild(LinearGauge_IndicatorsDirective),
+        _labels : new ContentChild(LinearGauge_LabelsDirective),
     }
 }, {
          tags: ['markerPointers', 'barPointers', 'ranges', 'ticks', 'indicators', 'labels' ],
@@ -150,7 +134,7 @@ export let LinearGaugeScaleDirective = CreateComplexDirective({
     });
 
 
-export let LinearGaugeScalesDirective = CreateArrayTagDirective('scales', 'ej-lineargauge>e-scales', LinearGaugeScaleDirective);
+export let LinearGauge_ScalesDirective = CreateArrayTagDirective('scales', 'ej-lineargauge>e-scales', LinearGauge_ScaleDirective);
 
 
 let Outputs = ['drawBarPointers', 'drawCustomLabel', 'drawIndicators', 'drawLabels', 'drawMarkerPointers',
@@ -170,7 +154,7 @@ export let LinearGaugeComponent = CreateComponent('LinearGauge', {
     outputs: Outputs,
     template: '',
     queries: {
-        _scales : new ContentChild(LinearGaugeScalesDirective),
+        _scales : new ContentChild(LinearGauge_ScalesDirective),
     }
 }, {
         tags: ['scales'],
@@ -178,5 +162,5 @@ export let LinearGaugeComponent = CreateComponent('LinearGauge', {
         complexes: ComplexProperties,
     });
 
-export const EJ_LINEARGAUGE_COMPONENTS: Type<any>[] = [LinearGaugeComponent , LinearGaugeMarkerPointersDirective, LinearGaugeBarPointersDirective, LinearGaugeRangesDirective, LinearGaugeTicksDirective, LinearGaugeStateRangesDirective, LinearGaugeIndicatorsDirective, LinearGaugeLabelsDirective, LinearGaugeScalesDirective, LinearGaugeMarkerPointerDirective, LinearGaugeBarPointerDirective, LinearGaugeRangeDirective, LinearGaugeTickDirective, LinearGaugeStateRangeDirective, LinearGaugeIndicatorDirective, LinearGaugeLabelDirective, LinearGaugeScaleDirective];
+export const EJ_LINEARGAUGE_COMPONENTS: Type<any>[] = [LinearGaugeComponent , LinearGauge_MarkerPointersDirective, LinearGauge_BarPointersDirective, LinearGauge_RangesDirective, LinearGauge_TicksDirective, LinearGauge_StateRangesDirective, LinearGauge_IndicatorsDirective, LinearGauge_LabelsDirective, LinearGauge_ScalesDirective, LinearGauge_MarkerPointerDirective, LinearGauge_BarPointerDirective, LinearGauge_RangeDirective, LinearGauge_TickDirective, LinearGauge_StateRangeDirective, LinearGauge_IndicatorDirective, LinearGauge_LabelDirective, LinearGauge_ScaleDirective];
 

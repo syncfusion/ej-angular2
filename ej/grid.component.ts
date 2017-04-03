@@ -1,9 +1,7 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let GridCommandInputs = Utils.AngularizeInputs(['buttonOptions', 'type'], []);
-
-export let GridCommandDirective = CreateComplexDirective({
+export let Grid_CommandDirective = CreateComplexDirective({
     selector: 'e-commands>e-command',
-    inputs: GridCommandInputs,
+    inputs: ['buttonOptions', 'type'],
     queries: {
     }
 }, {
@@ -13,22 +11,20 @@ export let GridCommandDirective = CreateComplexDirective({
     });
 
 
-export let GridCommandsDirective = CreateArrayTagDirective('commands', 'e-columns>e-commands', GridCommandDirective);
+export let Grid_CommandsDirective = CreateArrayTagDirective('commands', 'e-columns>e-commands', Grid_CommandDirective);
 
-let GridColumnInputs = Utils.AngularizeInputs(['clipMode', 'allowEditing', 'allowFiltering', 'allowGrouping', 'allowSorting',
+export let Grid_ColumnDirective = CreateComplexDirective({
+    selector: 'e-columns>e-column',
+    inputs: ['clipMode', 'allowEditing', 'allowFiltering', 'allowGrouping', 'allowSorting',
         'allowResizing', 'commands', 'cssClass', 'customAttributes', 'dataSource',
         'defaultValue', 'disableHtmlEncode', 'displayAsCheckBox', 'editParams', 'editTemplate',
         'editType', 'enableGroupByFormat', 'field', 'filterBarTemplate', 'filterType',
         'foreignKeyField', 'foreignKeyValue', 'format', 'headerTemplateID', 'headerText',
         'headerTextAlign', 'headerTooltip', 'isFrozen', 'isIdentity', 'isPrimaryKey',
         'priority', 'showInColumnChooser', 'template', 'textAlign', 'tooltip',
-        'type', 'validationRules', 'visible', 'width'], []);
-
-export let GridColumnDirective = CreateComplexDirective({
-    selector: 'e-columns>e-column',
-    inputs: GridColumnInputs,
+        'type', 'validationRules', 'visible', 'width'],
     queries: {
-        _commands : new ContentChild(GridCommandsDirective),
+        _commands : new ContentChild(Grid_CommandsDirective),
     }
 }, {
          tags: ['commands' ],
@@ -37,14 +33,12 @@ export let GridColumnDirective = CreateComplexDirective({
     });
 
 
-export let GridColumnsDirective = CreateArrayTagDirective('columns', 'ej-grid>e-columns', GridColumnDirective);
+export let Grid_ColumnsDirective = CreateArrayTagDirective('columns', 'ej-grid>e-columns', Grid_ColumnDirective);
 
-let GridSummaryColumnInputs = Utils.AngularizeInputs(['customSummaryValue', 'dataMember', 'displayColumn', 'format', 'prefix',
-        'suffix', 'summaryType', 'template'], []);
-
-export let GridSummaryColumnDirective = CreateComplexDirective({
+export let Grid_SummaryColumnDirective = CreateComplexDirective({
     selector: 'e-summarycolumns>e-summarycolumn',
-    inputs: GridSummaryColumnInputs,
+    inputs: ['customSummaryValue', 'dataMember', 'displayColumn', 'format', 'prefix',
+        'suffix', 'summaryType', 'template'],
     queries: {
     }
 }, {
@@ -54,16 +48,14 @@ export let GridSummaryColumnDirective = CreateComplexDirective({
     });
 
 
-export let GridSummaryColumnsDirective = CreateArrayTagDirective('summaryColumns', 'e-summaryrows>e-summarycolumns', GridSummaryColumnDirective);
+export let Grid_SummaryColumnsDirective = CreateArrayTagDirective('summaryColumns', 'e-summaryrows>e-summarycolumns', Grid_SummaryColumnDirective);
 
-let GridSummaryRowInputs = Utils.AngularizeInputs(['showCaptionSummary', 'showGroupSummary', 'showTotalSummary', 'summaryColumns', 'title',
-        'titleColumn'], []);
-
-export let GridSummaryRowDirective = CreateComplexDirective({
+export let Grid_SummaryRowDirective = CreateComplexDirective({
     selector: 'e-summaryrows>e-summaryrow',
-    inputs: GridSummaryRowInputs,
+    inputs: ['showCaptionSummary', 'showGroupSummary', 'showTotalSummary', 'summaryColumns', 'title',
+        'titleColumn'],
     queries: {
-        _summaryColumns : new ContentChild(GridSummaryColumnsDirective),
+        _summaryColumns : new ContentChild(Grid_SummaryColumnsDirective),
     }
 }, {
          tags: ['summaryColumns' ],
@@ -72,13 +64,11 @@ export let GridSummaryRowDirective = CreateComplexDirective({
     });
 
 
-export let GridSummaryRowsDirective = CreateArrayTagDirective('summaryRows', 'ej-grid>e-summaryrows', GridSummaryRowDirective);
+export let Grid_SummaryRowsDirective = CreateArrayTagDirective('summaryRows', 'ej-grid>e-summaryrows', Grid_SummaryRowDirective);
 
-let GridStackedHeaderColumnInputs = Utils.AngularizeInputs(['column', 'cssClass', 'headerText', 'textAlign', 'tooltip'], []);
-
-export let GridStackedHeaderColumnDirective = CreateComplexDirective({
+export let Grid_StackedHeaderColumnDirective = CreateComplexDirective({
     selector: 'e-stackedheadercolumns>e-stackedheadercolumn',
-    inputs: GridStackedHeaderColumnInputs,
+    inputs: ['column', 'cssClass', 'headerText', 'textAlign', 'tooltip'],
     queries: {
     }
 }, {
@@ -88,15 +78,13 @@ export let GridStackedHeaderColumnDirective = CreateComplexDirective({
     });
 
 
-export let GridStackedHeaderColumnsDirective = CreateArrayTagDirective('stackedHeaderColumns', 'e-stackedheaderrows>e-stackedheadercolumns', GridStackedHeaderColumnDirective);
+export let Grid_StackedHeaderColumnsDirective = CreateArrayTagDirective('stackedHeaderColumns', 'e-stackedheaderrows>e-stackedheadercolumns', Grid_StackedHeaderColumnDirective);
 
-let GridStackedHeaderRowInputs = Utils.AngularizeInputs(['stackedHeaderColumns'], []);
-
-export let GridStackedHeaderRowDirective = CreateComplexDirective({
+export let Grid_StackedHeaderRowDirective = CreateComplexDirective({
     selector: 'e-stackedheaderrows>e-stackedheaderrow',
-    inputs: GridStackedHeaderRowInputs,
+    inputs: ['stackedHeaderColumns'],
     queries: {
-        _stackedHeaderColumns : new ContentChild(GridStackedHeaderColumnsDirective),
+        _stackedHeaderColumns : new ContentChild(Grid_StackedHeaderColumnsDirective),
     }
 }, {
          tags: ['stackedHeaderColumns' ],
@@ -105,7 +93,7 @@ export let GridStackedHeaderRowDirective = CreateComplexDirective({
     });
 
 
-export let GridStackedHeaderRowsDirective = CreateArrayTagDirective('stackedHeaderRows', 'ej-grid>e-stackedheaderrows', GridStackedHeaderRowDirective);
+export let Grid_StackedHeaderRowsDirective = CreateArrayTagDirective('stackedHeaderRows', 'ej-grid>e-stackedheaderrows', Grid_StackedHeaderRowDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'actionFailure', 'batchAdd', 'batchDelete',
@@ -156,9 +144,9 @@ export let GridComponent = CreateComponent('Grid', {
     outputs: Outputs,
     template: '',
     queries: {
-        _columns : new ContentChild(GridColumnsDirective),
-        _summaryRows : new ContentChild(GridSummaryRowsDirective),
-        _stackedHeaderRows : new ContentChild(GridStackedHeaderRowsDirective),
+        _columns : new ContentChild(Grid_ColumnsDirective),
+        _summaryRows : new ContentChild(Grid_SummaryRowsDirective),
+        _stackedHeaderRows : new ContentChild(Grid_StackedHeaderRowsDirective),
     }
 }, {
         tags: ['columns', 'summaryRows', 'stackedHeaderRows'],
@@ -166,5 +154,5 @@ export let GridComponent = CreateComponent('Grid', {
         complexes: ComplexProperties,
     });
 
-export const EJ_GRID_COMPONENTS: Type<any>[] = [GridComponent , GridCommandsDirective, GridColumnsDirective, GridSummaryColumnsDirective, GridSummaryRowsDirective, GridStackedHeaderColumnsDirective, GridStackedHeaderRowsDirective, GridCommandDirective, GridColumnDirective, GridSummaryColumnDirective, GridSummaryRowDirective, GridStackedHeaderColumnDirective, GridStackedHeaderRowDirective];
+export const EJ_GRID_COMPONENTS: Type<any>[] = [GridComponent , Grid_CommandsDirective, Grid_ColumnsDirective, Grid_SummaryColumnsDirective, Grid_SummaryRowsDirective, Grid_StackedHeaderColumnsDirective, Grid_StackedHeaderRowsDirective, Grid_CommandDirective, Grid_ColumnDirective, Grid_SummaryColumnDirective, Grid_SummaryRowDirective, Grid_StackedHeaderColumnDirective, Grid_StackedHeaderRowDirective];
 

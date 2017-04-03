@@ -20,5 +20,5 @@ export let RadialSliderComponent = CreateComponent('RadialSlider', {
         complexes: ComplexProperties,
     });
 
-export const EJ_RADIALSLIDER_COMPONENTS: Type<any>[] = [RadialSliderComponent  ];
+export const EJ_RADIALSLIDER_COMPONENTS: Type<any>[] = [RadialSliderComponent ];
 

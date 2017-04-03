@@ -1,9 +1,7 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let RibbonPageInputs = Utils.AngularizeInputs(['id', 'text', 'itemType', 'contentID', 'enableSeparator'], []);
-
-export let RibbonPageDirective = CreateComplexDirective({
+export let Ribbon_PageDirective = CreateComplexDirective({
     selector: 'e-applicationtab-backstagesettings-pages>e-page',
-    inputs: RibbonPageInputs,
+    inputs: ['id', 'text', 'itemType', 'contentID', 'enableSeparator'],
     queries: {
     }
 }, {
@@ -13,17 +11,15 @@ export let RibbonPageDirective = CreateComplexDirective({
     });
 
 
-export let RibbonApplicationTabBackstageSettingsPagesDirective = CreateArrayTagDirective('applicationTab.backstageSettings.pages', 'ej-ribbon>e-applicationtab-backstagesettings-pages', RibbonPageDirective);
+export let Ribbon_ApplicationTabBackstageSettingsPagesDirective = CreateArrayTagDirective('applicationTab.backstageSettings.pages', 'ej-ribbon>e-applicationtab-backstagesettings-pages', Ribbon_PageDirective);
 
-let RibbonContentGroupInputs = Utils.AngularizeInputs(['isMobileOnly', 'buttonSettings', 'columns', 'contentID', 'cssClass',
+export let Ribbon_ContentGroupDirective = CreateComplexDirective({
+    selector: 'e-contentgroups>e-contentgroup',
+    inputs: ['isMobileOnly', 'buttonSettings', 'columns', 'contentID', 'cssClass',
         'customGalleryItems', 'customToolTip', 'customToolTip.content', 'customToolTip.prefixIcon', 'customToolTip.title',
         'dropdownSettings', 'enableSeparator', 'expandedColumns', 'galleryItems', 'id',
         'isBig', 'itemHeight', 'itemWidth', 'splitButtonSettings', 'text',
-        'toggleButtonSettings', 'toolTip', 'quickAccessMode', 'type'], []);
-
-export let RibbonContentGroupDirective = CreateComplexDirective({
-    selector: 'e-contentgroups>e-contentgroup',
-    inputs: RibbonContentGroupInputs,
+        'toggleButtonSettings', 'toolTip', 'quickAccessMode', 'type'],
     queries: {
     }
 }, {
@@ -33,16 +29,14 @@ export let RibbonContentGroupDirective = CreateComplexDirective({
     });
 
 
-export let RibbonContentGroupsDirective = CreateArrayTagDirective('groups', 'e-content>e-contentgroups', RibbonContentGroupDirective);
+export let Ribbon_ContentGroupsDirective = CreateArrayTagDirective('groups', 'e-content>e-contentgroups', Ribbon_ContentGroupDirective);
 
-let RibbonContentInputs = Utils.AngularizeInputs(['defaults', 'defaults.height', 'defaults.width', 'defaults.type', 'defaults.isBig',
-        'groups'], []);
-
-export let RibbonContentDirective = CreateComplexDirective({
+export let Ribbon_ContentDirective = CreateComplexDirective({
     selector: 'e-contents>e-content',
-    inputs: RibbonContentInputs,
+    inputs: ['defaults', 'defaults.height', 'defaults.width', 'defaults.type', 'defaults.isBig',
+        'groups'],
     queries: {
-        _groups : new ContentChild(RibbonContentGroupsDirective),
+        _groups : new ContentChild(Ribbon_ContentGroupsDirective),
     }
 }, {
          tags: ['groups' ],
@@ -51,16 +45,14 @@ export let RibbonContentDirective = CreateComplexDirective({
     });
 
 
-export let RibbonContentsDirective = CreateArrayTagDirective('content', 'e-groups>e-contents', RibbonContentDirective);
+export let Ribbon_ContentsDirective = CreateArrayTagDirective('content', 'e-groups>e-contents', Ribbon_ContentDirective);
 
-let RibbonGroupInputs = Utils.AngularizeInputs(['alignType', 'content', 'contentID', 'customContent', 'enableGroupExpander',
-        'groupExpanderSettings', 'groupExpanderSettings.toolTip', 'groupExpanderSettings.customToolTip', 'text', 'type'], []);
-
-export let RibbonGroupDirective = CreateComplexDirective({
+export let Ribbon_GroupDirective = CreateComplexDirective({
     selector: 'e-groups>e-group',
-    inputs: RibbonGroupInputs,
+    inputs: ['alignType', 'content', 'contentID', 'customContent', 'enableGroupExpander',
+        'groupExpanderSettings', 'groupExpanderSettings.toolTip', 'groupExpanderSettings.customToolTip', 'text', 'type'],
     queries: {
-        _content : new ContentChild(RibbonContentsDirective),
+        _content : new ContentChild(Ribbon_ContentsDirective),
     }
 }, {
          tags: ['content' ],
@@ -69,15 +61,13 @@ export let RibbonGroupDirective = CreateComplexDirective({
     });
 
 
-export let RibbonGroupsDirective = CreateArrayTagDirective('groups', 'e-tabs>e-groups', RibbonGroupDirective);
+export let Ribbon_GroupsDirective = CreateArrayTagDirective('groups', 'e-tabs>e-groups', Ribbon_GroupDirective);
 
-let RibbonTabInputs = Utils.AngularizeInputs(['groups', 'id', 'text'], []);
-
-export let RibbonTabDirective = CreateComplexDirective({
+export let Ribbon_TabDirective = CreateComplexDirective({
     selector: 'e-tabs>e-tab',
-    inputs: RibbonTabInputs,
+    inputs: ['groups', 'id', 'text'],
     queries: {
-        _groups : new ContentChild(RibbonGroupsDirective),
+        _groups : new ContentChild(Ribbon_GroupsDirective),
     }
 }, {
          tags: ['groups' ],
@@ -86,7 +76,7 @@ export let RibbonTabDirective = CreateComplexDirective({
     });
 
 
-export let RibbonTabsDirective = CreateArrayTagDirective('tabs', 'ej-ribbon>e-tabs', RibbonTabDirective);
+export let Ribbon_TabsDirective = CreateArrayTagDirective('tabs', 'ej-ribbon>e-tabs', Ribbon_TabDirective);
 
 
 let Outputs = ['beforeTabRemove', 'create', 'destroy', 'groupClick', 'groupExpand',
@@ -108,8 +98,8 @@ export let RibbonComponent = CreateComponent('Ribbon', {
     outputs: Outputs,
     template: '',
     queries: {
-        _applicationTab_backstageSettings_pages : new ContentChild(RibbonApplicationTabBackstageSettingsPagesDirective),
-        _tabs : new ContentChild(RibbonTabsDirective),
+        _applicationTab_backstageSettings_pages : new ContentChild(Ribbon_ApplicationTabBackstageSettingsPagesDirective),
+        _tabs : new ContentChild(Ribbon_TabsDirective),
     }
 }, {
         tags: ['applicationTab.backstageSettings.pages', 'tabs'],
@@ -117,5 +107,5 @@ export let RibbonComponent = CreateComponent('Ribbon', {
         complexes: ComplexProperties,
     });
 
-export const EJ_RIBBON_COMPONENTS: Type<any>[] = [RibbonComponent , RibbonApplicationTabBackstageSettingsPagesDirective, RibbonContentGroupsDirective, RibbonContentsDirective, RibbonGroupsDirective, RibbonTabsDirective, RibbonPageDirective, RibbonContentGroupDirective, RibbonContentDirective, RibbonGroupDirective, RibbonTabDirective];
+export const EJ_RIBBON_COMPONENTS: Type<any>[] = [RibbonComponent , Ribbon_ApplicationTabBackstageSettingsPagesDirective, Ribbon_ContentGroupsDirective, Ribbon_ContentsDirective, Ribbon_GroupsDirective, Ribbon_TabsDirective, Ribbon_PageDirective, Ribbon_ContentGroupDirective, Ribbon_ContentDirective, Ribbon_GroupDirective, Ribbon_TabDirective];
 

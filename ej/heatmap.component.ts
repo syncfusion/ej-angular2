@@ -1,10 +1,8 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let HeatMapColorMappingInputs = Utils.AngularizeInputs(['color', 'value', 'label', 'label.bold', 'label.italic',
-        'label.text', 'label.textDecoration', 'label.fontSize', 'label.fontFamily', 'label.fontColor'], []);
-
-export let HeatMapColorMappingDirective = CreateComplexDirective({
+export let HeatMap_ColorMappingDirective = CreateComplexDirective({
     selector: 'e-colormappingcollection>e-colormapping',
-    inputs: HeatMapColorMappingInputs,
+    inputs: ['color', 'value', 'label', 'label.bold', 'label.italic',
+        'label.text', 'label.textDecoration', 'label.fontSize', 'label.fontFamily', 'label.fontColor'],
     queries: {
     }
 }, {
@@ -14,7 +12,7 @@ export let HeatMapColorMappingDirective = CreateComplexDirective({
     });
 
 
-export let HeatMapColorMappingCollectionDirective = CreateArrayTagDirective('colorMappingCollection', 'ej-heatmap>e-colormappingcollection', HeatMapColorMappingDirective);
+export let HeatMap_ColorMappingCollectionDirective = CreateArrayTagDirective('colorMappingCollection', 'ej-heatmap>e-colormappingcollection', HeatMap_ColorMappingDirective);
 
 
 let Outputs = ['cellMouseOver', 'cellMouseEnter', 'cellMouseLeave', 'cellSelected'
@@ -38,7 +36,7 @@ export let HeatMapComponent = CreateComponent('HeatMap', {
     outputs: Outputs,
     template: '',
     queries: {
-        _colorMappingCollection : new ContentChild(HeatMapColorMappingCollectionDirective),
+        _colorMappingCollection : new ContentChild(HeatMap_ColorMappingCollectionDirective),
     }
 }, {
         tags: ['colorMappingCollection'],
@@ -46,5 +44,5 @@ export let HeatMapComponent = CreateComponent('HeatMap', {
         complexes: ComplexProperties,
     });
 
-export const EJ_HEATMAP_COMPONENTS: Type<any>[] = [HeatMapComponent , HeatMapColorMappingCollectionDirective, HeatMapColorMappingDirective];
+export const EJ_HEATMAP_COMPONENTS: Type<any>[] = [HeatMapComponent , HeatMap_ColorMappingCollectionDirective, HeatMap_ColorMappingDirective];
 

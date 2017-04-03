@@ -1,11 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let ChartTrendlineInputs = Utils.AngularizeInputs(['visibility', 'type', 'name', 'fill', 'width',
-        'opacity', 'dashArray', 'forwardForecast', 'backwardForecast', 'polynomialOrder',
-        'period'], []);
-
-export let ChartTrendlineDirective = CreateComplexDirective({
+export let Chart_TrendlineDirective = CreateComplexDirective({
     selector: 'e-trendlines>e-trendline',
-    inputs: ChartTrendlineInputs,
+    inputs: ['visibility', 'type', 'name', 'fill', 'width',
+        'opacity', 'dashArray', 'forwardForecast', 'backwardForecast', 'polynomialOrder',
+        'period'],
     queries: {
     }
 }, {
@@ -15,9 +13,11 @@ export let ChartTrendlineDirective = CreateComplexDirective({
     });
 
 
-export let ChartTrendlinesDirective = CreateArrayTagDirective('trendlines', 'e-series>e-trendlines', ChartTrendlineDirective);
+export let Chart_TrendlinesDirective = CreateArrayTagDirective('trendlines', 'e-series>e-trendlines', Chart_TrendlineDirective);
 
-let ChartPointInputs = Utils.AngularizeInputs(['border', 'border.color', 'border.width', 'visibleOnLegend', 'showIntermediateSum',
+export let Chart_PointDirective = CreateComplexDirective({
+    selector: 'e-points>e-point',
+    inputs: ['border', 'border.color', 'border.width', 'visibleOnLegend', 'showIntermediateSum',
         'showTotalSum', 'close', 'size', 'fill', 'high',
         'low', 'marker', 'marker.border', 'marker.border.color', 'marker.border.width',
         'marker.dataLabel', 'marker.dataLabel.angle', 'marker.dataLabel.border', 'marker.dataLabel.border.color', 'marker.dataLabel.border.width',
@@ -27,11 +27,7 @@ let ChartPointInputs = Utils.AngularizeInputs(['border', 'border.color', 'border
         'marker.dataLabel.margin.top', 'marker.dataLabel.opacity', 'marker.dataLabel.shape', 'marker.dataLabel.textPosition', 'marker.dataLabel.verticalTextAlignment',
         'marker.dataLabel.visible', 'marker.dataLabel.template', 'marker.dataLabel.offset', 'marker.fill', 'marker.imageUrl',
         'marker.opacity', 'marker.shape', 'marker.size', 'marker.size.height', 'marker.size.width',
-        'marker.visible', 'open', 'text', 'x', 'y'], []);
-
-export let ChartPointDirective = CreateComplexDirective({
-    selector: 'e-points>e-point',
-    inputs: ChartPointInputs,
+        'marker.visible', 'open', 'text', 'x', 'y'],
     queries: {
     }
 }, {
@@ -41,9 +37,11 @@ export let ChartPointDirective = CreateComplexDirective({
     });
 
 
-export let ChartPointsDirective = CreateArrayTagDirective('points', 'e-series>e-points', ChartPointDirective);
+export let Chart_PointsDirective = CreateArrayTagDirective('points', 'e-series>e-points', Chart_PointDirective);
 
-let ChartSeriesInputs = Utils.AngularizeInputs(['bearFillColor', 'border', 'border.color', 'border.width', 'border.dashArray',
+export let Chart_SeriesDirective = CreateComplexDirective({
+    selector: 'e-seriescollection>e-series',
+    inputs: ['bearFillColor', 'border', 'border.color', 'border.width', 'border.dashArray',
         'bullFillColor', 'columnFacet', 'columnWidth', 'columnSpacing', 'stackingGroup',
         'dashArray', 'dataSource', 'doughnutCoefficient', 'doughnutSize', 'drawType',
         'enableAnimation', 'enableSmartLabels', 'endAngle', 'explode', 'explodeAll',
@@ -80,14 +78,10 @@ let ChartSeriesInputs = Utils.AngularizeInputs(['bearFillColor', 'border', 'bord
         'highlightSettings.mode', 'highlightSettings.color', 'highlightSettings.opacity', 'highlightSettings.border', 'highlightSettings.border.color',
         'highlightSettings.border.width', 'highlightSettings.pattern', 'highlightSettings.customPattern', 'selectionSettings', 'selectionSettings.enable',
         'selectionSettings.mode', 'selectionSettings.type', 'selectionSettings.rangeType', 'selectionSettings.color', 'selectionSettings.opacity',
-        'selectionSettings.border', 'selectionSettings.border.color', 'selectionSettings.border.width', 'selectionSettings.pattern', 'selectionSettings.customPattern'], []);
-
-export let ChartSeriesDirective = CreateComplexDirective({
-    selector: 'e-seriescollection>e-series',
-    inputs: ChartSeriesInputs,
+        'selectionSettings.border', 'selectionSettings.border.color', 'selectionSettings.border.width', 'selectionSettings.pattern', 'selectionSettings.customPattern'],
     queries: {
-        _Trendlines : new ContentChild(ChartTrendlinesDirective),
-        _points : new ContentChild(ChartPointsDirective),
+        _Trendlines : new ContentChild(Chart_TrendlinesDirective),
+        _points : new ContentChild(Chart_PointsDirective),
     }
 }, {
          tags: ['Trendlines', 'points' ],
@@ -96,9 +90,11 @@ export let ChartSeriesDirective = CreateComplexDirective({
     });
 
 
-export let ChartSeriesCollectionDirective = CreateArrayTagDirective('series', 'ej-chart>e-seriescollection', ChartSeriesDirective);
+export let Chart_SeriesCollectionDirective = CreateArrayTagDirective('series', 'ej-chart>e-seriescollection', Chart_SeriesDirective);
 
-let ChartIndicatorInputs = Utils.AngularizeInputs(['dPeriod', 'enableAnimation', 'fill', 'histogram', 'histogram.border',
+export let Chart_IndicatorDirective = CreateComplexDirective({
+    selector: 'e-indicators>e-indicator',
+    inputs: ['dPeriod', 'enableAnimation', 'fill', 'histogram', 'histogram.border',
         'histogram.border.color', 'histogram.border.width', 'histogram.fill', 'histogram.opacity', 'kPeriod',
         'longPeriod', 'lowerLine', 'lowerLine.fill', 'lowerLine.width', 'macdLine',
         'macdLine.fill', 'macdLine.width', 'macdType', 'period', 'periodLine',
@@ -106,11 +102,7 @@ let ChartIndicatorInputs = Utils.AngularizeInputs(['dPeriod', 'enableAnimation',
         'tooltip', 'tooltip.border', 'tooltip.border.color', 'tooltip.border.width', 'tooltip.duration',
         'tooltip.enableAnimation', 'tooltip.format', 'tooltip.fill', 'tooltip.opacity', 'tooltip.visible',
         'trigger', 'visibility', 'type', 'upperLine', 'upperLine.fill',
-        'upperLine.width', 'width', 'xAxisName', 'yAxisName'], []);
-
-export let ChartIndicatorDirective = CreateComplexDirective({
-    selector: 'e-indicators>e-indicator',
-    inputs: ChartIndicatorInputs,
+        'upperLine.width', 'width', 'xAxisName', 'yAxisName'],
     queries: {
     }
 }, {
@@ -120,16 +112,14 @@ export let ChartIndicatorDirective = CreateComplexDirective({
     });
 
 
-export let ChartIndicatorsDirective = CreateArrayTagDirective('indicators', 'ej-chart>e-indicators', ChartIndicatorDirective);
+export let Chart_IndicatorsDirective = CreateArrayTagDirective('indicators', 'ej-chart>e-indicators', Chart_IndicatorDirective);
 
-let ChartAnnotationInputs = Utils.AngularizeInputs(['angle', 'content', 'coordinateUnit', 'horizontalAlignment', 'margin',
+export let Chart_AnnotationDirective = CreateComplexDirective({
+    selector: 'e-annotations>e-annotation',
+    inputs: ['angle', 'content', 'coordinateUnit', 'horizontalAlignment', 'margin',
         'margin.bottom', 'margin.left', 'margin.right', 'margin.top', 'opacity',
         'region', 'verticalAlignment', 'visible', 'x', 'xAxisName',
-        'y', 'yAxisName'], []);
-
-export let ChartAnnotationDirective = CreateComplexDirective({
-    selector: 'e-annotations>e-annotation',
-    inputs: ChartAnnotationInputs,
+        'y', 'yAxisName'],
     queries: {
     }
 }, {
@@ -139,35 +129,14 @@ export let ChartAnnotationDirective = CreateComplexDirective({
     });
 
 
-export let ChartAnnotationsDirective = CreateArrayTagDirective('annotations', 'ej-chart>e-annotations', ChartAnnotationDirective);
+export let Chart_AnnotationsDirective = CreateArrayTagDirective('annotations', 'ej-chart>e-annotations', Chart_AnnotationDirective);
 
-let ChartPrimaryXAxisStripLineInputs = Utils.AngularizeInputs(['borderColor', 'color', 'end', 'font', 'font.color',
-        'font.fontFamily', 'font.fontStyle', 'font.fontWeight', 'font.opacity', 'font.size',
-        'start', 'startFromAxis', 'text', 'textAlignment', 'visible',
-        'width', 'zIndex'], []);
-
-export let ChartPrimaryXAxisStripLineDirective = CreateComplexDirective({
+export let Chart_PrimaryXAxisStripLineDirective = CreateComplexDirective({
     selector: 'e-primaryxaxis-striplinecollection>e-primaryxaxis-stripline',
-    inputs: ChartPrimaryXAxisStripLineInputs,
-    queries: {
-    }
-}, {
-         tags: [ ],
-         complexes: ['font'],
-         type: forwardRef(() => ChartComponent)
-    });
-
-
-export let ChartPrimaryXAxisStripLineCollectionDirective = CreateArrayTagDirective('primaryXAxis.stripLine', 'ej-chart>e-primaryxaxis-striplinecollection', ChartPrimaryXAxisStripLineDirective);
-
-let ChartPrimaryYAxisStripLineInputs = Utils.AngularizeInputs(['borderColor', 'color', 'end', 'font', 'font.color',
+    inputs: ['borderColor', 'color', 'end', 'font', 'font.color',
         'font.fontFamily', 'font.fontStyle', 'font.fontWeight', 'font.opacity', 'font.size',
         'start', 'startFromAxis', 'text', 'textAlignment', 'visible',
-        'width', 'zIndex'], []);
-
-export let ChartPrimaryYAxisStripLineDirective = CreateComplexDirective({
-    selector: 'e-primaryyaxis-striplinecollection>e-primaryyaxis-stripline',
-    inputs: ChartPrimaryYAxisStripLineInputs,
+        'width', 'zIndex'],
     queries: {
     }
 }, {
@@ -177,13 +146,28 @@ export let ChartPrimaryYAxisStripLineDirective = CreateComplexDirective({
     });
 
 
-export let ChartPrimaryYAxisStripLineCollectionDirective = CreateArrayTagDirective('primaryYAxis.stripLine', 'ej-chart>e-primaryyaxis-striplinecollection', ChartPrimaryYAxisStripLineDirective);
+export let Chart_PrimaryXAxisStripLineCollectionDirective = CreateArrayTagDirective('primaryXAxis.stripLine', 'ej-chart>e-primaryxaxis-striplinecollection', Chart_PrimaryXAxisStripLineDirective);
 
-let ChartRowDefinitionInputs = Utils.AngularizeInputs(['unit', 'rowHeight', 'lineColor', 'lineWidth'], []);
+export let Chart_PrimaryYAxisStripLineDirective = CreateComplexDirective({
+    selector: 'e-primaryyaxis-striplinecollection>e-primaryyaxis-stripline',
+    inputs: ['borderColor', 'color', 'end', 'font', 'font.color',
+        'font.fontFamily', 'font.fontStyle', 'font.fontWeight', 'font.opacity', 'font.size',
+        'start', 'startFromAxis', 'text', 'textAlignment', 'visible',
+        'width', 'zIndex'],
+    queries: {
+    }
+}, {
+         tags: [ ],
+         complexes: ['font'],
+         type: forwardRef(() => ChartComponent)
+    });
 
-export let ChartRowDefinitionDirective = CreateComplexDirective({
+
+export let Chart_PrimaryYAxisStripLineCollectionDirective = CreateArrayTagDirective('primaryYAxis.stripLine', 'ej-chart>e-primaryyaxis-striplinecollection', Chart_PrimaryYAxisStripLineDirective);
+
+export let Chart_RowDefinitionDirective = CreateComplexDirective({
     selector: 'e-rowdefinitions>e-rowdefinition',
-    inputs: ChartRowDefinitionInputs,
+    inputs: ['unit', 'rowHeight', 'lineColor', 'lineWidth'],
     queries: {
     }
 }, {
@@ -193,13 +177,11 @@ export let ChartRowDefinitionDirective = CreateComplexDirective({
     });
 
 
-export let ChartRowDefinitionsDirective = CreateArrayTagDirective('rowDefinitions', 'ej-chart>e-rowdefinitions', ChartRowDefinitionDirective);
+export let Chart_RowDefinitionsDirective = CreateArrayTagDirective('rowDefinitions', 'ej-chart>e-rowdefinitions', Chart_RowDefinitionDirective);
 
-let ChartColumnDefinitionInputs = Utils.AngularizeInputs(['unit', 'columnWidth', 'lineColor', 'lineWidth'], []);
-
-export let ChartColumnDefinitionDirective = CreateComplexDirective({
+export let Chart_ColumnDefinitionDirective = CreateComplexDirective({
     selector: 'e-columndefinitions>e-columndefinition',
-    inputs: ChartColumnDefinitionInputs,
+    inputs: ['unit', 'columnWidth', 'lineColor', 'lineWidth'],
     queries: {
     }
 }, {
@@ -209,7 +191,7 @@ export let ChartColumnDefinitionDirective = CreateComplexDirective({
     });
 
 
-export let ChartColumnDefinitionsDirective = CreateArrayTagDirective('columnDefinitions', 'ej-chart>e-columndefinitions', ChartColumnDefinitionDirective);
+export let Chart_ColumnDefinitionsDirective = CreateArrayTagDirective('columnDefinitions', 'ej-chart>e-columndefinitions', Chart_ColumnDefinitionDirective);
 
 
 let Outputs = ['animationComplete', 'axesLabelRendering', 'axesLabelsInitialize', 'axesRangeCalculate', 'axesTitleRendering',
@@ -329,13 +311,13 @@ export let ChartComponent = CreateComponent('Chart', {
     outputs: Outputs,
     template: '',
     queries: {
-        _series : new ContentChild(ChartSeriesCollectionDirective),
-        _indicators : new ContentChild(ChartIndicatorsDirective),
-        _annotations : new ContentChild(ChartAnnotationsDirective),
-        _primaryXAxis_stripLine : new ContentChild(ChartPrimaryXAxisStripLineCollectionDirective),
-        _primaryYAxis_stripLine : new ContentChild(ChartPrimaryYAxisStripLineCollectionDirective),
-        _rowDefinitions : new ContentChild(ChartRowDefinitionsDirective),
-        _columnDefinitions : new ContentChild(ChartColumnDefinitionsDirective),
+        _series : new ContentChild(Chart_SeriesCollectionDirective),
+        _indicators : new ContentChild(Chart_IndicatorsDirective),
+        _annotations : new ContentChild(Chart_AnnotationsDirective),
+        _primaryXAxis_stripLine : new ContentChild(Chart_PrimaryXAxisStripLineCollectionDirective),
+        _primaryYAxis_stripLine : new ContentChild(Chart_PrimaryYAxisStripLineCollectionDirective),
+        _rowDefinitions : new ContentChild(Chart_RowDefinitionsDirective),
+        _columnDefinitions : new ContentChild(Chart_ColumnDefinitionsDirective),
     }
 }, {
         tags: ['series', 'indicators', 'annotations', 'primaryXAxis.stripLine', 'primaryYAxis.stripLine', 'rowDefinitions', 'columnDefinitions'],
@@ -343,5 +325,5 @@ export let ChartComponent = CreateComponent('Chart', {
         complexes: ComplexProperties,
     });
 
-export const EJ_CHART_COMPONENTS: Type<any>[] = [ChartComponent , ChartTrendlinesDirective, ChartPointsDirective, ChartSeriesCollectionDirective, ChartIndicatorsDirective, ChartAnnotationsDirective, ChartPrimaryXAxisStripLineCollectionDirective, ChartPrimaryYAxisStripLineCollectionDirective, ChartRowDefinitionsDirective, ChartColumnDefinitionsDirective, ChartTrendlineDirective, ChartPointDirective, ChartSeriesDirective, ChartIndicatorDirective, ChartAnnotationDirective, ChartPrimaryXAxisStripLineDirective, ChartPrimaryYAxisStripLineDirective, ChartRowDefinitionDirective, ChartColumnDefinitionDirective];
+export const EJ_CHART_COMPONENTS: Type<any>[] = [ChartComponent , Chart_TrendlinesDirective, Chart_PointsDirective, Chart_SeriesCollectionDirective, Chart_IndicatorsDirective, Chart_AnnotationsDirective, Chart_PrimaryXAxisStripLineCollectionDirective, Chart_PrimaryYAxisStripLineCollectionDirective, Chart_RowDefinitionsDirective, Chart_ColumnDefinitionsDirective, Chart_TrendlineDirective, Chart_PointDirective, Chart_SeriesDirective, Chart_IndicatorDirective, Chart_AnnotationDirective, Chart_PrimaryXAxisStripLineDirective, Chart_PrimaryYAxisStripLineDirective, Chart_RowDefinitionDirective, Chart_ColumnDefinitionDirective];
 

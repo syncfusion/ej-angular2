@@ -1,11 +1,9 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let RadialMenuItemInputs = Utils.AngularizeInputs(['imageUrl', 'text', 'enabled', 'click', 'badge',
-        'badge.enabled', 'badge.value', 'type', 'sliderSettings', 'sliderSettings.ticks',
-        'sliderSettings.strokeWidth', 'sliderSettings.labelSpace', 'items'], []);
-
-export let RadialMenuItemDirective = CreateComplexDirective({
+export let RadialMenu_ItemDirective = CreateComplexDirective({
     selector: 'e-items>e-item',
-    inputs: RadialMenuItemInputs,
+    inputs: ['imageUrl', 'text', 'enabled', 'click', 'badge',
+        'badge.enabled', 'badge.value', 'type', 'sliderSettings', 'sliderSettings.ticks',
+        'sliderSettings.strokeWidth', 'sliderSettings.labelSpace', 'items'],
     queries: {
     }
 }, {
@@ -15,7 +13,7 @@ export let RadialMenuItemDirective = CreateComplexDirective({
     });
 
 
-export let RadialMenuItemsDirective = CreateArrayTagDirective('items', 'ej-radialmenu>e-items', RadialMenuItemDirective);
+export let RadialMenu_ItemsDirective = CreateArrayTagDirective('items', 'ej-radialmenu>e-items', RadialMenu_ItemDirective);
 
 
 let Outputs = ['click', 'open', 'close'
@@ -29,7 +27,7 @@ export let RadialMenuComponent = CreateComponent('RadialMenu', {
     outputs: Outputs,
     template: '',
     queries: {
-        _items : new ContentChild(RadialMenuItemsDirective),
+        _items : new ContentChild(RadialMenu_ItemsDirective),
     }
 }, {
         tags: ['items'],
@@ -37,5 +35,5 @@ export let RadialMenuComponent = CreateComponent('RadialMenu', {
         complexes: ComplexProperties,
     });
 
-export const EJ_RADIALMENU_COMPONENTS: Type<any>[] = [RadialMenuComponent , RadialMenuItemsDirective, RadialMenuItemDirective];
+export const EJ_RADIALMENU_COMPONENTS: Type<any>[] = [RadialMenuComponent , RadialMenu_ItemsDirective, RadialMenu_ItemDirective];
 

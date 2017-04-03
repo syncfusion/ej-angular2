@@ -1,12 +1,10 @@
 import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-let TreeGridColumnInputs = Utils.AngularizeInputs(['allowFiltering', 'allowSorting', 'allowCellSelection', 'editType', 'field',
+export let TreeGrid_ColumnDirective = CreateComplexDirective({
+    selector: 'e-treegrid-columns>e-treegrid-column',
+    inputs: ['allowFiltering', 'allowSorting', 'allowCellSelection', 'editType', 'field',
         'filterEditType', 'headerText', 'showCheckbox', 'visible', 'width',
         'headerTemplateID', 'format', 'isTemplateColumn', 'headerTextAlign', 'isFrozen',
-        'textAlign', 'templateID', 'allowEditing', 'allowFreezing'], []);
-
-export let TreeGridColumnDirective = CreateComplexDirective({
-    selector: 'e-treegrid-columns>e-treegrid-column',
-    inputs: TreeGridColumnInputs,
+        'textAlign', 'templateID', 'allowEditing', 'allowFreezing'],
     queries: {
     }
 }, {
@@ -16,7 +14,7 @@ export let TreeGridColumnDirective = CreateComplexDirective({
     });
 
 
-export let TreeGridColumnsDirective = CreateArrayTagDirective('columns', 'ej-treegrid>e-treegrid-columns', TreeGridColumnDirective);
+export let TreeGrid_ColumnsDirective = CreateArrayTagDirective('columns', 'ej-treegrid>e-treegrid-columns', TreeGrid_ColumnDirective);
 
 
 let Outputs = ['actionBegin', 'actionComplete', 'beginEdit', 'collapsed', 'collapsing',
@@ -50,7 +48,7 @@ export let TreeGridComponent = CreateComponent('TreeGrid', {
     outputs: Outputs,
     template: '',
     queries: {
-        _columns : new ContentChild(TreeGridColumnsDirective),
+        _columns : new ContentChild(TreeGrid_ColumnsDirective),
     }
 }, {
         tags: ['columns'],
@@ -58,5 +56,5 @@ export let TreeGridComponent = CreateComponent('TreeGrid', {
         complexes: ComplexProperties,
     });
 
-export const EJ_TREEGRID_COMPONENTS: Type<any>[] = [TreeGridComponent , TreeGridColumnsDirective, TreeGridColumnDirective];
+export const EJ_TREEGRID_COMPONENTS: Type<any>[] = [TreeGridComponent , TreeGrid_ColumnsDirective, TreeGrid_ColumnDirective];
 
