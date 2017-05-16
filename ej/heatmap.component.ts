@@ -1,48 +1,114 @@
-import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let HeatMap_ColorMappingDirective = CreateComplexDirective({
+import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.heatmap.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+@Directive({
     selector: 'e-colormappingcollection>e-colormapping',
-    inputs: ['color', 'value', 'label', 'label.bold', 'label.italic',
-        'label.text', 'label.textDecoration', 'label.fontSize', 'label.fontFamily', 'label.fontColor'],
-    queries: {
+})
+export class HeatMapColorMappingDirective extends ComplexTagElement {
+
+	@Input('color') color: any;
+	@Input('value') value: any;
+	@Input('label') label: any;
+	@Input('label.bold') label_bold: any;
+	@Input('label.italic') label_italic: any;
+	@Input('label.text') label_text: any;
+	@Input('label.textDecoration') label_textDecoration: any;
+	@Input('label.fontSize') label_fontSize: any;
+	@Input('label.fontFamily') label_fontFamily: any;
+	@Input('label.fontColor') label_fontColor: any;
+
+    
+    constructor( @Inject(forwardRef(() => HeatMapComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: ['label'],
-         type: forwardRef(() => HeatMapComponent)
-    });
+}
 
 
-export let HeatMap_ColorMappingCollectionDirective = CreateArrayTagDirective('colorMappingCollection', 'ej-heatmap>e-colormappingcollection', HeatMap_ColorMappingDirective);
+@Directive({
+    selector: 'ej-heatmap>e-colormappingcollection',
+    queries: {
+        children: new ContentChildren(HeatMapColorMappingDirective)
+    }
+})
+export class HeatMapColorMappingCollectionDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => HeatMapComponent)) widget: EJComponents<any, any>) {
+        super('colorMappingCollection')
+        }
+}
 
 
-let Outputs = ['cellMouseOver', 'cellMouseEnter', 'cellMouseLeave', 'cellSelected'
-    ];
-let ComplexProperties = ['tooltipSettings', 'heatMapCell', 'defaultColumnStyle', 'itemsMapping', 'tooltipSettings.position',
-    'tooltipSettings.position.target', 'tooltipSettings.position.stem', 'tooltipSettings.animation', 'itemsMapping.columnStyle', 'itemsMapping.column',
-    'itemsMapping.row', 'itemsMapping.value', 'itemsMapping.headerMapping'];
-let Inputs = Utils.AngularizeInputs(['width', 'height', 'id', 'showTooltip', 'tooltipSettings',
-    'itemsSource', 'heatMapCell', 'isResponsive', 'enableVirtualization', 'defaultColumnStyle',
-    'legendCollection', 'itemsMapping', 'tooltipSettings.templateId', 'tooltipSettings.associate', 'tooltipSettings.isBalloon',
-    'tooltipSettings.position', 'tooltipSettings.position.target', 'tooltipSettings.position.stem', 'tooltipSettings.trigger', 'tooltipSettings.animation',
-    'tooltipSettings.animation.effect', 'tooltipSettings.animation.speed', 'heatMapCell.showContent', 'heatMapCell.showColor', 'defaultColumnStyle.textAlign',
-    'defaultColumnStyle.headerTemplateID', 'defaultColumnStyle.templateID', 'itemsMapping.columnStyle', 'itemsMapping.columnStyle.width', 'itemsMapping.columnStyle.textAlign',
-    'itemsMapping.columnStyle.headerTemplateID', 'itemsMapping.columnStyle.templateID', 'itemsMapping.column', 'itemsMapping.column.propertyName', 'itemsMapping.column.displayName',
-    'itemsMapping.row', 'itemsMapping.row.propertyName', 'itemsMapping.row.displayName', 'itemsMapping.value', 'itemsMapping.value.propertyName',
-    'itemsMapping.value.displayName', 'itemsMapping.headerMapping', 'itemsMapping.headerMapping.propertyName', 'itemsMapping.headerMapping.displayName', 'itemsMapping.headerMapping.columnStyle',
-    'itemsMapping.columnMapping', 'colorMappingCollection'], []);
-export let HeatMapComponent = CreateComponent('HeatMap', {
+
+
+@Component({
     selector: 'ej-heatmap',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-        _colorMappingCollection : new ContentChild(HeatMap_ColorMappingCollectionDirective),
-    }
-}, {
-        tags: ['colorMappingCollection'],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class HeatMapComponent extends EJComponents<any, any> {
+	@Input('width') width_input: any;
+	@Input('height') height_input: any;
+	@Input('id') id_input: any;
+	@Input('showTooltip') showTooltip_input: any;
+	@Input('tooltipSettings') tooltipSettings_input: any;
+	@Input('itemsSource') itemsSource_input: any;
+	@Input('heatMapCell') heatMapCell_input: any;
+	@Input('isResponsive') isResponsive_input: any;
+	@Input('enableVirtualization') enableVirtualization_input: any;
+	@Input('defaultColumnStyle') defaultColumnStyle_input: any;
+	@Input('legendCollection') legendCollection_input: any;
+	@Input('itemsMapping') itemsMapping_input: any;
+	@Input('tooltipSettings.templateId') tooltipSettings_templateId_input: any;
+	@Input('tooltipSettings.associate') tooltipSettings_associate_input: any;
+	@Input('tooltipSettings.isBalloon') tooltipSettings_isBalloon_input: any;
+	@Input('tooltipSettings.position') tooltipSettings_position_input: any;
+	@Input('tooltipSettings.position.target') tooltipSettings_position_target_input: any;
+	@Input('tooltipSettings.position.stem') tooltipSettings_position_stem_input: any;
+	@Input('tooltipSettings.trigger') tooltipSettings_trigger_input: any;
+	@Input('tooltipSettings.animation') tooltipSettings_animation_input: any;
+	@Input('tooltipSettings.animation.effect') tooltipSettings_animation_effect_input: any;
+	@Input('tooltipSettings.animation.speed') tooltipSettings_animation_speed_input: any;
+	@Input('heatMapCell.showContent') heatMapCell_showContent_input: any;
+	@Input('heatMapCell.showColor') heatMapCell_showColor_input: any;
+	@Input('defaultColumnStyle.textAlign') defaultColumnStyle_textAlign_input: any;
+	@Input('defaultColumnStyle.headerTemplateID') defaultColumnStyle_headerTemplateID_input: any;
+	@Input('defaultColumnStyle.templateID') defaultColumnStyle_templateID_input: any;
+	@Input('itemsMapping.columnStyle') itemsMapping_columnStyle_input: any;
+	@Input('itemsMapping.columnStyle.width') itemsMapping_columnStyle_width_input: any;
+	@Input('itemsMapping.columnStyle.textAlign') itemsMapping_columnStyle_textAlign_input: any;
+	@Input('itemsMapping.columnStyle.headerTemplateID') itemsMapping_columnStyle_headerTemplateID_input: any;
+	@Input('itemsMapping.columnStyle.templateID') itemsMapping_columnStyle_templateID_input: any;
+	@Input('itemsMapping.column') itemsMapping_column_input: any;
+	@Input('itemsMapping.column.propertyName') itemsMapping_column_propertyName_input: any;
+	@Input('itemsMapping.column.displayName') itemsMapping_column_displayName_input: any;
+	@Input('itemsMapping.row') itemsMapping_row_input: any;
+	@Input('itemsMapping.row.propertyName') itemsMapping_row_propertyName_input: any;
+	@Input('itemsMapping.row.displayName') itemsMapping_row_displayName_input: any;
+	@Input('itemsMapping.value') itemsMapping_value_input: any;
+	@Input('itemsMapping.value.propertyName') itemsMapping_value_propertyName_input: any;
+	@Input('itemsMapping.value.displayName') itemsMapping_value_displayName_input: any;
+	@Input('itemsMapping.headerMapping') itemsMapping_headerMapping_input: any;
+	@Input('itemsMapping.headerMapping.propertyName') itemsMapping_headerMapping_propertyName_input: any;
+	@Input('itemsMapping.headerMapping.displayName') itemsMapping_headerMapping_displayName_input: any;
+	@Input('itemsMapping.headerMapping.columnStyle') itemsMapping_headerMapping_columnStyle_input: any;
+	@Input('itemsMapping.columnMapping') itemsMapping_columnMapping_input: any;
+	@Input('colorMappingCollection') colorMappingCollection_input: any;
 
-export const EJ_HEATMAP_COMPONENTS: Type<any>[] = [HeatMapComponent , HeatMap_ColorMappingCollectionDirective, HeatMap_ColorMappingDirective];
+
+	@Output('cellMouseOver') cellMouseOver_output = new EventEmitter();
+	@Output('cellMouseEnter') cellMouseEnter_output = new EventEmitter();
+	@Output('cellMouseLeave') cellMouseLeave_output = new EventEmitter();
+	@Output('cellSelected') cellSelected_output = new EventEmitter();
+
+	@ContentChild(HeatMapColorMappingCollectionDirective) tag_colorMappingCollection: any;
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('HeatMap', el, cdRef, ['colorMappingCollection']);
+    }
+
+
+
+}
+
+export var EJ_HEATMAP_COMPONENTS: Type<any>[] = [HeatMapComponent
+, HeatMapColorMappingCollectionDirective, HeatMapColorMappingDirective];
+
 

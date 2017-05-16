@@ -1,24 +1,46 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.barcode.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['load'
-    ];
-let ComplexProperties = ['quietZone'];
-let Inputs = Utils.AngularizeInputs(['barcodeToTextGapHeight', 'barHeight', 'darkBarColor', 'displayText', 'enabled',
-    'encodeStartStopSymbol', 'lightBarColor', 'narrowBarWidth', 'quietZone', 'symbologyType',
-    'text', 'textColor', 'wideBarWidth', 'xDimension', 'quietZone.all',
-    'quietZone.bottom', 'quietZone.left', 'quietZone.right', 'quietZone.top'], []);
-export let BarcodeComponent = CreateComponent('Barcode', {
+
+
+@Component({
     selector: 'ej-barcode',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class BarcodeComponent extends EJComponents<any, any> {
+	@Input('barcodeToTextGapHeight') barcodeToTextGapHeight_input: any;
+	@Input('barHeight') barHeight_input: any;
+	@Input('darkBarColor') darkBarColor_input: any;
+	@Input('displayText') displayText_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('encodeStartStopSymbol') encodeStartStopSymbol_input: any;
+	@Input('lightBarColor') lightBarColor_input: any;
+	@Input('narrowBarWidth') narrowBarWidth_input: any;
+	@Input('quietZone') quietZone_input: any;
+	@Input('symbologyType') symbologyType_input: any;
+	@Input('text') text_input: any;
+	@Input('textColor') textColor_input: any;
+	@Input('wideBarWidth') wideBarWidth_input: any;
+	@Input('xDimension') xDimension_input: any;
+	@Input('quietZone.all') quietZone_all_input: any;
+	@Input('quietZone.bottom') quietZone_bottom_input: any;
+	@Input('quietZone.left') quietZone_left_input: any;
+	@Input('quietZone.right') quietZone_right_input: any;
+	@Input('quietZone.top') quietZone_top_input: any;
 
-export const EJ_BARCODE_COMPONENTS: Type<any>[] = [BarcodeComponent  ];
+
+	@Output('load') load_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('Barcode', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_BARCODE_COMPONENTS: Type<any>[] = [BarcodeComponent
+];
+
 

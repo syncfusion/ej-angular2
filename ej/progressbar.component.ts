@@ -1,23 +1,45 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.progressbar.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['change', 'complete', 'create', 'destroy', 'start'
-    ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['cssClass', 'enabled', 'enablePersistence', 'enableRTL', 'height',
-    'htmlAttributes', 'maxValue', 'minValue', 'percentage', 'showRoundedCorner',
-    'text', 'value', 'width'], []);
-export let ProgressBarComponent = CreateComponent('ProgressBar', {
+
+
+@Component({
     selector: 'ej-progressbar',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class ProgressBarComponent extends EJComponents<any, any> {
+	@Input('cssClass') cssClass_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('enablePersistence') enablePersistence_input: any;
+	@Input('enableRTL') enableRTL_input: any;
+	@Input('height') height_input: any;
+	@Input('htmlAttributes') htmlAttributes_input: any;
+	@Input('maxValue') maxValue_input: any;
+	@Input('minValue') minValue_input: any;
+	@Input('percentage') percentage_input: any;
+	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('text') text_input: any;
+	@Input('value') value_input: any;
+	@Input('width') width_input: any;
 
-export const EJ_PROGRESSBAR_COMPONENTS: Type<any>[] = [ProgressBarComponent  ];
+
+	@Output('change') change_output = new EventEmitter();
+	@Output('ejchange') ejchange_output = new EventEmitter();
+	@Output('complete') complete_output = new EventEmitter();
+	@Output('create') create_output = new EventEmitter();
+	@Output('destroy') destroy_output = new EventEmitter();
+	@Output('start') start_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('ProgressBar', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_PROGRESSBAR_COMPONENTS: Type<any>[] = [ProgressBarComponent
+];
+
 

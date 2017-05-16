@@ -1,25 +1,77 @@
-import { CreateComponent, Utils, Type, CreateControlValueAccessor } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.button.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-let Outputs = ['click', 'create', 'destroy'
-    ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['contentType', 'cssClass', 'enabled', 'enableRTL', 'height',
-    'htmlAttributes', 'imagePosition', 'prefixIcon', 'repeatButton', 'showRoundedCorner',
-    'size', 'suffixIcon', 'text', 'timeInterval', 'type',
-    'width'], []);
-export let ButtonComponent = CreateComponent('Button', {
+
+const noop = () => {
+};
+
+export const ButtonValueAccessor: any = {
+	provide: NG_VALUE_ACCESSOR,
+	useExisting: forwardRef(() => ButtonComponent),
+	multi: true
+};
+
+@Component({
     selector: '[ej-button]',
-    inputs: Inputs,
-    outputs: Outputs,
     template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    host: { '(ejchange)': 'onChange($event.value)', '(change)': 'onChange($event.value)', '(focusOut)': 'onTouched()' },
+	providers: [ButtonValueAccessor]
+})
+export class ButtonComponent extends EJComponents<any, any> implements ControlValueAccessor
+{
+	@Input('contentType') contentType_input: any;
+	@Input('cssClass') cssClass_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('enableRTL') enableRTL_input: any;
+	@Input('height') height_input: any;
+	@Input('htmlAttributes') htmlAttributes_input: any;
+	@Input('imagePosition') imagePosition_input: any;
+	@Input('prefixIcon') prefixIcon_input: any;
+	@Input('repeatButton') repeatButton_input: any;
+	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('size') size_input: any;
+	@Input('suffixIcon') suffixIcon_input: any;
+	@Input('text') text_input: any;
+	@Input('timeInterval') timeInterval_input: any;
+	@Input('type') type_input: any;
+	@Input('width') width_input: any;
 
-export let ButtonValueAccessor = CreateControlValueAccessor('[ej-button]', ButtonComponent);
-export const EJ_BUTTON_COMPONENTS: Type<any>[] = [ButtonComponent , ButtonValueAccessor ];
+
+	@Output('click') click_output = new EventEmitter();
+	@Output('ejclick') ejclick_output = new EventEmitter();
+	@Output('create') create_output = new EventEmitter();
+	@Output('destroy') destroy_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('Button', el, cdRef, []);
+    }
+
+
+    onChange: (_: any) => void = noop;
+	onTouched: () => void = noop;
+
+	writeValue(value: any): void {
+		if (this.widget) {
+			this.widget.option('model.value', value);
+		} else {
+			this.model.value = value;
+		}
+	}
+
+	registerOnChange(fn: (_: any) => void): void {
+		this.onChange = fn;
+	}
+
+	registerOnTouched(fn: () => void): void {
+		this.onTouched = fn;
+	}
+
+}
+
+export var EJ_BUTTON_COMPONENTS: Type<any>[] = [ButtonComponent
+];
+
 

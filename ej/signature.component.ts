@@ -1,23 +1,42 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.signature.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['change', 'mouseDown', 'mouseMove', 'mouseUp'
-    ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['backgroundColor', 'backgroundImage', 'enabled', 'height', 'isResponsive',
-    'saveImageFormat', 'saveWithBackground', 'showRoundedCorner', 'strokeColor', 'strokeWidth',
-    'width'], []);
-export let SignatureComponent = CreateComponent('Signature', {
+
+
+@Component({
     selector: 'ej-signature',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class SignatureComponent extends EJComponents<any, any> {
+	@Input('backgroundColor') backgroundColor_input: any;
+	@Input('backgroundImage') backgroundImage_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('height') height_input: any;
+	@Input('isResponsive') isResponsive_input: any;
+	@Input('saveImageFormat') saveImageFormat_input: any;
+	@Input('saveWithBackground') saveWithBackground_input: any;
+	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('strokeColor') strokeColor_input: any;
+	@Input('strokeWidth') strokeWidth_input: any;
+	@Input('width') width_input: any;
 
-export const EJ_SIGNATURE_COMPONENTS: Type<any>[] = [SignatureComponent ];
+
+	@Output('change') change_output = new EventEmitter();
+	@Output('ejchange') ejchange_output = new EventEmitter();
+	@Output('mouseDown') mouseDown_output = new EventEmitter();
+	@Output('mouseMove') mouseMove_output = new EventEmitter();
+	@Output('mouseUp') mouseUp_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('Signature', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_SIGNATURE_COMPONENTS: Type<any>[] = [SignatureComponent
+];
+
 

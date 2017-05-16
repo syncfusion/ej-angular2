@@ -1,23 +1,50 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.checkbox.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['beforeChange', 'change', 'create', 'destroy'
-    , 'model.checkedChange: checkedChange', 'model.checkStateChange: checkStateChange'];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['cssClass', 'enabled', 'enablePersistence', 'enableRTL', 'enableTriState',
-    'htmlAttributes', 'id', 'idPrefix', 'name', 'showRoundedCorner',
-    'size', 'text', 'validationMessage', 'validationRules', 'value'], ['checked', 'checkState']);
-export let CheckBoxComponent = CreateComponent('CheckBox', {
+
+
+@Component({
     selector: 'ej-checkbox',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: ['checked', 'checkState'],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class CheckBoxComponent extends EJComponents<any, any> {
+	@Input('cssClass') cssClass_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('enablePersistence') enablePersistence_input: any;
+	@Input('enableRTL') enableRTL_input: any;
+	@Input('enableTriState') enableTriState_input: any;
+	@Input('htmlAttributes') htmlAttributes_input: any;
+	@Input('id') id_input: any;
+	@Input('idPrefix') idPrefix_input: any;
+	@Input('name') name_input: any;
+	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('size') size_input: any;
+	@Input('text') text_input: any;
+	@Input('validationMessage') validationMessage_input: any;
+	@Input('validationRules') validationRules_input: any;
+	@Input('value') value_input: any;
 
-export const EJ_CHECKBOX_COMPONENTS: Type<any>[] = [CheckBoxComponent ];
+	@Input('checked') checked_two: any;
+	@Output('checkedChange') checked_twoChange = new EventEmitter<any>();
+	@Input('checkState') checkState_two: any;
+	@Output('checkStateChange') checkState_twoChange = new EventEmitter<any>();
+
+	@Output('beforeChange') beforeChange_output = new EventEmitter();
+	@Output('change') change_output = new EventEmitter();
+	@Output('ejchange') ejchange_output = new EventEmitter();
+	@Output('create') create_output = new EventEmitter();
+	@Output('destroy') destroy_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('CheckBox', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_CHECKBOX_COMPONENTS: Type<any>[] = [CheckBoxComponent
+];
+
 

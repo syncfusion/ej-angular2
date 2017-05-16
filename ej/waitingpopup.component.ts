@@ -1,22 +1,36 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.waitingpopup.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['create', 'destroy'
-    ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['cssClass', 'htmlAttributes', 'showImage', 'showOnInit', 'target',
-    'appendTo', 'template', 'text'], []);
-export let WaitingPopupComponent = CreateComponent('WaitingPopup', {
+
+
+@Component({
     selector: 'ej-waitingpopup',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class WaitingPopupComponent extends EJComponents<any, any> {
+	@Input('cssClass') cssClass_input: any;
+	@Input('htmlAttributes') htmlAttributes_input: any;
+	@Input('showImage') showImage_input: any;
+	@Input('showOnInit') showOnInit_input: any;
+	@Input('target') target_input: any;
+	@Input('appendTo') appendTo_input: any;
+	@Input('template') template_input: any;
+	@Input('text') text_input: any;
 
-export const EJ_WAITINGPOPUP_COMPONENTS: Type<any>[] = [WaitingPopupComponent  ];
+
+	@Output('create') create_output = new EventEmitter();
+	@Output('destroy') destroy_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('WaitingPopup', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_WAITINGPOPUP_COMPONENTS: Type<any>[] = [WaitingPopupComponent
+];
+
 

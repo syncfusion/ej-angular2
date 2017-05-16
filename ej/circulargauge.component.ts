@@ -1,165 +1,433 @@
-import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let CircularGauge_PointerDirective = CreateComplexDirective({
+import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.circulargauge.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+@Directive({
     selector: 'e-pointers>e-pointer',
-    inputs: ['backgroundColor', 'backNeedleLength', 'border', 'border.color', 'border.width',
-        'distanceFromScale', 'gradients', 'imageUrl', 'length', 'markerType',
-        'needleType', 'opacity', 'radius', 'placement', 'pointerValueText',
-        'pointerValueText.angle', 'pointerValueText.autoAngle', 'pointerValueText.color', 'pointerValueText.distance', 'pointerValueText.font',
-        'pointerValueText.font.fontFamily', 'pointerValueText.font.fontStyle', 'pointerValueText.font.size', 'pointerValueText.opacity', 'pointerValueText.showValue',
-        'showBackNeedle', 'type', 'value', 'width'],
-    queries: {
+})
+export class CircularGaugePointerDirective extends ComplexTagElement {
+
+	@Input('backgroundColor') backgroundColor: any;
+	@Input('backNeedleLength') backNeedleLength: any;
+	@Input('border') border: any;
+	@Input('border.color') border_color: any;
+	@Input('border.width') border_width: any;
+	@Input('distanceFromScale') distanceFromScale: any;
+	@Input('gradients') gradients: any;
+	@Input('imageUrl') imageUrl: any;
+	@Input('length') length: any;
+	@Input('markerType') markerType: any;
+	@Input('needleType') needleType: any;
+	@Input('opacity') opacity: any;
+	@Input('radius') radius: any;
+	@Input('placement') placement: any;
+	@Input('pointerValueText') pointerValueText: any;
+	@Input('pointerValueText.angle') pointerValueText_angle: any;
+	@Input('pointerValueText.autoAngle') pointerValueText_autoAngle: any;
+	@Input('pointerValueText.color') pointerValueText_color: any;
+	@Input('pointerValueText.distance') pointerValueText_distance: any;
+	@Input('pointerValueText.font') pointerValueText_font: any;
+	@Input('pointerValueText.font.fontFamily') pointerValueText_font_fontFamily: any;
+	@Input('pointerValueText.font.fontStyle') pointerValueText_font_fontStyle: any;
+	@Input('pointerValueText.font.size') pointerValueText_font_size: any;
+	@Input('pointerValueText.opacity') pointerValueText_opacity: any;
+	@Input('pointerValueText.showValue') pointerValueText_showValue: any;
+	@Input('showBackNeedle') showBackNeedle: any;
+	@Input('type') type: any;
+	@Input('value') value: any;
+	@Input('width') width: any;
+
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: ['border', 'pointerValueText', 'pointerValueText.font'],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_PointersDirective = CreateArrayTagDirective('pointers', 'e-scales>e-pointers', CircularGauge_PointerDirective);
+@Directive({
+    selector: 'e-scales>e-pointers',
+    queries: {
+        children: new ContentChildren(CircularGaugePointerDirective)
+    }
+})
+export class CircularGaugePointersDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('pointers')
+        }
+}
 
-export let CircularGauge_LabelDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-labels>e-label',
-    inputs: ['angle', 'autoAngle', 'color', 'distanceFromScale', 'font',
-        'font.fontFamily', 'font.fontStyle', 'font.size', 'includeFirstValue', 'opacity',
-        'placement', 'type', 'unitText', 'unitTextPosition'],
-    queries: {
+})
+export class CircularGaugeLabelDirective extends ComplexTagElement {
+
+	@Input('angle') angle: any;
+	@Input('autoAngle') autoAngle: any;
+	@Input('color') color: any;
+	@Input('distanceFromScale') distanceFromScale: any;
+	@Input('font') font: any;
+	@Input('font.fontFamily') font_fontFamily: any;
+	@Input('font.fontStyle') font_fontStyle: any;
+	@Input('font.size') font_size: any;
+	@Input('includeFirstValue') includeFirstValue: any;
+	@Input('opacity') opacity: any;
+	@Input('placement') placement: any;
+	@Input('type') type: any;
+	@Input('unitText') unitText: any;
+	@Input('unitTextPosition') unitTextPosition: any;
+
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: ['font'],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_LabelsDirective = CreateArrayTagDirective('labels', 'e-scales>e-labels', CircularGauge_LabelDirective);
+@Directive({
+    selector: 'e-scales>e-labels',
+    queries: {
+        children: new ContentChildren(CircularGaugeLabelDirective)
+    }
+})
+export class CircularGaugeLabelsDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('labels')
+        }
+}
 
-export let CircularGauge_TickDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-ticks>e-tick',
-    inputs: ['angle', 'color', 'distanceFromScale', 'height', 'placement',
-        'type', 'width'],
-    queries: {
+})
+export class CircularGaugeTickDirective extends ComplexTagElement {
+
+	@Input('angle') angle: any;
+	@Input('color') color: any;
+	@Input('distanceFromScale') distanceFromScale: any;
+	@Input('height') height: any;
+	@Input('placement') placement: any;
+	@Input('type') type: any;
+	@Input('width') width: any;
+
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: [],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_TicksDirective = CreateArrayTagDirective('ticks', 'e-scales>e-ticks', CircularGauge_TickDirective);
+@Directive({
+    selector: 'e-scales>e-ticks',
+    queries: {
+        children: new ContentChildren(CircularGaugeTickDirective)
+    }
+})
+export class CircularGaugeTicksDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('ticks')
+        }
+}
 
-export let CircularGauge_RangeDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-ranges>e-range',
-    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'distanceFromScale',
-        'endValue', 'endWidth', 'gradients', 'opacity', 'placement',
-        'size', 'startValue', 'startWidth'],
-    queries: {
+})
+export class CircularGaugeRangeDirective extends ComplexTagElement {
+
+	@Input('backgroundColor') backgroundColor: any;
+	@Input('legendText') legendText: any;
+	@Input('border') border: any;
+	@Input('border.color') border_color: any;
+	@Input('border.width') border_width: any;
+	@Input('distanceFromScale') distanceFromScale: any;
+	@Input('endValue') endValue: any;
+	@Input('endWidth') endWidth: any;
+	@Input('gradients') gradients: any;
+	@Input('opacity') opacity: any;
+	@Input('placement') placement: any;
+	@Input('size') size: any;
+	@Input('startValue') startValue: any;
+	@Input('startWidth') startWidth: any;
+
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: ['border'],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_RangesDirective = CreateArrayTagDirective('ranges', 'e-scales>e-ranges', CircularGauge_RangeDirective);
+@Directive({
+    selector: 'e-scales>e-ranges',
+    queries: {
+        children: new ContentChildren(CircularGaugeRangeDirective)
+    }
+})
+export class CircularGaugeRangesDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('ranges')
+        }
+}
 
-export let CircularGauge_StateRangeDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-stateranges>e-staterange',
-    inputs: ['backgroundColor', 'borderColor', 'endValue', 'font', 'startValue',
-        'text', 'textColor'],
-    queries: {
+})
+export class CircularGaugeStateRangeDirective extends ComplexTagElement {
+
+	@Input('backgroundColor') backgroundColor: any;
+	@Input('borderColor') borderColor: any;
+	@Input('endValue') endValue: any;
+	@Input('font') font: any;
+	@Input('startValue') startValue: any;
+	@Input('text') text: any;
+	@Input('textColor') textColor: any;
+
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: [],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_StateRangesDirective = CreateArrayTagDirective('stateRanges', 'e-indicators>e-stateranges', CircularGauge_StateRangeDirective);
+@Directive({
+    selector: 'e-indicators>e-stateranges',
+    queries: {
+        children: new ContentChildren(CircularGaugeStateRangeDirective)
+    }
+})
+export class CircularGaugeStateRangesDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('stateRanges')
+        }
+}
 
-export let CircularGauge_IndicatorDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-indicators>e-indicator',
-    inputs: ['height', 'imageUrl', 'position', 'position.x', 'position.y',
-        'stateRanges', 'type', 'width'],
-    queries: {
-        _stateRanges : new ContentChild(CircularGauge_StateRangesDirective),
+})
+export class CircularGaugeIndicatorDirective extends ComplexTagElement {
+
+	@Input('height') height: any;
+	@Input('imageUrl') imageUrl: any;
+	@Input('position') position: any;
+	@Input('position.x') position_x: any;
+	@Input('position.y') position_y: any;
+	@Input('stateRanges') stateRanges: any;
+	@Input('type') type: any;
+	@Input('width') width: any;
+
+	@ContentChild(CircularGaugeStateRangesDirective) tag_stateRanges: any;
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super(['stateRanges']);
+        this.parent = widget;
     }
-}, {
-         tags: ['stateRanges' ],
-         complexes: ['position'],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_IndicatorsDirective = CreateArrayTagDirective('indicators', 'e-scales>e-indicators', CircularGauge_IndicatorDirective);
+@Directive({
+    selector: 'e-scales>e-indicators',
+    queries: {
+        children: new ContentChildren(CircularGaugeIndicatorDirective)
+    }
+})
+export class CircularGaugeIndicatorsDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('indicators')
+        }
+}
 
-export let CircularGauge_SubGaugeDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-subgauges>e-subgauge',
-    inputs: ['height', 'position', 'position.x', 'position.y', 'width'],
-    queries: {
+})
+export class CircularGaugeSubGaugeDirective extends ComplexTagElement {
+
+	@Input('height') height: any;
+	@Input('position') position: any;
+	@Input('position.x') position_x: any;
+	@Input('position.y') position_y: any;
+	@Input('width') width: any;
+
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: ['position'],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_SubGaugesDirective = CreateArrayTagDirective('subGauges', 'e-scales>e-subgauges', CircularGauge_SubGaugeDirective);
+@Directive({
+    selector: 'e-scales>e-subgauges',
+    queries: {
+        children: new ContentChildren(CircularGaugeSubGaugeDirective)
+    }
+})
+export class CircularGaugeSubGaugesDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('subGauges')
+        }
+}
 
-export let CircularGauge_ScaleDirective = CreateComplexDirective({
+@Directive({
     selector: 'e-scales>e-scale',
-    inputs: ['backgroundColor', 'border', 'border.color', 'border.width', 'direction',
-        'customLabels', 'indicators', 'labels', 'majorIntervalValue', 'maximum',
-        'minimum', 'minorIntervalValue', 'opacity', 'pointerCap', 'pointerCap.backgroundColor',
-        'pointerCap.borderColor', 'pointerCap.borderWidth', 'pointerCap.interiorGradient', 'pointerCap.radius', 'pointers',
-        'radius', 'ranges', 'shadowOffset', 'showIndicators', 'showLabels',
-        'showPointers', 'showRanges', 'showScaleBar', 'showTicks', 'size',
-        'startAngle', 'subGauges', 'sweepAngle', 'ticks'],
-    queries: {
-        _pointers : new ContentChild(CircularGauge_PointersDirective),
-        _labels : new ContentChild(CircularGauge_LabelsDirective),
-        _ticks : new ContentChild(CircularGauge_TicksDirective),
-        _ranges : new ContentChild(CircularGauge_RangesDirective),
-        _indicators : new ContentChild(CircularGauge_IndicatorsDirective),
-        _subGauges : new ContentChild(CircularGauge_SubGaugesDirective),
+})
+export class CircularGaugeScaleDirective extends ComplexTagElement {
+
+	@Input('backgroundColor') backgroundColor: any;
+	@Input('border') border: any;
+	@Input('border.color') border_color: any;
+	@Input('border.width') border_width: any;
+	@Input('direction') direction: any;
+	@Input('customLabels') customLabels: any;
+	@Input('indicators') indicators: any;
+	@Input('labels') labels: any;
+	@Input('majorIntervalValue') majorIntervalValue: any;
+	@Input('maximum') maximum: any;
+	@Input('minimum') minimum: any;
+	@Input('minorIntervalValue') minorIntervalValue: any;
+	@Input('opacity') opacity: any;
+	@Input('pointerCap') pointerCap: any;
+	@Input('pointerCap.backgroundColor') pointerCap_backgroundColor: any;
+	@Input('pointerCap.borderColor') pointerCap_borderColor: any;
+	@Input('pointerCap.borderWidth') pointerCap_borderWidth: any;
+	@Input('pointerCap.interiorGradient') pointerCap_interiorGradient: any;
+	@Input('pointerCap.radius') pointerCap_radius: any;
+	@Input('pointers') pointers: any;
+	@Input('radius') radius: any;
+	@Input('ranges') ranges: any;
+	@Input('shadowOffset') shadowOffset: any;
+	@Input('showIndicators') showIndicators: any;
+	@Input('showLabels') showLabels: any;
+	@Input('showPointers') showPointers: any;
+	@Input('showRanges') showRanges: any;
+	@Input('showScaleBar') showScaleBar: any;
+	@Input('showTicks') showTicks: any;
+	@Input('size') size: any;
+	@Input('startAngle') startAngle: any;
+	@Input('subGauges') subGauges: any;
+	@Input('sweepAngle') sweepAngle: any;
+	@Input('ticks') ticks: any;
+
+	@ContentChild(CircularGaugePointersDirective) tag_pointers: any;
+	@ContentChild(CircularGaugeLabelsDirective) tag_labels: any;
+	@ContentChild(CircularGaugeTicksDirective) tag_ticks: any;
+	@ContentChild(CircularGaugeRangesDirective) tag_ranges: any;
+	@ContentChild(CircularGaugeIndicatorsDirective) tag_indicators: any;
+	@ContentChild(CircularGaugeSubGaugesDirective) tag_subGauges: any;
+    
+    constructor( @Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super(['pointers', 'labels', 'ticks', 'ranges', 'indicators', 'subGauges']);
+        this.parent = widget;
     }
-}, {
-         tags: ['pointers', 'labels', 'ticks', 'ranges', 'indicators', 'subGauges' ],
-         complexes: ['border', 'pointerCap'],
-         type: forwardRef(() => CircularGaugeComponent)
-    });
+}
 
 
-export let CircularGauge_ScalesDirective = CreateArrayTagDirective('scales', 'ej-circulargauge>e-scales', CircularGauge_ScaleDirective);
+@Directive({
+    selector: 'ej-circulargauge>e-scales',
+    queries: {
+        children: new ContentChildren(CircularGaugeScaleDirective)
+    }
+})
+export class CircularGaugeScalesDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => CircularGaugeComponent)) widget: EJComponents<any, any>) {
+        super('scales')
+        }
+}
 
 
-let Outputs = ['drawCustomLabel', 'drawIndicators', 'drawLabels', 'drawPointerCap', 'drawPointers',
-    'drawRange', 'drawTicks', 'load', 'mouseClick', 'mouseClickMove',
-    'mouseClickUp', 'renderComplete'
-    , 'model.valueChange: valueChange', 'model.minimumChange: minimumChange', 'model.maximumChange: maximumChange'];
-let ComplexProperties = ['frame', 'tooltip'];
-let Inputs = Utils.AngularizeInputs(['animationSpeed', 'backgroundColor', 'distanceFromCorner', 'enableAnimation', 'frame',
-    'gaugePosition', 'height', 'interiorGradient', 'isRadialGradient', 'isResponsive',
-    'outerCustomLabelPosition', 'radius', 'readOnly', 'theme', 'tooltip',
-    'width', 'frame.backgroundImageUrl', 'frame.frameType', 'frame.halfCircleFrameEndAngle', 'frame.halfCircleFrameStartAngle',
-    'tooltip.showCustomLabelTooltip', 'tooltip.showLabelTooltip', 'tooltip.templateID', 'scales', 'scales.indicators.stateRanges'], ['value', 'minimum', 'maximum']);
-export let CircularGaugeComponent = CreateComponent('CircularGauge', {
+
+
+@Component({
     selector: 'ej-circulargauge',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-        _scales : new ContentChild(CircularGauge_ScalesDirective),
-    }
-}, {
-        tags: ['scales'],
-        twoways: ['value', 'minimum', 'maximum'],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class CircularGaugeComponent extends EJComponents<any, any> {
+	@Input('animationSpeed') animationSpeed_input: any;
+	@Input('backgroundColor') backgroundColor_input: any;
+	@Input('distanceFromCorner') distanceFromCorner_input: any;
+	@Input('enableAnimation') enableAnimation_input: any;
+	@Input('enableGroupSeparator') enableGroupSeparator_input: any;
+	@Input('enableResize') enableResize_input: any;
+	@Input('frame') frame_input: any;
+	@Input('gaugePosition') gaugePosition_input: any;
+	@Input('height') height_input: any;
+	@Input('interiorGradient') interiorGradient_input: any;
+	@Input('isRadialGradient') isRadialGradient_input: any;
+	@Input('isResponsive') isResponsive_input: any;
+	@Input('locale') locale_input: any;
+	@Input('outerCustomLabelPosition') outerCustomLabelPosition_input: any;
+	@Input('radius') radius_input: any;
+	@Input('readOnly') readOnly_input: any;
+	@Input('theme') theme_input: any;
+	@Input('legend') legend_input: any;
+	@Input('tooltip') tooltip_input: any;
+	@Input('width') width_input: any;
+	@Input('frame.backgroundImageUrl') frame_backgroundImageUrl_input: any;
+	@Input('frame.frameType') frame_frameType_input: any;
+	@Input('frame.halfCircleFrameEndAngle') frame_halfCircleFrameEndAngle_input: any;
+	@Input('frame.halfCircleFrameStartAngle') frame_halfCircleFrameStartAngle_input: any;
+	@Input('legend.visible') legend_visible_input: any;
+	@Input('legend.alignment') legend_alignment_input: any;
+	@Input('legend.border') legend_border_input: any;
+	@Input('legend.border.color') legend_border_color_input: any;
+	@Input('legend.border.width') legend_border_width_input: any;
+	@Input('legend.fill') legend_fill_input: any;
+	@Input('legend.itemPadding') legend_itemPadding_input: any;
+	@Input('legend.itemStyle') legend_itemStyle_input: any;
+	@Input('legend.itemStyle.border') legend_itemStyle_border_input: any;
+	@Input('legend.itemStyle.height') legend_itemStyle_height_input: any;
+	@Input('legend.itemStyle.width') legend_itemStyle_width_input: any;
+	@Input('legend.opacity') legend_opacity_input: any;
+	@Input('legend.position') legend_position_input: any;
+	@Input('legend.shape') legend_shape_input: any;
+	@Input('legend.size') legend_size_input: any;
+	@Input('legend.size.height') legend_size_height_input: any;
+	@Input('legend.size.width') legend_size_width_input: any;
+	@Input('legend.font') legend_font_input: any;
+	@Input('legend.font.fontFamily') legend_font_fontFamily_input: any;
+	@Input('legend.font.fontStyle') legend_font_fontStyle_input: any;
+	@Input('legend.font.fontWeight') legend_font_fontWeight_input: any;
+	@Input('legend.font.size') legend_font_size_input: any;
+	@Input('legend.font.color') legend_font_color_input: any;
+	@Input('tooltip.showCustomLabelTooltip') tooltip_showCustomLabelTooltip_input: any;
+	@Input('tooltip.showLabelTooltip') tooltip_showLabelTooltip_input: any;
+	@Input('tooltip.templateID') tooltip_templateID_input: any;
+	@Input('scales') scales_input: any;
+	@Input('scales.indicators.stateRanges') scales_indicators_stateRanges_input: any;
 
-export const EJ_CIRCULARGAUGE_COMPONENTS: Type<any>[] = [CircularGaugeComponent , CircularGauge_PointersDirective, CircularGauge_LabelsDirective, CircularGauge_TicksDirective, CircularGauge_RangesDirective, CircularGauge_StateRangesDirective, CircularGauge_IndicatorsDirective, CircularGauge_SubGaugesDirective, CircularGauge_ScalesDirective, CircularGauge_PointerDirective, CircularGauge_LabelDirective, CircularGauge_TickDirective, CircularGauge_RangeDirective, CircularGauge_StateRangeDirective, CircularGauge_IndicatorDirective, CircularGauge_SubGaugeDirective, CircularGauge_ScaleDirective];
+	@Input('value') value_two: any;
+	@Output('valueChange') value_twoChange = new EventEmitter<any>();
+	@Input('minimum') minimum_two: any;
+	@Output('minimumChange') minimum_twoChange = new EventEmitter<any>();
+	@Input('maximum') maximum_two: any;
+	@Output('maximumChange') maximum_twoChange = new EventEmitter<any>();
+
+	@Output('legendItemRender') legendItemRender_output = new EventEmitter();
+	@Output('legendItemClick') legendItemClick_output = new EventEmitter();
+	@Output('rangeMouseMove') rangeMouseMove_output = new EventEmitter();
+	@Output('drawCustomLabel') drawCustomLabel_output = new EventEmitter();
+	@Output('drawIndicators') drawIndicators_output = new EventEmitter();
+	@Output('drawLabels') drawLabels_output = new EventEmitter();
+	@Output('drawPointerCap') drawPointerCap_output = new EventEmitter();
+	@Output('drawPointers') drawPointers_output = new EventEmitter();
+	@Output('drawRange') drawRange_output = new EventEmitter();
+	@Output('drawTicks') drawTicks_output = new EventEmitter();
+	@Output('load') load_output = new EventEmitter();
+	@Output('mouseClick') mouseClick_output = new EventEmitter();
+	@Output('mouseClickMove') mouseClickMove_output = new EventEmitter();
+	@Output('mouseClickUp') mouseClickUp_output = new EventEmitter();
+	@Output('renderComplete') renderComplete_output = new EventEmitter();
+
+	@ContentChild(CircularGaugeScalesDirective) tag_scales: any;
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('CircularGauge', el, cdRef, ['scales']);
+    }
+
+
+
+}
+
+export var EJ_CIRCULARGAUGE_COMPONENTS: Type<any>[] = [CircularGaugeComponent
+, CircularGaugePointersDirective, CircularGaugeLabelsDirective, CircularGaugeTicksDirective, CircularGaugeRangesDirective, CircularGaugeStateRangesDirective, CircularGaugeIndicatorsDirective, CircularGaugeSubGaugesDirective, CircularGaugeScalesDirective, CircularGaugePointerDirective, CircularGaugeLabelDirective, CircularGaugeTickDirective, CircularGaugeRangeDirective, CircularGaugeStateRangeDirective, CircularGaugeIndicatorDirective, CircularGaugeSubGaugeDirective, CircularGaugeScaleDirective];
+
 

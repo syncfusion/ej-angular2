@@ -1,23 +1,45 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.groupbutton.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['beforeSelect', 'create', 'destroy', 'keyPress', 'select'
-    ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['cssClass', 'dataSource', 'enableRTL', 'enabled', 'fields',
-    'groupButtonMode', 'height', 'htmlAttributes', 'orientation', 'query',
-    'selectedItemIndex', 'showRoundedCorner', 'size', 'width'], []);
-export let GroupButtonComponent = CreateComponent('GroupButton', {
+
+
+@Component({
     selector: 'ej-groupbutton',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '<ng-content></ng-content>',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: '<ng-content></ng-content>'})
+export class GroupButtonComponent extends EJComponents<any, any> {
+	@Input('cssClass') cssClass_input: any;
+	@Input('dataSource') dataSource_input: any;
+	@Input('enableRTL') enableRTL_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('fields') fields_input: any;
+	@Input('groupButtonMode') groupButtonMode_input: any;
+	@Input('height') height_input: any;
+	@Input('htmlAttributes') htmlAttributes_input: any;
+	@Input('orientation') orientation_input: any;
+	@Input('query') query_input: any;
+	@Input('selectedItemIndex') selectedItemIndex_input: any;
+	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('size') size_input: any;
+	@Input('width') width_input: any;
 
-export const EJ_GROUPBUTTON_COMPONENTS: Type<any>[] = [GroupButtonComponent ];
+
+	@Output('beforeSelect') beforeSelect_output = new EventEmitter();
+	@Output('create') create_output = new EventEmitter();
+	@Output('destroy') destroy_output = new EventEmitter();
+	@Output('keyPress') keyPress_output = new EventEmitter();
+	@Output('select') select_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('GroupButton', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_GROUPBUTTON_COMPONENTS: Type<any>[] = [GroupButtonComponent
+];
+
 

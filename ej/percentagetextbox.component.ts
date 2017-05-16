@@ -1,27 +1,90 @@
-import { CreateComponent, Utils, Type, CreateControlValueAccessor } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.editor.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-let Outputs = ['change', 'create', 'destroy', 'focusIn', 'focusOut'
-    ];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['currencySymbol', 'cssClass', 'decimalPlaces', 'enabled', 'enablePersistence',
-    'enableRTL', 'enableStrictMode', 'groupSize', 'groupSeparator', 'height',
-    'htmlAttributes', 'incrementStep', 'locale', 'maxValue', 'minValue',
-    'name', 'negativePattern', 'positivePattern', 'readOnly', 'showRoundedCorner',
-    'showSpinButton', 'validateOnType', 'validationMessage', 'validationRules', 'value',
-    'watermarkText', 'width'], []);
-export let PercentageTextboxComponent = CreateComponent('PercentageTextbox', {
+
+const noop = () => {
+};
+
+export const PercentageTextboxValueAccessor: any = {
+	provide: NG_VALUE_ACCESSOR,
+	useExisting: forwardRef(() => PercentageTextboxComponent),
+	multi: true
+};
+
+@Component({
     selector: '[ej-percentagetextbox]',
-    inputs: Inputs,
-    outputs: Outputs,
     template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    host: { '(ejchange)': 'onChange($event.value)', '(change)': 'onChange($event.value)', '(focusOut)': 'onTouched()' },
+	providers: [PercentageTextboxValueAccessor]
+})
+export class PercentageTextboxComponent extends EJComponents<any, any> implements ControlValueAccessor
+{
+	@Input('currencySymbol') currencySymbol_input: any;
+	@Input('cssClass') cssClass_input: any;
+	@Input('decimalPlaces') decimalPlaces_input: any;
+	@Input('enabled') enabled_input: any;
+	@Input('enablePersistence') enablePersistence_input: any;
+	@Input('enableRTL') enableRTL_input: any;
+	@Input('enableStrictMode') enableStrictMode_input: any;
+	@Input('groupSize') groupSize_input: any;
+	@Input('groupSeparator') groupSeparator_input: any;
+	@Input('height') height_input: any;
+	@Input('htmlAttributes') htmlAttributes_input: any;
+	@Input('incrementStep') incrementStep_input: any;
+	@Input('locale') locale_input: any;
+	@Input('maxValue') maxValue_input: any;
+	@Input('minValue') minValue_input: any;
+	@Input('name') name_input: any;
+	@Input('negativePattern') negativePattern_input: any;
+	@Input('positivePattern') positivePattern_input: any;
+	@Input('readOnly') readOnly_input: any;
+	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('showSpinButton') showSpinButton_input: any;
+	@Input('validateOnType') validateOnType_input: any;
+	@Input('validationMessage') validationMessage_input: any;
+	@Input('validationRules') validationRules_input: any;
+	@Input('value') value_input: any;
+	@Input('watermarkText') watermarkText_input: any;
+	@Input('width') width_input: any;
 
-export let PercentageTextboxValueAccessor = CreateControlValueAccessor('[ej-percentagetextbox]', PercentageTextboxComponent);
-export const EJ_PERCENTAGETEXTBOX_COMPONENTS: Type<any>[] = [PercentageTextboxComponent , PercentageTextboxValueAccessor];
+
+	@Output('change') change_output = new EventEmitter();
+	@Output('ejchange') ejchange_output = new EventEmitter();
+	@Output('create') create_output = new EventEmitter();
+	@Output('destroy') destroy_output = new EventEmitter();
+	@Output('focusIn') focusIn_output = new EventEmitter();
+	@Output('focusOut') focusOut_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('PercentageTextbox', el, cdRef, []);
+    }
+
+
+    onChange: (_: any) => void = noop;
+	onTouched: () => void = noop;
+
+	writeValue(value: any): void {
+		if (this.widget) {
+			this.widget.option('model.value', value);
+		} else {
+			this.model.value = value;
+		}
+	}
+
+	registerOnChange(fn: (_: any) => void): void {
+		this.onChange = fn;
+	}
+
+	registerOnTouched(fn: () => void): void {
+		this.onTouched = fn;
+	}
+
+}
+
+export var EJ_PERCENTAGETEXTBOX_COMPONENTS: Type<any>[] = [PercentageTextboxComponent
+];
+
 

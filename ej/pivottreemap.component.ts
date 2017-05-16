@@ -1,25 +1,51 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.pivottreemap.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['afterServiceInvoke', 'beforeServiceInvoke', 'load', 'beforePivotEnginePopulate', 'drillSuccess',
-    'renderComplete', 'renderFailure', 'renderSuccess'
-    ];
-let ComplexProperties = ['dataSource', 'serviceMethodSettings'];
-let Inputs = Utils.AngularizeInputs(['cssClass', 'dataSource', 'customObject', 'isResponsive', 'locale',
-    'operationalMode', 'serviceMethodSettings', 'url', 'dataSource.data', 'dataSource.cube',
-    'dataSource.catalog', 'serviceMethodSettings.initialize', 'serviceMethodSettings.drillDown', 'dataSource.columns', 'dataSource.rows',
-    'dataSource.values', 'dataSource.filters'], []);
-export let PivotTreeMapComponent = CreateComponent('PivotTreeMap', {
+
+
+@Component({
     selector: 'ej-pivottreemap',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class PivotTreeMapComponent extends EJComponents<any, any> {
+	@Input('cssClass') cssClass_input: any;
+	@Input('dataSource') dataSource_input: any;
+	@Input('customObject') customObject_input: any;
+	@Input('isResponsive') isResponsive_input: any;
+	@Input('locale') locale_input: any;
+	@Input('operationalMode') operationalMode_input: any;
+	@Input('serviceMethodSettings') serviceMethodSettings_input: any;
+	@Input('url') url_input: any;
+	@Input('dataSource.data') dataSource_data_input: any;
+	@Input('dataSource.cube') dataSource_cube_input: any;
+	@Input('dataSource.catalog') dataSource_catalog_input: any;
+	@Input('serviceMethodSettings.initialize') serviceMethodSettings_initialize_input: any;
+	@Input('serviceMethodSettings.drillDown') serviceMethodSettings_drillDown_input: any;
+	@Input('dataSource.columns') dataSource_columns_input: any;
+	@Input('dataSource.rows') dataSource_rows_input: any;
+	@Input('dataSource.values') dataSource_values_input: any;
+	@Input('dataSource.filters') dataSource_filters_input: any;
 
-export const EJ_PIVOTTREEMAP_COMPONENTS: Type<any>[] = [PivotTreeMapComponent  ];
+
+	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
+	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
+	@Output('load') load_output = new EventEmitter();
+	@Output('beforePivotEnginePopulate') beforePivotEnginePopulate_output = new EventEmitter();
+	@Output('drillSuccess') drillSuccess_output = new EventEmitter();
+	@Output('renderComplete') renderComplete_output = new EventEmitter();
+	@Output('renderFailure') renderFailure_output = new EventEmitter();
+	@Output('renderSuccess') renderSuccess_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('PivotTreeMap', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_PIVOTTREEMAP_COMPONENTS: Type<any>[] = [PivotTreeMapComponent
+];
+
 

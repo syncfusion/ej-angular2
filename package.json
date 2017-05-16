@@ -1,11 +1,12 @@
 {
   "name": "ej-angular2",
   "description": "Angular 2 components for Syncfusion JavaScript widgets",
-  "version": "15.1.43",
+  "version": "15.2.41",
   "scripts": {
     "lint": "tslint ej/**/*.ts",
-    "prepublish": "tsc",
-    "tsc": "tsc"
+    "prepublish": "npm run build:aot",
+    "tsc": "tsc",
+    "build:aot": "ngc -p ./tsconfig-aot.json"
   },
   "repository": {
     "type": "git",
@@ -28,21 +29,21 @@
   },
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@angular/common": "~2.4.0",
-    "@angular/compiler": "~2.4.0",
-    "@angular/core": "~2.4.0",
-    "@angular/forms": "~2.4.0",
-    "codelyzer": "2.0.0",
+    "@angular/common": "2.4.0",
+    "@angular/compiler": "2.4.0",
+    "@angular/compiler-cli": "2.4.0",
+    "@angular/core": "2.4.0",
+    "@angular/forms": "2.4.0",
     "rxjs": "5.0.1",
     "zone.js": "^0.7.4",
-    "tslint": "4.4.2",
-    "typescript": "2.1.6",
-    "@types/ej.web.all": "^14.4.1",
+    "codelyzer": "^0.0.28",
+    "tslint": "^3.15.1",
+    "typescript": "2.0.2",
+    "typings": "^1.0.4",
+    "@types/ej.web.all": "15.2.0",
     "@types/jquery": "2.0.34",
-    "@types/es6-shim": "0.31.32",
     "@types/node": "6.0.52"
   }
 }

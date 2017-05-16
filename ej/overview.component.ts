@@ -1,20 +1,29 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.diagram.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = [];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['sourceID', 'height', 'width'], []);
-export let OverviewComponent = CreateComponent('Overview', {
+
+
+@Component({
     selector: 'ej-overview',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: [],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class OverviewComponent extends EJComponents<any, any> {
+	@Input('sourceID') sourceID_input: any;
+	@Input('height') height_input: any;
+	@Input('width') width_input: any;
 
-export const EJ_OVERVIEW_COMPONENTS: Type<any>[] = [OverviewComponent  ];
+
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('Overview', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_OVERVIEW_COMPONENTS: Type<any>[] = [OverviewComponent
+];
+
 

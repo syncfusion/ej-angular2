@@ -1,24 +1,49 @@
-import { CreateComponent, Utils, Type } from './core';
+import 'syncfusion-javascript/Scripts/ej/web/ej.radialslider.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
-let Outputs = ['change', 'create', 'mouseover', 'slide', 'start',
-    'stop'
-    , 'model.valueChange: valueChange'];
-let ComplexProperties = [];
-let Inputs = Utils.AngularizeInputs(['autoOpen', 'cssClass', 'enableAnimation', 'enableRoundOff', 'endAngle',
-    'inline', 'innerCircleImageClass', 'innerCircleImageUrl', 'labelSpace', 'radius',
-    'showInnerCircle', 'startAngle', 'strokeWidth', 'ticks'], ['value']);
-export let RadialSliderComponent = CreateComponent('RadialSlider', {
+
+
+@Component({
     selector: 'ej-radialslider',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-    }
-}, {
-        tags: [],
-        twoways: ['value'],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class RadialSliderComponent extends EJComponents<any, any> {
+	@Input('autoOpen') autoOpen_input: any;
+	@Input('cssClass') cssClass_input: any;
+	@Input('enableAnimation') enableAnimation_input: any;
+	@Input('enableRoundOff') enableRoundOff_input: any;
+	@Input('endAngle') endAngle_input: any;
+	@Input('inline') inline_input: any;
+	@Input('innerCircleImageClass') innerCircleImageClass_input: any;
+	@Input('innerCircleImageUrl') innerCircleImageUrl_input: any;
+	@Input('labelSpace') labelSpace_input: any;
+	@Input('radius') radius_input: any;
+	@Input('showInnerCircle') showInnerCircle_input: any;
+	@Input('startAngle') startAngle_input: any;
+	@Input('strokeWidth') strokeWidth_input: any;
+	@Input('ticks') ticks_input: any;
 
-export const EJ_RADIALSLIDER_COMPONENTS: Type<any>[] = [RadialSliderComponent ];
+	@Input('value') value_two: any;
+	@Output('valueChange') value_twoChange = new EventEmitter<any>();
+
+	@Output('change') change_output = new EventEmitter();
+	@Output('ejchange') ejchange_output = new EventEmitter();
+	@Output('create') create_output = new EventEmitter();
+	@Output('mouseover') mouseover_output = new EventEmitter();
+	@Output('slide') slide_output = new EventEmitter();
+	@Output('start') start_output = new EventEmitter();
+	@Output('stop') stop_output = new EventEmitter();
+
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('RadialSlider', el, cdRef, []);
+    }
+
+
+
+}
+
+export var EJ_RADIALSLIDER_COMPONENTS: Type<any>[] = [RadialSliderComponent
+];
+
 

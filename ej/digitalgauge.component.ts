@@ -1,43 +1,98 @@
-import { CreateComponent, Utils, Type, CreateArrayTagDirective, CreateComplexDirective, ContentChild, forwardRef } from './core';
-export let DigitalGauge_ItemDirective = CreateComplexDirective({
+import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.digitalgauge.min';
+import { CommonModule } from '@angular/common';
+import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
+import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+@Directive({
     selector: 'e-digitalgauge-items>e-digitalgauge-item',
-    inputs: ['characterSettings', 'characterSettings.count', 'characterSettings.opacity', 'characterSettings.spacing', 'characterSettings.type',
-        'enableCustomFont', 'font', 'font.fontFamily', 'font.fontStyle', 'font.size',
-        'position', 'position.x', 'position.y', 'segmentSettings', 'segmentSettings.color',
-        'segmentSettings.gradient', 'segmentSettings.length', 'segmentSettings.opacity', 'segmentSettings.spacing', 'segmentSettings.width',
-        'shadowBlur', 'shadowColor', 'shadowOffsetX', 'shadowOffsetY', 'textAlign',
-        'textColor', 'value'],
-    queries: {
+})
+export class DigitalGaugeItemDirective extends ComplexTagElement {
+
+	@Input('characterSettings') characterSettings: any;
+	@Input('characterSettings.count') characterSettings_count: any;
+	@Input('characterSettings.opacity') characterSettings_opacity: any;
+	@Input('characterSettings.spacing') characterSettings_spacing: any;
+	@Input('characterSettings.type') characterSettings_type: any;
+	@Input('enableCustomFont') enableCustomFont: any;
+	@Input('font') font: any;
+	@Input('font.fontFamily') font_fontFamily: any;
+	@Input('font.fontStyle') font_fontStyle: any;
+	@Input('font.size') font_size: any;
+	@Input('position') position: any;
+	@Input('position.x') position_x: any;
+	@Input('position.y') position_y: any;
+	@Input('segmentSettings') segmentSettings: any;
+	@Input('segmentSettings.color') segmentSettings_color: any;
+	@Input('segmentSettings.gradient') segmentSettings_gradient: any;
+	@Input('segmentSettings.length') segmentSettings_length: any;
+	@Input('segmentSettings.opacity') segmentSettings_opacity: any;
+	@Input('segmentSettings.spacing') segmentSettings_spacing: any;
+	@Input('segmentSettings.width') segmentSettings_width: any;
+	@Input('shadowBlur') shadowBlur: any;
+	@Input('shadowColor') shadowColor: any;
+	@Input('shadowOffsetX') shadowOffsetX: any;
+	@Input('shadowOffsetY') shadowOffsetY: any;
+	@Input('textAlign') textAlign: any;
+	@Input('textColor') textColor: any;
+	@Input('value') value: any;
+
+    
+    constructor( @Inject(forwardRef(() => DigitalGaugeComponent)) widget: EJComponents<any, any>) {
+        super([]);
+        this.parent = widget;
     }
-}, {
-         tags: [ ],
-         complexes: ['characterSettings', 'font', 'position', 'segmentSettings'],
-         type: forwardRef(() => DigitalGaugeComponent)
-    });
+}
 
 
-export let DigitalGauge_ItemsDirective = CreateArrayTagDirective('items', 'ej-digitalgauge>e-digitalgauge-items', DigitalGauge_ItemDirective);
+@Directive({
+    selector: 'ej-digitalgauge>e-digitalgauge-items',
+    queries: {
+        children: new ContentChildren(DigitalGaugeItemDirective)
+    }
+})
+export class DigitalGaugeItemsDirective extends ArrayTagElement<ComplexTagElement> {
+    constructor(@Inject(forwardRef(() => DigitalGaugeComponent)) widget: EJComponents<any, any>) {
+        super('items')
+        }
+}
 
 
-let Outputs = ['init', 'itemRendering', 'load', 'renderComplete'
-    , 'model.valueChange: valueChange'];
-let ComplexProperties = ['frame'];
-let Inputs = Utils.AngularizeInputs(['frame', 'height', 'isResponsive', 'matrixSegmentData', 'segmentData',
-    'themes', 'width', 'frame.backgroundImageUrl', 'frame.innerWidth', 'frame.outerWidth',
-    'items'], ['value']);
-export let DigitalGaugeComponent = CreateComponent('DigitalGauge', {
+
+
+@Component({
     selector: 'ej-digitalgauge',
-    inputs: Inputs,
-    outputs: Outputs,
-    template: '',
-    queries: {
-        _items : new ContentChild(DigitalGauge_ItemsDirective),
-    }
-}, {
-        tags: ['items'],
-        twoways: ['value'],
-        complexes: ComplexProperties,
-    });
+    template: ''})
+export class DigitalGaugeComponent extends EJComponents<any, any> {
+	@Input('frame') frame_input: any;
+	@Input('height') height_input: any;
+	@Input('isResponsive') isResponsive_input: any;
+	@Input('enableResize') enableResize_input: any;
+	@Input('matrixSegmentData') matrixSegmentData_input: any;
+	@Input('segmentData') segmentData_input: any;
+	@Input('themes') themes_input: any;
+	@Input('width') width_input: any;
+	@Input('frame.backgroundImageUrl') frame_backgroundImageUrl_input: any;
+	@Input('frame.innerWidth') frame_innerWidth_input: any;
+	@Input('frame.outerWidth') frame_outerWidth_input: any;
+	@Input('items') items_input: any;
 
-export const EJ_DIGITALGAUGE_COMPONENTS: Type<any>[] = [DigitalGaugeComponent , DigitalGauge_ItemsDirective, DigitalGauge_ItemDirective];
+	@Input('value') value_two: any;
+	@Output('valueChange') value_twoChange = new EventEmitter<any>();
+
+	@Output('init') init_output = new EventEmitter();
+	@Output('itemRendering') itemRendering_output = new EventEmitter();
+	@Output('load') load_output = new EventEmitter();
+	@Output('renderComplete') renderComplete_output = new EventEmitter();
+
+	@ContentChild(DigitalGaugeItemsDirective) tag_items: any;
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
+        super('DigitalGauge', el, cdRef, ['items']);
+    }
+
+
+
+}
+
+export var EJ_DIGITALGAUGE_COMPONENTS: Type<any>[] = [DigitalGaugeComponent
+, DigitalGaugeItemsDirective, DigitalGaugeItemDirective];
+
 
