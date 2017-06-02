@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-gantt',
     template: ''})
 export class GanttComponent extends EJComponents<any, any> {
-	@Input('addDialogFields') addDialogFields_input: any;
 	@Input('allowColumnResize') allowColumnResize_input: any;
 	@Input('allowGanttChartEditing') allowGanttChartEditing_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
@@ -32,9 +31,9 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('cellTooltipTemplate') cellTooltipTemplate_input: any;
 	@Input('dragTooltip') dragTooltip_input: any;
 	@Input('dateFormat') dateFormat_input: any;
+	@Input('dayWorkingTime') dayWorkingTime_input: any;
 	@Input('durationMapping') durationMapping_input: any;
 	@Input('durationUnit') durationUnit_input: any;
-	@Input('editDialogFields') editDialogFields_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('splitterSettings') splitterSettings_input: any;
 	@Input('editSettings') editSettings_input: any;
@@ -54,7 +53,6 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('enableVirtualization') enableVirtualization_input: any;
 	@Input('endDateMapping') endDateMapping_input: any;
 	@Input('highlightWeekends') highlightWeekends_input: any;
-	@Input('holidays') holidays_input: any;
 	@Input('includeWeekend') includeWeekend_input: any;
 	@Input('locale') locale_input: any;
 	@Input('milestoneMapping') milestoneMapping_input: any;
@@ -79,7 +77,6 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('progressMapping') progressMapping_input: any;
 	@Input('query') query_input: any;
 	@Input('renderBaseline') renderBaseline_input: any;
-	@Input('validateManualTasksOnLinking') validateManualTasksOnLinking_input: any;
 	@Input('resourceIdMapping') resourceIdMapping_input: any;
 	@Input('resourceInfoMapping') resourceInfoMapping_input: any;
 	@Input('resourceNameMapping') resourceNameMapping_input: any;
@@ -99,10 +96,10 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('sortSettings') sortSettings_input: any;
 	@Input('splitterPosition') splitterPosition_input: any;
 	@Input('startDateMapping') startDateMapping_input: any;
-	@Input('stripLines') stripLines_input: any;
 	@Input('taskbarBackground') taskbarBackground_input: any;
 	@Input('taskbarEditingTooltipTemplate') taskbarEditingTooltipTemplate_input: any;
 	@Input('taskbarEditingTooltipTemplateId') taskbarEditingTooltipTemplateId_input: any;
+	@Input('taskbarHeight') taskbarHeight_input: any;
 	@Input('taskbarTooltipTemplate') taskbarTooltipTemplate_input: any;
 	@Input('taskbarTemplate') taskbarTemplate_input: any;
 	@Input('milestoneTemplate') milestoneTemplate_input: any;
@@ -113,6 +110,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('toolbarSettings') toolbarSettings_input: any;
 	@Input('treeColumnIndex') treeColumnIndex_input: any;
 	@Input('selectionMode') selectionMode_input: any;
+	@Input('validateManualTasksOnLinking') validateManualTasksOnLinking_input: any;
 	@Input('weekendBackground') weekendBackground_input: any;
 	@Input('workingTimeScale') workingTimeScale_input: any;
 	@Input('dragTooltip.showTooltip') dragTooltip_showTooltip_input: any;
@@ -140,10 +138,14 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('scheduleHeaderSettings.weekStartDay') scheduleHeaderSettings_weekStartDay_input: any;
 	@Input('sizeSettings.height') sizeSettings_height_input: any;
 	@Input('sizeSettings.width') sizeSettings_width_input: any;
-	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.showToolbar') toolbarSettings_showToolbar_input: any;
 	@Input('toolbarSettings.toolbarItems') toolbarSettings_toolbarItems_input: any;
+	@Input('addDialogFields') addDialogFields_input: any;
+	@Input('editDialogFields') editDialogFields_input: any;
+	@Input('holidays') holidays_input: any;
 	@Input('selectedCellIndexes') selectedCellIndexes_input: any;
+	@Input('stripLines') stripLines_input: any;
+	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
 
 	@Input('dataSource') dataSource_two: any;

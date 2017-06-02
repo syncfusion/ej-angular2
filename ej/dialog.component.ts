@@ -14,6 +14,7 @@ export class DialogComponent extends EJComponents<any, any> {
 	@Input('allowDraggable') allowDraggable_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animation') animation_input: any;
+	@Input('backgroundScroll') backgroundScroll_input: any;
 	@Input('closeOnEscape') closeOnEscape_input: any;
 	@Input('containment') containment_input: any;
 	@Input('contentType') contentType_input: any;

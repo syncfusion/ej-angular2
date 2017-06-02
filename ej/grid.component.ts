@@ -356,7 +356,6 @@ export class GridComponent extends EJComponents<any, any> {
 	@Input('scrollSettings.width') scrollSettings_width_input: any;
 	@Input('scrollSettings.scrollOneStepBy') scrollSettings_scrollOneStepBy_input: any;
 	@Input('textWrapSettings.wrapMode') textWrapSettings_wrapMode_input: any;
-	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
 	@Input('toolbarSettings.showToolbar') toolbarSettings_showToolbar_input: any;
 	@Input('toolbarSettings.toolbarItems') toolbarSettings_toolbarItems_input: any;
 	@Input('columns') columns_input: any;
@@ -365,6 +364,7 @@ export class GridComponent extends EJComponents<any, any> {
 	@Input('contextMenuSettings.subContextMenu') contextMenuSettings_subContextMenu_input: any;
 	@Input('filterSettings.filteredColumns') filterSettings_filteredColumns_input: any;
 	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
+	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -410,6 +410,7 @@ export class GridComponent extends EJComponents<any, any> {
 	@Output('endDelete') endDelete_output = new EventEmitter();
 	@Output('endEdit') endEdit_output = new EventEmitter();
 	@Output('load') load_output = new EventEmitter();
+	@Output('mergeHeaderCellInfo') mergeHeaderCellInfo_output = new EventEmitter();
 	@Output('mergeCellInfo') mergeCellInfo_output = new EventEmitter();
 	@Output('queryCellInfo') queryCellInfo_output = new EventEmitter();
 	@Output('recordClick') recordClick_output = new EventEmitter();

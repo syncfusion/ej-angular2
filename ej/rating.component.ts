@@ -36,6 +36,7 @@ export class RatingComponent extends EJComponents<any, any> {
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 	@Output('mouseout') mouseout_output = new EventEmitter();
+	@Output('mousemove') mousemove_output = new EventEmitter();
 	@Output('mouseover') mouseover_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {

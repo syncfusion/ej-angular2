@@ -8,9 +8,12 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
 export class TreeGridColumnDirective extends ComplexTagElement {
 
 	@Input('allowFiltering') allowFiltering: any;
+	@Input('allowFilteringBlankContent') allowFilteringBlankContent: any;
 	@Input('allowSorting') allowSorting: any;
 	@Input('allowCellSelection') allowCellSelection: any;
+	@Input('editParams') editParams: any;
 	@Input('editType') editType: any;
+	@Input('dropdownData') dropdownData: any;
 	@Input('field') field: any;
 	@Input('template') template: any;
 	@Input('templateID') templateID: any;
@@ -85,6 +88,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('enableResize') enableResize_input: any;
 	@Input('enableVirtualization') enableVirtualization_input: any;
 	@Input('columnResizeSettings') columnResizeSettings_input: any;
+	@Input('commonWidth') commonWidth_input: any;
 	@Input('filterSettings') filterSettings_input: any;
 	@Input('locale') locale_input: any;
 	@Input('parseRowTemplate') parseRowTemplate_input: any;
@@ -105,7 +109,6 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('detailsRowHeight') detailsRowHeight_input: any;
 	@Input('showSummaryRow') showSummaryRow_input: any;
 	@Input('showTotalSummary') showTotalSummary_input: any;
-	@Input('summaryRows') summaryRows_input: any;
 	@Input('showGridCellTooltip') showGridCellTooltip_input: any;
 	@Input('showGridExpandCellTooltip') showGridExpandCellTooltip_input: any;
 	@Input('sizeSettings') sizeSettings_input: any;
@@ -127,7 +130,6 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('columnResizeSettings.columnResizeMode') columnResizeSettings_columnResizeMode_input: any;
 	@Input('filterSettings.filterBarMode') filterSettings_filterBarMode_input: any;
 	@Input('filterSettings.filterType') filterSettings_filterType_input: any;
-	@Input('filterSettings.filteredColumns') filterSettings_filteredColumns_input: any;
 	@Input('pageSettings.pageCount') pageSettings_pageCount_input: any;
 	@Input('pageSettings.pageSize') pageSettings_pageSize_input: any;
 	@Input('pageSettings.totalRecordsCount') pageSettings_totalRecordsCount_input: any;
@@ -140,10 +142,13 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('selectionSettings.enableSelectAll') selectionSettings_enableSelectAll_input: any;
 	@Input('sizeSettings.height') sizeSettings_height_input: any;
 	@Input('sizeSettings.width') sizeSettings_width_input: any;
-	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.showToolbar') toolbarSettings_showToolbar_input: any;
 	@Input('toolbarSettings.toolbarItems') toolbarSettings_toolbarItems_input: any;
 	@Input('columns') columns_input: any;
+	@Input('selectedCellIndexes') selectedCellIndexes_input: any;
+	@Input('summaryRows') summaryRows_input: any;
+	@Input('filterSettings.filteredColumns') filterSettings_filteredColumns_input: any;
+	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
 
 	@Input('dataSource') dataSource_two: any;
@@ -165,6 +170,9 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Output('columnResizeEnd') columnResizeEnd_output = new EventEmitter();
 	@Output('contextMenuOpen') contextMenuOpen_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
+	@Output('detailsDataBound') detailsDataBound_output = new EventEmitter();
+	@Output('detailsShown') detailsShown_output = new EventEmitter();
+	@Output('detailsHidden') detailsHidden_output = new EventEmitter();
 	@Output('endEdit') endEdit_output = new EventEmitter();
 	@Output('expanded') expanded_output = new EventEmitter();
 	@Output('expanding') expanding_output = new EventEmitter();

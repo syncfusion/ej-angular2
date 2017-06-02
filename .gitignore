@@ -3,6 +3,8 @@ node_modules/*
 npm-debug.log
 .vscode/*
 typings/*
+debug.log
+npm-debug.log
 
 # TypeScript
 *.js

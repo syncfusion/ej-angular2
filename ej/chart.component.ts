@@ -1054,6 +1054,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Output('legendItemMouseMove') legendItemMouseMove_output = new EventEmitter();
 	@Output('legendItemRendering') legendItemRendering_output = new EventEmitter();
 	@Output('load') load_output = new EventEmitter();
+	@Output('zoomed') zoomed_output = new EventEmitter();
 	@Output('rangeSelected') rangeSelected_output = new EventEmitter();
 	@Output('pointRegionClick') pointRegionClick_output = new EventEmitter();
 	@Output('pointRegionMouseMove') pointRegionMouseMove_output = new EventEmitter();
