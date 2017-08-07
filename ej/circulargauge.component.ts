@@ -345,6 +345,7 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('distanceFromCorner') distanceFromCorner_input: any;
+	@Input('rangeZOrder') rangeZOrder_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;
 	@Input('enableGroupSeparator') enableGroupSeparator_input: any;
 	@Input('enableResize') enableResize_input: any;
@@ -367,6 +368,7 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Input('frame.halfCircleFrameEndAngle') frame_halfCircleFrameEndAngle_input: any;
 	@Input('frame.halfCircleFrameStartAngle') frame_halfCircleFrameStartAngle_input: any;
 	@Input('legend.visible') legend_visible_input: any;
+	@Input('legend.toggleVisibility') legend_toggleVisibility_input: any;
 	@Input('legend.alignment') legend_alignment_input: any;
 	@Input('legend.border') legend_border_input: any;
 	@Input('legend.border.color') legend_border_color_input: any;

@@ -50,6 +50,7 @@ export class ScheduleResourcesDirective extends ArrayTagElement<ComplexTagElemen
     template: ''})
 export class ScheduleComponent extends EJComponents<any, any> {
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
+	@Input('allowInline') allowInline_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('appointmentSettings') appointmentSettings_input: any;
 	@Input('appointmentTemplateId') appointmentTemplateId_input: any;
@@ -109,6 +110,7 @@ export class ScheduleComponent extends EJComponents<any, any> {
 	@Input('appointmentSettings.query') appointmentSettings_query_input: any;
 	@Input('appointmentSettings.tableName') appointmentSettings_tableName_input: any;
 	@Input('appointmentSettings.applyTimeOffset') appointmentSettings_applyTimeOffset_input: any;
+	@Input('appointmentSettings.editFutureEventsOnly') appointmentSettings_editFutureEventsOnly_input: any;
 	@Input('appointmentSettings.id') appointmentSettings_id_input: any;
 	@Input('appointmentSettings.startTime') appointmentSettings_startTime_input: any;
 	@Input('appointmentSettings.endTime') appointmentSettings_endTime_input: any;
@@ -173,6 +175,7 @@ export class ScheduleComponent extends EJComponents<any, any> {
 	@Input('blockoutSettings.isBlockAppointment') blockoutSettings_isBlockAppointment_input: any;
 	@Input('blockoutSettings.isAllDay') blockoutSettings_isAllDay_input: any;
 	@Input('blockoutSettings.resourceId') blockoutSettings_resourceId_input: any;
+	@Input('blockoutSettings.groupId') blockoutSettings_groupId_input: any;
 	@Input('blockoutSettings.customStyle') blockoutSettings_customStyle_input: any;
 	@Input('resources') resources_input: any;
 

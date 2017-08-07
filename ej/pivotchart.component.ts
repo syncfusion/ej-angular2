@@ -31,6 +31,8 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Input('zooming.enableScrollbar') zooming_enableScrollbar_input: any;
 	@Input('commonSeriesOptions.type') commonSeriesOptions_type_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
+	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;
+	@Input('dataSource.providerName') dataSource_providerName_input: any;
 	@Input('dataSource.data') dataSource_data_input: any;
 	@Input('dataSource.catalog') dataSource_catalog_input: any;
 	@Input('serviceMethodSettings.drillDown') serviceMethodSettings_drillDown_input: any;

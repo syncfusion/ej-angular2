@@ -113,6 +113,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('validateManualTasksOnLinking') validateManualTasksOnLinking_input: any;
 	@Input('weekendBackground') weekendBackground_input: any;
 	@Input('workingTimeScale') workingTimeScale_input: any;
+	@Input('workWeek') workWeek_input: any;
 	@Input('dragTooltip.showTooltip') dragTooltip_showTooltip_input: any;
 	@Input('dragTooltip.tooltipItems') dragTooltip_tooltipItems_input: any;
 	@Input('dragTooltip.tooltipTemplate') dragTooltip_tooltipTemplate_input: any;

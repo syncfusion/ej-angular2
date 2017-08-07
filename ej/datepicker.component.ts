@@ -61,6 +61,7 @@ export class DatePickerComponent extends EJComponents<any, any> implements Contr
 	@Input('validationRules') validationRules_input: any;
 	@Input('value') value_input: any;
 	@Input('watermarkText') watermarkText_input: any;
+	@Input('weekNumber') weekNumber_input: any;
 	@Input('width') width_input: any;
 	@Input('fields.date') fields_date_input: any;
 	@Input('fields.iconClass') fields_iconClass_input: any;

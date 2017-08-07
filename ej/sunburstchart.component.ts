@@ -57,6 +57,8 @@ export class SunburstChartComponent extends EJComponents<any, any> {
 	@Input('tooltip.font.opacity') tooltip_font_opacity_input: any;
 	@Input('tooltip.font.size') tooltip_font_size_input: any;
 	@Input('tooltip.template') tooltip_template_input: any;
+	@Input('tooltip.format') tooltip_format_input: any;
+	@Input('tooltip.opacity') tooltip_opacity_input: any;
 	@Input('points.x') points_x_input: any;
 	@Input('points.y') points_y_input: any;
 	@Input('points.text') points_text_input: any;

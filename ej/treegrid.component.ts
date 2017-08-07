@@ -12,6 +12,7 @@ export class TreeGridColumnDirective extends ComplexTagElement {
 	@Input('allowSorting') allowSorting: any;
 	@Input('allowCellSelection') allowCellSelection: any;
 	@Input('editParams') editParams: any;
+	@Input('editTemplate') editTemplate: any;
 	@Input('editType') editType: any;
 	@Input('dropdownData') dropdownData: any;
 	@Input('field') field: any;
@@ -31,11 +32,13 @@ export class TreeGridColumnDirective extends ComplexTagElement {
 	@Input('isFrozen') isFrozen: any;
 	@Input('textAlign') textAlign: any;
 	@Input('allowEditing') allowEditing: any;
+	@Input('commands') commands: any;
 	@Input('showInColumnChooser') showInColumnChooser: any;
 	@Input('clipMode') clipMode: any;
 	@Input('tooltip') tooltip: any;
 	@Input('headerTooltip') headerTooltip: any;
 	@Input('validationRules') validationRules: any;
+	@Input('priority') priority: any;
 	@Input('allowFreezing') allowFreezing: any;
 
     
@@ -74,6 +77,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('allowSelection') allowSelection_input: any;
 	@Input('allowSorting') allowSorting_input: any;
 	@Input('allowPaging') allowPaging_input: any;
+	@Input('allowTextWrap') allowTextWrap_input: any;
 	@Input('altRowTemplateID') altRowTemplateID_input: any;
 	@Input('expandStateMapping') expandStateMapping_input: any;
 	@Input('childMapping') childMapping_input: any;
@@ -135,6 +139,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('pageSettings.totalRecordsCount') pageSettings_totalRecordsCount_input: any;
 	@Input('pageSettings.currentPage') pageSettings_currentPage_input: any;
 	@Input('pageSettings.pageSizeMode') pageSettings_pageSizeMode_input: any;
+	@Input('pageSettings.printMode') pageSettings_printMode_input: any;
 	@Input('pageSettings.template') pageSettings_template_input: any;
 	@Input('selectionSettings.selectionMode') selectionSettings_selectionMode_input: any;
 	@Input('selectionSettings.selectionType') selectionSettings_selectionType_input: any;
@@ -158,6 +163,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 
 	@Output('actionBegin') actionBegin_output = new EventEmitter();
 	@Output('actionComplete') actionComplete_output = new EventEmitter();
+	@Output('beforePrint') beforePrint_output = new EventEmitter();
 	@Output('beginEdit') beginEdit_output = new EventEmitter();
 	@Output('collapsed') collapsed_output = new EventEmitter();
 	@Output('collapsing') collapsing_output = new EventEmitter();

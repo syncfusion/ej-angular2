@@ -40,6 +40,7 @@ export class SliderComponent extends EJComponents<any, any> {
 	@Output('ejchange') ejchange_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
+	@Output('renderingTicks') renderingTicks_output = new EventEmitter();
 	@Output('slide') slide_output = new EventEmitter();
 	@Output('start') start_output = new EventEmitter();
 	@Output('stop') stop_output = new EventEmitter();

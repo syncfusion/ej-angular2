@@ -30,6 +30,8 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('enableAdvancedFilter') enableAdvancedFilter_input: any;
 	@Input('enableDeferUpdate') enableDeferUpdate_input: any;
 	@Input('enableGroupingBar') enableGroupingBar_input: any;
+	@Input('enableMemberEditorPaging') enableMemberEditorPaging_input: any;
+	@Input('memberEditorPageSize') memberEditorPageSize_input: any;
 	@Input('enableGrandTotal') enableGrandTotal_input: any;
 	@Input('enableJSONRendering') enableJSONRendering_input: any;
 	@Input('enablePivotFieldList') enablePivotFieldList_input: any;
@@ -49,6 +51,8 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('serviceMethodSettings') serviceMethodSettings_input: any;
 	@Input('url') url_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
+	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;
+	@Input('dataSource.providerName') dataSource_providerName_input: any;
 	@Input('dataSource.data') dataSource_data_input: any;
 	@Input('dataSource.catalog') dataSource_catalog_input: any;
 	@Input('dataSource.enableAdvancedFilter') dataSource_enableAdvancedFilter_input: any;

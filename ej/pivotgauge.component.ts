@@ -27,6 +27,8 @@ export class PivotGaugeComponent extends EJComponents<any, any> {
 	@Input('analysisMode') analysisMode_input: any;
 	@Input('operationalMode') operationalMode_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
+	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;
+	@Input('dataSource.providerName') dataSource_providerName_input: any;
 	@Input('dataSource.data') dataSource_data_input: any;
 	@Input('dataSource.catalog') dataSource_catalog_input: any;
 	@Input('labelFormatSettings.numberFormat') labelFormatSettings_numberFormat_input: any;

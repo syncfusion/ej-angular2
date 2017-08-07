@@ -3,6 +3,11 @@ import { CommonModule } from "@angular/common";
 
 
 import { EJ_GRID_COMPONENTS } from './ej/grid.component';
+import { GridGroupcaptionTemplateDirective } from './ej/gridtemplates/grid.groupcaption.template';
+import { GridEditTemplateDirective } from './ej/gridtemplates/grid.edit.template';
+import { GridDetailsTemplateDirective } from './ej/gridtemplates/grid.details.template';
+import { GridSummaryTemplateDirective } from './ej/gridtemplates/grid.summary.template';
+import { GridRowTemplateDirective } from './ej/gridtemplates/grid.row.template';
 import { EJ_CHART_COMPONENTS } from './ej/chart.component';
 import { EJ_DIAGRAM_COMPONENTS } from './ej/diagram.component';
 import { EJ_OVERVIEW_COMPONENTS } from './ej/overview.component';
@@ -73,9 +78,16 @@ import { EJ_REPORTVIEWER_COMPONENTS } from './ej/reportviewer.component';
 import { EJ_SPLITTER_COMPONENTS } from './ej/splitter.component';
 import { EJ_UPLOADBOX_COMPONENTS } from './ej/uploadbox.component';
 import { EJ_WAITINGPOPUP_COMPONENTS } from './ej/waitingpopup.component';
+import { EJ_SPELLCHECK_COMPONENTS } from './ej/spellcheck.component';
+
 import { EJTemplateDirective } from './ej/template';
 
 export * from './ej/grid.component';
+export { GridGroupcaptionTemplateDirective } from './ej/gridtemplates/grid.groupcaption.template';
+export { GridEditTemplateDirective } from './ej/gridtemplates/grid.edit.template';
+export { GridDetailsTemplateDirective } from './ej/gridtemplates/grid.details.template';
+export { GridSummaryTemplateDirective } from './ej/gridtemplates/grid.summary.template';
+export { GridRowTemplateDirective } from './ej/gridtemplates/grid.row.template';
 export * from './ej/chart.component';
 export * from './ej/diagram.component';
 export * from './ej/overview.component';
@@ -146,10 +158,13 @@ export * from './ej/reportviewer.component';
 export * from './ej/splitter.component';
 export * from './ej/uploadbox.component';
 export * from './ej/waitingpopup.component';
+export * from './ej/spellcheck.component';
 export * from './ej/core';
+export { EJTemplateDirective } from './ej/template';
 
 
-let EJ_COMPONENTS = [EJTemplateDirective, EJ_GRID_COMPONENTS, EJ_CHART_COMPONENTS, EJ_DIAGRAM_COMPONENTS, EJ_OVERVIEW_COMPONENTS, EJ_SUNBURSTCHART_COMPONENTS,
+let EJ_COMPONENTS = [EJTemplateDirective, EJ_GRID_COMPONENTS, GridGroupcaptionTemplateDirective, GridEditTemplateDirective, GridDetailsTemplateDirective, GridSummaryTemplateDirective, GridRowTemplateDirective,
+    EJ_CHART_COMPONENTS, EJ_DIAGRAM_COMPONENTS, EJ_OVERVIEW_COMPONENTS, EJ_SUNBURSTCHART_COMPONENTS,
     EJ_SYMBOLPALETTE_COMPONENTS, EJ_HEATMAP_COMPONENTS, EJ_HEATMAPLEGEND_COMPONENTS, EJ_RANGENAVIGATOR_COMPONENTS, EJ_SPARKLINE_COMPONENTS,
     EJ_BULLETGRAPH_COMPONENTS, EJ_CIRCULARGAUGE_COMPONENTS, EJ_LINEARGAUGE_COMPONENTS, EJ_MAP_COMPONENTS, EJ_TREEMAP_COMPONENTS,
     EJ_DIGITALGAUGE_COMPONENTS, EJ_SPREADSHEET_COMPONENTS, EJ_DATEPICKER_COMPONENTS, EJ_GANTT_COMPONENTS, EJ_TREEGRID_COMPONENTS,
@@ -163,7 +178,7 @@ let EJ_COMPONENTS = [EJTemplateDirective, EJ_GRID_COMPONENTS, EJ_CHART_COMPONENT
     EJ_CHECKBOX_COMPONENTS, EJ_RADIOBUTTON_COMPONENTS, EJ_TOGGLEBUTTON_COMPONENTS, EJ_DATETIMEPICKER_COMPONENTS, EJ_DATERANGEPICKER_COMPONENTS,
     EJ_PROGRESSBAR_COMPONENTS, EJ_TAGCLOUD_COMPONENTS, EJ_BUTTON_COMPONENTS, EJ_GROUPBUTTON_COMPONENTS, EJ_TOOLTIP_COMPONENTS,
     EJ_SLIDER_COMPONENTS, EJ_FILEEXPLORER_COMPONENTS, EJ_REPORTVIEWER_COMPONENTS, EJ_SPLITTER_COMPONENTS, EJ_UPLOADBOX_COMPONENTS,
-    EJ_WAITINGPOPUP_COMPONENTS];
+    EJ_WAITINGPOPUP_COMPONENTS, EJ_SPELLCHECK_COMPONENTS];
 
 @NgModule({
   imports: [
@@ -183,4 +198,5 @@ export class EJAngular2Module {
     };
   }
 }
+
 

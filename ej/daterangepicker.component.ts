@@ -33,6 +33,7 @@ export class DateRangePickerComponent extends EJComponents<any, any> implements 
 	@Input('height') height_input: any;
 	@Input('locale') locale_input: any;
 	@Input('ranges') ranges_input: any;
+	@Input('separator') separator_input: any;
 	@Input('startDate') startDate_input: any;
 	@Input('showPopupButton') showPopupButton_input: any;
 	@Input('showRoundedCorner') showRoundedCorner_input: any;
@@ -44,7 +45,7 @@ export class DateRangePickerComponent extends EJComponents<any, any> implements 
 
 	@Output('beforeClose') beforeClose_output = new EventEmitter();
 	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
-	@Output('onChange') onChange_output = new EventEmitter();
+	@Output('Change') Change_output = new EventEmitter();
 	@Output('close') close_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();

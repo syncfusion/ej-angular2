@@ -11,6 +11,7 @@ export { ContentChild, Type, forwardRef } from '@angular/core';
 
 export let currentTemplateElement: any;
 
+export let ngTemplateid: any;
 
 
 export interface IParentTag {
@@ -93,6 +94,7 @@ export class EJComponents<W, T> implements IParentTag {
         };
     }
     ngOnInit() {
+        ngTemplateid =  ej.getGuid("ng2Control");
         for (let key in this) {
             if (key.indexOf("_input") != -1)
                 this.inputs.push(key);
@@ -157,6 +159,7 @@ export class EJComponents<W, T> implements IParentTag {
     ngAfterViewInit() {
         
         let nativeElement = this.isEditor ? $(this.el.nativeElement.children) : $(this.el.nativeElement);
+        (<any>this.model)["ngTemplateId"] = ngTemplateid;
         this.widget = $(nativeElement)['ej' + this.controlName](this.model)['ej' + this.controlName]('instance');
     }
 

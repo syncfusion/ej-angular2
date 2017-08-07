@@ -194,6 +194,7 @@ export class RibbonComponent extends EJComponents<any, any> {
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('buttonDefaults') buttonDefaults_input: any;
 	@Input('showQAT') showQAT_input: any;
+	@Input('cssClass') cssClass_input: any;
 	@Input('collapsePinSettings') collapsePinSettings_input: any;
 	@Input('enableOnDemand') enableOnDemand_input: any;
 	@Input('collapsible') collapsible_input: any;
