@@ -33,6 +33,7 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Input('minHeight') minHeight_input: any;
 	@Input('minWidth') minWidth_input: any;
 	@Input('path') path_input: any;
+	@Input('rootFolderName') rootFolderName_input: any;
 	@Input('selectedFolder') selectedFolder_input: any;
 	@Input('selectedItems') selectedItems_input: any;
 	@Input('showCheckbox') showCheckbox_input: any;

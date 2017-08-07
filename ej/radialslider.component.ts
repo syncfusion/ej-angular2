@@ -18,6 +18,7 @@ export class RadialSliderComponent extends EJComponents<any, any> {
 	@Input('innerCircleImageClass') innerCircleImageClass_input: any;
 	@Input('innerCircleImageUrl') innerCircleImageUrl_input: any;
 	@Input('labelSpace') labelSpace_input: any;
+	@Input('locale') locale_input: any;
 	@Input('radius') radius_input: any;
 	@Input('showInnerCircle') showInnerCircle_input: any;
 	@Input('startAngle') startAngle_input: any;

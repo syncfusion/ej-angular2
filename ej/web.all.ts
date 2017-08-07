@@ -425,3 +425,9 @@ import * as WaitingpopupAll from './waitingpopup.component';
 export let Waitingpopup = WaitingpopupAll;
 export let EJ_WAITINGPOPUP_COMPONENTS: Type<any>[] = WaitingpopupAll.EJ_WAITINGPOPUP_COMPONENTS;
 
+
+
+import * as SpellcheckAll from './spellcheck.component';
+export let Spellcheck = SpellcheckAll;
+export let EJ_SPELLCHECK_COMPONENTS: Type<any>[] = SpellcheckAll.EJ_SPELLCHECK_COMPONENTS;
+

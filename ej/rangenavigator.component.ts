@@ -124,6 +124,7 @@ export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Input('valueAxisSettings.rangePadding') valueAxisSettings_rangePadding_input: any;
 	@Input('valueAxisSettings.visible') valueAxisSettings_visible_input: any;
 	@Input('series') series_input: any;
+	@Input('seriesSettings') seriesSettings_input: any;
 
 
 	@Output('load') load_output = new EventEmitter();

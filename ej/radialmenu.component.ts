@@ -8,6 +8,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
 export class RadialMenuItemDirective extends ComplexTagElement {
 
 	@Input('imageUrl') imageUrl: any;
+	@Input('prependTo') prependTo: any;
 	@Input('text') text: any;
 	@Input('enabled') enabled: any;
 	@Input('click') click: any;

@@ -326,6 +326,7 @@ export class GridComponent extends EJComponents<any, any> {
 	@Input('pageSettings.enableTemplates') pageSettings_enableTemplates_input: any;
 	@Input('pageSettings.pageCount') pageSettings_pageCount_input: any;
 	@Input('pageSettings.pageSize') pageSettings_pageSize_input: any;
+	@Input('pageSettings.pageSizeList') pageSettings_pageSizeList_input: any;
 	@Input('pageSettings.showDefaults') pageSettings_showDefaults_input: any;
 	@Input('pageSettings.template') pageSettings_template_input: any;
 	@Input('pageSettings.totalPages') pageSettings_totalPages_input: any;
@@ -335,7 +336,6 @@ export class GridComponent extends EJComponents<any, any> {
 	@Input('rowDropSettings.dropTargetID') rowDropSettings_dropTargetID_input: any;
 	@Input('rowDropSettings.dragMapper') rowDropSettings_dragMapper_input: any;
 	@Input('rowDropSettings.dropMapper') rowDropSettings_dropMapper_input: any;
-	@Input('rowDropSettings.dragBehavior') rowDropSettings_dragBehavior_input: any;
 	@Input('searchSettings.fields') searchSettings_fields_input: any;
 	@Input('searchSettings.key') searchSettings_key_input: any;
 	@Input('searchSettings.operator') searchSettings_operator_input: any;
@@ -391,9 +391,6 @@ export class GridComponent extends EJComponents<any, any> {
 	@Output('columnDrag') columnDrag_output = new EventEmitter();
 	@Output('columnDragStart') columnDragStart_output = new EventEmitter();
 	@Output('columnDrop') columnDrop_output = new EventEmitter();
-	@Output('rowDrag') rowDrag_output = new EventEmitter();
-	@Output('rowDragStart') rowDragStart_output = new EventEmitter();
-	@Output('rowDrop') rowDrop_output = new EventEmitter();
 	@Output('columnSelected') columnSelected_output = new EventEmitter();
 	@Output('columnSelecting') columnSelecting_output = new EventEmitter();
 	@Output('columnDeselected') columnDeselected_output = new EventEmitter();
@@ -424,6 +421,9 @@ export class GridComponent extends EJComponents<any, any> {
 	@Output('rowSelecting') rowSelecting_output = new EventEmitter();
 	@Output('rowDeselected') rowDeselected_output = new EventEmitter();
 	@Output('rowDeselecting') rowDeselecting_output = new EventEmitter();
+	@Output('rowDrag') rowDrag_output = new EventEmitter();
+	@Output('rowDragStart') rowDragStart_output = new EventEmitter();
+	@Output('rowDrop') rowDrop_output = new EventEmitter();
 	@Output('templateRefresh') templateRefresh_output = new EventEmitter();
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 

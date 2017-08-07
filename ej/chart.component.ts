@@ -18,6 +18,19 @@ export class ChartTrendlineDirective extends ComplexTagElement {
 	@Input('backwardForecast') backwardForecast: any;
 	@Input('polynomialOrder') polynomialOrder: any;
 	@Input('period') period: any;
+	@Input('tooltip') tooltip: any;
+	@Input('tooltip.border') tooltip_border: any;
+	@Input('tooltip.border.color') tooltip_border_color: any;
+	@Input('tooltip.border.width') tooltip_border_width: any;
+	@Input('tooltip.rx') tooltip_rx: any;
+	@Input('tooltip.ry') tooltip_ry: any;
+	@Input('tooltip.duration') tooltip_duration: any;
+	@Input('tooltip.enableAnimation') tooltip_enableAnimation: any;
+	@Input('tooltip.fill') tooltip_fill: any;
+	@Input('tooltip.format') tooltip_format: any;
+	@Input('tooltip.opacity') tooltip_opacity: any;
+	@Input('visibleOnLegend') visibleOnLegend: any;
+	@Input('intercept') intercept: any;
 
     
     constructor( @Inject(forwardRef(() => ChartComponent)) widget: EJComponents<any, any>) {
@@ -130,6 +143,7 @@ export class ChartSeriesDirective extends ComplexTagElement {
 	@Input('border.color') border_color: any;
 	@Input('border.width') border_width: any;
 	@Input('border.dashArray') border_dashArray: any;
+	@Input('animationDuration') animationDuration: any;
 	@Input('bullFillColor') bullFillColor: any;
 	@Input('columnFacet') columnFacet: any;
 	@Input('columnWidth') columnWidth: any;
@@ -137,6 +151,7 @@ export class ChartSeriesDirective extends ComplexTagElement {
 	@Input('stackingGroup') stackingGroup: any;
 	@Input('dashArray') dashArray: any;
 	@Input('dataSource') dataSource: any;
+	@Input('cardinalSplineTension') cardinalSplineTension: any;
 	@Input('doughnutCoefficient') doughnutCoefficient: any;
 	@Input('doughnutSize') doughnutSize: any;
 	@Input('drawType') drawType: any;
@@ -165,6 +180,11 @@ export class ChartSeriesDirective extends ComplexTagElement {
 	@Input('labelPosition') labelPosition: any;
 	@Input('splitMode') splitMode: any;
 	@Input('boxPlotMode') boxPlotMode: any;
+	@Input('bubbleOptions') bubbleOptions: any;
+	@Input('bubbleOptions.radiusMode') bubbleOptions_radiusMode: any;
+	@Input('bubbleOptions.minRadius') bubbleOptions_minRadius: any;
+	@Input('bubbleOptions.maxRadius') bubbleOptions_maxRadius: any;
+	@Input('splineType') splineType: any;
 	@Input('lineCap') lineCap: any;
 	@Input('lineJoin') lineJoin: any;
 	@Input('marker') marker: any;
@@ -175,6 +195,7 @@ export class ChartSeriesDirective extends ComplexTagElement {
 	@Input('marker.dataLabel.angle') marker_dataLabel_angle: any;
 	@Input('marker.dataLabel.maximumLabelWidth') marker_dataLabel_maximumLabelWidth: any;
 	@Input('marker.dataLabel.enableWrap') marker_dataLabel_enableWrap: any;
+	@Input('marker.dataLabel.enableContrastColor') marker_dataLabel_enableContrastColor: any;
 	@Input('marker.dataLabel.border') marker_dataLabel_border: any;
 	@Input('marker.dataLabel.border.color') marker_dataLabel_border_color: any;
 	@Input('marker.dataLabel.border.width') marker_dataLabel_border_width: any;
@@ -205,6 +226,8 @@ export class ChartSeriesDirective extends ComplexTagElement {
 	@Input('marker.dataLabel.visible') marker_dataLabel_visible: any;
 	@Input('marker.dataLabel.template') marker_dataLabel_template: any;
 	@Input('marker.dataLabel.offset') marker_dataLabel_offset: any;
+	@Input('marker.dataLabel.offset.x') marker_dataLabel_offset_x: any;
+	@Input('marker.dataLabel.offset.y') marker_dataLabel_offset_y: any;
 	@Input('marker.fill') marker_fill: any;
 	@Input('marker.imageUrl') marker_imageUrl: any;
 	@Input('marker.opacity') marker_opacity: any;
@@ -349,6 +372,7 @@ export class ChartIndicatorDirective extends ComplexTagElement {
 
 	@Input('dPeriod') dPeriod: any;
 	@Input('enableAnimation') enableAnimation: any;
+	@Input('animationDuration') animationDuration: any;
 	@Input('fill') fill: any;
 	@Input('histogram') histogram: any;
 	@Input('histogram.border') histogram_border: any;
@@ -608,11 +632,13 @@ export class ChartColumnDefinitionsDirective extends ArrayTagElement<ComplexTagE
     selector: 'ej-chart',
     template: ''})
 export class ChartComponent extends EJComponents<any, any> {
+	@Input('background') background_input: any;
 	@Input('backGroundImageUrl') backGroundImageUrl_input: any;
 	@Input('border') border_input: any;
 	@Input('exportSettings') exportSettings_input: any;
 	@Input('chartArea') chartArea_input: any;
 	@Input('commonSeriesOptions') commonSeriesOptions_input: any;
+	@Input('selectedDataPointIndexes') selectedDataPointIndexes_input: any;
 	@Input('crosshair') crosshair_input: any;
 	@Input('depth') depth_input: any;
 	@Input('enable3D') enable3D_input: any;
@@ -650,6 +676,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('chartArea.border.color') chartArea_border_color_input: any;
 	@Input('chartArea.border.opacity') chartArea_border_opacity_input: any;
 	@Input('chartArea.border.width') chartArea_border_width_input: any;
+	@Input('commonSeriesOptions.animationDuration') commonSeriesOptions_animationDuration_input: any;
 	@Input('commonSeriesOptions.border') commonSeriesOptions_border_input: any;
 	@Input('commonSeriesOptions.border.color') commonSeriesOptions_border_color_input: any;
 	@Input('commonSeriesOptions.border.dashArray') commonSeriesOptions_border_dashArray_input: any;
@@ -661,6 +688,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('commonSeriesOptions.stackingGroup') commonSeriesOptions_stackingGroup_input: any;
 	@Input('commonSeriesOptions.dashArray') commonSeriesOptions_dashArray_input: any;
 	@Input('commonSeriesOptions.dataSource') commonSeriesOptions_dataSource_input: any;
+	@Input('commonSeriesOptions.cardinalSplineTension') commonSeriesOptions_cardinalSplineTension_input: any;
 	@Input('commonSeriesOptions.doughnutCoefficient') commonSeriesOptions_doughnutCoefficient_input: any;
 	@Input('commonSeriesOptions.doughnutSize') commonSeriesOptions_doughnutSize_input: any;
 	@Input('commonSeriesOptions.drawType') commonSeriesOptions_drawType_input: any;
@@ -689,6 +717,11 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('commonSeriesOptions.labelPosition') commonSeriesOptions_labelPosition_input: any;
 	@Input('commonSeriesOptions.splitMode') commonSeriesOptions_splitMode_input: any;
 	@Input('commonSeriesOptions.boxPlotMode') commonSeriesOptions_boxPlotMode_input: any;
+	@Input('commonSeriesOptions.bubbleOptions') commonSeriesOptions_bubbleOptions_input: any;
+	@Input('commonSeriesOptions.bubbleOptions.radiusMode') commonSeriesOptions_bubbleOptions_radiusMode_input: any;
+	@Input('commonSeriesOptions.bubbleOptions.minRadius') commonSeriesOptions_bubbleOptions_minRadius_input: any;
+	@Input('commonSeriesOptions.bubbleOptions.maxRadius') commonSeriesOptions_bubbleOptions_maxRadius_input: any;
+	@Input('commonSeriesOptions.splineType') commonSeriesOptions_splineType_input: any;
 	@Input('commonSeriesOptions.lineCap') commonSeriesOptions_lineCap_input: any;
 	@Input('commonSeriesOptions.lineJoin') commonSeriesOptions_lineJoin_input: any;
 	@Input('commonSeriesOptions.marker') commonSeriesOptions_marker_input: any;
@@ -836,12 +869,14 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('legend.textOverflow') legend_textOverflow_input: any;
 	@Input('legend.textWidth') legend_textWidth_input: any;
 	@Input('legend.visible') legend_visible_input: any;
+	@Input('legend.toggleSeriesVisibility') legend_toggleSeriesVisibility_input: any;
 	@Input('primaryXAxis.alternateGridBand') primaryXAxis_alternateGridBand_input: any;
 	@Input('primaryXAxis.alternateGridBand.even') primaryXAxis_alternateGridBand_even_input: any;
 	@Input('primaryXAxis.alternateGridBand.odd') primaryXAxis_alternateGridBand_odd_input: any;
 	@Input('primaryXAxis.crossesAt') primaryXAxis_crossesAt_input: any;
 	@Input('primaryXAxis.crossesInAxis') primaryXAxis_crossesInAxis_input: any;
 	@Input('primaryXAxis.isIndexed') primaryXAxis_isIndexed_input: any;
+	@Input('primaryXAxis.enableAutoIntervalOnZooming') primaryXAxis_enableAutoIntervalOnZooming_input: any;
 	@Input('primaryXAxis.axisLine') primaryXAxis_axisLine_input: any;
 	@Input('primaryXAxis.axisLine.dashArray') primaryXAxis_axisLine_dashArray_input: any;
 	@Input('primaryXAxis.axisLine.offset') primaryXAxis_axisLine_offset_input: any;
@@ -893,6 +928,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('primaryXAxis.minorTicksPerInterval') primaryXAxis_minorTicksPerInterval_input: any;
 	@Input('primaryXAxis.name') primaryXAxis_name_input: any;
 	@Input('primaryXAxis.opposedPosition') primaryXAxis_opposedPosition_input: any;
+	@Input('primaryXAxis.orientation') primaryXAxis_orientation_input: any;
 	@Input('primaryXAxis.plotOffset') primaryXAxis_plotOffset_input: any;
 	@Input('primaryXAxis.range') primaryXAxis_range_input: any;
 	@Input('primaryXAxis.range.min') primaryXAxis_range_min_input: any;
@@ -918,9 +954,15 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('primaryXAxis.visible') primaryXAxis_visible_input: any;
 	@Input('primaryXAxis.zoomFactor') primaryXAxis_zoomFactor_input: any;
 	@Input('primaryXAxis.zoomPosition') primaryXAxis_zoomPosition_input: any;
+	@Input('primaryXAxis.scrollbarSettings') primaryXAxis_scrollbarSettings_input: any;
+	@Input('primaryXAxis.scrollbarSettings.visible') primaryXAxis_scrollbarSettings_visible_input: any;
+	@Input('primaryXAxis.scrollbarSettings.canResize') primaryXAxis_scrollbarSettings_canResize_input: any;
+	@Input('primaryXAxis.scrollbarSettings.range') primaryXAxis_scrollbarSettings_range_input: any;
+	@Input('primaryXAxis.scrollbarSettings.pointsLength') primaryXAxis_scrollbarSettings_pointsLength_input: any;
 	@Input('primaryYAxis.alternateGridBand') primaryYAxis_alternateGridBand_input: any;
 	@Input('primaryYAxis.alternateGridBand.even') primaryYAxis_alternateGridBand_even_input: any;
 	@Input('primaryYAxis.alternateGridBand.odd') primaryYAxis_alternateGridBand_odd_input: any;
+	@Input('primaryYAxis.enableAutoIntervalOnZooming') primaryYAxis_enableAutoIntervalOnZooming_input: any;
 	@Input('primaryYAxis.axisLine') primaryYAxis_axisLine_input: any;
 	@Input('primaryYAxis.axisLine.dashArray') primaryYAxis_axisLine_dashArray_input: any;
 	@Input('primaryYAxis.axisLine.offset') primaryYAxis_axisLine_offset_input: any;
@@ -971,6 +1013,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('primaryYAxis.minorTicksPerInterval') primaryYAxis_minorTicksPerInterval_input: any;
 	@Input('primaryYAxis.name') primaryYAxis_name_input: any;
 	@Input('primaryYAxis.opposedPosition') primaryYAxis_opposedPosition_input: any;
+	@Input('primaryYAxis.orientation') primaryYAxis_orientation_input: any;
 	@Input('primaryYAxis.plotOffset') primaryYAxis_plotOffset_input: any;
 	@Input('primaryYAxis.range') primaryYAxis_range_input: any;
 	@Input('primaryYAxis.range.min') primaryYAxis_range_min_input: any;
@@ -981,6 +1024,11 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('primaryYAxis.rowIndex') primaryYAxis_rowIndex_input: any;
 	@Input('primaryYAxis.rowSpan') primaryYAxis_rowSpan_input: any;
 	@Input('primaryYAxis.showNextToAxisLine') primaryYAxis_showNextToAxisLine_input: any;
+	@Input('primaryYAxis.scrollbarSettings') primaryYAxis_scrollbarSettings_input: any;
+	@Input('primaryYAxis.scrollbarSettings.visible') primaryYAxis_scrollbarSettings_visible_input: any;
+	@Input('primaryYAxis.scrollbarSettings.canResize') primaryYAxis_scrollbarSettings_canResize_input: any;
+	@Input('primaryYAxis.scrollbarSettings.range') primaryYAxis_scrollbarSettings_range_input: any;
+	@Input('primaryYAxis.scrollbarSettings.pointsLength') primaryYAxis_scrollbarSettings_pointsLength_input: any;
 	@Input('primaryYAxis.tickLinesPosition') primaryYAxis_tickLinesPosition_input: any;
 	@Input('primaryYAxis.labelBorder') primaryYAxis_labelBorder_input: any;
 	@Input('primaryYAxis.labelBorder.color') primaryYAxis_labelBorder_color_input: any;
@@ -1012,12 +1060,20 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('title.font.fontWeight') title_font_fontWeight_input: any;
 	@Input('title.font.opacity') title_font_opacity_input: any;
 	@Input('title.font.size') title_font_size_input: any;
+	@Input('title.visible') title_visible_input: any;
+	@Input('title.enableTrim') title_enableTrim_input: any;
+	@Input('title.maximumWidth') title_maximumWidth_input: any;
+	@Input('title.textOverflow') title_textOverflow_input: any;
 	@Input('title.subTitle') title_subTitle_input: any;
 	@Input('title.subTitle.font') title_subTitle_font_input: any;
 	@Input('title.subTitle.background') title_subTitle_background_input: any;
 	@Input('title.subTitle.border') title_subTitle_border_input: any;
 	@Input('title.subTitle.text') title_subTitle_text_input: any;
 	@Input('title.subTitle.textAlignment') title_subTitle_textAlignment_input: any;
+	@Input('title.subTitle.visible') title_subTitle_visible_input: any;
+	@Input('title.subTitle.enableTrim') title_subTitle_enableTrim_input: any;
+	@Input('title.subTitle.maximumWidth') title_subTitle_maximumWidth_input: any;
+	@Input('title.subTitle.textOverflow') title_subTitle_textOverflow_input: any;
 	@Input('title.text') title_text_input: any;
 	@Input('title.textAlignment') title_textAlignment_input: any;
 	@Input('zooming.enable') zooming_enable_input: any;
@@ -1069,15 +1125,23 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Output('axisLabelClick') axisLabelClick_output = new EventEmitter();
 	@Output('axisLabelMouseMove') axisLabelMouseMove_output = new EventEmitter();
 	@Output('chartClick') chartClick_output = new EventEmitter();
+	@Output('multiLevelLabelClick') multiLevelLabelClick_output = new EventEmitter();
 	@Output('chartMouseMove') chartMouseMove_output = new EventEmitter();
 	@Output('chartDoubleClick') chartDoubleClick_output = new EventEmitter();
+	@Output('chartMouseLeave') chartMouseLeave_output = new EventEmitter();
 	@Output('annotationClick') annotationClick_output = new EventEmitter();
 	@Output('afterResize') afterResize_output = new EventEmitter();
 	@Output('beforeResize') beforeResize_output = new EventEmitter();
 	@Output('errorBarRendering') errorBarRendering_output = new EventEmitter();
+	@Output('multiLevelLabelRendering') multiLevelLabelRendering_output = new EventEmitter();
+	@Output('trendlineRendering') trendlineRendering_output = new EventEmitter();
 	@Output('scrollChanged') scrollChanged_output = new EventEmitter();
 	@Output('scrollStart') scrollStart_output = new EventEmitter();
 	@Output('scrollEnd') scrollEnd_output = new EventEmitter();
+	@Output('dragStart') dragStart_output = new EventEmitter();
+	@Output('dragging') dragging_output = new EventEmitter();
+	@Output('dragEnd') dragEnd_output = new EventEmitter();
+	@Output('subTitleRendering') subTitleRendering_output = new EventEmitter();
 
 	@ContentChild(ChartSeriesCollectionDirective) tag_series: any;
 	@ContentChild(ChartIndicatorsDirective) tag_indicators: any;

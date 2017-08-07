@@ -57,8 +57,11 @@ export class EJTemplateDirective {
             let tmplElement = templates.filter('.' + templateObject[template].key);
             if (tmplElement.length) {
                 for (let i = 0; i < tmplElement.length; i++) {
-                    childView = (<ViewContainerRef>templateObject[template].viewRef[i]).createEmbeddedView(<TemplateRef<any>>templateObject[template].templateRef[i], { '$implicit': templateObject[template].itemData[parseInt($(tmplElement[i]).attr('ej-prop'))] });
-                    $(tmplElement[i]).empty().append(childView.rootNodes);
+                    if (tmplElement[i].innerHTML.indexOf("EmbeddedView") != -1) {
+                        let index = parseInt($(tmplElement[i]).attr('ej-prop'));
+                        childView = (<ViewContainerRef>templateObject[template].viewRef[index]).createEmbeddedView(<TemplateRef<any>>templateObject[template].templateRef[index], { '$implicit': templateObject[template].itemData[index] });
+                        $(tmplElement[i]).empty().append(childView.rootNodes);
+                    }
                 }
             } else {
                 delete templateObject[template];
@@ -91,6 +94,7 @@ ej.template['text/x-template'] = (self: any, selector: string, data: any, index:
         self.angularTemplate = templateObject;
     }
     let scope = templateObject[selector];
+
     if (!ej.isNullOrUndefined(index)) {
         if (!scope.itemData) {
             scope.itemData = [];
@@ -99,13 +103,38 @@ ej.template['text/x-template'] = (self: any, selector: string, data: any, index:
         scope.viewRef[index] = prop._viewRef;
         scope.templateRef[index] = prop._templateRef;
     } else {
-        scope.itemData = [data];
-        scope.viewRef = [prop._viewRef];
-        scope.templateRef = [prop._templateRef];
+        if (data.length > 1) {
+            for (var i = 0; i < data.length; i++) {
+                scope.itemData[i] = data[i];
+                scope.viewRef[i] = prop._viewRef;
+                scope.templateRef[i] = prop._templateRef;
+            }
+        }
+        else {
+
+            scope.itemData = [data];
+            scope.viewRef = [prop._viewRef];
+            scope.templateRef = [prop._templateRef];
+        }
     }
-    let actElement = $(selector).html() || '';
-    let tempElement = '<div ej-prop=\'' + index + '\' class=\'' + templateObject[selector].key + ' ej-angular-template\'>' + actElement + '</div>';
+    // let actElement = $(selector).html() || '';
+    let actElement = '';
+    if (selector.startsWith('#'))
+        actElement = $(selector).html() || '';
+    else
+        actElement = selector;
+    let tempElement = '';
+    if (data.length > 1 && self.model.rowTemplate != null) {
+        for (var i = 0; i < data.length; i++) {
+            var temp = actElement;
+            temp = '<tr ej-prop=\'' + i + '\'class=\'' + templateObject[selector].key + ' ej-angular-template\' />' + temp + '</tr>';
+            tempElement = tempElement + temp;
+        }
+    }
+    else {
+        tempElement = tempElement + '<div ej-prop=\'' + index + '\' class=\'' + templateObject[selector].key + ' ej-angular-template\'>' + actElement + ' EmbeddedView </div>';
+    }
     return tempElement;
 };
-
+export let ejtemplate = ej.template['text/x-template'];
 ej.template.render = ej.template['text/x-template'];

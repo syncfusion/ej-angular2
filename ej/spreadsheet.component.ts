@@ -60,6 +60,7 @@ export class SpreadsheetSheetDirective extends ComplexTagElement {
 	@Input('showGridlines') showGridlines: any;
 	@Input('showHeader') showHeader: any;
 	@Input('showHeadings') showHeadings: any;
+	@Input('sheetName') sheetName: any;
 	@Input('startCell') startCell: any;
 
 	@ContentChild(SpreadsheetRangeSettingsDirective) tag_rangeSettings: any;

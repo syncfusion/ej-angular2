@@ -103,6 +103,9 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Input('fields.title') fields_title_input: any;
 	@Input('fields.color') fields_color_input: any;
 	@Input('fields.imageUrl') fields_imageUrl_input: any;
+	@Input('fields.collapsibleCards') fields_collapsibleCards_input: any;
+	@Input('fields.collapsibleCards.field') fields_collapsibleCards_field_input: any;
+	@Input('fields.collapsibleCards.key') fields_collapsibleCards_key_input: any;
 	@Input('scrollSettings.height') scrollSettings_height_input: any;
 	@Input('scrollSettings.width') scrollSettings_width_input: any;
 	@Input('scrollSettings.allowFreezeSwimlane') scrollSettings_allowFreezeSwimlane_input: any;

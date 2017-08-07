@@ -17,6 +17,7 @@ export class TreeMapLevelDirective extends ComplexTagElement {
 	@Input('headerTemplate') headerTemplate: any;
 	@Input('headerVisibilityMode') headerVisibilityMode: any;
 	@Input('labelPosition') labelPosition: any;
+	@Input('textOverflow') textOverflow: any;
 	@Input('labelTemplate') labelTemplate: any;
 	@Input('labelVisibilityMode') labelVisibilityMode: any;
 	@Input('showHeader') showHeader: any;
@@ -139,6 +140,7 @@ export class TreeMapComponent extends EJComponents<any, any> {
 	@Input('leafItemSettings.itemTemplate') leafItemSettings_itemTemplate_input: any;
 	@Input('leafItemSettings.labelPath') leafItemSettings_labelPath_input: any;
 	@Input('leafItemSettings.labelPosition') leafItemSettings_labelPosition_input: any;
+	@Input('leafItemSettings.textOverflow') leafItemSettings_textOverflow_input: any;
 	@Input('leafItemSettings.labelVisibilityMode') leafItemSettings_labelVisibilityMode_input: any;
 	@Input('leafItemSettings.showLabels') leafItemSettings_showLabels_input: any;
 	@Input('groupColorMapping') groupColorMapping_input: any;
@@ -153,7 +155,9 @@ export class TreeMapComponent extends EJComponents<any, any> {
 	@Output('treeMapItemSelected') treeMapItemSelected_output = new EventEmitter();
 	@Output('drillStarted') drillStarted_output = new EventEmitter();
 	@Output('drillDownItemSelected') drillDownItemSelected_output = new EventEmitter();
+	@Output('headerTemplateRendering') headerTemplateRendering_output = new EventEmitter();
 	@Output('refreshed') refreshed_output = new EventEmitter();
+	@Output('treeMapGroupSelected') treeMapGroupSelected_output = new EventEmitter();
 
 	@ContentChild(TreeMapLevelsDirective) tag_levels: any;
 	@ContentChild(TreeMapRangeColorMappingDirective) tag_rangeColorMapping: any;

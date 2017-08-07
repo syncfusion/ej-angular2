@@ -81,6 +81,7 @@ export class MapLayerDirective extends ComplexTagElement {
 	@Input('showTooltip') showTooltip: any;
 	@Input('tooltipTemplate') tooltipTemplate: any;
 	@Input('urlTemplate') urlTemplate: any;
+	@Input('sublayers') sublayers: any;
 
     
     constructor( @Inject(forwardRef(() => MapComponent)) widget: EJComponents<any, any>) {
@@ -111,14 +112,20 @@ export class MapLayersDirective extends ArrayTagElement<ComplexTagElement> {
 export class MapComponent extends EJComponents<any, any> {
 	@Input('background') background_input: any;
 	@Input('centerPosition') centerPosition_input: any;
+	@Input('draggingOnSelection') draggingOnSelection_input: any;
 	@Input('enableLayerChangeAnimation') enableLayerChangeAnimation_input: any;
+	@Input('isResponsive') isResponsive_input: any;
 	@Input('zoomSettings') zoomSettings_input: any;
 	@Input('navigationControl') navigationControl_input: any;
+	@Input('locale') locale_input: any;
 	@Input('navigationControl.content') navigationControl_content_input: any;
 	@Input('layers') layers_input: any;
 	@Input('layers.bubbleSettings.colorMappings.rangeColorMapping') layers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
 	@Input('layers.shapeSettings.colorMappings.rangeColorMapping') layers_shapeSettings_colorMappings_rangeColorMapping_input: any;
 	@Input('layers.shapeSettings.colorMappings.equalColorMapping') layers_shapeSettings_colorMappings_equalColorMapping_input: any;
+	@Input('layers.sublayers.bubbleSettings.colorMappings.rangeColorMapping') layers_sublayers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
+	@Input('layers.sublayers.shapeSettings.colorMappings.rangeColorMapping') layers_sublayers_shapeSettings_colorMappings_rangeColorMapping_input: any;
+	@Input('layers.sublayers.shapeSettings.colorMappings.equalColorMapping') layers_sublayers_shapeSettings_colorMappings_equalColorMapping_input: any;
 
 	@Input('baseMapIndex') baseMapIndex_two: any;
 	@Output('baseMapIndexChange') baseMapIndex_twoChange = new EventEmitter<any>();
