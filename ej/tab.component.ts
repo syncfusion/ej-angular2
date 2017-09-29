@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tab',
     template: '<ng-content></ng-content>'})
 export class TabComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('collapsible') collapsible_input: any;

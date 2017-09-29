@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-scroller',
     template: '<ng-content></ng-content>'})
 export class ScrollerComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('autoHide') autoHide_input: any;
 	@Input('buttonSize') buttonSize_input: any;

@@ -22,6 +22,7 @@ export const DatePickerValueAccessor: any = {
 })
 export class DatePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('allowEdit') allowEdit_input: any;
 	@Input('allowDrillDown') allowDrillDown_input: any;
 	@Input('blackoutDates') blackoutDates_input: any;

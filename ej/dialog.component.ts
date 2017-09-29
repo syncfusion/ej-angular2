@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-dialog',
     template: '<ng-content></ng-content>'})
 export class DialogComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('actionButtons') actionButtons_input: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('allowDraggable') allowDraggable_input: any;

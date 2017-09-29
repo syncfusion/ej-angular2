@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-toolbar',
     template: '<ng-content></ng-content>'})
 export class ToolbarComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('disabledItemIndices') disabledItemIndices_input: any;

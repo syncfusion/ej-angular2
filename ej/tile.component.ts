@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tile',
     template: ''})
 export class TileComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('badge') badge_input: any;
 	@Input('caption') caption_input: any;
 	@Input('cssClass') cssClass_input: any;

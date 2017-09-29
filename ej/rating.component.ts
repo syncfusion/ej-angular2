@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-rating',
     template: ''})
 export class RatingComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowReset') allowReset_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;

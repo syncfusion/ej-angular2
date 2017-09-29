@@ -532,6 +532,7 @@ export class DiagramNodesDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-diagram',
     template: ''})
 export class DiagramComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('backgroundImage') backgroundImage_input: any;
 	@Input('bridgeDirection') bridgeDirection_input: any;

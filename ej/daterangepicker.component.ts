@@ -22,6 +22,7 @@ export const DateRangePickerValueAccessor: any = {
 })
 export class DateRangePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('allowEdit') allowEdit_input: any;
 	@Input('buttonText') buttonText_input: any;
 	@Input('cssClass') cssClass_input: any;

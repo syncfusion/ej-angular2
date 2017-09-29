@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-radialslider',
     template: ''})
 export class RadialSliderComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('autoOpen') autoOpen_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;

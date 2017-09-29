@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivotgrid',
     template: ''})
 export class PivotGridComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('analysisMode') analysisMode_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('pivotTableFieldListID') pivotTableFieldListID_input: any;
@@ -40,6 +41,8 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('enableToolTip') enableToolTip_input: any;
 	@Input('enableToolTipAnimation') enableToolTipAnimation_input: any;
 	@Input('enableColumnResizing') enableColumnResizing_input: any;
+	@Input('resizeColumnsToFit') resizeColumnsToFit_input: any;
+	@Input('enableContextMenu') enableContextMenu_input: any;
 	@Input('enableVirtualScrolling') enableVirtualScrolling_input: any;
 	@Input('enablePaging') enablePaging_input: any;
 	@Input('hyperlinkSettings') hyperlinkSettings_input: any;
@@ -92,6 +95,8 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('serviceMethodSettings.calculatedField') serviceMethodSettings_calculatedField_input: any;
 	@Input('serviceMethodSettings.drillThroughHierarchies') serviceMethodSettings_drillThroughHierarchies_input: any;
 	@Input('serviceMethodSettings.drillThroughDataTable') serviceMethodSettings_drillThroughDataTable_input: any;
+	@Input('serviceMethodSettings.valueSorting') serviceMethodSettings_valueSorting_input: any;
+	@Input('serviceMethodSettings.removeButton') serviceMethodSettings_removeButton_input: any;
 	@Input('serviceMethodSettings.writeBack') serviceMethodSettings_writeBack_input: any;
 	@Input('dataSource.columns') dataSource_columns_input: any;
 	@Input('dataSource.rows') dataSource_rows_input: any;

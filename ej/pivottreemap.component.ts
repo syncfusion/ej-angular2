@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivottreemap',
     template: ''})
 export class PivotTreeMapComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('customObject') customObject_input: any;
@@ -19,6 +20,8 @@ export class PivotTreeMapComponent extends EJComponents<any, any> {
 	@Input('url') url_input: any;
 	@Input('dataSource.data') dataSource_data_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
+	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;
+	@Input('dataSource.providerName') dataSource_providerName_input: any;
 	@Input('dataSource.catalog') dataSource_catalog_input: any;
 	@Input('serviceMethodSettings.initialize') serviceMethodSettings_initialize_input: any;
 	@Input('serviceMethodSettings.drillDown') serviceMethodSettings_drillDown_input: any;

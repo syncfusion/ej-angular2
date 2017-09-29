@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-sparkline',
     template: ''})
 export class SparklineComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('fill') fill_input: any;
 	@Input('stroke') stroke_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-waitingpopup',
     template: ''})
 export class WaitingPopupComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('htmlAttributes') htmlAttributes_input: any;
 	@Input('showImage') showImage_input: any;

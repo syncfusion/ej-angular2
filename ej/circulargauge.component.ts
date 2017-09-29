@@ -342,6 +342,7 @@ export class CircularGaugeScalesDirective extends ArrayTagElement<ComplexTagElem
     selector: 'ej-circulargauge',
     template: ''})
 export class CircularGaugeComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('distanceFromCorner') distanceFromCorner_input: any;

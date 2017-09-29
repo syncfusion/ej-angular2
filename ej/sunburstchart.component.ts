@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-sunburstchart',
     template: ''})
 export class SunburstChartComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('valueMemberPath') valueMemberPath_input: any;
 	@Input('border') border_input: any;

@@ -68,6 +68,7 @@ export class TreeGridColumnsDirective extends ArrayTagElement<ComplexTagElement>
     selector: 'ej-treegrid',
     template: ''})
 export class TreeGridComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowColumnResize') allowColumnResize_input: any;
 	@Input('allowColumnReordering') allowColumnReordering_input: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
@@ -91,6 +92,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('enableCollapseAll') enableCollapseAll_input: any;
 	@Input('enableResize') enableResize_input: any;
 	@Input('enableVirtualization') enableVirtualization_input: any;
+	@Input('enableLoadOnDemand') enableLoadOnDemand_input: any;
 	@Input('columnResizeSettings') columnResizeSettings_input: any;
 	@Input('commonWidth') commonWidth_input: any;
 	@Input('filterSettings') filterSettings_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-uploadbox',
     template: ''})
 export class UploadboxComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('asyncUpload') asyncUpload_input: any;
 	@Input('autoUpload') autoUpload_input: any;

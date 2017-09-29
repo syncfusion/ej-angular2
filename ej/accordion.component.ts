@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-accordion',
     template: '<ng-content></ng-content>'})
 export class AccordionComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('collapseSpeed') collapseSpeed_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivotchart',
     template: ''})
 export class PivotChartComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('analysisMode') analysisMode_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('zooming') zooming_input: any;
@@ -25,6 +26,7 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Input('primaryXAxis') primaryXAxis_input: any;
 	@Input('primaryYAxis') primaryYAxis_input: any;
 	@Input('rotation') rotation_input: any;
+	@Input('enableContextMenu') enableContextMenu_input: any;
 	@Input('serviceMethodSettings') serviceMethodSettings_input: any;
 	@Input('size') size_input: any;
 	@Input('url') url_input: any;
@@ -48,6 +50,7 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Output('load') load_output = new EventEmitter();
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
 	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
+	@Output('beforePivotEnginePopulate') beforePivotEnginePopulate_output = new EventEmitter();
 	@Output('drillSuccess') drillSuccess_output = new EventEmitter();
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 	@Output('renderFailure') renderFailure_output = new EventEmitter();

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-overview',
     template: ''})
 export class OverviewComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('sourceID') sourceID_input: any;
 	@Input('height') height_input: any;
 	@Input('width') width_input: any;

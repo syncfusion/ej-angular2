@@ -11,6 +11,8 @@ import { currentTemplateElement } from './core';
 
 export { ContentChild, Type, forwardRef } from '@angular/core';
 
+export let ngTemplateid: any;
+
 
 @Directive({
     selector: `[e-template]`
@@ -35,6 +37,8 @@ export class EJTemplateDirective {
         $(tempEle).remove();
     }
     ngAfterViewInit() {
+        ngTemplateid = ej.getGuid("ng2Control");
+        this.element.parent.model["ngTemplateId"] = ngTemplateid;
         window.setTimeout(() => {
             this.compileTempalte();
             let parentWidget = this.element.parent.widget || this.element.widget;
@@ -57,7 +61,8 @@ export class EJTemplateDirective {
             let tmplElement = templates.filter('.' + templateObject[template].key);
             if (tmplElement.length) {
                 for (let i = 0; i < tmplElement.length; i++) {
-                    if (tmplElement[i].innerHTML.indexOf("EmbeddedView") != -1) {
+                    if (jQuery(tmplElement[i]).hasClass("embeddedview")) {
+                        jQuery(tmplElement[i]).removeClass("embeddedview")
                         let index = parseInt($(tmplElement[i]).attr('ej-prop'));
                         childView = (<ViewContainerRef>templateObject[template].viewRef[index]).createEmbeddedView(<TemplateRef<any>>templateObject[template].templateRef[index], { '$implicit': templateObject[template].itemData[index] });
                         $(tmplElement[i]).empty().append(childView.rootNodes);
@@ -132,7 +137,7 @@ ej.template['text/x-template'] = (self: any, selector: string, data: any, index:
         }
     }
     else {
-        tempElement = tempElement + '<div ej-prop=\'' + index + '\' class=\'' + templateObject[selector].key + ' ej-angular-template\'>' + actElement + ' EmbeddedView </div>';
+        tempElement = tempElement + '<div ej-prop=\'' + index + '\' class=\'' + " embeddedview " + templateObject[selector].key + ' ej-angular-template\'>' + actElement + ' </div>';
     }
     return tempElement;
 };

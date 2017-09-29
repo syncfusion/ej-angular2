@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-barcode',
     template: ''})
 export class BarcodeComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('barcodeToTextGapHeight') barcodeToTextGapHeight_input: any;
 	@Input('barHeight') barHeight_input: any;
 	@Input('darkBarColor') darkBarColor_input: any;

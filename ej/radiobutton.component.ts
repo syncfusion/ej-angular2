@@ -22,6 +22,7 @@ export const RadioButtonValueAccessor: any = {
 })
 export class RadioButtonComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('checked') checked_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;

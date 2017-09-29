@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-listview',
     template: '<ng-content></ng-content>'})
 export class ListViewComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('checkedIndices') checkedIndices_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -43,6 +44,19 @@ export class ListViewComponent extends EJComponents<any, any> {
 	@Input('ajaxSettings.data') ajaxSettings_data_input: any;
 	@Input('ajaxSettings.dataType') ajaxSettings_dataType_input: any;
 	@Input('ajaxSettings.type') ajaxSettings_type_input: any;
+	@Input('fieldSettings.checked') fieldSettings_checked_input: any;
+	@Input('fieldSettings.navigateUrl') fieldSettings_navigateUrl_input: any;
+	@Input('fieldSettings.attributes') fieldSettings_attributes_input: any;
+	@Input('fieldSettings.id') fieldSettings_id_input: any;
+	@Input('fieldSettings.imageUrl') fieldSettings_imageUrl_input: any;
+	@Input('fieldSettings.imageClass') fieldSettings_imageClass_input: any;
+	@Input('fieldSettings.preventSelection') fieldSettings_preventSelection_input: any;
+	@Input('fieldSettings.persistSelection') fieldSettings_persistSelection_input: any;
+	@Input('fieldSettings.primaryKey') fieldSettings_primaryKey_input: any;
+	@Input('fieldSettings.parentPrimaryKey') fieldSettings_parentPrimaryKey_input: any;
+	@Input('fieldSettings.text') fieldSettings_text_input: any;
+	@Input('fieldSettings.mouseUP') fieldSettings_mouseUP_input: any;
+	@Input('fieldSettings.mouseDown') fieldSettings_mouseDown_input: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();

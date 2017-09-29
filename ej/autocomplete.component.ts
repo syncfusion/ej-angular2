@@ -22,6 +22,7 @@ export const AutocompleteValueAccessor: any = {
 })
 export class AutocompleteComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('addNewText') addNewText_input: any;
 	@Input('allowAddNew') allowAddNew_input: any;
 	@Input('allowSorting') allowSorting_input: any;

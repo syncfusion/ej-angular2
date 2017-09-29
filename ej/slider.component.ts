@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-slider',
     template: ''})
 export class SliderComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowMouseWheel') allowMouseWheel_input: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('cssClass') cssClass_input: any;

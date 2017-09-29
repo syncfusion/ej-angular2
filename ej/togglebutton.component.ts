@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-togglebutton',
     template: ''})
 export class ToggleButtonComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('activePrefixIcon') activePrefixIcon_input: any;
 	@Input('activeSuffixIcon') activeSuffixIcon_input: any;
 	@Input('activeText') activeText_input: any;

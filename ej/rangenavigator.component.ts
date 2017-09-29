@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-rangenavigator',
     template: ''})
 export class RangeNavigatorComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowSnapping') allowSnapping_input: any;
 	@Input('border') border_input: any;
 	@Input('dataSource') dataSource_input: any;

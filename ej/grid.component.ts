@@ -47,7 +47,7 @@ export class GridColumnDirective extends ComplexTagElement {
 	@Input('dataSource') dataSource: any;
 	@Input('defaultValue') defaultValue: any;
 	@Input('disableHtmlEncode') disableHtmlEncode: any;
-	@Input('displayAsCheckBox') displayAsCheckBox: any;
+	@Input('displayAsCheckbox') displayAsCheckbox: any;
 	@Input('editParams') editParams: any;
 	@Input('editTemplate') editTemplate: any;
 	@Input('editType') editType: any;
@@ -229,6 +229,7 @@ export class GridStackedHeaderRowsDirective extends ArrayTagElement<ComplexTagEl
     selector: 'ej-grid',
     template: ''})
 export class GridComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowCellMerging') allowCellMerging_input: any;
 	@Input('allowGrouping') allowGrouping_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;

@@ -1,6 +1,5 @@
 import { Directive, ViewChild, ElementRef, ContentChild, EmbeddedViewRef, ViewContainerRef, TemplateRef, Injector, Inject } from '@angular/core';
-import { EJTemplateDirective, ejtemplate } from './../template';
-import { ngTemplateid } from './../core';
+import { EJTemplateDirective, ejtemplate, ngTemplateid } from './../template';
 
 
 @Directive({

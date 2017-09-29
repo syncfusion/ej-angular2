@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: '[ej-navigationdrawer]',
     template: '<ng-content></ng-content>'})
 export class NavigationDrawerComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('contentId') contentId_input: any;
 	@Input('cssClass') cssClass_input: any;

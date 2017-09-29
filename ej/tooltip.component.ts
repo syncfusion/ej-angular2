@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tooltip',
     template: '<ng-content></ng-content>'})
 export class TooltipComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animation') animation_input: any;
 	@Input('associate') associate_input: any;

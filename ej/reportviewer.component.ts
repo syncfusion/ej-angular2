@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-reportviewer',
     template: ''})
 export class ReportViewerComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('enablePageCache') enablePageCache_input: any;
 	@Input('exportSettings') exportSettings_input: any;
 	@Input('isResponsive') isResponsive_input: any;

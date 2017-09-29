@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-spellcheck',
     template: '<ng-content></ng-content>'})
 export class SpellCheckComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('dictionarySettings') dictionarySettings_input: any;
 	@Input('misspellWordCss') misspellWordCss_input: any;
 	@Input('locale') locale_input: any;
@@ -19,6 +20,8 @@ export class SpellCheckComponent extends EJComponents<any, any> {
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('enableValidateOnType') enableValidateOnType_input: any;
 	@Input('controlsToValidate') controlsToValidate_input: any;
+	@Input('enableAsync') enableAsync_input: any;
+	@Input('ajaxDataType') ajaxDataType_input: any;
 	@Input('dictionarySettings.dictionaryUrl') dictionarySettings_dictionaryUrl_input: any;
 	@Input('dictionarySettings.customDictionaryUrl') dictionarySettings_customDictionaryUrl_input: any;
 	@Input('contextMenuSettings.enable') contextMenuSettings_enable_input: any;

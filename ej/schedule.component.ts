@@ -49,6 +49,7 @@ export class ScheduleResourcesDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-schedule',
     template: ''})
 export class ScheduleComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowInline') allowInline_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-splitter',
     template: '<ng-content></ng-content>'})
 export class SplitterComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('cssClass') cssClass_input: any;

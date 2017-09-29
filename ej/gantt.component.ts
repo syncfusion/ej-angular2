@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-gantt',
     template: ''})
 export class GanttComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowColumnResize') allowColumnResize_input: any;
 	@Input('allowGanttChartEditing') allowGanttChartEditing_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-treeview',
     template: '<ng-content></ng-content>'})
 export class TreeViewComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowDragAndDropAcrossControl') allowDragAndDropAcrossControl_input: any;
 	@Input('allowDropSibling') allowDropSibling_input: any;
