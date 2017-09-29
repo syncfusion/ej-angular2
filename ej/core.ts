@@ -11,7 +11,6 @@ export { ContentChild, Type, forwardRef } from '@angular/core';
 
 export let currentTemplateElement: any;
 
-export let ngTemplateid: any;
 
 
 export interface IParentTag {
@@ -94,7 +93,6 @@ export class EJComponents<W, T> implements IParentTag {
         };
     }
     ngOnInit() {
-        ngTemplateid =  ej.getGuid("ng2Control");
         for (let key in this) {
             if (key.indexOf("_input") != -1)
                 this.inputs.push(key);
@@ -103,18 +101,14 @@ export class EJComponents<W, T> implements IParentTag {
             if (key.indexOf("_two") != -1 && key.indexOf("_twoChange") == -1)
                 this.twoways.push(key.replace("_two", ""));
         }
-        this.createTwoways(this.twoways);
+        if (ej.isNullOrUndefined((<any>this)["options"])) {
+            this.createTwoways(this.twoways);
+        }
     }
 
     ngAfterContentInit() {
         this.firstCheck = false;
 
-        for (let i = 0; i < this.tags.length; i++) {
-            let element = this.tags[i], item = (<any>this)['tag_' + element.replace(/\./g, '_')];
-            if (!ej.isNullOrUndefined(item)) {
-                ej.createObject(element, item.getList(), this.model);
-            }
-        }
         let model = this.model, events = this.outputs;
         if (events) {
             for (let i = 0; i < events.length; i++) {
@@ -122,44 +116,54 @@ export class EJComponents<W, T> implements IParentTag {
                 EJComponents.bindAndRaiseEvent(this, model, event);
             }
         }
-        for (let i = 0; i < this.inputs.length; i++) {
-            let property = this.inputs[i];
-            let modelProperty = this.inputs[i].replace("_input", "");
-            if ((<any>this)[property] != null) {
-                if (modelProperty.indexOf('_') == -1) {
-                    (<any>this.model)[modelProperty] = (<any>this)[property];
-                } else if (modelProperty.indexOf('_two') == -1) {
-                    let tempObj: any = {};
-                    let key = modelProperty.replace(/\_/g, '.');
-                    ej.createObject(key, (<any>this)[property], tempObj);
-                    let rootProp = key.split('.')[0];
-                    if ((<any>this.model)[rootProp] == undefined)
-                        (<any>this.model)[rootProp] = {};
-                    $.extend(true, (<any>this.model)[rootProp], tempObj[rootProp]);
+        if (ej.isNullOrUndefined((<any>this)["options"])) {
+            for (let i = 0; i < this.tags.length; i++) {
+                let element = this.tags[i], item = (<any>this)['tag_' + element.replace(/\./g, '_')];
+                if (!ej.isNullOrUndefined(item)) {
+                    ej.createObject(element, item.getList(), this.model);
+                }
+            }
+
+            for (let i = 0; i < this.inputs.length; i++) {
+                let property = this.inputs[i];
+                let modelProperty = this.inputs[i].replace("_input", "");
+                if ((<any>this)[property] != null) {
+                    if (modelProperty.indexOf('_') == -1) {
+                        (<any>this.model)[modelProperty] = (<any>this)[property];
+                    } else if (modelProperty.indexOf('_two') == -1) {
+                        let tempObj: any = {};
+                        let key = modelProperty.replace(/\_/g, '.');
+                        ej.createObject(key, (<any>this)[property], tempObj);
+                        let rootProp = key.split('.')[0];
+                        if ((<any>this.model)[rootProp] == undefined)
+                            (<any>this.model)[rootProp] = {};
+                        $.extend(true, (<any>this.model)[rootProp], tempObj[rootProp]);
+                    }
+                }
+            }
+            for (let i = 0; i < this.twoways.length; i++) {
+                let twoway = this.twoways[i];
+                let twowayProperty = twoway + '_two';
+                if ((<any>this)[twowayProperty] != null) {
+                    if (twoway.indexOf('_') == -1) {
+                        (<any>this.model)[twowayProperty] = (<any>this)[twowayProperty];
+                    } else {
+                        let tempObj: any = {};
+                        let key = twoway.replace(/\_/g, '.') + '_two';
+                        ej.createObject(key, (<any>this)[twowayProperty], tempObj);
+                        let rootProp = twowayProperty.split('_')[0];
+                        $.extend(true, (<any>this.model)[rootProp], tempObj[rootProp]);
+                    }
                 }
             }
         }
-        for (let i = 0; i < this.twoways.length; i++) {
-            let twoway = this.twoways[i];
-            let twowayProperty = twoway + '_two';
-            if ((<any>this)[twowayProperty] != null) {
-                if (twoway.indexOf('_') == -1) {
-                    (<any>this.model)[twowayProperty] = (<any>this)[twowayProperty];
-                } else {
-                    let tempObj: any = {};
-                    let key = twoway.replace(/\_/g, '.') + '_two';
-                    ej.createObject(key, (<any>this)[twowayProperty], tempObj);
-                    let rootProp = twowayProperty.split('_')[0];
-                    $.extend(true, (<any>this.model)[rootProp], tempObj[rootProp]);
-                }
-            }
-        }
+        else
+            this.model = jQuery.extend(this.model, (<any>this)["options"]);
 
     }
     ngAfterViewInit() {
         
         let nativeElement = this.isEditor ? $(this.el.nativeElement.children) : $(this.el.nativeElement);
-        (<any>this.model)["ngTemplateId"] = ngTemplateid;
         this.widget = $(nativeElement)['ej' + this.controlName](this.model)['ej' + this.controlName]('instance');
     }
 
@@ -175,21 +179,23 @@ export class EJComponents<W, T> implements IParentTag {
     ngOnChanges(changes: { [key: string]: SimpleChange }) {
         if (this.firstCheck) { return; }
         let ngChanges = {};
-        for (let key in changes) {
-            let element = changes[key];
-            if (element.previousValue === element.currentValue) {
-                break;
+        if (ej.isNullOrUndefined((<any>this)["options"])) {
+            for (let key in changes) {
+                let element = changes[key];
+                if (element.previousValue === element.currentValue) {
+                    break;
+                }
+                key = key.replace("_input", "").replace(/\_/g, '.');
+                if (key.endsWith('.two')) {
+                    let oKey = key.replace('.two', ''), valFn = ej.getObject<Function>(oKey, (<any>this.widget)['model']);
+                    valFn(element.currentValue, true);
+                    ej.createObject(oKey, valFn, ngChanges);
+                }
+                ej.createObject(key, element.currentValue, ngChanges);
             }
-            key = key.replace("_input", "").replace(/\_/g, '.');
-            if (key.endsWith('.two')) {
-                let oKey = key.replace('.two', ''), valFn = ej.getObject<Function>(oKey, (<any>this.widget)['model']);
-                valFn(element.currentValue, true);
-                ej.createObject(oKey, valFn, ngChanges);
-            }
-            ej.createObject(key, element.currentValue, ngChanges);
-        }
 
-        (<any>this.widget)['setModel'](ngChanges, $.isPlainObject(ngChanges));
+            (<any>this.widget)['setModel'](ngChanges, $.isPlainObject(ngChanges));
+        }
     }
 
     ngAfterContentChecked() {

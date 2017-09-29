@@ -49,6 +49,7 @@ export class RadialMenuItemsDirective extends ArrayTagElement<ComplexTagElement>
     selector: 'ej-radialmenu',
     template: ''})
 export class RadialMenuComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('autoOpen') autoOpen_input: any;
 	@Input('backImageClass') backImageClass_input: any;
 	@Input('cssClass') cssClass_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tagcloud',
     template: ''})
 export class TagCloudComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('enableRTL') enableRTL_input: any;

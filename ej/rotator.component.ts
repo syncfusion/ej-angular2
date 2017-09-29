@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: '[ej-rotator]',
     template: '<ng-content></ng-content>'})
 export class RotatorComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('animationType') animationType_input: any;

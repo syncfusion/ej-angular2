@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-checkbox',
     template: ''})
 export class CheckBoxComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;
 	@Input('enablePersistence') enablePersistence_input: any;

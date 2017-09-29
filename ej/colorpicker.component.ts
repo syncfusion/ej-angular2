@@ -22,6 +22,7 @@ export const ColorPickerValueAccessor: any = {
 })
 export class ColorPickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('buttonText') buttonText_input: any;
 	@Input('buttonMode') buttonMode_input: any;
 	@Input('columns') columns_input: any;

@@ -190,6 +190,7 @@ export class RibbonTabsDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-ribbon',
     template: ''})
 export class RibbonComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowResizing') allowResizing_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('buttonDefaults') buttonDefaults_input: any;

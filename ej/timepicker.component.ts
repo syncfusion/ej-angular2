@@ -22,6 +22,7 @@ export const TimePickerValueAccessor: any = {
 })
 export class TimePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('disableTimeRanges') disableTimeRanges_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;

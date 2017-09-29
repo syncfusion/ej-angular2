@@ -81,6 +81,7 @@ export class TreeMapRangeColorMappingDirective extends ArrayTagElement<ComplexTa
     selector: 'ej-treemap',
     template: ''})
 export class TreeMapComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('borderBrush') borderBrush_input: any;
 	@Input('borderThickness') borderThickness_input: any;
 	@Input('uniColorMapping') uniColorMapping_input: any;

@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-menu',
     template: '<ng-content></ng-content>'})
 export class MenuComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('animationType') animationType_input: any;
 	@Input('contextMenuTarget') contextMenuTarget_input: any;
 	@Input('container') container_input: any;

@@ -45,6 +45,7 @@ export class HeatMapColorMappingCollectionDirective extends ArrayTagElement<Comp
     selector: 'ej-heatmap',
     template: ''})
 export class HeatMapComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('width') width_input: any;
 	@Input('height') height_input: any;
 	@Input('id') id_input: any;

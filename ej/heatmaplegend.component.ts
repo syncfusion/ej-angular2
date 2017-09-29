@@ -45,6 +45,7 @@ export class HeatMapLegendLegendcolorMappingsDirective extends ArrayTagElement<C
     selector: 'ej-heatmaplegend',
     template: ''})
 export class HeatMapLegendComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('width') width_input: any;
 	@Input('height') height_input: any;
 	@Input('isResponsive') isResponsive_input: any;

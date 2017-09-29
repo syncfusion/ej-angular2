@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-signature',
     template: ''})
 export class SignatureComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('backgroundImage') backgroundImage_input: any;
 	@Input('enabled') enabled_input: any;

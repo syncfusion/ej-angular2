@@ -62,6 +62,7 @@ export class DigitalGaugeItemsDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-digitalgauge',
     template: ''})
 export class DigitalGaugeComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('frame') frame_input: any;
 	@Input('height') height_input: any;
 	@Input('isResponsive') isResponsive_input: any;

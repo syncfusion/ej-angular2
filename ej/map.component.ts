@@ -81,7 +81,7 @@ export class MapLayerDirective extends ComplexTagElement {
 	@Input('showTooltip') showTooltip: any;
 	@Input('tooltipTemplate') tooltipTemplate: any;
 	@Input('urlTemplate') urlTemplate: any;
-	@Input('sublayers') sublayers: any;
+	@Input('subLayers') subLayers: any;
 
     
     constructor( @Inject(forwardRef(() => MapComponent)) widget: EJComponents<any, any>) {
@@ -110,6 +110,7 @@ export class MapLayersDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-map',
     template: ''})
 export class MapComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('centerPosition') centerPosition_input: any;
 	@Input('draggingOnSelection') draggingOnSelection_input: any;
@@ -123,9 +124,9 @@ export class MapComponent extends EJComponents<any, any> {
 	@Input('layers.bubbleSettings.colorMappings.rangeColorMapping') layers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
 	@Input('layers.shapeSettings.colorMappings.rangeColorMapping') layers_shapeSettings_colorMappings_rangeColorMapping_input: any;
 	@Input('layers.shapeSettings.colorMappings.equalColorMapping') layers_shapeSettings_colorMappings_equalColorMapping_input: any;
-	@Input('layers.sublayers.bubbleSettings.colorMappings.rangeColorMapping') layers_sublayers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
-	@Input('layers.sublayers.shapeSettings.colorMappings.rangeColorMapping') layers_sublayers_shapeSettings_colorMappings_rangeColorMapping_input: any;
-	@Input('layers.sublayers.shapeSettings.colorMappings.equalColorMapping') layers_sublayers_shapeSettings_colorMappings_equalColorMapping_input: any;
+	@Input('layers.subLayers.bubbleSettings.colorMappings.rangeColorMapping') layers_subLayers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
+	@Input('layers.subLayers.shapeSettings.colorMappings.rangeColorMapping') layers_subLayers_shapeSettings_colorMappings_rangeColorMapping_input: any;
+	@Input('layers.subLayers.shapeSettings.colorMappings.equalColorMapping') layers_subLayers_shapeSettings_colorMappings_equalColorMapping_input: any;
 
 	@Input('baseMapIndex') baseMapIndex_two: any;
 	@Output('baseMapIndexChange') baseMapIndex_twoChange = new EventEmitter<any>();

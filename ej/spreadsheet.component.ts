@@ -91,6 +91,7 @@ export class SpreadsheetSheetsDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-spreadsheet',
     template: ''})
 export class SpreadsheetComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('activeSheetIndex') activeSheetIndex_input: any;
 	@Input('allowAutoCellType') allowAutoCellType_input: any;
 	@Input('allowAutoFill') allowAutoFill_input: any;

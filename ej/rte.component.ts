@@ -22,6 +22,7 @@ export const RTEValueAccessor: any = {
 })
 export class RTEComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('allowEditing') allowEditing_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('autoFocus') autoFocus_input: any;

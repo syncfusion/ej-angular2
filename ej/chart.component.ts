@@ -632,6 +632,7 @@ export class ChartColumnDefinitionsDirective extends ArrayTagElement<ComplexTagE
     selector: 'ej-chart',
     template: ''})
 export class ChartComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('backGroundImageUrl') backGroundImageUrl_input: any;
 	@Input('border') border_input: any;

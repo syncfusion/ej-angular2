@@ -22,6 +22,7 @@ export const PercentageTextboxValueAccessor: any = {
 })
 export class PercentageTextboxComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('currencySymbol') currencySymbol_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('decimalPlaces') decimalPlaces_input: any;

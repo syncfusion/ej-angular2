@@ -50,6 +50,7 @@ export class KanbanColumnsDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-kanban',
     template: ''})
 export class KanbanComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowTitle') allowTitle_input: any;
 	@Input('swimlaneSettings') swimlaneSettings_input: any;

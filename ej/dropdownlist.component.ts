@@ -22,6 +22,7 @@ export const DropDownListValueAccessor: any = {
 })
 export class DropDownListComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('allowVirtualScrolling') allowVirtualScrolling_input: any;
 	@Input('cascadeTo') cascadeTo_input: any;
 	@Input('caseSensitiveSearch') caseSensitiveSearch_input: any;
@@ -32,6 +33,7 @@ export class DropDownListComponent extends EJComponents<any, any> implements Con
 	@Input('enabled') enabled_input: any;
 	@Input('enableIncrementalSearch') enableIncrementalSearch_input: any;
 	@Input('enableFilterSearch') enableFilterSearch_input: any;
+	@Input('enableServerFiltering') enableServerFiltering_input: any;
 	@Input('enablePersistence') enablePersistence_input: any;
 	@Input('enablePopupResize') enablePopupResize_input: any;
 	@Input('enableRTL') enableRTL_input: any;

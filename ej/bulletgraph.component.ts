@@ -67,6 +67,7 @@ export class BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective extend
     selector: 'ej-bulletgraph',
     template: ''})
 export class BulletGraphComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('applyRangeStrokeToLabels') applyRangeStrokeToLabels_input: any;
 	@Input('applyRangeStrokeToTicks') applyRangeStrokeToTicks_input: any;
 	@Input('captionSettings') captionSettings_input: any;

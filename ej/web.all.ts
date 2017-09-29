@@ -349,6 +349,12 @@ export let EJ_TOGGLEBUTTON_COMPONENTS: Type<any>[] = TogglebuttonAll.EJ_TOGGLEBU
 
 
 
+import * as SplitbuttonAll from './splitbutton.component';
+export let Splitbutton = SplitbuttonAll;
+export let EJ_SPLITBUTTON_COMPONENTS: Type<any>[] = SplitbuttonAll.EJ_SPLITBUTTON_COMPONENTS;
+
+
+
 import * as DatetimepickerAll from './datetimepicker.component';
 export let Datetimepicker = DatetimepickerAll;
 export let EJ_DATETIMEPICKER_COMPONENTS: Type<any>[] = DatetimepickerAll.EJ_DATETIMEPICKER_COMPONENTS;

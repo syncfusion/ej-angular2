@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-listbox',
     template: '<ng-content></ng-content>'})
 export class ListBoxComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowDrag') allowDrag_input: any;
 	@Input('allowDrop') allowDrop_input: any;
 	@Input('allowMultiSelection') allowMultiSelection_input: any;

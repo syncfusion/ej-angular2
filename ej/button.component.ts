@@ -22,6 +22,7 @@ export const ButtonValueAccessor: any = {
 })
 export class ButtonComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('contentType') contentType_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;

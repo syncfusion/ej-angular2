@@ -22,6 +22,7 @@ export const MaskEditValueAccessor: any = {
 })
 export class MaskEditComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
+    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('customCharacter') customCharacter_input: any;
 	@Input('enabled') enabled_input: any;
@@ -30,6 +31,7 @@ export class MaskEditComponent extends EJComponents<any, any> implements Control
 	@Input('hidePromptOnLeave') hidePromptOnLeave_input: any;
 	@Input('htmlAttributes') htmlAttributes_input: any;
 	@Input('inputMode') inputMode_input: any;
+	@Input('locale') locale_input: any;
 	@Input('maskFormat') maskFormat_input: any;
 	@Input('name') name_input: any;
 	@Input('readOnly') readOnly_input: any;

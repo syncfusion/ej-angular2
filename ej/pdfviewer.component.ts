@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pdfviewer',
     template: ''})
 export class PdfViewerComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('locale') locale_input: any;
 	@Input('toolbarSettings') toolbarSettings_input: any;
 	@Input('serverActionSettings') serverActionSettings_input: any;
@@ -18,14 +19,17 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Input('enableHighlightAnnotation') enableHighlightAnnotation_input: any;
 	@Input('enableUnderlineAnnotation') enableUnderlineAnnotation_input: any;
 	@Input('enableStrikethroughAnnotation') enableStrikethroughAnnotation_input: any;
+	@Input('enableSignature') enableSignature_input: any;
 	@Input('strikethroughSettings') strikethroughSettings_input: any;
 	@Input('underlineSettings') underlineSettings_input: any;
 	@Input('highlightSettings') highlightSettings_input: any;
+	@Input('signatureSettings') signatureSettings_input: any;
 	@Input('annotationType') annotationType_input: any;
 	@Input('pageCount') pageCount_input: any;
 	@Input('currentPageNumber') currentPageNumber_input: any;
 	@Input('zoomPercentage') zoomPercentage_input: any;
 	@Input('pdfService') pdfService_input: any;
+	@Input('interactionMode') interactionMode_input: any;
 	@Input('hyperlinkOpenState') hyperlinkOpenState_input: any;
 	@Input('enableHyperlink') enableHyperlink_input: any;
 	@Input('enableTextSelection') enableTextSelection_input: any;
@@ -57,6 +61,8 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Input('highlightSettings.subject') highlightSettings_subject_input: any;
 	@Input('highlightSettings.modifiedDate') highlightSettings_modifiedDate_input: any;
 	@Input('highlightSettings.isLocked') highlightSettings_isLocked_input: any;
+	@Input('signatureSettings.color') signatureSettings_color_input: any;
+	@Input('signatureSettings.opacity') signatureSettings_opacity_input: any;
 
 
 	@Output('documentLoad') documentLoad_output = new EventEmitter();
@@ -71,6 +77,10 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Output('annotationAdd') annotationAdd_output = new EventEmitter();
 	@Output('annotationRemove') annotationRemove_output = new EventEmitter();
 	@Output('annotationPropertiesChange') annotationPropertiesChange_output = new EventEmitter();
+	@Output('signatureAdd') signatureAdd_output = new EventEmitter();
+	@Output('signatureDelete') signatureDelete_output = new EventEmitter();
+	@Output('signaturePropertiesChange') signaturePropertiesChange_output = new EventEmitter();
+	@Output('signatureResize') signatureResize_output = new EventEmitter();
 	@Output('bufferStart') bufferStart_output = new EventEmitter();
 	@Output('bufferEnd') bufferEnd_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();

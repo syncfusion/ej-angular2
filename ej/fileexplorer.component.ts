@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-fileexplorer',
     template: ''})
 export class FileExplorerComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('ajaxAction') ajaxAction_input: any;
 	@Input('ajaxDataType') ajaxDataType_input: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;

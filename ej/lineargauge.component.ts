@@ -338,6 +338,7 @@ export class LinearGaugeScalesDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-lineargauge',
     template: ''})
 export class LinearGaugeComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('borderColor') borderColor_input: any;

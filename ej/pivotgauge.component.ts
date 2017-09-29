@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivotgauge',
     template: ''})
 export class PivotGaugeComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('columnsCount') columnsCount_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('customObject') customObject_input: any;

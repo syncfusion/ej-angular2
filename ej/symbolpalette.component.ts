@@ -9,6 +9,7 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-symbolpalette',
     template: ''})
 export class SymbolPaletteComponent extends EJComponents<any, any> {
+    @Input('options') options: any;
 	@Input('allowDrag') allowDrag_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('defaultSettings') defaultSettings_input: any;
