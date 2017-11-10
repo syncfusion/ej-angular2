@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.ribbon.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-applicationtab-backstagesettings-pages>e-page',
 })
@@ -190,7 +190,6 @@ export class RibbonTabsDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-ribbon',
     template: ''})
 export class RibbonComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowResizing') allowResizing_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('buttonDefaults') buttonDefaults_input: any;
@@ -225,6 +224,7 @@ export class RibbonComponent extends EJComponents<any, any> {
 	@Input('tabs.groups.content') tabs_groups_content_input: any;
 	@Input('tabs.groups.content.groups.customGalleryItems') tabs_groups_content_groups_customGalleryItems_input: any;
 	@Input('tabs.groups.content.groups.galleryItems') tabs_groups_content_groups_galleryItems_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeTabRemove') beforeTabRemove_output = new EventEmitter();
@@ -247,8 +247,8 @@ export class RibbonComponent extends EJComponents<any, any> {
 
 	@ContentChild(RibbonApplicationTabBackstageSettingsPagesDirective) tag_applicationTab_backstageSettings_pages: any;
 	@ContentChild(RibbonTabsDirective) tag_tabs: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Ribbon', el, cdRef, ['applicationTab.backstageSettings.pages', 'tabs']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Ribbon', el, cdRef, ['applicationTab.backstageSettings.pages', 'tabs'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

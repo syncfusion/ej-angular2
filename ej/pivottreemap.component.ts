@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.pivottreemap.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivottreemap',
     template: ''})
 export class PivotTreeMapComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('customObject') customObject_input: any;
@@ -29,6 +28,7 @@ export class PivotTreeMapComponent extends EJComponents<any, any> {
 	@Input('dataSource.rows') dataSource_rows_input: any;
 	@Input('dataSource.values') dataSource_values_input: any;
 	@Input('dataSource.filters') dataSource_filters_input: any;
+    @Input('options') options: any;
 
 
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
@@ -40,8 +40,8 @@ export class PivotTreeMapComponent extends EJComponents<any, any> {
 	@Output('renderFailure') renderFailure_output = new EventEmitter();
 	@Output('renderSuccess') renderSuccess_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('PivotTreeMap', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('PivotTreeMap', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

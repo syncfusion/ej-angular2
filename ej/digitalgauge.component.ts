@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.digitalgauge.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-digitalgauge-items>e-digitalgauge-item',
 })
@@ -62,7 +62,6 @@ export class DigitalGaugeItemsDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-digitalgauge',
     template: ''})
 export class DigitalGaugeComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('frame') frame_input: any;
 	@Input('height') height_input: any;
 	@Input('isResponsive') isResponsive_input: any;
@@ -75,6 +74,7 @@ export class DigitalGaugeComponent extends EJComponents<any, any> {
 	@Input('frame.innerWidth') frame_innerWidth_input: any;
 	@Input('frame.outerWidth') frame_outerWidth_input: any;
 	@Input('items') items_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -85,8 +85,8 @@ export class DigitalGaugeComponent extends EJComponents<any, any> {
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 
 	@ContentChild(DigitalGaugeItemsDirective) tag_items: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('DigitalGauge', el, cdRef, ['items']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('DigitalGauge', el, cdRef, ['items'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

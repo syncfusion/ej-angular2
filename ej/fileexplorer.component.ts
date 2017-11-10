@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.fileexplorer.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-fileexplorer',
     template: ''})
 export class FileExplorerComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('ajaxAction') ajaxAction_input: any;
 	@Input('ajaxDataType') ajaxDataType_input: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
@@ -59,6 +58,7 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Input('uploadSettings.maxFileSize') uploadSettings_maxFileSize_input: any;
 	@Input('uploadSettings.allowMultipleFile') uploadSettings_allowMultipleFile_input: any;
 	@Input('uploadSettings.autoUpload') uploadSettings_autoUpload_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeAjaxRequest') beforeAjaxRequest_output = new EventEmitter();
@@ -66,6 +66,7 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Output('beforeGetImage') beforeGetImage_output = new EventEmitter();
 	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
 	@Output('beforeUpload') beforeUpload_output = new EventEmitter();
+	@Output('beforeUploadDialogOpen') beforeUploadDialogOpen_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
 	@Output('copy') copy_output = new EventEmitter();
 	@Output('createFolder') createFolder_output = new EventEmitter();
@@ -91,8 +92,8 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Output('templateRefresh') templateRefresh_output = new EventEmitter();
 	@Output('unselect') unselect_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('FileExplorer', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('FileExplorer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

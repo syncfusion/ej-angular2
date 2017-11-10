@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.radialslider.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-radialslider',
     template: ''})
 export class RadialSliderComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('autoOpen') autoOpen_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;
@@ -25,6 +24,7 @@ export class RadialSliderComponent extends EJComponents<any, any> {
 	@Input('startAngle') startAngle_input: any;
 	@Input('strokeWidth') strokeWidth_input: any;
 	@Input('ticks') ticks_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -37,8 +37,8 @@ export class RadialSliderComponent extends EJComponents<any, any> {
 	@Output('start') start_output = new EventEmitter();
 	@Output('stop') stop_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('RadialSlider', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('RadialSlider', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

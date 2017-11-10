@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.treeview.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-treeview',
     template: '<ng-content></ng-content>'})
 export class TreeViewComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowDragAndDropAcrossControl') allowDragAndDropAcrossControl_input: any;
 	@Input('allowDropSibling') allowDropSibling_input: any;
@@ -57,6 +56,7 @@ export class TreeViewComponent extends EJComponents<any, any> {
 	@Input('fields.text') fields_text_input: any;
 	@Input('sortSettings.allowSorting') sortSettings_allowSorting_input: any;
 	@Input('sortSettings.sortOrder') sortSettings_sortOrder_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeAdd') beforeAdd_output = new EventEmitter();
@@ -92,8 +92,8 @@ export class TreeViewComponent extends EJComponents<any, any> {
 	@Output('nodeUnselect') nodeUnselect_output = new EventEmitter();
 	@Output('ready') ready_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('TreeView', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('TreeView', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.colorpicker.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const ColorPickerValueAccessor: any = {
 })
 export class ColorPickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('buttonText') buttonText_input: any;
 	@Input('buttonMode') buttonMode_input: any;
 	@Input('columns') columns_input: any;
@@ -63,6 +62,7 @@ export class ColorPickerComponent extends EJComponents<any, any> implements Cont
 	@Input('tooltipText.candycrush') tooltipText_candycrush_input: any;
 	@Input('tooltipText.currentcolor') tooltipText_currentcolor_input: any;
 	@Input('tooltipText.selectedcolor') tooltipText_selectedcolor_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -77,8 +77,8 @@ export class ColorPickerComponent extends EJComponents<any, any> implements Cont
 	@Output('open') open_output = new EventEmitter();
 	@Output('select') select_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('ColorPicker', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('ColorPicker', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

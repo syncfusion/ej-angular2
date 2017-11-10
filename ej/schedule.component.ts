@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.schedule.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-resources>e-resource',
 })
@@ -49,7 +49,6 @@ export class ScheduleResourcesDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-schedule',
     template: ''})
 export class ScheduleComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowInline') allowInline_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
@@ -179,6 +178,7 @@ export class ScheduleComponent extends EJComponents<any, any> {
 	@Input('blockoutSettings.groupId') blockoutSettings_groupId_input: any;
 	@Input('blockoutSettings.customStyle') blockoutSettings_customStyle_input: any;
 	@Input('resources') resources_input: any;
+    @Input('options') options: any;
 
 	@Input('appointmentSettings.dataSource') appointmentSettings_dataSource_two: any;
 	@Output('appointmentSettings.dataSourceChange') appointmentSettings_dataSource_twoChange = new EventEmitter<any>();
@@ -219,8 +219,8 @@ export class ScheduleComponent extends EJComponents<any, any> {
 	@Output('appointmentRemoved') appointmentRemoved_output = new EventEmitter();
 
 	@ContentChild(ScheduleResourcesDirective) tag_resources: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Schedule', el, cdRef, ['resources']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Schedule', el, cdRef, ['resources'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

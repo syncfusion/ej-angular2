@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.sunburstchart.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-sunburstchart',
     template: ''})
 export class SunburstChartComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('valueMemberPath') valueMemberPath_input: any;
 	@Input('border') border_input: any;
@@ -138,6 +137,7 @@ export class SunburstChartComponent extends EJComponents<any, any> {
 	@Input('zoomSettings.toolbarHorizontalAlignment') zoomSettings_toolbarHorizontalAlignment_input: any;
 	@Input('zoomSettings.toolbarVerticalAlignment') zoomSettings_toolbarVerticalAlignment_input: any;
 	@Input('levels') levels_input: any;
+    @Input('options') options: any;
 
 
 	@Output('load') load_output = new EventEmitter();
@@ -153,8 +153,8 @@ export class SunburstChartComponent extends EJComponents<any, any> {
 	@Output('drillDownBack') drillDownBack_output = new EventEmitter();
 	@Output('drillDownReset') drillDownReset_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('SunburstChart', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('SunburstChart', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

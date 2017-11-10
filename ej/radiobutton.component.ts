@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.radiobutton.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const RadioButtonValueAccessor: any = {
 })
 export class RadioButtonComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('checked') checked_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;
@@ -37,6 +36,7 @@ export class RadioButtonComponent extends EJComponents<any, any> implements Cont
 	@Input('validationMessage') validationMessage_input: any;
 	@Input('validationRules') validationRules_input: any;
 	@Input('value') value_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeChange') beforeChange_output = new EventEmitter();
@@ -45,8 +45,8 @@ export class RadioButtonComponent extends EJComponents<any, any> implements Cont
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('RadioButton', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('RadioButton', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

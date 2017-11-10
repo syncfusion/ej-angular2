@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.spreadsheet.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-rangesettings>e-rangesetting',
 })
@@ -91,7 +91,6 @@ export class SpreadsheetSheetsDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-spreadsheet',
     template: ''})
 export class SpreadsheetComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('activeSheetIndex') activeSheetIndex_input: any;
 	@Input('allowAutoCellType') allowAutoCellType_input: any;
 	@Input('allowAutoFill') allowAutoFill_input: any;
@@ -192,6 +191,7 @@ export class SpreadsheetComponent extends EJComponents<any, any> {
 	@Input('nameManager') nameManager_input: any;
 	@Input('sheets') sheets_input: any;
 	@Input('sheets.rows.cells') sheets_rows_cells_input: any;
+    @Input('options') options: any;
 
 
 	@Output('actionBegin') actionBegin_output = new EventEmitter();
@@ -234,8 +234,8 @@ export class SpreadsheetComponent extends EJComponents<any, any> {
 	@Output('tabSelect') tabSelect_output = new EventEmitter();
 
 	@ContentChild(SpreadsheetSheetsDirective) tag_sheets: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Spreadsheet', el, cdRef, ['sheets']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Spreadsheet', el, cdRef, ['sheets'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.rating.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-rating',
     template: ''})
 export class RatingComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowReset') allowReset_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;
@@ -26,6 +25,7 @@ export class RatingComponent extends EJComponents<any, any> {
 	@Input('shapeWidth') shapeWidth_input: any;
 	@Input('showTooltip') showTooltip_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -40,8 +40,8 @@ export class RatingComponent extends EJComponents<any, any> {
 	@Output('mousemove') mousemove_output = new EventEmitter();
 	@Output('mouseover') mouseover_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Rating', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Rating', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

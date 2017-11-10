@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.dialog.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-dialog',
     template: '<ng-content></ng-content>'})
 export class DialogComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('actionButtons') actionButtons_input: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('allowDraggable') allowDraggable_input: any;
@@ -53,6 +52,7 @@ export class DialogComponent extends EJComponents<any, any> {
 	@Input('ajaxSettings.data') ajaxSettings_data_input: any;
 	@Input('ajaxSettings.dataType') ajaxSettings_dataType_input: any;
 	@Input('ajaxSettings.type') ajaxSettings_type_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
@@ -74,8 +74,8 @@ export class DialogComponent extends EJComponents<any, any> {
 	@Output('collapse') collapse_output = new EventEmitter();
 	@Output('actionButtonClick') actionButtonClick_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Dialog', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Dialog', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

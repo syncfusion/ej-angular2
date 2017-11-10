@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.tooltip.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tooltip',
     template: '<ng-content></ng-content>'})
 export class TooltipComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animation') animation_input: any;
 	@Input('associate') associate_input: any;
@@ -45,6 +44,7 @@ export class TooltipComponent extends EJComponents<any, any> {
 	@Input('tip.adjust') tip_adjust_input: any;
 	@Input('tip.adjust.xValue') tip_adjust_xValue_input: any;
 	@Input('tip.adjust.yValue') tip_adjust_yValue_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeClose') beforeClose_output = new EventEmitter();
@@ -58,8 +58,8 @@ export class TooltipComponent extends EJComponents<any, any> {
 	@Output('open') open_output = new EventEmitter();
 	@Output('tracking') tracking_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Tooltip', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Tooltip', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

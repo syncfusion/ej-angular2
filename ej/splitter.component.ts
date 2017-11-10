@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.splitter.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-splitter',
     template: '<ng-content></ng-content>'})
 export class SplitterComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -21,6 +20,7 @@ export class SplitterComponent extends EJComponents<any, any> {
 	@Input('orientation') orientation_input: any;
 	@Input('properties') properties_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeExpandCollapse') beforeExpandCollapse_output = new EventEmitter();
@@ -29,8 +29,8 @@ export class SplitterComponent extends EJComponents<any, any> {
 	@Output('expandCollapse') expandCollapse_output = new EventEmitter();
 	@Output('resize') resize_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Splitter', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Splitter', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

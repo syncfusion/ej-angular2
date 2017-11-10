@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.timepicker.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const TimePickerValueAccessor: any = {
 })
 export class TimePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('disableTimeRanges') disableTimeRanges_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;
@@ -47,6 +46,7 @@ export class TimePickerComponent extends EJComponents<any, any> implements Contr
 	@Input('timeFormat') timeFormat_input: any;
 	@Input('value') value_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeChange') beforeChange_output = new EventEmitter();
@@ -61,8 +61,8 @@ export class TimePickerComponent extends EJComponents<any, any> implements Contr
 	@Output('open') open_output = new EventEmitter();
 	@Output('select') select_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('TimePicker', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('TimePicker', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

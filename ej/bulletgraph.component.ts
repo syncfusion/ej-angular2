@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.bulletgraph.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-qualitativeranges>e-qualitativerange',
 })
@@ -67,7 +67,6 @@ export class BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective extend
     selector: 'ej-bulletgraph',
     template: ''})
 export class BulletGraphComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('applyRangeStrokeToLabels') applyRangeStrokeToLabels_input: any;
 	@Input('applyRangeStrokeToTicks') applyRangeStrokeToTicks_input: any;
 	@Input('captionSettings') captionSettings_input: any;
@@ -170,6 +169,7 @@ export class BulletGraphComponent extends EJComponents<any, any> {
 	@Input('tooltipSettings.visible') tooltipSettings_visible_input: any;
 	@Input('qualitativeRanges') qualitativeRanges_input: any;
 	@Input('quantitativeScaleSettings.featureMeasures') quantitativeScaleSettings_featureMeasures_input: any;
+    @Input('options') options: any;
 
 
 	@Output('drawCaption') drawCaption_output = new EventEmitter();
@@ -184,8 +184,8 @@ export class BulletGraphComponent extends EJComponents<any, any> {
 
 	@ContentChild(BulletGraphQualitativeRangesDirective) tag_qualitativeRanges: any;
 	@ContentChild(BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective) tag_quantitativeScaleSettings_featureMeasures: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('BulletGraph', el, cdRef, ['qualitativeRanges', 'quantitativeScaleSettings.featureMeasures']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('BulletGraph', el, cdRef, ['qualitativeRanges', 'quantitativeScaleSettings.featureMeasures'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

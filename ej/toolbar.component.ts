@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.toolbar.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-toolbar',
     template: '<ng-content></ng-content>'})
 export class ToolbarComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('disabledItemIndices') disabledItemIndices_input: any;
@@ -46,6 +45,7 @@ export class ToolbarComponent extends EJComponents<any, any> {
 	@Input('Items.text') Items_text_input: any;
 	@Input('Items.tooltipText') Items_tooltipText_input: any;
 	@Input('Items.template') Items_template_input: any;
+    @Input('options') options: any;
 
 
 	@Output('click') click_output = new EventEmitter();
@@ -58,8 +58,8 @@ export class ToolbarComponent extends EJComponents<any, any> {
 	@Output('overflowOpen') overflowOpen_output = new EventEmitter();
 	@Output('overflowClose') overflowClose_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Toolbar', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Toolbar', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

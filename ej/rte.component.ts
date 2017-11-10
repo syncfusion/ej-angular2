@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.rte.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const RTEValueAccessor: any = {
 })
 export class RTEComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('allowEditing') allowEditing_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('autoFocus') autoFocus_input: any;
@@ -119,6 +118,7 @@ export class RTEComponent extends EJComponents<any, any> implements ControlValue
 	@Input('tools.importExport') tools_importExport_input: any;
 	@Input('tools.customOrderedList') tools_customOrderedList_input: any;
 	@Input('tools.customUnorderedList') tools_customUnorderedList_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -134,8 +134,8 @@ export class RTEComponent extends EJComponents<any, any> implements ControlValue
 	@Output('preRender') preRender_output = new EventEmitter();
 	@Output('select') select_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('RTE', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('RTE', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

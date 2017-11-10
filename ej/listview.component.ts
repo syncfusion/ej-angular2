@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.listview.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-listview',
     template: '<ng-content></ng-content>'})
 export class ListViewComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('checkedIndices') checkedIndices_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -57,6 +56,7 @@ export class ListViewComponent extends EJComponents<any, any> {
 	@Input('fieldSettings.text') fieldSettings_text_input: any;
 	@Input('fieldSettings.mouseUP') fieldSettings_mouseUP_input: any;
 	@Input('fieldSettings.mouseDown') fieldSettings_mouseDown_input: any;
+    @Input('options') options: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -70,8 +70,8 @@ export class ListViewComponent extends EJComponents<any, any> {
 	@Output('mouseDown') mouseDown_output = new EventEmitter();
 	@Output('mouseUp') mouseUp_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('ListView', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('ListView', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

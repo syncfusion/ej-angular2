@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.pivotgauge.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivotgauge',
     template: ''})
 export class PivotGaugeComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('columnsCount') columnsCount_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('customObject') customObject_input: any;
@@ -41,6 +40,7 @@ export class PivotGaugeComponent extends EJComponents<any, any> {
 	@Input('dataSource.rows') dataSource_rows_input: any;
 	@Input('dataSource.values') dataSource_values_input: any;
 	@Input('dataSource.filters') dataSource_filters_input: any;
+    @Input('options') options: any;
 
 
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
@@ -51,8 +51,8 @@ export class PivotGaugeComponent extends EJComponents<any, any> {
 	@Output('renderFailure') renderFailure_output = new EventEmitter();
 	@Output('renderSuccess') renderSuccess_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('PivotGauge', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('PivotGauge', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

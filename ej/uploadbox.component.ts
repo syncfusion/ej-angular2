@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.uploadbox.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-uploadbox',
     template: ''})
 export class UploadboxComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('asyncUpload') asyncUpload_input: any;
 	@Input('autoUpload') autoUpload_input: any;
@@ -56,6 +55,7 @@ export class UploadboxComponent extends EJComponents<any, any> {
 	@Input('dialogText.size') dialogText_size_input: any;
 	@Input('dialogText.status') dialogText_status_input: any;
 	@Input('dialogText.title') dialogText_title_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeSend') beforeSend_output = new EventEmitter();
@@ -70,8 +70,8 @@ export class UploadboxComponent extends EJComponents<any, any> {
 	@Output('inProgress') inProgress_output = new EventEmitter();
 	@Output('remove') remove_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Uploadbox', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Uploadbox', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

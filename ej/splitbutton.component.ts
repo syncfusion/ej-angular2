@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.splitbutton.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-splitbutton',
     template: ''})
 export class SplitButtonComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('arrowPosition') arrowPosition_input: any;
 	@Input('buttonMode') buttonMode_input: any;
 	@Input('contentType') contentType_input: any;
@@ -27,6 +26,7 @@ export class SplitButtonComponent extends EJComponents<any, any> {
 	@Input('target') target_input: any;
 	@Input('text') text_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
@@ -40,8 +40,8 @@ export class SplitButtonComponent extends EJComponents<any, any> {
 	@Output('itemSelected') itemSelected_output = new EventEmitter();
 	@Output('open') open_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('SplitButton', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('SplitButton', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.listbox.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-listbox',
     template: '<ng-content></ng-content>'})
 export class ListBoxComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowDrag') allowDrag_input: any;
 	@Input('allowDrop') allowDrop_input: any;
 	@Input('allowMultiSelection') allowMultiSelection_input: any;
@@ -52,6 +51,7 @@ export class ListBoxComponent extends EJComponents<any, any> {
 	@Input('fields.tableName') fields_tableName_input: any;
 	@Input('fields.text') fields_text_input: any;
 	@Input('fields.value') fields_value_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -75,8 +75,8 @@ export class ListBoxComponent extends EJComponents<any, any> {
 	@Output('select') select_output = new EventEmitter();
 	@Output('unselect') unselect_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('ListBox', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('ListBox', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

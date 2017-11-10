@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.diagram.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-commandmanager-commands>e-commandmanager-command',
 })
@@ -78,10 +78,12 @@ export class DiagramConnectorLabelDirective extends ComplexTagElement {
 	@Input('borderColor') borderColor: any;
 	@Input('borderWidth') borderWidth: any;
 	@Input('boundaryConstraints') boundaryConstraints: any;
+	@Input('constraints') constraints: any;
 	@Input('fillColor') fillColor: any;
 	@Input('fontColor') fontColor: any;
 	@Input('fontFamily') fontFamily: any;
 	@Input('fontSize') fontSize: any;
+	@Input('height') height: any;
 	@Input('horizontalAlignment') horizontalAlignment: any;
 	@Input('hyperlink') hyperlink: any;
 	@Input('italic') italic: any;
@@ -231,10 +233,12 @@ export class DiagramNodeLabelDirective extends ComplexTagElement {
 	@Input('bold') bold: any;
 	@Input('borderColor') borderColor: any;
 	@Input('borderWidth') borderWidth: any;
+	@Input('constraints') constraints: any;
 	@Input('fillColor') fillColor: any;
 	@Input('fontColor') fontColor: any;
 	@Input('fontFamily') fontFamily: any;
 	@Input('fontSize') fontSize: any;
+	@Input('height') height: any;
 	@Input('horizontalAlignment') horizontalAlignment: any;
 	@Input('italic') italic: any;
 	@Input('margin') margin: any;
@@ -324,6 +328,7 @@ export class DiagramPortDirective extends ComplexTagElement {
 	@Input('shape') shape: any;
 	@Input('size') size: any;
 	@Input('visibility') visibility: any;
+	@Input('parent') parent: any;
 
     
     constructor( @Inject(forwardRef(() => DiagramComponent)) widget: EJComponents<any, any>) {
@@ -492,6 +497,7 @@ export class DiagramNodeDirective extends ComplexTagElement {
 	@Input('task.compensation') task_compensation: any;
 	@Input('task.loop') task_loop: any;
 	@Input('task.type') task_type: any;
+	@Input('task.events') task_events: any;
 	@Input('templateId') templateId: any;
 	@Input('textBlock') textBlock: any;
 	@Input('tooltip') tooltip: any;
@@ -532,7 +538,6 @@ export class DiagramNodesDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-diagram',
     template: ''})
 export class DiagramComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('backgroundImage') backgroundImage_input: any;
 	@Input('bridgeDirection') bridgeDirection_input: any;
@@ -555,6 +560,7 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Input('scrollSettings') scrollSettings_input: any;
 	@Input('selectedItems') selectedItems_input: any;
 	@Input('showTooltip') showTooltip_input: any;
+	@Input('serializationSettings') serializationSettings_input: any;
 	@Input('rulerSettings') rulerSettings_input: any;
 	@Input('snapSettings') snapSettings_input: any;
 	@Input('tool') tool_input: any;
@@ -616,6 +622,9 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Input('layout.type') layout_type_input: any;
 	@Input('layout.verticalSpacing') layout_verticalSpacing_input: any;
 	@Input('layout.root') layout_root_input: any;
+	@Input('layout.springLength') layout_springLength_input: any;
+	@Input('layout.springFactor') layout_springFactor_input: any;
+	@Input('layout.maxIteration') layout_maxIteration_input: any;
 	@Input('pageSettings.autoScrollBorder') pageSettings_autoScrollBorder_input: any;
 	@Input('pageSettings.multiplePage') pageSettings_multiplePage_input: any;
 	@Input('pageSettings.pageBackgroundColor') pageSettings_pageBackgroundColor_input: any;
@@ -644,6 +653,7 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Input('selectedItems.rotateAngle') selectedItems_rotateAngle_input: any;
 	@Input('selectedItems.tooltip') selectedItems_tooltip_input: any;
 	@Input('selectedItems.width') selectedItems_width_input: any;
+	@Input('serializationSettings.preventDefaultValues') serializationSettings_preventDefaultValues_input: any;
 	@Input('rulerSettings.showRulers') rulerSettings_showRulers_input: any;
 	@Input('rulerSettings.horizontalRuler') rulerSettings_horizontalRuler_input: any;
 	@Input('rulerSettings.horizontalRuler.interval') rulerSettings_horizontalRuler_interval_input: any;
@@ -689,7 +699,9 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Input('nodes.enumeration.members') nodes_enumeration_members_input: any;
 	@Input('nodes.interface.attributes') nodes_interface_attributes_input: any;
 	@Input('nodes.interface.methods') nodes_interface_methods_input: any;
+	@Input('nodes.subProcess.events') nodes_subProcess_events_input: any;
 	@Input('selectedItems.userHandles') selectedItems_userHandles_input: any;
+    @Input('options') options: any;
 
 
 	@Output('autoScrollChange') autoScrollChange_output = new EventEmitter();
@@ -723,12 +735,13 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Output('sizeChange') sizeChange_output = new EventEmitter();
 	@Output('textChange') textChange_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
+	@Output('setTool') setTool_output = new EventEmitter();
 
 	@ContentChild(DiagramCommandManagerCommandsDirective) tag_commandManager_commands: any;
 	@ContentChild(DiagramConnectorsDirective) tag_connectors: any;
 	@ContentChild(DiagramNodesDirective) tag_nodes: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Diagram', el, cdRef, ['commandManager.commands', 'connectors', 'nodes']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Diagram', el, cdRef, ['commandManager.commands', 'connectors', 'nodes'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.radialmenu.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-items>e-item',
 })
@@ -49,7 +49,6 @@ export class RadialMenuItemsDirective extends ArrayTagElement<ComplexTagElement>
     selector: 'ej-radialmenu',
     template: ''})
 export class RadialMenuComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('autoOpen') autoOpen_input: any;
 	@Input('backImageClass') backImageClass_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -59,6 +58,7 @@ export class RadialMenuComponent extends EJComponents<any, any> {
 	@Input('targetElementId') targetElementId_input: any;
 	@Input('position') position_input: any;
 	@Input('items') items_input: any;
+    @Input('options') options: any;
 
 
 	@Output('click') click_output = new EventEmitter();
@@ -67,8 +67,8 @@ export class RadialMenuComponent extends EJComponents<any, any> {
 	@Output('close') close_output = new EventEmitter();
 
 	@ContentChild(RadialMenuItemsDirective) tag_items: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('RadialMenu', el, cdRef, ['items']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('RadialMenu', el, cdRef, ['items'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

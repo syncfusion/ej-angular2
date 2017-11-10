@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.kanban.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-kanban-columns>e-kanban-column',
 })
@@ -50,7 +50,6 @@ export class KanbanColumnsDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-kanban',
     template: ''})
 export class KanbanComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowTitle') allowTitle_input: any;
 	@Input('swimlaneSettings') swimlaneSettings_input: any;
@@ -123,6 +122,7 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Input('workflows') workflows_input: any;
 	@Input('contextMenuSettings.customMenuItems') contextMenuSettings_customMenuItems_input: any;
 	@Input('editSettings.editItems') editSettings_editItems_input: any;
+    @Input('options') options: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -155,8 +155,8 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 
 	@ContentChild(KanbanColumnsDirective) tag_columns: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Kanban', el, cdRef, ['columns']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Kanban', el, cdRef, ['columns'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

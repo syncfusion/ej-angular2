@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.map.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-layers>e-layer',
 })
@@ -110,7 +110,6 @@ export class MapLayersDirective extends ArrayTagElement<ComplexTagElement> {
     selector: 'ej-map',
     template: ''})
 export class MapComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('centerPosition') centerPosition_input: any;
 	@Input('draggingOnSelection') draggingOnSelection_input: any;
@@ -127,6 +126,7 @@ export class MapComponent extends EJComponents<any, any> {
 	@Input('layers.subLayers.bubbleSettings.colorMappings.rangeColorMapping') layers_subLayers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
 	@Input('layers.subLayers.shapeSettings.colorMappings.rangeColorMapping') layers_subLayers_shapeSettings_colorMappings_rangeColorMapping_input: any;
 	@Input('layers.subLayers.shapeSettings.colorMappings.equalColorMapping') layers_subLayers_shapeSettings_colorMappings_equalColorMapping_input: any;
+    @Input('options') options: any;
 
 	@Input('baseMapIndex') baseMapIndex_two: any;
 	@Output('baseMapIndexChange') baseMapIndex_twoChange = new EventEmitter<any>();
@@ -167,8 +167,8 @@ export class MapComponent extends EJComponents<any, any> {
 	@Output('zoomedOut') zoomedOut_output = new EventEmitter();
 
 	@ContentChild(MapLayersDirective) tag_layers: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Map', el, cdRef, ['layers']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Map', el, cdRef, ['layers'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

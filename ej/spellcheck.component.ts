@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.spellcheck.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-spellcheck',
     template: '<ng-content></ng-content>'})
 export class SpellCheckComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('dictionarySettings') dictionarySettings_input: any;
 	@Input('misspellWordCss') misspellWordCss_input: any;
 	@Input('locale') locale_input: any;
@@ -32,6 +31,7 @@ export class SpellCheckComponent extends EJComponents<any, any> {
 	@Input('ignoreSettings.ignoreUpperCase') ignoreSettings_ignoreUpperCase_input: any;
 	@Input('ignoreSettings.ignoreUrl') ignoreSettings_ignoreUrl_input: any;
 	@Input('ignoreSettings.ignoreFileNames') ignoreSettings_ignoreFileNames_input: any;
+    @Input('options') options: any;
 
 
 	@Output('actionSuccess') actionSuccess_output = new EventEmitter();
@@ -47,8 +47,8 @@ export class SpellCheckComponent extends EJComponents<any, any> {
 	@Output('validating') validating_output = new EventEmitter();
 	@Output('targetUpdating') targetUpdating_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('SpellCheck', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('SpellCheck', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

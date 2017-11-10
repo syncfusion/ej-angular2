@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.heatmap.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-colormappingcollection>e-colormapping',
 })
@@ -45,7 +45,6 @@ export class HeatMapColorMappingCollectionDirective extends ArrayTagElement<Comp
     selector: 'ej-heatmap',
     template: ''})
 export class HeatMapComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('width') width_input: any;
 	@Input('height') height_input: any;
 	@Input('id') id_input: any;
@@ -93,6 +92,7 @@ export class HeatMapComponent extends EJComponents<any, any> {
 	@Input('itemsMapping.headerMapping.columnStyle') itemsMapping_headerMapping_columnStyle_input: any;
 	@Input('itemsMapping.columnMapping') itemsMapping_columnMapping_input: any;
 	@Input('colorMappingCollection') colorMappingCollection_input: any;
+    @Input('options') options: any;
 
 
 	@Output('cellMouseOver') cellMouseOver_output = new EventEmitter();
@@ -101,8 +101,8 @@ export class HeatMapComponent extends EJComponents<any, any> {
 	@Output('cellSelected') cellSelected_output = new EventEmitter();
 
 	@ContentChild(HeatMapColorMappingCollectionDirective) tag_colorMappingCollection: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('HeatMap', el, cdRef, ['colorMappingCollection']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('HeatMap', el, cdRef, ['colorMappingCollection'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -32,8 +32,16 @@ export class EJTemplateDirective {
         $(tempEle).append(template.rootNodes);
         ej.createObject('template', $($(tempEle).append(template.rootNodes)).html(), this.element);
         this.element.template = $($(tempEle).append(template.rootNodes)).html();
-        ej.createObject('_templateRef', this.templateRef, this.element);
-        ej.createObject('_viewRef', this.viewContainerRef, this.element);
+        Object.defineProperty(this.element, '_templateRef', {
+            enumerable: false,
+            writable: true,
+            value: this.templateRef
+        });
+        Object.defineProperty(this.element, '_viewRef', {
+            enumerable: false,
+            writable: true,
+            value: this.viewContainerRef
+        });
         $(tempEle).remove();
     }
     ngAfterViewInit() {

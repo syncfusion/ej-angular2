@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.datetimepicker.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const DateTimePickerValueAccessor: any = {
 })
 export class DateTimePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('allowEdit') allowEdit_input: any;
 	@Input('buttonText') buttonText_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -65,6 +64,7 @@ export class DateTimePickerComponent extends EJComponents<any, any> implements C
 	@Input('timeDrillDown.interval') timeDrillDown_interval_input: any;
 	@Input('timeDrillDown.showMeridian') timeDrillDown_showMeridian_input: any;
 	@Input('timeDrillDown.autoClose') timeDrillDown_autoClose_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeClose') beforeClose_output = new EventEmitter();
@@ -78,8 +78,8 @@ export class DateTimePickerComponent extends EJComponents<any, any> implements C
 	@Output('focusOut') focusOut_output = new EventEmitter();
 	@Output('open') open_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('DateTimePicker', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('DateTimePicker', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

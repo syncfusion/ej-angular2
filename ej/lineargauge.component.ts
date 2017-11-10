@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.lineargauge.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-markerpointers>e-markerpointer',
 })
@@ -338,7 +338,6 @@ export class LinearGaugeScalesDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-lineargauge',
     template: ''})
 export class LinearGaugeComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('borderColor') borderColor_input: any;
@@ -368,6 +367,7 @@ export class LinearGaugeComponent extends EJComponents<any, any> {
 	@Input('tooltip.templateID') tooltip_templateID_input: any;
 	@Input('scales') scales_input: any;
 	@Input('scales.indicators.stateRanges') scales_indicators_stateRanges_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -391,8 +391,8 @@ export class LinearGaugeComponent extends EJComponents<any, any> {
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 
 	@ContentChild(LinearGaugeScalesDirective) tag_scales: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('LinearGauge', el, cdRef, ['scales']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('LinearGauge', el, cdRef, ['scales'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 
