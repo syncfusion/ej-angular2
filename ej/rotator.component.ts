@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.rotator.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: '[ej-rotator]',
     template: '<ng-content></ng-content>'})
 export class RotatorComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('animationType') animationType_input: any;
@@ -46,6 +45,7 @@ export class RotatorComponent extends EJComponents<any, any> {
 	@Input('fields.thumbnailText') fields_thumbnailText_input: any;
 	@Input('fields.thumbnailUrl') fields_thumbnailUrl_input: any;
 	@Input('fields.url') fields_url_input: any;
+    @Input('options') options: any;
 
 
 	@Output('change') change_output = new EventEmitter();
@@ -57,8 +57,8 @@ export class RotatorComponent extends EJComponents<any, any> {
 	@Output('stop') stop_output = new EventEmitter();
 	@Output('thumbItemClick') thumbItemClick_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Rotator', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Rotator', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

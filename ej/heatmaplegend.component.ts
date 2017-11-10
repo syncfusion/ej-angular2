@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.heatmap.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-legendcolormappings>e-legendcolormapping',
 })
@@ -45,7 +45,6 @@ export class HeatMapLegendLegendcolorMappingsDirective extends ArrayTagElement<C
     selector: 'ej-heatmaplegend',
     template: ''})
 export class HeatMapLegendComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('width') width_input: any;
 	@Input('height') height_input: any;
 	@Input('isResponsive') isResponsive_input: any;
@@ -53,12 +52,13 @@ export class HeatMapLegendComponent extends EJComponents<any, any> {
 	@Input('orientation') orientation_input: any;
 	@Input('legendMode') legendMode_input: any;
 	@Input('colorMappingCollection') colorMappingCollection_input: any;
+    @Input('options') options: any;
 
 
 
 	@ContentChild(HeatMapLegendLegendcolorMappingsDirective) tag_colorMappingCollection: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('HeatMapLegend', el, cdRef, ['colorMappingCollection']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('HeatMapLegend', el, cdRef, ['colorMappingCollection'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

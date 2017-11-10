@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.tagcloud.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tagcloud',
     template: ''})
 export class TagCloudComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('enableRTL') enableRTL_input: any;
@@ -26,6 +25,7 @@ export class TagCloudComponent extends EJComponents<any, any> {
 	@Input('fields.htmlAttributes') fields_htmlAttributes_input: any;
 	@Input('fields.text') fields_text_input: any;
 	@Input('fields.url') fields_url_input: any;
+    @Input('options') options: any;
 
 
 	@Output('click') click_output = new EventEmitter();
@@ -35,8 +35,8 @@ export class TagCloudComponent extends EJComponents<any, any> {
 	@Output('mouseout') mouseout_output = new EventEmitter();
 	@Output('mouseover') mouseover_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('TagCloud', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('TagCloud', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

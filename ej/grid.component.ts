@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.grid.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-commands>e-command',
 })
@@ -229,7 +229,6 @@ export class GridStackedHeaderRowsDirective extends ArrayTagElement<ComplexTagEl
     selector: 'ej-grid',
     template: ''})
 export class GridComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowCellMerging') allowCellMerging_input: any;
 	@Input('allowGrouping') allowGrouping_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
@@ -366,6 +365,7 @@ export class GridComponent extends EJComponents<any, any> {
 	@Input('filterSettings.filteredColumns') filterSettings_filteredColumns_input: any;
 	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
+    @Input('options') options: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -431,8 +431,8 @@ export class GridComponent extends EJComponents<any, any> {
 	@ContentChild(GridColumnsDirective) tag_columns: any;
 	@ContentChild(GridSummaryRowsDirective) tag_summaryRows: any;
 	@ContentChild(GridStackedHeaderRowsDirective) tag_stackedHeaderRows: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Grid', el, cdRef, ['columns', 'summaryRows', 'stackedHeaderRows']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Grid', el, cdRef, ['columns', 'summaryRows', 'stackedHeaderRows'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.circulargauge.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-pointers>e-pointer',
 })
@@ -342,7 +342,6 @@ export class CircularGaugeScalesDirective extends ArrayTagElement<ComplexTagElem
     selector: 'ej-circulargauge',
     template: ''})
 export class CircularGaugeComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('distanceFromCorner') distanceFromCorner_input: any;
@@ -397,6 +396,7 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Input('tooltip.templateID') tooltip_templateID_input: any;
 	@Input('scales') scales_input: any;
 	@Input('scales.indicators.stateRanges') scales_indicators_stateRanges_input: any;
+    @Input('options') options: any;
 
 	@Input('value') value_two: any;
 	@Output('valueChange') value_twoChange = new EventEmitter<any>();
@@ -422,8 +422,8 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 
 	@ContentChild(CircularGaugeScalesDirective) tag_scales: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('CircularGauge', el, cdRef, ['scales']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('CircularGauge', el, cdRef, ['scales'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

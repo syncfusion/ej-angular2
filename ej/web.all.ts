@@ -241,6 +241,12 @@ export let EJ_PIVOTSCHEMADESIGNER_COMPONENTS: Type<any>[] = PivotschemadesignerA
 
 
 
+import * as PivotpagerAll from './pivotpager.component';
+export let Pivotpager = PivotpagerAll;
+export let EJ_PIVOTPAGER_COMPONENTS: Type<any>[] = PivotpagerAll.EJ_PIVOTPAGER_COMPONENTS;
+
+
+
 import * as PivottreemapAll from './pivottreemap.component';
 export let Pivottreemap = PivottreemapAll;
 export let EJ_PIVOTTREEMAP_COMPONENTS: Type<any>[] = PivottreemapAll.EJ_PIVOTTREEMAP_COMPONENTS;

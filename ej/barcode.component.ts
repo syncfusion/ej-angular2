@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.barcode.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-barcode',
     template: ''})
 export class BarcodeComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('barcodeToTextGapHeight') barcodeToTextGapHeight_input: any;
 	@Input('barHeight') barHeight_input: any;
 	@Input('darkBarColor') darkBarColor_input: any;
@@ -29,12 +28,13 @@ export class BarcodeComponent extends EJComponents<any, any> {
 	@Input('quietZone.left') quietZone_left_input: any;
 	@Input('quietZone.right') quietZone_right_input: any;
 	@Input('quietZone.top') quietZone_top_input: any;
+    @Input('options') options: any;
 
 
 	@Output('load') load_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Barcode', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Barcode', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

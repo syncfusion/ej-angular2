@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.datepicker.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const DatePickerValueAccessor: any = {
 })
 export class DatePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('allowEdit') allowEdit_input: any;
 	@Input('allowDrillDown') allowDrillDown_input: any;
 	@Input('blackoutDates') blackoutDates_input: any;
@@ -68,6 +67,7 @@ export class DatePickerComponent extends EJComponents<any, any> implements Contr
 	@Input('fields.iconClass') fields_iconClass_input: any;
 	@Input('fields.tooltip') fields_tooltip_input: any;
 	@Input('fields.cssClass') fields_cssClass_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeClose') beforeClose_output = new EventEmitter();
@@ -84,8 +84,8 @@ export class DatePickerComponent extends EJComponents<any, any> implements Contr
 	@Output('open') open_output = new EventEmitter();
 	@Output('select') select_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('DatePicker', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('DatePicker', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

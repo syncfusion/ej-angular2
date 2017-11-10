@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.navigationdrawer.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: '[ej-navigationdrawer]',
     template: '<ng-content></ng-content>'})
 export class NavigationDrawerComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('contentId') contentId_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -28,6 +27,7 @@ export class NavigationDrawerComponent extends EJComponents<any, any> {
 	@Input('ajaxSettings.data') ajaxSettings_data_input: any;
 	@Input('ajaxSettings.dataType') ajaxSettings_dataType_input: any;
 	@Input('ajaxSettings.type') ajaxSettings_type_input: any;
+    @Input('options') options: any;
 
 
 	@Output('ajaxComplete') ajaxComplete_output = new EventEmitter();
@@ -37,8 +37,8 @@ export class NavigationDrawerComponent extends EJComponents<any, any> {
 	@Output('open') open_output = new EventEmitter();
 	@Output('swipe') swipe_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('NavigationDrawer', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('NavigationDrawer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.checkbox.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-checkbox',
     template: ''})
 export class CheckBoxComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;
 	@Input('enablePersistence') enablePersistence_input: any;
@@ -25,6 +24,7 @@ export class CheckBoxComponent extends EJComponents<any, any> {
 	@Input('validationMessage') validationMessage_input: any;
 	@Input('validationRules') validationRules_input: any;
 	@Input('value') value_input: any;
+    @Input('options') options: any;
 
 	@Input('checked') checked_two: any;
 	@Output('checkedChange') checked_twoChange = new EventEmitter<any>();
@@ -37,8 +37,8 @@ export class CheckBoxComponent extends EJComponents<any, any> {
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('CheckBox', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('CheckBox', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -2,7 +2,7 @@ import {
     forwardRef, ViewContainerRef, ContentChildren,
     EventEmitter, QueryList, Type, ContentChild,
     Component, Directive, ElementRef, SimpleChange,
-    ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef, EmbeddedViewRef
+    ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef, EmbeddedViewRef, IterableDiffers, KeyValueDiffers
 } from '@angular/core';
 
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -56,10 +56,13 @@ export class EJComponents<W, T> implements IParentTag {
     protected isEditor: boolean;
 
     private firstCheck: boolean;
-
-    constructor(protected controlName: string, protected el: ElementRef, protected cdRef: ChangeDetectorRef, public tags: Array<string>) {
+    ejIterable: any;
+    ejKeyValueDif : any;
+    constructor(protected controlName: string, protected el: ElementRef, protected cdRef: ChangeDetectorRef, public tags: Array<string>, private ejIterableDiffers: IterableDiffers, private _ejKeyValueDiffers: KeyValueDiffers) {
         //        this.__shadow = this.dom.getShadowRoot(this.el.nativeElement);
         this.firstCheck = true;
+        this.ejIterable = this.ejIterableDiffers.find([]).create(null);
+        this.ejKeyValueDif = _ejKeyValueDiffers.find([]).create();
     }
 
     protected createTwoways(twoways: Array<string>) {
@@ -88,7 +91,7 @@ export class EJComponents<W, T> implements IParentTag {
             value = newVal;
             if (!isApp) {
                 ej.createObject(prop + '_two', newVal, model);
-                ej.getObject<EventEmitter<any>>(prop + 'Change', model).emit(newVal);
+                ej.getObject(prop + 'Change', model).emit(newVal);
             }
         };
     }
@@ -161,8 +164,38 @@ export class EJComponents<W, T> implements IParentTag {
             this.model = jQuery.extend(this.model, (<any>this)["options"]);
 
     }
+    ngDoCheck() {
+        if (ej.isNullOrUndefined((<any>this)["options"])) {
+            this.twoways.forEach(element => {
+                if ((<any>this)[element + '_two'] instanceof Array) {
+                    let changes = this.ejIterable.diff((<any>this)[element + '_two']);
+                    if (changes) {
+                        let ngChanges = {};
+                        if (this.widget != undefined) {
+                            ngChanges = this.getTwowayChanges(changes.collection, ngChanges, element);
+                            ej.createObject(element + ".two", changes.collection, ngChanges);
+                            (<any>this.widget)['setModel'](ngChanges, $.isPlainObject(ngChanges));
+                        }
+                    }
+                }
+            });
+
+        }
+        else
+        {
+            let changes = this.ejKeyValueDif.diff((<any>this)["options"]);
+            if (changes) {
+                if (this.widget != undefined) {
+                    var ngchanges = {};
+                    changes.forEachChangedItem((changedprop:any) => {
+                        ej.createObject(changedprop.key, changedprop.currentValue, ngchanges);
+                    });
+                    (<any>this.widget)['setModel'](ngchanges, $.isPlainObject(ngchanges));
+                }
+            }
+        }
+    }
     ngAfterViewInit() {
-        
         let nativeElement = this.isEditor ? $(this.el.nativeElement.children) : $(this.el.nativeElement);
         this.widget = $(nativeElement)['ej' + this.controlName](this.model)['ej' + this.controlName]('instance');
     }
@@ -187,15 +220,21 @@ export class EJComponents<W, T> implements IParentTag {
                 }
                 key = key.replace("_input", "").replace(/\_/g, '.');
                 if (key.endsWith('.two')) {
-                    let oKey = key.replace('.two', ''), valFn = ej.getObject<Function>(oKey, (<any>this.widget)['model']);
-                    valFn(element.currentValue, true);
-                    ej.createObject(oKey, valFn, ngChanges);
+                    let oKey = key.replace('.two', '');
+                    ngChanges = this.getTwowayChanges(element.currentValue, ngChanges, oKey);
                 }
                 ej.createObject(key, element.currentValue, ngChanges);
             }
 
             (<any>this.widget)['setModel'](ngChanges, $.isPlainObject(ngChanges));
         }
+    }
+
+    getTwowayChanges(value: any, ngChanges: any, prop: string) {
+        let valFn = ej.getObject(prop, (<any>this.widget)['model']);
+        valFn(value, true);
+        ej.createObject(prop, valFn, ngChanges);
+        return ngChanges;
     }
 
     ngAfterContentChecked() {

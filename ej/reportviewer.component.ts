@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.reportviewer.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-reportviewer',
     template: ''})
 export class ReportViewerComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('enablePageCache') enablePageCache_input: any;
 	@Input('exportSettings') exportSettings_input: any;
 	@Input('isResponsive') isResponsive_input: any;
@@ -36,6 +35,7 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Input('toolbarSettings.templateId') toolbarSettings_templateId_input: any;
 	@Input('dataSources') dataSources_input: any;
 	@Input('parameters') parameters_input: any;
+    @Input('options') options: any;
 
 
 	@Output('destroy') destroy_output = new EventEmitter();
@@ -47,8 +47,8 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Output('reportLoaded') reportLoaded_output = new EventEmitter();
 	@Output('viewReportClick') viewReportClick_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('ReportViewer', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('ReportViewer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

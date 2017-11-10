@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.progressbar.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-progressbar',
     template: ''})
 export class ProgressBarComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;
 	@Input('enablePersistence') enablePersistence_input: any;
@@ -23,6 +22,7 @@ export class ProgressBarComponent extends EJComponents<any, any> {
 	@Input('text') text_input: any;
 	@Input('value') value_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('change') change_output = new EventEmitter();
@@ -32,8 +32,8 @@ export class ProgressBarComponent extends EJComponents<any, any> {
 	@Output('destroy') destroy_output = new EventEmitter();
 	@Output('start') start_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('ProgressBar', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('ProgressBar', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

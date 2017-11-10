@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.autocomplete.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const AutocompleteValueAccessor: any = {
 })
 export class AutocompleteComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('addNewText') addNewText_input: any;
 	@Input('allowAddNew') allowAddNew_input: any;
 	@Input('allowSorting') allowSorting_input: any;
@@ -74,6 +73,7 @@ export class AutocompleteComponent extends EJComponents<any, any> implements Con
 	@Input('multiColumnSettings.showHeader') multiColumnSettings_showHeader_input: any;
 	@Input('multiColumnSettings.stringFormat') multiColumnSettings_stringFormat_input: any;
 	@Input('multiColumnSettings.columns') multiColumnSettings_columns_input: any;
+    @Input('options') options: any;
 
 
 	@Output('actionBegin') actionBegin_output = new EventEmitter();
@@ -90,8 +90,8 @@ export class AutocompleteComponent extends EJComponents<any, any> implements Con
 	@Output('open') open_output = new EventEmitter();
 	@Output('select') select_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Autocomplete', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Autocomplete', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

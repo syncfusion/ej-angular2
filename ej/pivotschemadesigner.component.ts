@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.pivotschemadesigner.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pivotschemadesigner',
     template: ''})
 export class PivotSchemaDesignerComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('customObject') customObject_input: any;
 	@Input('enableWrapper') enableWrapper_input: any;
@@ -25,6 +24,7 @@ export class PivotSchemaDesignerComponent extends EJComponents<any, any> {
 	@Input('layout') layout_input: any;
 	@Input('olap.showKPI') olap_showKPI_input: any;
 	@Input('olap.showNamedSets') olap_showNamedSets_input: any;
+    @Input('options') options: any;
 
 
 	@Output('load') load_output = new EventEmitter();
@@ -32,8 +32,8 @@ export class PivotSchemaDesignerComponent extends EJComponents<any, any> {
 	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
 	@Output('dragMove') dragMove_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('PivotSchemaDesigner', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('PivotSchemaDesigner', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

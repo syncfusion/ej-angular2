@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.gantt.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-gantt',
     template: ''})
 export class GanttComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowColumnResize') allowColumnResize_input: any;
 	@Input('allowGanttChartEditing') allowGanttChartEditing_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
@@ -19,6 +18,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('allowSorting') allowSorting_input: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('enablePredecessorValidation') enablePredecessorValidation_input: any;
+	@Input('enableSerialNumber') enableSerialNumber_input: any;
 	@Input('baselineColor') baselineColor_input: any;
 	@Input('workMapping') workMapping_input: any;
 	@Input('expandStateMapping') expandStateMapping_input: any;
@@ -35,6 +35,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('dayWorkingTime') dayWorkingTime_input: any;
 	@Input('durationMapping') durationMapping_input: any;
 	@Input('durationUnit') durationUnit_input: any;
+	@Input('filterSettings') filterSettings_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('splitterSettings') splitterSettings_input: any;
 	@Input('editSettings') editSettings_input: any;
@@ -115,6 +116,12 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('weekendBackground') weekendBackground_input: any;
 	@Input('workingTimeScale') workingTimeScale_input: any;
 	@Input('workWeek') workWeek_input: any;
+	@Input('viewType') viewType_input: any;
+	@Input('groupCollection') groupCollection_input: any;
+	@Input('resourceCollectionMapping') resourceCollectionMapping_input: any;
+	@Input('taskCollectionMapping') taskCollectionMapping_input: any;
+	@Input('groupIdMapping') groupIdMapping_input: any;
+	@Input('groupNameMapping') groupNameMapping_input: any;
 	@Input('dragTooltip.showTooltip') dragTooltip_showTooltip_input: any;
 	@Input('dragTooltip.tooltipItems') dragTooltip_tooltipItems_input: any;
 	@Input('dragTooltip.tooltipTemplate') dragTooltip_tooltipTemplate_input: any;
@@ -147,8 +154,10 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('holidays') holidays_input: any;
 	@Input('selectedCellIndexes') selectedCellIndexes_input: any;
 	@Input('stripLines') stripLines_input: any;
+	@Input('filterSettings.filteredColumns') filterSettings_filteredColumns_input: any;
 	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
+    @Input('options') options: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -183,8 +192,8 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Output('taskbarClick') taskbarClick_output = new EventEmitter();
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Gantt', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Gantt', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

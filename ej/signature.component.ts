@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.signature.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-signature',
     template: ''})
 export class SignatureComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('backgroundColor') backgroundColor_input: any;
 	@Input('backgroundImage') backgroundImage_input: any;
 	@Input('enabled') enabled_input: any;
@@ -21,6 +20,7 @@ export class SignatureComponent extends EJComponents<any, any> {
 	@Input('strokeColor') strokeColor_input: any;
 	@Input('strokeWidth') strokeWidth_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('change') change_output = new EventEmitter();
@@ -29,8 +29,8 @@ export class SignatureComponent extends EJComponents<any, any> {
 	@Output('mouseMove') mouseMove_output = new EventEmitter();
 	@Output('mouseUp') mouseUp_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Signature', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Signature', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

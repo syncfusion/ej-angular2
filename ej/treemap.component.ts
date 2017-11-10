@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.treemap.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-levels>e-level',
 })
@@ -81,7 +81,6 @@ export class TreeMapRangeColorMappingDirective extends ArrayTagElement<ComplexTa
     selector: 'ej-treemap',
     template: ''})
 export class TreeMapComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('borderBrush') borderBrush_input: any;
 	@Input('borderThickness') borderThickness_input: any;
 	@Input('uniColorMapping') uniColorMapping_input: any;
@@ -147,6 +146,7 @@ export class TreeMapComponent extends EJComponents<any, any> {
 	@Input('groupColorMapping') groupColorMapping_input: any;
 	@Input('rangeColorMapping') rangeColorMapping_input: any;
 	@Input('levels') levels_input: any;
+    @Input('options') options: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -162,8 +162,8 @@ export class TreeMapComponent extends EJComponents<any, any> {
 
 	@ContentChild(TreeMapLevelsDirective) tag_levels: any;
 	@ContentChild(TreeMapRangeColorMappingDirective) tag_rangeColorMapping: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('TreeMap', el, cdRef, ['levels', 'rangeColorMapping']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('TreeMap', el, cdRef, ['levels', 'rangeColorMapping'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.rangenavigator.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-rangenavigator',
     template: ''})
 export class RangeNavigatorComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowSnapping') allowSnapping_input: any;
 	@Input('border') border_input: any;
 	@Input('dataSource') dataSource_input: any;
@@ -126,6 +125,7 @@ export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Input('valueAxisSettings.visible') valueAxisSettings_visible_input: any;
 	@Input('series') series_input: any;
 	@Input('seriesSettings') seriesSettings_input: any;
+    @Input('options') options: any;
 
 
 	@Output('load') load_output = new EventEmitter();
@@ -137,8 +137,8 @@ export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Output('selectedRangeEnd') selectedRangeEnd_output = new EventEmitter();
 	@Output('scrollEnd') scrollEnd_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('RangeNavigator', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('RangeNavigator', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

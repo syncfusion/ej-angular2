@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.pdfviewer.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-pdfviewer',
     template: ''})
 export class PdfViewerComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('locale') locale_input: any;
 	@Input('toolbarSettings') toolbarSettings_input: any;
 	@Input('serverActionSettings') serverActionSettings_input: any;
@@ -63,6 +62,7 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Input('highlightSettings.isLocked') highlightSettings_isLocked_input: any;
 	@Input('signatureSettings.color') signatureSettings_color_input: any;
 	@Input('signatureSettings.opacity') signatureSettings_opacity_input: any;
+    @Input('options') options: any;
 
 
 	@Output('documentLoad') documentLoad_output = new EventEmitter();
@@ -85,8 +85,8 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Output('bufferEnd') bufferEnd_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('PdfViewer', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('PdfViewer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.editor.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const PercentageTextboxValueAccessor: any = {
 })
 export class PercentageTextboxComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('currencySymbol') currencySymbol_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('decimalPlaces') decimalPlaces_input: any;
@@ -50,6 +49,7 @@ export class PercentageTextboxComponent extends EJComponents<any, any> implement
 	@Input('value') value_input: any;
 	@Input('watermarkText') watermarkText_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('change') change_output = new EventEmitter();
@@ -59,8 +59,8 @@ export class PercentageTextboxComponent extends EJComponents<any, any> implement
 	@Output('focusIn') focusIn_output = new EventEmitter();
 	@Output('focusOut') focusOut_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('PercentageTextbox', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('PercentageTextbox', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.button.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const ButtonValueAccessor: any = {
 })
 export class ButtonComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('contentType') contentType_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('enabled') enabled_input: any;
@@ -39,6 +38,7 @@ export class ButtonComponent extends EJComponents<any, any> implements ControlVa
 	@Input('timeInterval') timeInterval_input: any;
 	@Input('type') type_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('click') click_output = new EventEmitter();
@@ -46,8 +46,8 @@ export class ButtonComponent extends EJComponents<any, any> implements ControlVa
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Button', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Button', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

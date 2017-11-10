@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.togglebutton.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-togglebutton',
     template: ''})
 export class ToggleButtonComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('activePrefixIcon') activePrefixIcon_input: any;
 	@Input('activeSuffixIcon') activeSuffixIcon_input: any;
 	@Input('activeText') activeText_input: any;
@@ -30,6 +29,7 @@ export class ToggleButtonComponent extends EJComponents<any, any> {
 	@Input('toggleState') toggleState_input: any;
 	@Input('type') type_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('change') change_output = new EventEmitter();
@@ -39,8 +39,8 @@ export class ToggleButtonComponent extends EJComponents<any, any> {
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('ToggleButton', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('ToggleButton', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

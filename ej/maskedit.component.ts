@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.maskedit.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const MaskEditValueAccessor: any = {
 })
 export class MaskEditComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('customCharacter') customCharacter_input: any;
 	@Input('enabled') enabled_input: any;
@@ -44,6 +43,7 @@ export class MaskEditComponent extends EJComponents<any, any> implements Control
 	@Input('value') value_input: any;
 	@Input('watermarkText') watermarkText_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('change') change_output = new EventEmitter();
@@ -58,8 +58,8 @@ export class MaskEditComponent extends EJComponents<any, any> implements Control
 	@Output('mouseOut') mouseOut_output = new EventEmitter();
 	@Output('mouseOver') mouseOver_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('MaskEdit', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('MaskEdit', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

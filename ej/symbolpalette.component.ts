@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.diagram.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-symbolpalette',
     template: ''})
 export class SymbolPaletteComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowDrag') allowDrag_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('defaultSettings') defaultSettings_input: any;
@@ -26,12 +25,13 @@ export class SymbolPaletteComponent extends EJComponents<any, any> {
 	@Input('defaultSettings.node') defaultSettings_node_input: any;
 	@Input('defaultSettings.connector') defaultSettings_connector_input: any;
 	@Input('palettes') palettes_input: any;
+    @Input('options') options: any;
 
 
 	@Output('selectionChange') selectionChange_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('SymbolPalette', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('SymbolPalette', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

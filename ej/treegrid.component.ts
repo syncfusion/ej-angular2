@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.treegrid.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-treegrid-columns>e-treegrid-column',
 })
@@ -68,7 +68,6 @@ export class TreeGridColumnsDirective extends ArrayTagElement<ComplexTagElement>
     selector: 'ej-treegrid',
     template: ''})
 export class TreeGridComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('allowColumnResize') allowColumnResize_input: any;
 	@Input('allowColumnReordering') allowColumnReordering_input: any;
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
@@ -113,6 +112,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('showDetailsRowInfoColumn') showDetailsRowInfoColumn_input: any;
 	@Input('detailsTemplate') detailsTemplate_input: any;
 	@Input('detailsRowHeight') detailsRowHeight_input: any;
+	@Input('showStackedHeader') showStackedHeader_input: any;
 	@Input('showSummaryRow') showSummaryRow_input: any;
 	@Input('showTotalSummary') showTotalSummary_input: any;
 	@Input('showGridCellTooltip') showGridCellTooltip_input: any;
@@ -153,10 +153,12 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('toolbarSettings.toolbarItems') toolbarSettings_toolbarItems_input: any;
 	@Input('columns') columns_input: any;
 	@Input('selectedCellIndexes') selectedCellIndexes_input: any;
+	@Input('stackedHeaderRows') stackedHeaderRows_input: any;
 	@Input('summaryRows') summaryRows_input: any;
 	@Input('filterSettings.filteredColumns') filterSettings_filteredColumns_input: any;
 	@Input('sortSettings.sortedColumns') sortSettings_sortedColumns_input: any;
 	@Input('toolbarSettings.customToolbarItems') toolbarSettings_customToolbarItems_input: any;
+    @Input('options') options: any;
 
 	@Input('dataSource') dataSource_two: any;
 	@Output('dataSourceChange') dataSource_twoChange = new EventEmitter<any>();
@@ -197,8 +199,8 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 
 	@ContentChild(TreeGridColumnsDirective) tag_columns: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('TreeGrid', el, cdRef, ['columns']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('TreeGrid', el, cdRef, ['columns'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

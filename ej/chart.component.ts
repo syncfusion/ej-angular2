@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.chart.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents, ArrayTagElement, ComplexTagElement } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef, ContentChild, ContentChildren, Inject } from '@angular/core';
 @Directive({
     selector: 'e-trendlines>e-trendline',
 })
@@ -196,6 +196,7 @@ export class ChartSeriesDirective extends ComplexTagElement {
 	@Input('marker.dataLabel.maximumLabelWidth') marker_dataLabel_maximumLabelWidth: any;
 	@Input('marker.dataLabel.enableWrap') marker_dataLabel_enableWrap: any;
 	@Input('marker.dataLabel.enableContrastColor') marker_dataLabel_enableContrastColor: any;
+	@Input('marker.dataLabel.showEdgeLabels') marker_dataLabel_showEdgeLabels: any;
 	@Input('marker.dataLabel.border') marker_dataLabel_border: any;
 	@Input('marker.dataLabel.border.color') marker_dataLabel_border_color: any;
 	@Input('marker.dataLabel.border.width') marker_dataLabel_border_width: any;
@@ -632,7 +633,6 @@ export class ChartColumnDefinitionsDirective extends ArrayTagElement<ComplexTagE
     selector: 'ej-chart',
     template: ''})
 export class ChartComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('backGroundImageUrl') backGroundImageUrl_input: any;
 	@Input('border') border_input: any;
@@ -650,7 +650,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('legend') legend_input: any;
 	@Input('locale') locale_input: any;
 	@Input('palette') palette_input: any;
-	@Input('Margin') Margin_input: any;
+	@Input('margin') margin_input: any;
 	@Input('perspectiveAngle') perspectiveAngle_input: any;
 	@Input('primaryXAxis') primaryXAxis_input: any;
 	@Input('primaryYAxis') primaryYAxis_input: any;
@@ -871,6 +871,10 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('legend.textWidth') legend_textWidth_input: any;
 	@Input('legend.visible') legend_visible_input: any;
 	@Input('legend.toggleSeriesVisibility') legend_toggleSeriesVisibility_input: any;
+	@Input('margin.left') margin_left_input: any;
+	@Input('margin.right') margin_right_input: any;
+	@Input('margin.top') margin_top_input: any;
+	@Input('margin.bottom') margin_bottom_input: any;
 	@Input('primaryXAxis.alternateGridBand') primaryXAxis_alternateGridBand_input: any;
 	@Input('primaryXAxis.alternateGridBand.even') primaryXAxis_alternateGridBand_even_input: any;
 	@Input('primaryXAxis.alternateGridBand.odd') primaryXAxis_alternateGridBand_odd_input: any;
@@ -1095,6 +1099,7 @@ export class ChartComponent extends EJComponents<any, any> {
 	@Input('primaryXAxis.stripLine') primaryXAxis_stripLine_input: any;
 	@Input('primaryYAxis.multiLevelLabels') primaryYAxis_multiLevelLabels_input: any;
 	@Input('primaryYAxis.stripLine') primaryYAxis_stripLine_input: any;
+    @Input('options') options: any;
 
 
 	@Output('animationComplete') animationComplete_output = new EventEmitter();
@@ -1151,8 +1156,8 @@ export class ChartComponent extends EJComponents<any, any> {
 	@ContentChild(ChartPrimaryYAxisStripLineCollectionDirective) tag_primaryYAxis_stripLine: any;
 	@ContentChild(ChartRowDefinitionsDirective) tag_rowDefinitions: any;
 	@ContentChild(ChartColumnDefinitionsDirective) tag_columnDefinitions: any;
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Chart', el, cdRef, ['series', 'indicators', 'annotations', 'primaryXAxis.stripLine', 'primaryYAxis.stripLine', 'rowDefinitions', 'columnDefinitions']);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Chart', el, cdRef, ['series', 'indicators', 'annotations', 'primaryXAxis.stripLine', 'primaryYAxis.stripLine', 'rowDefinitions', 'columnDefinitions'], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

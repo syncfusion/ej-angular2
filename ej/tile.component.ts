@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.tile.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-tile',
     template: ''})
 export class TileComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('badge') badge_input: any;
 	@Input('caption') caption_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -39,6 +38,7 @@ export class TileComponent extends EJComponents<any, any> {
 	@Input('liveTile.type') liveTile_type_input: any;
 	@Input('liveTile.updateInterval') liveTile_updateInterval_input: any;
 	@Input('liveTile.text') liveTile_text_input: any;
+    @Input('options') options: any;
 
 	@Input('badge.value') badge_value_two: any;
 	@Output('badge.valueChange') badge_value_twoChange = new EventEmitter<any>();
@@ -54,8 +54,8 @@ export class TileComponent extends EJComponents<any, any> {
 	@Output('mouseDown') mouseDown_output = new EventEmitter();
 	@Output('mouseUp') mouseUp_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Tile', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Tile', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

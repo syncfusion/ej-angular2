@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/common/ej.scroller.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-scroller',
     template: '<ng-content></ng-content>'})
 export class ScrollerComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('animationSpeed') animationSpeed_input: any;
 	@Input('autoHide') autoHide_input: any;
 	@Input('buttonSize') buttonSize_input: any;
@@ -24,6 +23,7 @@ export class ScrollerComponent extends EJComponents<any, any> {
 	@Input('scrollTop') scrollTop_input: any;
 	@Input('targetPane') targetPane_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('create') create_output = new EventEmitter();
@@ -35,8 +35,8 @@ export class ScrollerComponent extends EJComponents<any, any> {
 	@Output('wheelStart') wheelStart_output = new EventEmitter();
 	@Output('wheelStop') wheelStop_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Scroller', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Scroller', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

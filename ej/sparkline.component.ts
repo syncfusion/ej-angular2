@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/datavisualization/ej.sparkline.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-sparkline',
     template: ''})
 export class SparklineComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('background') background_input: any;
 	@Input('fill') fill_input: any;
 	@Input('stroke') stroke_input: any;
@@ -70,6 +69,7 @@ export class SparklineComponent extends EJComponents<any, any> {
 	@Input('axisLineSettings.color') axisLineSettings_color_input: any;
 	@Input('axisLineSettings.width') axisLineSettings_width_input: any;
 	@Input('axisLineSettings.dashArray') axisLineSettings_dashArray_input: any;
+    @Input('options') options: any;
 
 
 	@Output('load') load_output = new EventEmitter();
@@ -81,8 +81,8 @@ export class SparklineComponent extends EJComponents<any, any> {
 	@Output('sparklineMouseMove') sparklineMouseMove_output = new EventEmitter();
 	@Output('sparklineMouseLeave') sparklineMouseLeave_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Sparkline', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Sparkline', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

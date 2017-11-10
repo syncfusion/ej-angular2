@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.accordion.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders } from '@angular/core';
 
 
 
@@ -9,7 +9,6 @@ import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Ou
     selector: 'ej-accordion',
     template: '<ng-content></ng-content>'})
 export class AccordionComponent extends EJComponents<any, any> {
-    @Input('options') options: any;
 	@Input('ajaxSettings') ajaxSettings_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('collapseSpeed') collapseSpeed_input: any;
@@ -42,6 +41,7 @@ export class AccordionComponent extends EJComponents<any, any> {
 	@Input('ajaxSettings.type') ajaxSettings_type_input: any;
 	@Input('customIcon.header') customIcon_header_input: any;
 	@Input('customIcon.selectedHeader') customIcon_selectedHeader_input: any;
+    @Input('options') options: any;
 
 
 	@Output('activate') activate_output = new EventEmitter();
@@ -55,8 +55,8 @@ export class AccordionComponent extends EJComponents<any, any> {
 	@Output('destroy') destroy_output = new EventEmitter();
 	@Output('inActivate') inActivate_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('Accordion', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('Accordion', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 

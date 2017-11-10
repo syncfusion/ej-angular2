@@ -1,7 +1,7 @@
 import 'syncfusion-javascript/Scripts/ej/web/ej.daterangepicker.min';
 import { CommonModule } from '@angular/common';
 import { EJComponents } from './core';
-import { EventEmitter, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
+import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, ElementRef, ChangeDetectorRef, Input, Output, NgModule, ModuleWithProviders, Directive, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ export const DateRangePickerValueAccessor: any = {
 })
 export class DateRangePickerComponent extends EJComponents<any, any> implements ControlValueAccessor
 {
-    @Input('options') options: any;
 	@Input('allowEdit') allowEdit_input: any;
 	@Input('buttonText') buttonText_input: any;
 	@Input('cssClass') cssClass_input: any;
@@ -42,6 +41,7 @@ export class DateRangePickerComponent extends EJComponents<any, any> implements 
 	@Input('value') value_input: any;
 	@Input('watermarkText') watermarkText_input: any;
 	@Input('width') width_input: any;
+    @Input('options') options: any;
 
 
 	@Output('beforeClose') beforeClose_output = new EventEmitter();
@@ -53,8 +53,8 @@ export class DateRangePickerComponent extends EJComponents<any, any> implements 
 	@Output('open') open_output = new EventEmitter();
 	@Output('select') select_output = new EventEmitter();
 
-    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef) {
-        super('DateRangePicker', el, cdRef, []);
+    constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
+        super('DateRangePicker', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
     }
 
 
