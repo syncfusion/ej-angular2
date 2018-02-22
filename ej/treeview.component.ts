@@ -39,7 +39,6 @@ export class TreeViewComponent extends EJComponents<any, any> {
 	@Input('template') template_input: any;
 	@Input('width') width_input: any;
 	@Input('fields.child') fields_child_input: any;
-	@Input('fields.dataSource') fields_dataSource_input: any;
 	@Input('fields.expanded') fields_expanded_input: any;
 	@Input('fields.hasChild') fields_hasChild_input: any;
 	@Input('fields.htmlAttribute') fields_htmlAttribute_input: any;
@@ -58,6 +57,8 @@ export class TreeViewComponent extends EJComponents<any, any> {
 	@Input('sortSettings.sortOrder') sortSettings_sortOrder_input: any;
     @Input('options') options: any;
 
+	@Input('fields.dataSource') fields_dataSource_two: any;
+	@Output('fields.dataSourceChange') fields_dataSource_twoChange = new EventEmitter<any>();
 
 	@Output('beforeAdd') beforeAdd_output = new EventEmitter();
 	@Output('beforeCollapse') beforeCollapse_output = new EventEmitter();

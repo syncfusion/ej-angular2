@@ -52,9 +52,9 @@ export class MaskEditComponent extends EJComponents<any, any> implements Control
 	@Output('destroy') destroy_output = new EventEmitter();
 	@Output('focusIn') focusIn_output = new EventEmitter();
 	@Output('focusOut') focusOut_output = new EventEmitter();
-	@Output('keydown') keydown_output = new EventEmitter();
+	@Output('onKeyDown') onKeyDown_output = new EventEmitter();
 	@Output('keyPress') keyPress_output = new EventEmitter();
-	@Output('keyup') keyup_output = new EventEmitter();
+	@Output('keyUp') keyUp_output = new EventEmitter();
 	@Output('mouseOut') mouseOut_output = new EventEmitter();
 	@Output('mouseOver') mouseOver_output = new EventEmitter();
 

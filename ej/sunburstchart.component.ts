@@ -152,6 +152,9 @@ export class SunburstChartComponent extends EJComponents<any, any> {
 	@Output('drillDownClick') drillDownClick_output = new EventEmitter();
 	@Output('drillDownBack') drillDownBack_output = new EventEmitter();
 	@Output('drillDownReset') drillDownReset_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('SunburstChart', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);

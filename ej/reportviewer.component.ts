@@ -23,6 +23,7 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Input('reportServiceUrl') reportServiceUrl_input: any;
 	@Input('toolbarSettings') toolbarSettings_input: any;
 	@Input('zoomFactor') zoomFactor_input: any;
+	@Input('serviceAuthorizationToken') serviceAuthorizationToken_input: any;
 	@Input('exportSettings.exportOptions') exportSettings_exportOptions_input: any;
 	@Input('exportSettings.excelFormat') exportSettings_excelFormat_input: any;
 	@Input('exportSettings.wordFormat') exportSettings_wordFormat_input: any;

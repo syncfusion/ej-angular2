@@ -72,6 +72,7 @@ export class AutocompleteComponent extends EJComponents<any, any> implements Con
 	@Input('multiColumnSettings.enable') multiColumnSettings_enable_input: any;
 	@Input('multiColumnSettings.showHeader') multiColumnSettings_showHeader_input: any;
 	@Input('multiColumnSettings.stringFormat') multiColumnSettings_stringFormat_input: any;
+	@Input('multiColumnSettings.searchColumnIndices') multiColumnSettings_searchColumnIndices_input: any;
 	@Input('multiColumnSettings.columns') multiColumnSettings_columns_input: any;
     @Input('options') options: any;
 

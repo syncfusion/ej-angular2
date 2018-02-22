@@ -14,6 +14,7 @@ export class SplitterComponent extends EJComponents<any, any> {
 	@Input('cssClass') cssClass_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;
 	@Input('enableRTL') enableRTL_input: any;
+	@Input('expanderTemplate') expanderTemplate_input: any;
 	@Input('height') height_input: any;
 	@Input('htmlAttributes') htmlAttributes_input: any;
 	@Input('isResponsive') isResponsive_input: any;
@@ -24,6 +25,7 @@ export class SplitterComponent extends EJComponents<any, any> {
 
 
 	@Output('beforeExpandCollapse') beforeExpandCollapse_output = new EventEmitter();
+	@Output('clickOnExpander') clickOnExpander_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 	@Output('expandCollapse') expandCollapse_output = new EventEmitter();

@@ -51,6 +51,7 @@ export class ScheduleResourcesDirective extends ArrayTagElement<ComplexTagElemen
 export class ScheduleComponent extends EJComponents<any, any> {
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
 	@Input('allowInline') allowInline_input: any;
+	@Input('allowDelete') allowDelete_input: any;
 	@Input('allowKeyboardNavigation') allowKeyboardNavigation_input: any;
 	@Input('appointmentSettings') appointmentSettings_input: any;
 	@Input('appointmentTemplateId') appointmentTemplateId_input: any;
@@ -137,6 +138,7 @@ export class ScheduleComponent extends EJComponents<any, any> {
 	@Input('contextMenuSettings.menuItems.appointment') contextMenuSettings_menuItems_appointment_input: any;
 	@Input('contextMenuSettings.menuItems.cells') contextMenuSettings_menuItems_cells_input: any;
 	@Input('group.resources') group_resources_input: any;
+	@Input('group.allowGroupEditing') group_allowGroupEditing_input: any;
 	@Input('workHours.highlight') workHours_highlight_input: any;
 	@Input('workHours.start') workHours_start_input: any;
 	@Input('workHours.end') workHours_end_input: any;

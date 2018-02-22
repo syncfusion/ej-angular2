@@ -132,7 +132,11 @@ export class EJComponents<W, T> implements IParentTag {
                 let modelProperty = this.inputs[i].replace("_input", "");
                 if ((<any>this)[property] != null) {
                     if (modelProperty.indexOf('_') == -1) {
+                        if((<any>this.model)[modelProperty]){
+                            $.extend(true, (<any>this.model)[modelProperty],(<any>this)[property]);
+                        } else {
                         (<any>this.model)[modelProperty] = (<any>this)[property];
+                        }
                     } else if (modelProperty.indexOf('_two') == -1) {
                         let tempObj: any = {};
                         let key = modelProperty.replace(/\_/g, '.');
@@ -172,8 +176,8 @@ export class EJComponents<W, T> implements IParentTag {
                     if (changes) {
                         let ngChanges = {};
                         if (this.widget != undefined) {
-                            ngChanges = this.getTwowayChanges(changes.collection, ngChanges, element);
-                            ej.createObject(element + ".two", changes.collection, ngChanges);
+                            ngChanges = this.getTwowayChanges(changes.collection, ngChanges, element.replace(/\_/g, '.'));
+                            ej.createObject(element.replace(/\_/g, '.') + ".two", changes.collection, ngChanges);
                             (<any>this.widget)['setModel'](ngChanges, $.isPlainObject(ngChanges));
                         }
                     }

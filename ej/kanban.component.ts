@@ -51,6 +51,7 @@ export class KanbanColumnsDirective extends ArrayTagElement<ComplexTagElement> {
     template: ''})
 export class KanbanComponent extends EJComponents<any, any> {
 	@Input('allowDragAndDrop') allowDragAndDrop_input: any;
+	@Input('allowExternalDragAndDrop') allowExternalDragAndDrop_input: any;
 	@Input('allowTitle') allowTitle_input: any;
 	@Input('swimlaneSettings') swimlaneSettings_input: any;
 	@Input('allowToggleColumn') allowToggleColumn_input: any;
@@ -79,6 +80,7 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Input('selectionType') selectionType_input: any;
 	@Input('tooltipSettings') tooltipSettings_input: any;
 	@Input('locale') locale_input: any;
+	@Input('showColumnWhenEmpty') showColumnWhenEmpty_input: any;
 	@Input('swimlaneSettings.showCount') swimlaneSettings_showCount_input: any;
 	@Input('swimlaneSettings.allowDragAndDrop') swimlaneSettings_allowDragAndDrop_input: any;
 	@Input('swimlaneSettings.unassignedGroup') swimlaneSettings_unassignedGroup_input: any;
@@ -89,6 +91,7 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Input('contextMenuSettings.menuItems') contextMenuSettings_menuItems_input: any;
 	@Input('cardSettings.template') cardSettings_template_input: any;
 	@Input('cardSettings.colorMapping') cardSettings_colorMapping_input: any;
+	@Input('cardSettings.externalDropTarget') cardSettings_externalDropTarget_input: any;
 	@Input('editSettings.allowEditing') editSettings_allowEditing_input: any;
 	@Input('editSettings.allowAdding') editSettings_allowAdding_input: any;
 	@Input('editSettings.dialogTemplate') editSettings_dialogTemplate_input: any;

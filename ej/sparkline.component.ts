@@ -80,6 +80,9 @@ export class SparklineComponent extends EJComponents<any, any> {
 	@Output('pointRegionMouseClick') pointRegionMouseClick_output = new EventEmitter();
 	@Output('sparklineMouseMove') sparklineMouseMove_output = new EventEmitter();
 	@Output('sparklineMouseLeave') sparklineMouseLeave_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('Sparkline', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);

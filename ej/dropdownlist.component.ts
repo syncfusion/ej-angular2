@@ -37,6 +37,7 @@ export class DropDownListComponent extends EJComponents<any, any> implements Con
 	@Input('enablePopupResize') enablePopupResize_input: any;
 	@Input('enableRTL') enableRTL_input: any;
 	@Input('enableSorting') enableSorting_input: any;
+	@Input('loadOnDemand') loadOnDemand_input: any;
 	@Input('fields') fields_input: any;
 	@Input('filterType') filterType_input: any;
 	@Input('headerTemplate') headerTemplate_input: any;

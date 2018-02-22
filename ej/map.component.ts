@@ -43,6 +43,7 @@ export class MapLayerDirective extends ComplexTagElement {
 	@Input('legendSettings.iconWidth') legendSettings_iconWidth: any;
 	@Input('legendSettings.labelOrientation') legendSettings_labelOrientation: any;
 	@Input('legendSettings.leftLabel') legendSettings_leftLabel: any;
+	@Input('legendSettings.textPath') legendSettings_textPath: any;
 	@Input('legendSettings.mode') legendSettings_mode: any;
 	@Input('legendSettings.position') legendSettings_position: any;
 	@Input('legendSettings.positionX') legendSettings_positionX: any;
@@ -66,6 +67,7 @@ export class MapLayerDirective extends ComplexTagElement {
 	@Input('shapeSettings.colorMappings.equalColorMapping') shapeSettings_colorMappings_equalColorMapping: any;
 	@Input('shapeSettings.colorPalette') shapeSettings_colorPalette: any;
 	@Input('shapeSettings.colorValuePath') shapeSettings_colorValuePath: any;
+	@Input('shapeSettings.colorPath') shapeSettings_colorPath: any;
 	@Input('shapeSettings.enableGradient') shapeSettings_enableGradient: any;
 	@Input('shapeSettings.fill') shapeSettings_fill: any;
 	@Input('shapeSettings.highlightBorderWidth') shapeSettings_highlightBorderWidth: any;
@@ -113,11 +115,13 @@ export class MapComponent extends EJComponents<any, any> {
 	@Input('background') background_input: any;
 	@Input('centerPosition') centerPosition_input: any;
 	@Input('draggingOnSelection') draggingOnSelection_input: any;
+	@Input('enableRTL') enableRTL_input: any;
 	@Input('enableLayerChangeAnimation') enableLayerChangeAnimation_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('zoomSettings') zoomSettings_input: any;
 	@Input('navigationControl') navigationControl_input: any;
 	@Input('locale') locale_input: any;
+	@Input('zoomSettings.enableMouseWheelZoom') zoomSettings_enableMouseWheelZoom_input: any;
 	@Input('navigationControl.content') navigationControl_content_input: any;
 	@Input('layers') layers_input: any;
 	@Input('layers.bubbleSettings.colorMappings.rangeColorMapping') layers_bubbleSettings_colorMappings_rangeColorMapping_input: any;
@@ -158,6 +162,9 @@ export class MapComponent extends EJComponents<any, any> {
 	@Output('navigationControl.dockPositionChange') navigationControl_dockPosition_twoChange = new EventEmitter<any>();
 
 	@Output('markerSelected') markerSelected_output = new EventEmitter();
+	@Output('legendItemRendering') legendItemRendering_output = new EventEmitter();
+	@Output('bubbleRendering') bubbleRendering_output = new EventEmitter();
+	@Output('shapeRendering') shapeRendering_output = new EventEmitter();
 	@Output('mouseleave') mouseleave_output = new EventEmitter();
 	@Output('mouseover') mouseover_output = new EventEmitter();
 	@Output('onRenderComplete') onRenderComplete_output = new EventEmitter();
@@ -165,6 +172,10 @@ export class MapComponent extends EJComponents<any, any> {
 	@Output('shapeSelected') shapeSelected_output = new EventEmitter();
 	@Output('zoomedIn') zoomedIn_output = new EventEmitter();
 	@Output('zoomedOut') zoomedOut_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
+	@Output('onLoad') onLoad_output = new EventEmitter();
 
 	@ContentChild(MapLayersDirective) tag_layers: any;
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {

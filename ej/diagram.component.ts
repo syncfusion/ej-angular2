@@ -176,6 +176,7 @@ export class DiagramConnectorDirective extends ComplexTagElement {
 	@Input('sourceDecorator') sourceDecorator: any;
 	@Input('sourceDecorator.borderColor') sourceDecorator_borderColor: any;
 	@Input('sourceDecorator.borderWidth') sourceDecorator_borderWidth: any;
+	@Input('sourceDecorator.cssClass') sourceDecorator_cssClass: any;
 	@Input('sourceDecorator.fillColor') sourceDecorator_fillColor: any;
 	@Input('sourceDecorator.height') sourceDecorator_height: any;
 	@Input('sourceDecorator.pathData') sourceDecorator_pathData: any;
@@ -189,6 +190,7 @@ export class DiagramConnectorDirective extends ComplexTagElement {
 	@Input('sourcePort') sourcePort: any;
 	@Input('targetDecorator') targetDecorator: any;
 	@Input('targetDecorator.borderColor') targetDecorator_borderColor: any;
+	@Input('targetDecorator.cssClass') targetDecorator_cssClass: any;
 	@Input('targetDecorator.fillColor') targetDecorator_fillColor: any;
 	@Input('targetDecorator.height') targetDecorator_height: any;
 	@Input('targetDecorator.pathData') targetDecorator_pathData: any;
@@ -233,6 +235,7 @@ export class DiagramNodeLabelDirective extends ComplexTagElement {
 	@Input('bold') bold: any;
 	@Input('borderColor') borderColor: any;
 	@Input('borderWidth') borderWidth: any;
+	@Input('cssClass') cssClass: any;
 	@Input('constraints') constraints: any;
 	@Input('fillColor') fillColor: any;
 	@Input('fontColor') fontColor: any;
@@ -249,6 +252,7 @@ export class DiagramNodeLabelDirective extends ComplexTagElement {
 	@Input('overflowType') overflowType: any;
 	@Input('readOnly') readOnly: any;
 	@Input('rotateAngle') rotateAngle: any;
+	@Input('templateId') templateId: any;
 	@Input('text') text: any;
 	@Input('textAlign') textAlign: any;
 	@Input('textDecoration') textDecoration: any;
@@ -321,6 +325,7 @@ export class DiagramPortDirective extends ComplexTagElement {
 	@Input('borderWidth') borderWidth: any;
 	@Input('connectorPadding') connectorPadding: any;
 	@Input('constraints') constraints: any;
+	@Input('cssClass') cssClass: any;
 	@Input('fillColor') fillColor: any;
 	@Input('name') name: any;
 	@Input('offset') offset: any;
@@ -414,11 +419,13 @@ export class DiagramNodeDirective extends ComplexTagElement {
 	@Input('gradient') gradient: any;
 	@Input('gradient.LinearGradient') gradient_LinearGradient: any;
 	@Input('gradient.LinearGradient.stops') gradient_LinearGradient_stops: any;
+	@Input('gradient.LinearGradient.type') gradient_LinearGradient_type: any;
 	@Input('gradient.LinearGradient.x1') gradient_LinearGradient_x1: any;
 	@Input('gradient.LinearGradient.x2') gradient_LinearGradient_x2: any;
 	@Input('gradient.LinearGradient.y1') gradient_LinearGradient_y1: any;
 	@Input('gradient.LinearGradient.y2') gradient_LinearGradient_y2: any;
 	@Input('gradient.RadialGradient') gradient_RadialGradient: any;
+	@Input('gradient.RadialGradient.type') gradient_RadialGradient_type: any;
 	@Input('gradient.RadialGradient.cx') gradient_RadialGradient_cx: any;
 	@Input('gradient.RadialGradient.cy') gradient_RadialGradient_cy: any;
 	@Input('gradient.RadialGradient.fx') gradient_RadialGradient_fx: any;
@@ -428,7 +435,6 @@ export class DiagramNodeDirective extends ComplexTagElement {
 	@Input('gradient.Stop.color') gradient_Stop_color: any;
 	@Input('gradient.Stop.offset') gradient_Stop_offset: any;
 	@Input('gradient.Stop.opacity') gradient_Stop_opacity: any;
-	@Input('group') group: any;
 	@Input('header') header: any;
 	@Input('height') height: any;
 	@Input('horizontalAlign') horizontalAlign: any;
@@ -693,6 +699,7 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Input('tooltip.templateId') tooltip_templateId_input: any;
 	@Input('connectors') connectors_input: any;
 	@Input('nodes') nodes_input: any;
+	@Input('layers') layers_input: any;
 	@Input('contextMenu.items') contextMenu_items_input: any;
 	@Input('nodes.class.attributes') nodes_class_attributes_input: any;
 	@Input('nodes.class.methods') nodes_class_methods_input: any;

@@ -28,7 +28,9 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Input('enableContextMenu') enableContextMenu_input: any;
 	@Input('serviceMethodSettings') serviceMethodSettings_input: any;
 	@Input('size') size_input: any;
+	@Input('title') title_input: any;
 	@Input('url') url_input: any;
+	@Input('enableXHRCredentials') enableXHRCredentials_input: any;
 	@Input('zooming.enableScrollbar') zooming_enableScrollbar_input: any;
 	@Input('commonSeriesOptions.type') commonSeriesOptions_type_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
@@ -40,6 +42,7 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Input('serviceMethodSettings.exportPivotChart') serviceMethodSettings_exportPivotChart_input: any;
 	@Input('serviceMethodSettings.initialize') serviceMethodSettings_initialize_input: any;
 	@Input('serviceMethodSettings.paging') serviceMethodSettings_paging_input: any;
+	@Input('title.text') title_text_input: any;
 	@Input('dataSource.columns') dataSource_columns_input: any;
 	@Input('dataSource.rows') dataSource_rows_input: any;
 	@Input('dataSource.values') dataSource_values_input: any;
