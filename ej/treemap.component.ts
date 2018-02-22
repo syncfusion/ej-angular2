@@ -87,6 +87,7 @@ export class TreeMapComponent extends EJComponents<any, any> {
 	@Input('desaturationColorMapping') desaturationColorMapping_input: any;
 	@Input('paletteColorMapping') paletteColorMapping_input: any;
 	@Input('colorValuePath') colorValuePath_input: any;
+	@Input('colorPath') colorPath_input: any;
 	@Input('dockPosition') dockPosition_input: any;
 	@Input('drillDownHeaderColor') drillDownHeaderColor_input: any;
 	@Input('drillDownSelectionColor') drillDownSelectionColor_input: any;
@@ -154,11 +155,16 @@ export class TreeMapComponent extends EJComponents<any, any> {
 	@Output('weightValuePathChange') weightValuePath_twoChange = new EventEmitter<any>();
 
 	@Output('treeMapItemSelected') treeMapItemSelected_output = new EventEmitter();
+	@Output('itemRendering') itemRendering_output = new EventEmitter();
+	@Output('legendItemRendering') legendItemRendering_output = new EventEmitter();
 	@Output('drillStarted') drillStarted_output = new EventEmitter();
 	@Output('drillDownItemSelected') drillDownItemSelected_output = new EventEmitter();
 	@Output('headerTemplateRendering') headerTemplateRendering_output = new EventEmitter();
 	@Output('refreshed') refreshed_output = new EventEmitter();
 	@Output('treeMapGroupSelected') treeMapGroupSelected_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
 	@ContentChild(TreeMapLevelsDirective) tag_levels: any;
 	@ContentChild(TreeMapRangeColorMappingDirective) tag_rangeColorMapping: any;

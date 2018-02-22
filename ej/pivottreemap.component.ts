@@ -17,6 +17,7 @@ export class PivotTreeMapComponent extends EJComponents<any, any> {
 	@Input('operationalMode') operationalMode_input: any;
 	@Input('serviceMethodSettings') serviceMethodSettings_input: any;
 	@Input('url') url_input: any;
+	@Input('enableXHRCredentials') enableXHRCredentials_input: any;
 	@Input('dataSource.data') dataSource_data_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
 	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;

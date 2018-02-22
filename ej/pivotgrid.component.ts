@@ -22,6 +22,7 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('enableCellContext') enableCellContext_input: any;
 	@Input('enableCellSelection') enableCellSelection_input: any;
 	@Input('enableDrillThrough') enableDrillThrough_input: any;
+	@Input('enableCellClick') enableCellClick_input: any;
 	@Input('enableCellDoubleClick') enableCellDoubleClick_input: any;
 	@Input('enableCellEditing') enableCellEditing_input: any;
 	@Input('enableCollapseByDefault') enableCollapseByDefault_input: any;
@@ -30,6 +31,7 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('enableAdvancedFilter') enableAdvancedFilter_input: any;
 	@Input('enableDeferUpdate') enableDeferUpdate_input: any;
 	@Input('enableGroupingBar') enableGroupingBar_input: any;
+	@Input('maxNodeLimitInMemberEditor') maxNodeLimitInMemberEditor_input: any;
 	@Input('enableMemberEditorPaging') enableMemberEditorPaging_input: any;
 	@Input('memberEditorPageSize') memberEditorPageSize_input: any;
 	@Input('enableGrandTotal') enableGrandTotal_input: any;
@@ -52,6 +54,8 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('operationalMode') operationalMode_input: any;
 	@Input('serviceMethodSettings') serviceMethodSettings_input: any;
 	@Input('url') url_input: any;
+	@Input('enableCompleteDataExport') enableCompleteDataExport_input: any;
+	@Input('enableXHRCredentials') enableXHRCredentials_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
 	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;
 	@Input('dataSource.providerName') dataSource_providerName_input: any;
@@ -107,6 +111,7 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
 	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
 	@Output('beforePivotEnginePopulate') beforePivotEnginePopulate_output = new EventEmitter();
+	@Output('cellClick') cellClick_output = new EventEmitter();
 	@Output('cellDoubleClick') cellDoubleClick_output = new EventEmitter();
 	@Output('cellContext') cellContext_output = new EventEmitter();
 	@Output('cellSelection') cellSelection_output = new EventEmitter();

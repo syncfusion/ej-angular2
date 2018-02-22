@@ -136,6 +136,9 @@ export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Output('selectedRangeStart') selectedRangeStart_output = new EventEmitter();
 	@Output('selectedRangeEnd') selectedRangeEnd_output = new EventEmitter();
 	@Output('scrollEnd') scrollEnd_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('RangeNavigator', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);

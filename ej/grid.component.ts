@@ -336,12 +336,14 @@ export class GridComponent extends EJComponents<any, any> {
 	@Input('rowDropSettings.dropTargetID') rowDropSettings_dropTargetID_input: any;
 	@Input('rowDropSettings.dragMapper') rowDropSettings_dragMapper_input: any;
 	@Input('rowDropSettings.dropMapper') rowDropSettings_dropMapper_input: any;
+	@Input('rowDropSettings.dragBehavior') rowDropSettings_dragBehavior_input: any;
 	@Input('searchSettings.fields') searchSettings_fields_input: any;
 	@Input('searchSettings.key') searchSettings_key_input: any;
 	@Input('searchSettings.operator') searchSettings_operator_input: any;
 	@Input('searchSettings.ignoreCase') searchSettings_ignoreCase_input: any;
 	@Input('selectionSettings.cellSelectionMode') selectionSettings_cellSelectionMode_input: any;
 	@Input('selectionSettings.enableToggle') selectionSettings_enableToggle_input: any;
+	@Input('selectionSettings.allowDragSelection') selectionSettings_allowDragSelection_input: any;
 	@Input('selectionSettings.selectionMode') selectionSettings_selectionMode_input: any;
 	@Input('scrollSettings.allowVirtualScrolling') scrollSettings_allowVirtualScrolling_input: any;
 	@Input('scrollSettings.autoHide') scrollSettings_autoHide_input: any;
@@ -425,6 +427,7 @@ export class GridComponent extends EJComponents<any, any> {
 	@Output('rowDrag') rowDrag_output = new EventEmitter();
 	@Output('rowDragStart') rowDragStart_output = new EventEmitter();
 	@Output('rowDrop') rowDrop_output = new EventEmitter();
+	@Output('rowHover') rowHover_output = new EventEmitter();
 	@Output('templateRefresh') templateRefresh_output = new EventEmitter();
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 

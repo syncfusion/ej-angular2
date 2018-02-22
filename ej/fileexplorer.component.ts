@@ -46,6 +46,7 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Input('tools') tools_input: any;
 	@Input('toolsList') toolsList_input: any;
 	@Input('uploadSettings') uploadSettings_input: any;
+	@Input('virtualItemCount') virtualItemCount_input: any;
 	@Input('width') width_input: any;
 	@Input('contextMenuSettings.items') contextMenuSettings_items_input: any;
 	@Input('contextMenuSettings.customMenuFields') contextMenuSettings_customMenuFields_input: any;
@@ -55,9 +56,12 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Input('gridSettings.allowResizing') gridSettings_allowResizing_input: any;
 	@Input('gridSettings.allowSorting') gridSettings_allowSorting_input: any;
 	@Input('gridSettings.columns') gridSettings_columns_input: any;
-	@Input('uploadSettings.maxFileSize') uploadSettings_maxFileSize_input: any;
 	@Input('uploadSettings.allowMultipleFile') uploadSettings_allowMultipleFile_input: any;
 	@Input('uploadSettings.autoUpload') uploadSettings_autoUpload_input: any;
+	@Input('uploadSettings.dialogAction') uploadSettings_dialogAction_input: any;
+	@Input('uploadSettings.dialogPosition') uploadSettings_dialogPosition_input: any;
+	@Input('uploadSettings.maxFileSize') uploadSettings_maxFileSize_input: any;
+	@Input('uploadSettings.showFileDetails') uploadSettings_showFileDetails_input: any;
     @Input('options') options: any;
 
 
@@ -67,6 +71,7 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
 	@Output('beforeUpload') beforeUpload_output = new EventEmitter();
 	@Output('beforeUploadDialogOpen') beforeUploadDialogOpen_output = new EventEmitter();
+	@Output('beforeUploadSend') beforeUploadSend_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
 	@Output('copy') copy_output = new EventEmitter();
 	@Output('createFolder') createFolder_output = new EventEmitter();
@@ -91,6 +96,9 @@ export class FileExplorerComponent extends EJComponents<any, any> {
 	@Output('select') select_output = new EventEmitter();
 	@Output('templateRefresh') templateRefresh_output = new EventEmitter();
 	@Output('unselect') unselect_output = new EventEmitter();
+	@Output('uploadComplete') uploadComplete_output = new EventEmitter();
+	@Output('uploadError') uploadError_output = new EventEmitter();
+	@Output('uploadSuccess') uploadSuccess_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('FileExplorer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);

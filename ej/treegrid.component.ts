@@ -20,6 +20,7 @@ export class TreeGridColumnDirective extends ComplexTagElement {
 	@Input('templateID') templateID: any;
 	@Input('angularTemplate') angularTemplate: any;
 	@Input('filterEditType') filterEditType: any;
+	@Input('filterType') filterType: any;
 	@Input('headerText') headerText: any;
 	@Input('displayAsCheckbox') displayAsCheckbox: any;
 	@Input('showCheckbox') showCheckbox: any;
@@ -76,6 +77,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('allowMultiSorting') allowMultiSorting_input: any;
 	@Input('allowSelection') allowSelection_input: any;
 	@Input('allowSorting') allowSorting_input: any;
+	@Input('allowSearching') allowSearching_input: any;
 	@Input('allowPaging') allowPaging_input: any;
 	@Input('allowTextWrap') allowTextWrap_input: any;
 	@Input('altRowTemplateID') altRowTemplateID_input: any;
@@ -113,6 +115,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('detailsTemplate') detailsTemplate_input: any;
 	@Input('detailsRowHeight') detailsRowHeight_input: any;
 	@Input('showStackedHeader') showStackedHeader_input: any;
+	@Input('searchSettings') searchSettings_input: any;
 	@Input('showSummaryRow') showSummaryRow_input: any;
 	@Input('showTotalSummary') showTotalSummary_input: any;
 	@Input('showGridCellTooltip') showGridCellTooltip_input: any;
@@ -133,9 +136,14 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('editSettings.editMode') editSettings_editMode_input: any;
 	@Input('editSettings.rowPosition') editSettings_rowPosition_input: any;
 	@Input('editSettings.dialogEditorTemplateID') editSettings_dialogEditorTemplateID_input: any;
+	@Input('editSettings.showDeleteConfirmDialog') editSettings_showDeleteConfirmDialog_input: any;
 	@Input('columnResizeSettings.columnResizeMode') columnResizeSettings_columnResizeMode_input: any;
 	@Input('filterSettings.filterBarMode') filterSettings_filterBarMode_input: any;
 	@Input('filterSettings.filterType') filterSettings_filterType_input: any;
+	@Input('filterSettings.maxFilterChoice') filterSettings_maxFilterChoice_input: any;
+	@Input('filterSettings.enableCaseSensitivity') filterSettings_enableCaseSensitivity_input: any;
+	@Input('filterSettings.enableComplexBlankFilter') filterSettings_enableComplexBlankFilter_input: any;
+	@Input('filterSettings.filterHierarchyMode') filterSettings_filterHierarchyMode_input: any;
 	@Input('pageSettings.pageCount') pageSettings_pageCount_input: any;
 	@Input('pageSettings.pageSize') pageSettings_pageSize_input: any;
 	@Input('pageSettings.totalRecordsCount') pageSettings_totalRecordsCount_input: any;
@@ -147,6 +155,10 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Input('selectionSettings.selectionType') selectionSettings_selectionType_input: any;
 	@Input('selectionSettings.enableHierarchySelection') selectionSettings_enableHierarchySelection_input: any;
 	@Input('selectionSettings.enableSelectAll') selectionSettings_enableSelectAll_input: any;
+	@Input('searchSettings.fields') searchSettings_fields_input: any;
+	@Input('searchSettings.key') searchSettings_key_input: any;
+	@Input('searchSettings.operator') searchSettings_operator_input: any;
+	@Input('searchSettings.ignoreCase') searchSettings_ignoreCase_input: any;
 	@Input('sizeSettings.height') sizeSettings_height_input: any;
 	@Input('sizeSettings.width') sizeSettings_width_input: any;
 	@Input('toolbarSettings.showToolbar') toolbarSettings_showToolbar_input: any;
@@ -171,7 +183,6 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Output('beginEdit') beginEdit_output = new EventEmitter();
 	@Output('collapsed') collapsed_output = new EventEmitter();
 	@Output('collapsing') collapsing_output = new EventEmitter();
-	@Output('recordClick') recordClick_output = new EventEmitter();
 	@Output('columnDragStart') columnDragStart_output = new EventEmitter();
 	@Output('columnDrag') columnDrag_output = new EventEmitter();
 	@Output('columnDrop') columnDrop_output = new EventEmitter();
@@ -196,6 +207,8 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Output('cellSelected') cellSelected_output = new EventEmitter();
 	@Output('rowSelected') rowSelected_output = new EventEmitter();
 	@Output('rowSelecting') rowSelecting_output = new EventEmitter();
+	@Output('recordClick') recordClick_output = new EventEmitter();
+	@Output('recordDoubleClick') recordDoubleClick_output = new EventEmitter();
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 
 	@ContentChild(TreeGridColumnsDirective) tag_columns: any;

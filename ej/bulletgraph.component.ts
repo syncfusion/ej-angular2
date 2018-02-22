@@ -181,6 +181,9 @@ export class BulletGraphComponent extends EJComponents<any, any> {
 	@Output('drawTicks') drawTicks_output = new EventEmitter();
 	@Output('drawQualitativeRanges') drawQualitativeRanges_output = new EventEmitter();
 	@Output('load') load_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
 	@ContentChild(BulletGraphQualitativeRangesDirective) tag_qualitativeRanges: any;
 	@ContentChild(BulletGraphQuantitativeScaleSettingsFeatureMeasuresDirective) tag_quantitativeScaleSettings_featureMeasures: any;

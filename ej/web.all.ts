@@ -229,6 +229,12 @@ export let EJ_PIVOTGRID_COMPONENTS: Type<any>[] = PivotgridAll.EJ_PIVOTGRID_COMP
 
 
 
+import * as PivotclientAll from './pivotclient.component';
+export let Pivotclient = PivotclientAll;
+export let EJ_PIVOTCLIENT_COMPONENTS: Type<any>[] = PivotclientAll.EJ_PIVOTCLIENT_COMPONENTS;
+
+
+
 import * as PivotchartAll from './pivotchart.component';
 export let Pivotchart = PivotchartAll;
 export let EJ_PIVOTCHART_COMPONENTS: Type<any>[] = PivotchartAll.EJ_PIVOTCHART_COMPONENTS;
@@ -292,6 +298,12 @@ export let EJ_RTE_COMPONENTS: Type<any>[] = RteAll.EJ_RTE_COMPONENTS;
 import * as DropdownlistAll from './dropdownlist.component';
 export let Dropdownlist = DropdownlistAll;
 export let EJ_DROPDOWNLIST_COMPONENTS: Type<any>[] = DropdownlistAll.EJ_DROPDOWNLIST_COMPONENTS;
+
+
+
+import * as ComboboxAll from './combobox.component';
+export let Combobox = ComboboxAll;
+export let EJ_COMBOBOX_COMPONENTS: Type<any>[] = ComboboxAll.EJ_COMBOBOX_COMPONENTS;
 
 
 

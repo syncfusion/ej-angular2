@@ -16,6 +16,7 @@ export class PivotGaugeComponent extends EJComponents<any, any> {
 	@Input('enableAnimation') enableAnimation_input: any;
 	@Input('enableTooltip') enableTooltip_input: any;
 	@Input('enableRTL') enableRTL_input: any;
+	@Input('frame') frame_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('labelFormatSettings') labelFormatSettings_input: any;
 	@Input('locale') locale_input: any;
@@ -26,11 +27,15 @@ export class PivotGaugeComponent extends EJComponents<any, any> {
 	@Input('url') url_input: any;
 	@Input('analysisMode') analysisMode_input: any;
 	@Input('operationalMode') operationalMode_input: any;
+	@Input('enableXHRCredentials') enableXHRCredentials_input: any;
 	@Input('dataSource.cube') dataSource_cube_input: any;
 	@Input('dataSource.sourceInfo') dataSource_sourceInfo_input: any;
 	@Input('dataSource.providerName') dataSource_providerName_input: any;
 	@Input('dataSource.data') dataSource_data_input: any;
 	@Input('dataSource.catalog') dataSource_catalog_input: any;
+	@Input('frame.frameType') frame_frameType_input: any;
+	@Input('frame.halfCircleFrameEndAngle') frame_halfCircleFrameEndAngle_input: any;
+	@Input('frame.halfCircleFrameStartAngle') frame_halfCircleFrameStartAngle_input: any;
 	@Input('labelFormatSettings.numberFormat') labelFormatSettings_numberFormat_input: any;
 	@Input('labelFormatSettings.decimalPlaces') labelFormatSettings_decimalPlaces_input: any;
 	@Input('labelFormatSettings.prefixText') labelFormatSettings_prefixText_input: any;

@@ -1,7 +1,7 @@
 {
   "name": "ej-angular2",
   "description": "Angular 2 components for Syncfusion JavaScript widgets",
-  "version": "15.4.17",
+  "version": "16.1.24",
   "scripts": {
     "lint": "tslint ej/**/*.ts",
     "prepublish": "npm run build:aot",
@@ -31,19 +31,19 @@
   "typings": "./src/index.d.ts",
   "dependencies": {},
   "devDependencies": {
-    "@angular/common": "~5.0.0",
-    "@angular/compiler": "~5.0.0",
-    "@angular/compiler-cli": "~5.0.0",
-    "@angular/core": "~5.0.0",
-    "@angular/forms": "~5.0.0",
+    "@angular/common": "4.1.3",
+    "@angular/compiler": "4.1.3",
+    "@angular/compiler-cli": "4.1.3",
+    "@angular/core": "4.1.3",
+    "@angular/forms": "4.1.3",
     "rxjs": "^5.4.0",
     "zone.js": "^0.8.11",
     "codelyzer": "^3.0.1",
     "tslint": "^3.15.1",
-    "typescript": "~2.4.2",
+    "typescript": "2.2.1",
     "typings": "^1.0.4",
     "@types/ej.web.all": "^15.2.0",
     "@types/jquery": "2.0.34",
-    "@types/node": "^6.0.52"
+    "@types/node": "6.0.52"
   }
 }

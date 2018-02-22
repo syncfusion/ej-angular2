@@ -32,6 +32,8 @@ export class DateRangePickerComponent extends EJComponents<any, any> implements 
 	@Input('endDate') endDate_input: any;
 	@Input('height') height_input: any;
 	@Input('locale') locale_input: any;
+	@Input('maxDate') maxDate_input: any;
+	@Input('minDate') minDate_input: any;
 	@Input('ranges') ranges_input: any;
 	@Input('separator') separator_input: any;
 	@Input('startDate') startDate_input: any;

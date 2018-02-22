@@ -62,6 +62,7 @@ export class DigitalGaugeItemsDirective extends ArrayTagElement<ComplexTagElemen
     selector: 'ej-digitalgauge',
     template: ''})
 export class DigitalGaugeComponent extends EJComponents<any, any> {
+	@Input('exportSettings') exportSettings_input: any;
 	@Input('frame') frame_input: any;
 	@Input('height') height_input: any;
 	@Input('isResponsive') isResponsive_input: any;
@@ -70,6 +71,10 @@ export class DigitalGaugeComponent extends EJComponents<any, any> {
 	@Input('segmentData') segmentData_input: any;
 	@Input('themes') themes_input: any;
 	@Input('width') width_input: any;
+	@Input('exportSettings.filename') exportSettings_filename_input: any;
+	@Input('exportSettings.type') exportSettings_type_input: any;
+	@Input('exportSettings.action') exportSettings_action_input: any;
+	@Input('exportSettings.mode') exportSettings_mode_input: any;
 	@Input('frame.backgroundImageUrl') frame_backgroundImageUrl_input: any;
 	@Input('frame.innerWidth') frame_innerWidth_input: any;
 	@Input('frame.outerWidth') frame_outerWidth_input: any;
@@ -83,6 +88,9 @@ export class DigitalGaugeComponent extends EJComponents<any, any> {
 	@Output('itemRendering') itemRendering_output = new EventEmitter();
 	@Output('load') load_output = new EventEmitter();
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
+	@Output('Click') Click_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
 	@ContentChild(DigitalGaugeItemsDirective) tag_items: any;
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {

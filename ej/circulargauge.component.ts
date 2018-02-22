@@ -349,6 +349,7 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Input('enableAnimation') enableAnimation_input: any;
 	@Input('enableGroupSeparator') enableGroupSeparator_input: any;
 	@Input('enableResize') enableResize_input: any;
+	@Input('exportSettings') exportSettings_input: any;
 	@Input('frame') frame_input: any;
 	@Input('gaugePosition') gaugePosition_input: any;
 	@Input('height') height_input: any;
@@ -363,6 +364,10 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Input('legend') legend_input: any;
 	@Input('tooltip') tooltip_input: any;
 	@Input('width') width_input: any;
+	@Input('exportSettings.filename') exportSettings_filename_input: any;
+	@Input('exportSettings.type') exportSettings_type_input: any;
+	@Input('exportSettings.action') exportSettings_action_input: any;
+	@Input('exportSettings.mode') exportSettings_mode_input: any;
 	@Input('frame.backgroundImageUrl') frame_backgroundImageUrl_input: any;
 	@Input('frame.frameType') frame_frameType_input: any;
 	@Input('frame.halfCircleFrameEndAngle') frame_halfCircleFrameEndAngle_input: any;
@@ -420,6 +425,8 @@ export class CircularGaugeComponent extends EJComponents<any, any> {
 	@Output('mouseClickMove') mouseClickMove_output = new EventEmitter();
 	@Output('mouseClickUp') mouseClickUp_output = new EventEmitter();
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
+	@Output('doubleClick') doubleClick_output = new EventEmitter();
+	@Output('rightClick') rightClick_output = new EventEmitter();
 
 	@ContentChild(CircularGaugeScalesDirective) tag_scales: any;
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
