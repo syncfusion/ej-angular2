@@ -145,6 +145,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('scheduleHeaderSettings.yearHeaderFormat') scheduleHeaderSettings_yearHeaderFormat_input: any;
 	@Input('scheduleHeaderSettings.timescaleUnitSize') scheduleHeaderSettings_timescaleUnitSize_input: any;
 	@Input('scheduleHeaderSettings.weekStartDay') scheduleHeaderSettings_weekStartDay_input: any;
+	@Input('scheduleHeaderSettings.updateTimescaleView') scheduleHeaderSettings_updateTimescaleView_input: any;
 	@Input('sizeSettings.height') sizeSettings_height_input: any;
 	@Input('sizeSettings.width') sizeSettings_width_input: any;
 	@Input('splitterSettings.index') splitterSettings_index_input: any;

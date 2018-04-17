@@ -22,6 +22,7 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Input('legend') legend_input: any;
 	@Input('locale') locale_input: any;
 	@Input('operationalMode') operationalMode_input: any;
+	@Input('axes') axes_input: any;
 	@Input('primaryXAxis') primaryXAxis_input: any;
 	@Input('primaryYAxis') primaryYAxis_input: any;
 	@Input('rotation') rotation_input: any;
@@ -53,7 +54,6 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Output('load') load_output = new EventEmitter();
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
 	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
-	@Output('beforePivotEnginePopulate') beforePivotEnginePopulate_output = new EventEmitter();
 	@Output('drillSuccess') drillSuccess_output = new EventEmitter();
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 	@Output('renderFailure') renderFailure_output = new EventEmitter();

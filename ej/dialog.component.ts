@@ -55,24 +55,24 @@ export class DialogComponent extends EJComponents<any, any> {
     @Input('options') options: any;
 
 
-	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
+	@Output('actionButtonClick') actionButtonClick_output = new EventEmitter();
 	@Output('ajaxError') ajaxError_output = new EventEmitter();
 	@Output('ajaxSuccess') ajaxSuccess_output = new EventEmitter();
+	@Output('beforeOpen') beforeOpen_output = new EventEmitter();
 	@Output('beforeClose') beforeClose_output = new EventEmitter();
 	@Output('close') close_output = new EventEmitter();
+	@Output('collapse') collapse_output = new EventEmitter();
 	@Output('contentLoad') contentLoad_output = new EventEmitter();
 	@Output('create') create_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 	@Output('drag') drag_output = new EventEmitter();
 	@Output('dragStart') dragStart_output = new EventEmitter();
 	@Output('dragStop') dragStop_output = new EventEmitter();
+	@Output('expand') expand_output = new EventEmitter();
 	@Output('open') open_output = new EventEmitter();
 	@Output('resize') resize_output = new EventEmitter();
 	@Output('resizeStart') resizeStart_output = new EventEmitter();
 	@Output('resizeStop') resizeStop_output = new EventEmitter();
-	@Output('expand') expand_output = new EventEmitter();
-	@Output('collapse') collapse_output = new EventEmitter();
-	@Output('actionButtonClick') actionButtonClick_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('Dialog', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
