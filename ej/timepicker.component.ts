@@ -45,6 +45,7 @@ export class TimePickerComponent extends EJComponents<any, any> implements Contr
 	@Input('showRoundedCorner') showRoundedCorner_input: any;
 	@Input('timeFormat') timeFormat_input: any;
 	@Input('value') value_input: any;
+	@Input('watermarkText') watermarkText_input: any;
 	@Input('width') width_input: any;
     @Input('options') options: any;
 

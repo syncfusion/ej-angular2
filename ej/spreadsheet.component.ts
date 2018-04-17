@@ -122,6 +122,7 @@ export class SpreadsheetComponent extends EJComponents<any, any> {
 	@Input('allowSearching') allowSearching_input: any;
 	@Input('allowSelection') allowSelection_input: any;
 	@Input('allowSorting') allowSorting_input: any;
+	@Input('allowSparkline') allowSparkline_input: any;
 	@Input('allowUndoRedo') allowUndoRedo_input: any;
 	@Input('allowWrap') allowWrap_input: any;
 	@Input('apWidth') apWidth_input: any;

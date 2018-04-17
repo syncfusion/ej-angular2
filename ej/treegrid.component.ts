@@ -203,6 +203,7 @@ export class TreeGridComponent extends EJComponents<any, any> {
 	@Output('rowDrag') rowDrag_output = new EventEmitter();
 	@Output('rowDragStart') rowDragStart_output = new EventEmitter();
 	@Output('rowDragStop') rowDragStop_output = new EventEmitter();
+	@Output('rowDropActionBegin') rowDropActionBegin_output = new EventEmitter();
 	@Output('cellSelecting') cellSelecting_output = new EventEmitter();
 	@Output('cellSelected') cellSelected_output = new EventEmitter();
 	@Output('rowSelected') rowSelected_output = new EventEmitter();
