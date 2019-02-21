@@ -35,7 +35,6 @@ export class PivotTreeMapComponent extends EJComponents<any, any> {
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
 	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
 	@Output('load') load_output = new EventEmitter();
-	@Output('beforePivotEnginePopulate') beforePivotEnginePopulate_output = new EventEmitter();
 	@Output('drillSuccess') drillSuccess_output = new EventEmitter();
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 	@Output('renderFailure') renderFailure_output = new EventEmitter();

@@ -17,6 +17,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('allowMultipleExporting') allowMultipleExporting_input: any;
 	@Input('allowSelection') allowSelection_input: any;
 	@Input('allowSorting') allowSorting_input: any;
+	@Input('allowUnscheduledTask') allowUnscheduledTask_input: any;
 	@Input('baselineColor') baselineColor_input: any;
 	@Input('baselineEndDateMapping') baselineEndDateMapping_input: any;
 	@Input('baselineStartDateMapping') baselineStartDateMapping_input: any;
@@ -51,6 +52,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('groupCollection') groupCollection_input: any;
 	@Input('groupIdMapping') groupIdMapping_input: any;
 	@Input('groupNameMapping') groupNameMapping_input: any;
+	@Input('highlightNonWorkingTime') highlightNonWorkingTime_input: any;
 	@Input('highlightWeekends') highlightWeekends_input: any;
 	@Input('includeWeekend') includeWeekend_input: any;
 	@Input('isResponsive') isResponsive_input: any;
@@ -59,6 +61,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Input('locale') locale_input: any;
 	@Input('milestoneMapping') milestoneMapping_input: any;
 	@Input('milestoneTemplate') milestoneTemplate_input: any;
+	@Input('nonWorkingBackground') nonWorkingBackground_input: any;
 	@Input('notesMapping') notesMapping_input: any;
 	@Input('parentProgressbarBackground') parentProgressbarBackground_input: any;
 	@Input('parentTaskIdMapping') parentTaskIdMapping_input: any;
@@ -189,6 +192,7 @@ export class GanttComponent extends EJComponents<any, any> {
 	@Output('rowDragStop') rowDragStop_output = new EventEmitter();
 	@Output('rowSelected') rowSelected_output = new EventEmitter();
 	@Output('rowSelecting') rowSelecting_output = new EventEmitter();
+	@Output('splitterResized') splitterResized_output = new EventEmitter();
 	@Output('taskbarClick') taskbarClick_output = new EventEmitter();
 	@Output('taskbarEdited') taskbarEdited_output = new EventEmitter();
 	@Output('taskbarEditing') taskbarEditing_output = new EventEmitter();

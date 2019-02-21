@@ -20,6 +20,7 @@ export class SpellCheckComponent extends EJComponents<any, any> {
 	@Input('enableValidateOnType') enableValidateOnType_input: any;
 	@Input('controlsToValidate') controlsToValidate_input: any;
 	@Input('enableAsync') enableAsync_input: any;
+	@Input('ajaxRequestType') ajaxRequestType_input: any;
 	@Input('ajaxDataType') ajaxDataType_input: any;
 	@Input('dictionarySettings.dictionaryUrl') dictionarySettings_dictionaryUrl_input: any;
 	@Input('dictionarySettings.customDictionaryUrl') dictionarySettings_customDictionaryUrl_input: any;

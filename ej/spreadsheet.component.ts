@@ -138,6 +138,7 @@ export class SpreadsheetComponent extends EJComponents<any, any> {
 	@Input('exportSettings') exportSettings_input: any;
 	@Input('formatSettings') formatSettings_input: any;
 	@Input('importSettings') importSettings_input: any;
+	@Input('isImport') isImport_input: any;
 	@Input('isReadOnly') isReadOnly_input: any;
 	@Input('locale') locale_input: any;
 	@Input('pictureSettings') pictureSettings_input: any;

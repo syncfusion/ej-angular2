@@ -83,6 +83,7 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Input('showColumnWhenEmpty') showColumnWhenEmpty_input: any;
 	@Input('swimlaneSettings.showCount') swimlaneSettings_showCount_input: any;
 	@Input('swimlaneSettings.allowDragAndDrop') swimlaneSettings_allowDragAndDrop_input: any;
+	@Input('swimlaneSettings.showEmptySwimlane') swimlaneSettings_showEmptySwimlane_input: any;
 	@Input('swimlaneSettings.unassignedGroup') swimlaneSettings_unassignedGroup_input: any;
 	@Input('swimlaneSettings.unassignedGroup.enable') swimlaneSettings_unassignedGroup_enable_input: any;
 	@Input('swimlaneSettings.unassignedGroup.keys') swimlaneSettings_unassignedGroup_keys_input: any;
@@ -123,6 +124,7 @@ export class KanbanComponent extends EJComponents<any, any> {
 	@Input('filterSettings') filterSettings_input: any;
 	@Input('stackedHeaderRows') stackedHeaderRows_input: any;
 	@Input('workflows') workflows_input: any;
+	@Input('swimlaneSettings.headers') swimlaneSettings_headers_input: any;
 	@Input('contextMenuSettings.customMenuItems') contextMenuSettings_customMenuItems_input: any;
 	@Input('editSettings.editItems') editSettings_editItems_input: any;
     @Input('options') options: any;

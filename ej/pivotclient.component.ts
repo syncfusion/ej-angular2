@@ -34,6 +34,7 @@ export class PivotClientComponent extends EJComponents<any, any> {
 	@Input('maxNodeLimitInMemberEditor') maxNodeLimitInMemberEditor_input: any;
 	@Input('enableMemberEditorPaging') enableMemberEditorPaging_input: any;
 	@Input('memberEditorPageSize') memberEditorPageSize_input: any;
+	@Input('enableMemberEditorSorting') enableMemberEditorSorting_input: any;
 	@Input('gridLayout') gridLayout_input: any;
 	@Input('collapseCubeBrowserByDefault') collapseCubeBrowserByDefault_input: any;
 	@Input('enableKPI') enableKPI_input: any;
