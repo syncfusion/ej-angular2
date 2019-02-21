@@ -54,6 +54,7 @@ export class PivotChartComponent extends EJComponents<any, any> {
 	@Output('load') load_output = new EventEmitter();
 	@Output('afterServiceInvoke') afterServiceInvoke_output = new EventEmitter();
 	@Output('beforeServiceInvoke') beforeServiceInvoke_output = new EventEmitter();
+	@Output('beforeSeriesRender') beforeSeriesRender_output = new EventEmitter();
 	@Output('drillSuccess') drillSuccess_output = new EventEmitter();
 	@Output('renderComplete') renderComplete_output = new EventEmitter();
 	@Output('renderFailure') renderFailure_output = new EventEmitter();

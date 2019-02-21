@@ -23,12 +23,15 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Input('underlineSettings') underlineSettings_input: any;
 	@Input('highlightSettings') highlightSettings_input: any;
 	@Input('signatureSettings') signatureSettings_input: any;
+	@Input('textSelectionContextMenu') textSelectionContextMenu_input: any;
+	@Input('annotationContextMenu') annotationContextMenu_input: any;
 	@Input('annotationType') annotationType_input: any;
 	@Input('pageCount') pageCount_input: any;
 	@Input('currentPageNumber') currentPageNumber_input: any;
 	@Input('zoomPercentage') zoomPercentage_input: any;
 	@Input('pdfService') pdfService_input: any;
 	@Input('interactionMode') interactionMode_input: any;
+	@Input('bufferingMode') bufferingMode_input: any;
 	@Input('hyperlinkOpenState') hyperlinkOpenState_input: any;
 	@Input('enableHyperlink') enableHyperlink_input: any;
 	@Input('enableTextSelection') enableTextSelection_input: any;
@@ -62,6 +65,15 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Input('highlightSettings.isLocked') highlightSettings_isLocked_input: any;
 	@Input('signatureSettings.color') signatureSettings_color_input: any;
 	@Input('signatureSettings.opacity') signatureSettings_opacity_input: any;
+	@Input('textSelectionContextMenu.isEnable') textSelectionContextMenu_isEnable_input: any;
+	@Input('textSelectionContextMenu.isCopyEnable') textSelectionContextMenu_isCopyEnable_input: any;
+	@Input('textSelectionContextMenu.isSearchEnable') textSelectionContextMenu_isSearchEnable_input: any;
+	@Input('textSelectionContextMenu.isHighlightEnable') textSelectionContextMenu_isHighlightEnable_input: any;
+	@Input('textSelectionContextMenu.isStrikeoutEnable') textSelectionContextMenu_isStrikeoutEnable_input: any;
+	@Input('annotationContextMenu.isEnable') annotationContextMenu_isEnable_input: any;
+	@Input('annotationContextMenu.isPopupEnable') annotationContextMenu_isPopupEnable_input: any;
+	@Input('annotationContextMenu.isDeleteEnable') annotationContextMenu_isDeleteEnable_input: any;
+	@Input('annotationContextMenu.isPropertiesEnable') annotationContextMenu_isPropertiesEnable_input: any;
     @Input('options') options: any;
 
 
@@ -69,6 +81,7 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Output('documentUnload') documentUnload_output = new EventEmitter();
 	@Output('pageChange') pageChange_output = new EventEmitter();
 	@Output('ajaxRequestFailure') ajaxRequestFailure_output = new EventEmitter();
+	@Output('ajaxRequestSuccess') ajaxRequestSuccess_output = new EventEmitter();
 	@Output('zoomChange') zoomChange_output = new EventEmitter();
 	@Output('hyperlinkClick') hyperlinkClick_output = new EventEmitter();
 	@Output('beforePrint') beforePrint_output = new EventEmitter();
@@ -83,6 +96,8 @@ export class PdfViewerComponent extends EJComponents<any, any> {
 	@Output('signatureResize') signatureResize_output = new EventEmitter();
 	@Output('bufferStart') bufferStart_output = new EventEmitter();
 	@Output('bufferEnd') bufferEnd_output = new EventEmitter();
+	@Output('downloadStart') downloadStart_output = new EventEmitter();
+	@Output('downloadEnd') downloadEnd_output = new EventEmitter();
 	@Output('destroy') destroy_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {

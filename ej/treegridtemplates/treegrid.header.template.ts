@@ -1,4 +1,4 @@
-import { Directive, ElementRef, ViewContainerRef, TemplateRef, Injector } from '@angular/core';
+import { Directive, ElementRef, EmbeddedViewRef, ViewContainerRef, TemplateRef, Injector } from '@angular/core';
 import { EJTemplateDirective, ejtemplate, ngTemplateid } from './../template';
 
 @Directive({
@@ -27,18 +27,92 @@ export class TreeGridHeaderTemplateDirective extends EJTemplateDirective {
             writable: true,
             value: this.viewContainerRef
         });
+        this.element['_key'] = $(tempEle).attr("id");
         $(tempEle).remove();
+    }
+
+    ngAfterViewInit() {
+        this.element.parent.model["ngTemplateId"] = ngTemplateid;
+        window.setTimeout(() => {
+            this.compileCurrentTemplate(this.element);
+            let parentWidget = this.element.parent.widget || this.element.widget;
+            parentWidget.element.off(parentWidget.pluginName + 'headerRefresh');
+            parentWidget.element.on(parentWidget.pluginName + 'headerRefresh', () => {
+                if (parentWidget.headerAngularTemplate) {
+                    this.compileTemplate();
+                }
+            });
+        });
+
+    }
+
+    compileTemplate() {
+        let widget = this.element.parent.widget || this.element.widget;
+        let element = widget.element;
+        let childView: EmbeddedViewRef<any>;
+        let templates = $(element).find('.ej-angular-treegrid-header-template');
+        let templateObject = widget.headerAngularTemplate;
+        for (let template in templateObject) {
+            let tmplElement = templates.filter('.' + template);
+            if (tmplElement.length) {
+                for (let i = 0; i < tmplElement.length; i++) {
+                    if (jQuery(tmplElement[i]).hasClass("embeddedview")) {
+                        jQuery(tmplElement[i]).removeClass("embeddedview")
+                        let index = parseInt($(tmplElement[i]).attr('ej-prop'));
+                        childView = (<ViewContainerRef>templateObject[template].viewRef[index]).createEmbeddedView(<TemplateRef<any>>templateObject[template].templateRef[index], { '$implicit': templateObject[template].itemData[index] });
+                        $(tmplElement[i]).empty().append(childView.rootNodes);
+                    }
+                }
+            } else {
+                delete templateObject[template];
+            }
+        }
+    }
+
+    compileCurrentTemplate(tempElement:any) {
+        let widget = this.element.parent.widget || this.element.widget;
+        let element = widget.element;
+        let childView;
+        let templates = $(element).find('.ej-angular-treegrid-header-template');
+        let templateObject = widget.headerAngularTemplate[tempElement._key];
+        let tmplElement = templates.filter('.' + tempElement._key);
+        if (templateObject && tmplElement.length) {
+            for (let i = 0; i < tmplElement.length; i++) {
+                if (jQuery(tmplElement[i]).hasClass("embeddedview")) {
+                    jQuery(tmplElement[i]).removeClass("embeddedview")
+                    let index = parseInt($(tmplElement[i]).attr('ej-prop'));
+                    childView = (<ViewContainerRef>templateObject.viewRef[index]).createEmbeddedView(<TemplateRef<any>>templateObject.templateRef[index], { '$implicit': templateObject.itemData[index] });
+                    $(tmplElement[i]).empty().append(childView.rootNodes);
+                }
+            }
+        }
+        else {
+            delete widget.headerAngularTemplate[tempElement._key];
+        }
+    }
+
+    clearTempalte() {
+        let templateObject = this.element.parent.widget.headerAngularTemplate;
+        if (templateObject && Object.keys(templateObject).length) {
+            for (let tmpl in templateObject) {
+                delete templateObject[tmpl];
+            }
+        }
+        this.viewContainerRef.remove();
+    }
+    ngOnDestroy() {
+        this.clearTempalte();
     }
 }
 
 ej.template['text/x-treegridheadertemplate'] = (self: any, selector: string, data: any, index: number, prop: any) => {
-    let templateObject = self.angularTemplate;
-    if (!templateObject || !templateObject[selector]) {
+    let templateObject = self.headerAngularTemplate;
+    if (!templateObject || !templateObject[data._key]) {
         templateObject = templateObject || {};
-        templateObject[selector] = { key: ej.getGuid('angulartmpl'), itemData: [], viewRef: [], templateRef: [] };
-        self.angularTemplate = templateObject;
+        templateObject[data._key] = { key: ej.getGuid('angulartmpl'), itemData: [], viewRef: [], templateRef: [] };
+        self.headerAngularTemplate = templateObject;
     }
-    let scope = templateObject[selector];
+    let scope = templateObject[data._key];
 
     if (!ej.isNullOrUndefined(index)) {
         if (!scope.itemData) {
@@ -68,15 +142,6 @@ ej.template['text/x-treegridheadertemplate'] = (self: any, selector: string, dat
     else
         actElement = selector;
     let tempElement = '';
-    if (data.length > 1 && self.model.rowTemplate != null) {
-        for (var i = 0; i < data.length; i++) {
-            var temp = actElement;
-            temp = '<tr ej-prop=\'' + i + '\'class=\'' + templateObject[selector].key + ' ej-angular-template\' />' + temp + '</tr>';
-            tempElement = tempElement + temp;
-        }
-    }
-    else {
-        tempElement = tempElement + '<div ej-prop=\'' + index + '\' class=\'' + " embeddedview " + templateObject[selector].key + ' ej-angular-template\'>' + actElement + ' </div>';
-    }
+    tempElement = tempElement + '<div ej-prop=\'' + index + '\' class=\'' + " embeddedview " + data._key + ' ej-angular-treegrid-header-template\'>' + actElement + ' </div>';
     return tempElement;
 };

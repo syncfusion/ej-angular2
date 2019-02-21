@@ -32,6 +32,13 @@ export class MapLayerDirective extends ComplexTagElement {
 	@Input('labelSettings.labelPath') labelSettings_labelPath: any;
 	@Input('labelSettings.showLabels') labelSettings_showLabels: any;
 	@Input('labelSettings.smartLabelSize') labelSettings_smartLabelSize: any;
+	@Input('labelSettings.font') labelSettings_font: any;
+	@Input('labelSettings.font.fontFamily') labelSettings_font_fontFamily: any;
+	@Input('labelSettings.font.fontStyle') labelSettings_font_fontStyle: any;
+	@Input('labelSettings.font.fontWeight') labelSettings_font_fontWeight: any;
+	@Input('labelSettings.font.opacity') labelSettings_font_opacity: any;
+	@Input('labelSettings.font.color') labelSettings_font_color: any;
+	@Input('labelSettings.font.size') labelSettings_font_size: any;
 	@Input('geometryType') geometryType: any;
 	@Input('layerType') layerType: any;
 	@Input('legendSettings') legendSettings: any;
@@ -51,6 +58,7 @@ export class MapLayerDirective extends ComplexTagElement {
 	@Input('legendSettings.rightLabel') legendSettings_rightLabel: any;
 	@Input('legendSettings.showLabels') legendSettings_showLabels: any;
 	@Input('legendSettings.showLegend') legendSettings_showLegend: any;
+	@Input('legendSettings.toggleVisibility') legendSettings_toggleVisibility: any;
 	@Input('legendSettings.title') legendSettings_title: any;
 	@Input('legendSettings.type') legendSettings_type: any;
 	@Input('legendSettings.width') legendSettings_width: any;
@@ -121,6 +129,7 @@ export class MapComponent extends EJComponents<any, any> {
 	@Input('zoomSettings') zoomSettings_input: any;
 	@Input('navigationControl') navigationControl_input: any;
 	@Input('locale') locale_input: any;
+	@Input('zoomSettings.animationDuration') zoomSettings_animationDuration_input: any;
 	@Input('zoomSettings.enableMouseWheelZoom') zoomSettings_enableMouseWheelZoom_input: any;
 	@Input('navigationControl.content') navigationControl_content_input: any;
 	@Input('layers') layers_input: any;
@@ -173,9 +182,14 @@ export class MapComponent extends EJComponents<any, any> {
 	@Output('zoomedIn') zoomedIn_output = new EventEmitter();
 	@Output('zoomedOut') zoomedOut_output = new EventEmitter();
 	@Output('Click') Click_output = new EventEmitter();
+	@Output('legendItemClick') legendItemClick_output = new EventEmitter();
 	@Output('doubleClick') doubleClick_output = new EventEmitter();
 	@Output('rightClick') rightClick_output = new EventEmitter();
 	@Output('onLoad') onLoad_output = new EventEmitter();
+	@Output('markerEnter') markerEnter_output = new EventEmitter();
+	@Output('markerLeave') markerLeave_output = new EventEmitter();
+	@Output('refreshed') refreshed_output = new EventEmitter();
+	@Output('displayTextRendering') displayTextRendering_output = new EventEmitter();
 
 	@ContentChild(MapLayersDirective) tag_layers: any;
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {

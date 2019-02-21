@@ -94,6 +94,8 @@ export class TreeMapComponent extends EJComponents<any, any> {
 	@Input('isHierarchicalDatasource') isHierarchicalDatasource_input: any;
 	@Input('header') header_input: any;
 	@Input('enableDrillDown') enableDrillDown_input: any;
+	@Input('drillDownValue') drillDownValue_input: any;
+	@Input('drillDownLevel') drillDownLevel_input: any;
 	@Input('isResponsive') isResponsive_input: any;
 	@Input('enableResize') enableResize_input: any;
 	@Input('draggingOnSelection') draggingOnSelection_input: any;

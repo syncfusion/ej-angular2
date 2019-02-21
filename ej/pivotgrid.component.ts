@@ -34,6 +34,7 @@ export class PivotGridComponent extends EJComponents<any, any> {
 	@Input('maxNodeLimitInMemberEditor') maxNodeLimitInMemberEditor_input: any;
 	@Input('enableMemberEditorPaging') enableMemberEditorPaging_input: any;
 	@Input('memberEditorPageSize') memberEditorPageSize_input: any;
+	@Input('enableMemberEditorSorting') enableMemberEditorSorting_input: any;
 	@Input('enableGrandTotal') enableGrandTotal_input: any;
 	@Input('enableJSONRendering') enableJSONRendering_input: any;
 	@Input('enablePivotFieldList') enablePivotFieldList_input: any;

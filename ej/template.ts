@@ -21,9 +21,14 @@ export class EJTemplateDirective {
     element: any;
 
     private childViews: any = [];
+    private parentContext: any;
     constructor(protected el: ElementRef, protected viewContainerRef: ViewContainerRef,
         protected templateRef: TemplateRef<any>) {
-        this.element = currentTemplateElement;
+            this.parentContext = (<any>this.viewContainerRef)["_view"].parent;
+            if( !ej.isNullOrUndefined(this.parentContext) && !ej.isNullOrUndefined(this.parentContext.context) && !ej.isNullOrUndefined(this.parentContext.context.ngForOf))
+                this.element = (<any>this.viewContainerRef)["_view"].parent.nodes[1].instance;
+            else
+               this.element = currentTemplateElement; 
     }
     ngOnInit() {
         let template = this.viewContainerRef.createEmbeddedView(this.templateRef, { '$implicit': [] });

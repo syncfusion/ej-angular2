@@ -46,7 +46,12 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Output('reportError') reportError_output = new EventEmitter();
 	@Output('reportExport') reportExport_output = new EventEmitter();
 	@Output('reportLoaded') reportLoaded_output = new EventEmitter();
+	@Output('showError') showError_output = new EventEmitter();
 	@Output('viewReportClick') viewReportClick_output = new EventEmitter();
+	@Output('ajaxBeforeLoad') ajaxBeforeLoad_output = new EventEmitter();
+	@Output('ajaxSuccess') ajaxSuccess_output = new EventEmitter();
+	@Output('ajaxError') ajaxError_output = new EventEmitter();
+	@Output('toolbarRendering') toolbarRendering_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('ReportViewer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);

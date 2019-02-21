@@ -80,6 +80,7 @@ import { EJ_TOOLTIP_COMPONENTS } from './ej/tooltip.component';
 import { EJ_SLIDER_COMPONENTS } from './ej/slider.component';
 import { EJ_FILEEXPLORER_COMPONENTS } from './ej/fileexplorer.component';
 import { EJ_REPORTVIEWER_COMPONENTS } from './ej/reportviewer.component';
+import { EJ_REPORTDESIGNER_COMPONENTS } from './ej/reportdesigner.component';
 import { EJ_SPLITTER_COMPONENTS } from './ej/splitter.component';
 import { EJ_UPLOADBOX_COMPONENTS } from './ej/uploadbox.component';
 import { EJ_WAITINGPOPUP_COMPONENTS } from './ej/waitingpopup.component';
@@ -165,6 +166,7 @@ export * from './ej/tooltip.component';
 export * from './ej/slider.component';
 export * from './ej/fileexplorer.component';
 export * from './ej/reportviewer.component';
+export * from './ej/reportdesigner.component';
 export * from './ej/splitter.component';
 export * from './ej/uploadbox.component';
 export * from './ej/waitingpopup.component';
@@ -188,8 +190,8 @@ let EJ_COMPONENTS = [EJTemplateDirective, EJ_GRID_COMPONENTS, GridGroupcaptionTe
     EJ_NAVIGATIONDRAWER_COMPONENTS, EJ_ACCORDION_COMPONENTS, EJ_TAB_COMPONENTS, EJ_CHECKBOX_COMPONENTS, EJ_RADIOBUTTON_COMPONENTS,
     EJ_TOGGLEBUTTON_COMPONENTS, EJ_SPLITBUTTON_COMPONENTS, EJ_DATETIMEPICKER_COMPONENTS, EJ_DATERANGEPICKER_COMPONENTS, EJ_PROGRESSBAR_COMPONENTS,
     EJ_TAGCLOUD_COMPONENTS, EJ_BUTTON_COMPONENTS, EJ_GROUPBUTTON_COMPONENTS, EJ_TOOLTIP_COMPONENTS, EJ_SLIDER_COMPONENTS,
-    EJ_FILEEXPLORER_COMPONENTS, EJ_REPORTVIEWER_COMPONENTS, EJ_SPLITTER_COMPONENTS, EJ_UPLOADBOX_COMPONENTS, EJ_WAITINGPOPUP_COMPONENTS,
-    EJ_SPELLCHECK_COMPONENTS];
+    EJ_FILEEXPLORER_COMPONENTS, EJ_REPORTVIEWER_COMPONENTS, EJ_REPORTDESIGNER_COMPONENTS, EJ_SPLITTER_COMPONENTS, EJ_UPLOADBOX_COMPONENTS,
+    EJ_WAITINGPOPUP_COMPONENTS, EJ_SPELLCHECK_COMPONENTS];
 
 @NgModule({
   imports: [

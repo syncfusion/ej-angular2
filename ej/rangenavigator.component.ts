@@ -10,6 +10,7 @@ import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, Elemen
     template: ''})
 export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Input('allowSnapping') allowSnapping_input: any;
+	@Input('allowNextValue') allowNextValue_input: any;
 	@Input('border') border_input: any;
 	@Input('dataSource') dataSource_input: any;
 	@Input('enableDeferredUpdate') enableDeferredUpdate_input: any;
@@ -42,6 +43,7 @@ export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Input('labelSettings.higherLevel.gridLineStyle') labelSettings_higherLevel_gridLineStyle_input: any;
 	@Input('labelSettings.higherLevel.intervalType') labelSettings_higherLevel_intervalType_input: any;
 	@Input('labelSettings.higherLevel.labelPlacement') labelSettings_higherLevel_labelPlacement_input: any;
+	@Input('labelSettings.higherLevel.labelIntersectAction') labelSettings_higherLevel_labelIntersectAction_input: any;
 	@Input('labelSettings.higherLevel.position') labelSettings_higherLevel_position_input: any;
 	@Input('labelSettings.higherLevel.style') labelSettings_higherLevel_style_input: any;
 	@Input('labelSettings.higherLevel.visible') labelSettings_higherLevel_visible_input: any;
@@ -51,6 +53,7 @@ export class RangeNavigatorComponent extends EJComponents<any, any> {
 	@Input('labelSettings.lowerLevel.gridLineStyle') labelSettings_lowerLevel_gridLineStyle_input: any;
 	@Input('labelSettings.lowerLevel.intervalType') labelSettings_lowerLevel_intervalType_input: any;
 	@Input('labelSettings.lowerLevel.labelPlacement') labelSettings_lowerLevel_labelPlacement_input: any;
+	@Input('labelSettings.lowerLevel.labelIntersectAction') labelSettings_lowerLevel_labelIntersectAction_input: any;
 	@Input('labelSettings.lowerLevel.position') labelSettings_lowerLevel_position_input: any;
 	@Input('labelSettings.lowerLevel.style') labelSettings_lowerLevel_style_input: any;
 	@Input('labelSettings.lowerLevel.visible') labelSettings_lowerLevel_visible_input: any;

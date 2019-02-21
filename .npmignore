@@ -4,6 +4,7 @@ npm-debug.log
 .vscode/*
 debug.log
 npm-debug.log
+package-lock.json
 
 # DO NOT IGNORE TYPESCRIPT FILES FOR NPM
 # TypeScript

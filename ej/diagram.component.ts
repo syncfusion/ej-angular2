@@ -95,6 +95,7 @@ export class DiagramConnectorLabelDirective extends ComplexTagElement {
 	@Input('margin.left') margin_left: any;
 	@Input('margin.top') margin_top: any;
 	@Input('margin.bottom') margin_bottom: any;
+	@Input('padding') padding: any;
 	@Input('dragLimit') dragLimit: any;
 	@Input('dragLimit.right') dragLimit_right: any;
 	@Input('dragLimit.left') dragLimit_left: any;
@@ -250,6 +251,7 @@ export class DiagramNodeLabelDirective extends ComplexTagElement {
 	@Input('offset') offset: any;
 	@Input('opacity') opacity: any;
 	@Input('overflowType') overflowType: any;
+	@Input('padding') padding: any;
 	@Input('readOnly') readOnly: any;
 	@Input('rotateAngle') rotateAngle: any;
 	@Input('templateId') templateId: any;
@@ -435,6 +437,7 @@ export class DiagramNodeDirective extends ComplexTagElement {
 	@Input('gradient.Stop.color') gradient_Stop_color: any;
 	@Input('gradient.Stop.offset') gradient_Stop_offset: any;
 	@Input('gradient.Stop.opacity') gradient_Stop_opacity: any;
+	@Input('borderGradient') borderGradient: any;
 	@Input('header') header: any;
 	@Input('height') height: any;
 	@Input('horizontalAlign') horizontalAlign: any;
@@ -631,6 +634,7 @@ export class DiagramComponent extends EJComponents<any, any> {
 	@Input('layout.springLength') layout_springLength_input: any;
 	@Input('layout.springFactor') layout_springFactor_input: any;
 	@Input('layout.maxIteration') layout_maxIteration_input: any;
+	@Input('layout.avoidSegmentOverlapping') layout_avoidSegmentOverlapping_input: any;
 	@Input('pageSettings.autoScrollBorder') pageSettings_autoScrollBorder_input: any;
 	@Input('pageSettings.multiplePage') pageSettings_multiplePage_input: any;
 	@Input('pageSettings.pageBackgroundColor') pageSettings_pageBackgroundColor_input: any;
