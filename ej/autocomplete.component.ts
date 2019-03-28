@@ -43,6 +43,7 @@ export class AutocompleteComponent extends EJComponents<any, any> implements Con
 	@Input('height') height_input: any;
 	@Input('highlightSearch') highlightSearch_input: any;
 	@Input('itemsCount') itemsCount_input: any;
+	@Input('ignoreAccent') ignoreAccent_input: any;
 	@Input('locale') locale_input: any;
 	@Input('minCharacter') minCharacter_input: any;
 	@Input('multiColumnSettings') multiColumnSettings_input: any;

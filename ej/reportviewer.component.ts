@@ -24,9 +24,16 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Input('toolbarSettings') toolbarSettings_input: any;
 	@Input('zoomFactor') zoomFactor_input: any;
 	@Input('serviceAuthorizationToken') serviceAuthorizationToken_input: any;
+	@Input('enableParameterBlockScroller') enableParameterBlockScroller_input: any;
+	@Input('enableDatasourceBlockScroller') enableDatasourceBlockScroller_input: any;
+	@Input('autoRender') autoRender_input: any;
+	@Input('enableNotificationBar') enableNotificationBar_input: any;
+	@Input('enableDropDownSearch') enableDropDownSearch_input: any;
+	@Input('enablePageVirtualization') enablePageVirtualization_input: any;
 	@Input('exportSettings.exportOptions') exportSettings_exportOptions_input: any;
 	@Input('exportSettings.excelFormat') exportSettings_excelFormat_input: any;
 	@Input('exportSettings.wordFormat') exportSettings_wordFormat_input: any;
+	@Input('exportSettings.customItems') exportSettings_customItems_input: any;
 	@Input('pageSettings.orientation') pageSettings_orientation_input: any;
 	@Input('pageSettings.paperSize') pageSettings_paperSize_input: any;
 	@Input('toolbarSettings.click') toolbarSettings_click_input: any;
@@ -34,6 +41,8 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Input('toolbarSettings.showToolbar') toolbarSettings_showToolbar_input: any;
 	@Input('toolbarSettings.showTooltip') toolbarSettings_showTooltip_input: any;
 	@Input('toolbarSettings.templateId') toolbarSettings_templateId_input: any;
+	@Input('toolbarSettings.customItems') toolbarSettings_customItems_input: any;
+	@Input('toolbarSettings.customGroups') toolbarSettings_customGroups_input: any;
 	@Input('dataSources') dataSources_input: any;
 	@Input('parameters') parameters_input: any;
     @Input('options') options: any;
@@ -52,6 +61,12 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Output('ajaxSuccess') ajaxSuccess_output = new EventEmitter();
 	@Output('ajaxError') ajaxError_output = new EventEmitter();
 	@Output('toolbarRendering') toolbarRendering_output = new EventEmitter();
+	@Output('exportProgressChanged') exportProgressChanged_output = new EventEmitter();
+	@Output('printProgressChanged') printProgressChanged_output = new EventEmitter();
+	@Output('exportItemClick') exportItemClick_output = new EventEmitter();
+	@Output('toolBarItemClick') toolBarItemClick_output = new EventEmitter();
+	@Output('hyperlink') hyperlink_output = new EventEmitter();
+	@Output('reportPrint') reportPrint_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('ReportViewer', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
