@@ -158,6 +158,7 @@ export class SpreadsheetComponent extends EJComponents<any, any> {
 	@Input('chartSettings.height') chartSettings_height_input: any;
 	@Input('chartSettings.width') chartSettings_width_input: any;
 	@Input('exportSettings.allowExporting') exportSettings_allowExporting_input: any;
+	@Input('exportSettings.enableFormulaCalculation') exportSettings_enableFormulaCalculation_input: any;
 	@Input('exportSettings.csvUrl') exportSettings_csvUrl_input: any;
 	@Input('exportSettings.excelUrl') exportSettings_excelUrl_input: any;
 	@Input('exportSettings.password') exportSettings_password_input: any;

@@ -22,10 +22,12 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Input('reportServerUrl') reportServerUrl_input: any;
 	@Input('reportServiceUrl') reportServiceUrl_input: any;
 	@Input('toolbarSettings') toolbarSettings_input: any;
+	@Input('parameterSettings') parameterSettings_input: any;
 	@Input('zoomFactor') zoomFactor_input: any;
 	@Input('serviceAuthorizationToken') serviceAuthorizationToken_input: any;
 	@Input('enableParameterBlockScroller') enableParameterBlockScroller_input: any;
 	@Input('enableDatasourceBlockScroller') enableDatasourceBlockScroller_input: any;
+	@Input('sizeToReportContent') sizeToReportContent_input: any;
 	@Input('autoRender') autoRender_input: any;
 	@Input('enableNotificationBar') enableNotificationBar_input: any;
 	@Input('enableDropDownSearch') enableDropDownSearch_input: any;
@@ -43,6 +45,9 @@ export class ReportViewerComponent extends EJComponents<any, any> {
 	@Input('toolbarSettings.templateId') toolbarSettings_templateId_input: any;
 	@Input('toolbarSettings.customItems') toolbarSettings_customItems_input: any;
 	@Input('toolbarSettings.customGroups') toolbarSettings_customGroups_input: any;
+	@Input('parameterSettings.delimiterChar') parameterSettings_delimiterChar_input: any;
+	@Input('parameterSettings.popupHeight') parameterSettings_popupHeight_input: any;
+	@Input('parameterSettings.popupWidth') parameterSettings_popupWidth_input: any;
 	@Input('dataSources') dataSources_input: any;
 	@Input('parameters') parameters_input: any;
     @Input('options') options: any;
