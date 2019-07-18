@@ -24,10 +24,12 @@ export class DateTimePickerComponent extends EJComponents<any, any> implements C
 {
 	@Input('allowEdit') allowEdit_input: any;
 	@Input('buttonText') buttonText_input: any;
+	@Input('blackoutDates') blackoutDates_input: any;
 	@Input('cssClass') cssClass_input: any;
 	@Input('dateTimeFormat') dateTimeFormat_input: any;
 	@Input('dayHeaderFormat') dayHeaderFormat_input: any;
 	@Input('depthLevel') depthLevel_input: any;
+	@Input('disableTimeRanges') disableTimeRanges_input: any;
 	@Input('enableAnimation') enableAnimation_input: any;
 	@Input('enabled') enabled_input: any;
 	@Input('enablePersistence') enablePersistence_input: any;
@@ -45,6 +47,7 @@ export class DateTimePickerComponent extends EJComponents<any, any> implements C
 	@Input('showOtherMonths') showOtherMonths_input: any;
 	@Input('showPopupButton') showPopupButton_input: any;
 	@Input('showRoundedCorner') showRoundedCorner_input: any;
+	@Input('specialDates') specialDates_input: any;
 	@Input('startDay') startDay_input: any;
 	@Input('startLevel') startLevel_input: any;
 	@Input('stepMonths') stepMonths_input: any;
