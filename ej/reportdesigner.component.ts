@@ -9,15 +9,20 @@ import { EventEmitter, IterableDiffers, KeyValueDiffers, Type, Component, Elemen
     selector: 'ej-reportdesigner',
     template: ''})
 export class ReportDesignerComponent extends EJComponents<any, any> {
+	@Input('configurePaneSettings') configurePaneSettings_input: any;
 	@Input('locale') locale_input: any;
 	@Input('reportPath') reportPath_input: any;
 	@Input('reportServerUrl') reportServerUrl_input: any;
 	@Input('serviceAuthorizationToken') serviceAuthorizationToken_input: any;
 	@Input('serviceUrl') serviceUrl_input: any;
+	@Input('tenantName') tenantName_input: any;
 	@Input('toolbarSettings') toolbarSettings_input: any;
+	@Input('configurePaneSettings.showConfigurePane') configurePaneSettings_showConfigurePane_input: any;
 	@Input('toolbarSettings.items') toolbarSettings_items_input: any;
 	@Input('toolbarSettings.showToolbar') toolbarSettings_showToolbar_input: any;
 	@Input('toolbarSettings.templateId') toolbarSettings_templateId_input: any;
+	@Input('reportDataExtensions') reportDataExtensions_input: any;
+	@Input('reportItemExtensions') reportItemExtensions_input: any;
     @Input('options') options: any;
 
 
@@ -33,6 +38,7 @@ export class ReportDesignerComponent extends EJComponents<any, any> {
 	@Output('saveReportClick') saveReportClick_output = new EventEmitter();
 	@Output('toolbarClick') toolbarClick_output = new EventEmitter();
 	@Output('toolbarRendering') toolbarRendering_output = new EventEmitter();
+	@Output('extensionLocaleChanged') extensionLocaleChanged_output = new EventEmitter();
 
     constructor(public el: ElementRef, public cdRef: ChangeDetectorRef, private _ejIterableDiffers: IterableDiffers, private _ejkeyvaluediffers: KeyValueDiffers) {
         super('ReportDesigner', el, cdRef, [], _ejIterableDiffers, _ejkeyvaluediffers);
