@@ -232,6 +232,7 @@ export class SpreadsheetComponent extends EJComponents<any, any> {
 	@Output('resizeStart') resizeStart_output = new EventEmitter();
 	@Output('resizeEnd') resizeEnd_output = new EventEmitter();
 	@Output('ribbonClick') ribbonClick_output = new EventEmitter();
+	@Output('scrollStop') scrollStop_output = new EventEmitter();
 	@Output('tabClick') tabClick_output = new EventEmitter();
 	@Output('tabSelect') tabSelect_output = new EventEmitter();
 
