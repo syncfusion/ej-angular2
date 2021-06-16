@@ -427,18 +427,6 @@ export let EJ_FILEEXPLORER_COMPONENTS: Type<any>[] = FileexplorerAll.EJ_FILEEXPL
 
 
 
-import * as ReportviewerAll from './reportviewer.component';
-export let Reportviewer = ReportviewerAll;
-export let EJ_REPORTVIEWER_COMPONENTS: Type<any>[] = ReportviewerAll.EJ_REPORTVIEWER_COMPONENTS;
-
-
-
-import * as ReportdesignerAll from './reportdesigner.component';
-export let Reportdesigner = ReportdesignerAll;
-export let EJ_REPORTDESIGNER_COMPONENTS: Type<any>[] = ReportdesignerAll.EJ_REPORTDESIGNER_COMPONENTS;
-
-
-
 import * as SplitterAll from './splitter.component';
 export let Splitter = SplitterAll;
 export let EJ_SPLITTER_COMPONENTS: Type<any>[] = SplitterAll.EJ_SPLITTER_COMPONENTS;
