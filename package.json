@@ -1,7 +1,7 @@
 {
   "name": "ej-angular2",
   "description": "Angular 2 components for Syncfusion JavaScript widgets",
-  "version": "20.3.47",
+  "version": "20.3.56",
   "scripts": {
     "lint": "tslint ej/**/*.ts",
     "prepublish": "npm run build:aot",
